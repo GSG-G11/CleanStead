@@ -1,21 +1,6 @@
 {
-  "workbench.colorCustomizations": {
-    "activityBar.activeBackground": "#02fff9",
-    "activityBar.activeBorder": "#fb60ff",
-    "activityBar.background": "#02fff9",
-    "activityBar.foreground": "#15202b",
-    "activityBar.inactiveForeground": "#15202b99",
-    "activityBarBadge.background": "#fb60ff",
-    "activityBarBadge.foreground": "#15202b",
-    "sash.hoverBorder": "#02fff9",
-    "statusBar.background": "#00cec9",
-    "statusBar.foreground": "#15202b",
-    "statusBarItem.hoverBackground": "#009b97",
-    "statusBarItem.remoteBackground": "#00cec9",
-    "statusBarItem.remoteForeground": "#15202b",
-    "titleBar.activeBackground": "#00cec9",
-    "titleBar.activeForeground": "#15202b",
-    "titleBar.inactiveBackground": "#00cec999",
-    "titleBar.inactiveForeground": "#15202b99"
-  }
+    "files.eol": "\n",
+    "git.ignoreLimitWarning": true,
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": { "source.fixAll.eslint": true }
 }
