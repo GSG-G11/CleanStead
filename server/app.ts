@@ -13,12 +13,12 @@ app.use(cookieParser());
 app.use(compression());
 
 app.get('/', (req:Request, res:Response):void => {
-  res.json({ msg: 'Hello World!' });
+  res.json({ msg: 'Hello CleanStead' });
 });
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(join(__dirname, '..', 'client', 'build')));
-  app.get('*', (req, res) => {
+  app.get('*', (req:Request, res:Response):void => {
     res.sendFile(join(__dirname, '..', 'client', 'build', 'index.html'));
   });
 }
