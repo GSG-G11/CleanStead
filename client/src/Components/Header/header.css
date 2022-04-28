@@ -1,0 +1,31 @@
+.header-container{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.header-image{
+  width: 100%;
+}
+.header-description{
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.header-button{
+  border-radius: 150px;
+  margin-top: 12px;
+}
+@media (max-width: 768px){
+  .title{
+    font-size: 18px !important;
+  }
+}
+@media (max-width: 480px){
+  .title{
+    font-size: 13px !important;
+  }
+}

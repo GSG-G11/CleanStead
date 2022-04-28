@@ -1,9 +1,10 @@
 import React from 'react';
 import 'antd/dist/antd.css';
+import Header from '../Components';
 
 function App() {
   return (
-    <div>Clean Stead</div>
+    <Header />
   );
 }
 
