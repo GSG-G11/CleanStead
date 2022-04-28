@@ -17,7 +17,6 @@
         "ecmaVersion": "latest"
     },
     "plugins": [
-        "react",
         "@typescript-eslint"
     ],
     "rules": {
