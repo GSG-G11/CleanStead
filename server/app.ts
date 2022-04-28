@@ -6,17 +6,23 @@ import compression from 'compression';
 
 const app:Application = express();
 dotenv.config();
-app.set('port', process.env.PORT || 5000);
+const {
+  env: { PORT, NODE_ENV },
+} = process;
+app.set('port', PORT || 5000);
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(compression());
+app.disable('x-powered-by');
 
-app.get('/', (req:Request, res:Response):void => {
-  res.json({ msg: 'Hello CleanStead' });
-});
+if (NODE_ENV === 'development') {
+  app.get('/', (req:Request, res:Response):void => {
+    res.json({ message: 'Hello CleanStead' });
+  });
+}
 
-if (process.env.NODE_ENV === 'production') {
+if (NODE_ENV === 'production') {
   app.use(express.static(join(__dirname, '..', 'client', 'build')));
   app.get('*', (req:Request, res:Response):void => {
     res.sendFile(join(__dirname, '..', 'client', 'build', 'index.html'));

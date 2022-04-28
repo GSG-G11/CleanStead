@@ -2,13 +2,13 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
-    // "isolatedModules": false,
+    "isolatedModules": false,
     "esModuleInterop": true,
     "outDir": "dist",
-    "rootDir": "./", 
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true 
-  }
+  },
+  "include": ["server/**/*.ts"],
 }
