@@ -9,9 +9,9 @@ const { Title } = Typography;
 function CustomTitle({ isLanding, title }) {
   return (
     <div className="custom-title">
-      {isLanding && <Image src={linesRight} />}
+      {isLanding && <Image src={linesRight} preview={false} />}
       <Title className="title">{title}</Title>
-      <Image src={linesLeft} />
+      <Image src={linesLeft} preview={false} />
     </div>
   );
 }
