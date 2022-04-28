@@ -29,7 +29,6 @@ if (NODE_ENV === 'production') {
     res.sendFile(join(__dirname, '..', 'client', 'build', 'index.html'));
   });
 }
-
 app.use(clientError);
 app.use(serverError);
 

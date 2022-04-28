@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
-import { Request, Response, NextFunction } from 'express';
+import { ErrorRequestHandler } from 'express';
 
-const serverError = (err:any, req:Request, res:Response, next:NextFunction) => {
+const serverError:ErrorRequestHandler = (err, req, res, next) => {
   if (err.status) {
     res.status(err.status).json({ status: err.status, message: err.message });
   } else {
-    res.status(500).json({ status: 500, message: 'Server Error' });
+    res.status(500).json({ status: 500, message: 'Internal Server Error' });
   }
 };
 export default serverError;
