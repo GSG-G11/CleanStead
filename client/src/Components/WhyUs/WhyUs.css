@@ -8,13 +8,12 @@
 
 }
 .section{
-    margin: 30px 70px 20px 220px;
+    margin: 35px 70px 20px 250px;
     display: block;
     width: 100%;
 }
 .avatar {
-  border-radius: 2200px;
- left: 350px;
+ left: 310px;
  
 }
 .title {
