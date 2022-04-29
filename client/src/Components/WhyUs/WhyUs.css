@@ -1,0 +1,14 @@
+
+.image {
+  width: 400px;
+  height: 400px;
+  margin: 30px 70px 20px 2px;
+  display: block;
+  
+
+}
+.section{
+    margin: 30px 70px 20px 200px;
+    display: block;
+    width: 100%;
+}
