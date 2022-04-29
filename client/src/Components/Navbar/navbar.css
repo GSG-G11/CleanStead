@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0px;
+}
+
+.login {
+  margin-left: 10px;
+  color: var(--main);
+}
+
+.ant-menu-horizontal {
+  border: none;
+}
+
+.ant-menu-horizontal > .ant-menu-item::after {
+  content: none;
+}
+
+.avatar {
+  margin-left: 10px;
+}
+
+.logout {
+  border: 0;
+  color: red;
+}
