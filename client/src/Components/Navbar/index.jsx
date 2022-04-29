@@ -11,7 +11,7 @@ import './navbar.css';
 
 const { Header } = Layout;
 
-export default function Navbar({ isLogged, categories, user }) {
+function Navbar({ isLogged, categories, user }) {
   const categoriesMenu = (
     <Menu
       items={categories.map(({ id, name }) => ({
@@ -50,7 +50,8 @@ export default function Navbar({ isLogged, categories, user }) {
       items={[
         {
           label: user.role === 'admin'
-            ? (<Link to="/dashboard">Dashboard</Link>) : (<Link to="/my-appointment">My Appointment</Link>)
+            ? (<Link to="/dashboard">Dashboard</Link>)
+            : (<Link to="/my-appointment">My Appointment</Link>)
           ,
         },
         {
@@ -64,7 +65,7 @@ export default function Navbar({ isLogged, categories, user }) {
 
   return (
     <Header className="header">
-      <Image src={logo} width={150} />
+      <Image preview={false} src={logo} width={150} />
       <Menu mode="horizontal" defaultSelectedKeys={NavItems[0]} items={NavItems} />
       <div>
         {isLogged ? (
@@ -91,3 +92,5 @@ Navbar.propTypes = {
   user: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object)).isRequired,
   categories: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object)).isRequired,
 };
+
+export default Navbar;

@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     const cancelTokenSource = axios.CancelToken.source();
-    axios.get('/categories', {
+    axios.get('/api/v1/categories', {
       cancelToken: cancelTokenSource.token,
     })
       .then((res) => {
