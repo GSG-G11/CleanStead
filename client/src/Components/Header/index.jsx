@@ -7,7 +7,7 @@ import './header.css';
 
 const { Title } = Typography;
 
-export default function Header() {
+function Header() {
   return (
     <Row
       justify="center"
@@ -17,8 +17,8 @@ export default function Header() {
         xs={{ span: 23 }}
         sm={{ span: 23 }}
         md={{ span: 21 }}
-        lg={{ span: 20 }}
-        xl={{ span: 18 }}
+        lg={{ span: 22 }}
+        xl={{ span: 22 }}
       >
         <div className="header-container">
           <Image
@@ -48,3 +48,5 @@ export default function Header() {
     </Row>
   );
 }
+
+export default Header;

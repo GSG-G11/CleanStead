@@ -1,3 +1,4 @@
 import Header from './Header';
+import MainFooter from './Footer';
 
-export default Header;
+export { Header, MainFooter };
