@@ -17,30 +17,30 @@ function Demo() {
         <Col span={12}>
           <div className="section">
             <Comment
-              author={<a>الموثوقية</a>}
+              author={<a className="title">الموثوقية</a>}
               avatar={<Avatar className="avatar" src={logo4} alt="Han Solo" />}
-              content={<p>ندرك صعوبة القيام بتنظيف السجاد من قبل النساء</p>}
+              content={<p className="description">ندرك صعوبة القيام بتنظيف السجاد من قبل النساء</p>}
             />
           </div>
           <div className="section">
             <Comment
-              author={<a>الحجز اونلاين</a>}
-              avatar={<Avatar src={logo3} alt="Han Solo" />}
-              content={<p>ندرك صعوبة القيام بتنظيف السجاد من قبل النساء</p>}
+              author={<a className="title">الحجز اونلاين</a>}
+              avatar={<Avatar className="avatar" src={logo3} alt="Han Solo" />}
+              content={<p className="description">ندرك صعوبة القيام بتنظيف السجاد من قبل النساء</p>}
             />
           </div>
           <div className="section">
             <Comment
-              author={<a>خصومات دائمة</a>}
-              avatar={<Avatar src={logo2} alt="Han Solo" />}
-              content={<p>ندرك صعوبة القيام بتنظيف السجاد من قبل النساء</p>}
+              author={<a className="title">خصومات دائمة</a>}
+              avatar={<Avatar className="avatar" src={logo2} alt="Han Solo" />}
+              content={<p className="description">ندرك صعوبة القيام بتنظيف السجاد من قبل النساء</p>}
             />
           </div>
           <div className="section">
             <Comment
-              author={<a>دعم متواصل</a>}
-              avatar={<Avatar src={logo1} alt="Han Solo" />}
-              content={<p>ندرك صعوبة القيام بتنظيف السجاد من قبل النساء</p>}
+              author={<a className="title">دعم متواصل</a>}
+              avatar={<Avatar className="avatar" src={logo1} alt="Han Solo" />}
+              content={<p className="description">ندرك صعوبة القيام بتنظيف السجاد من قبل النساء</p>}
             />
           </div>
         </Col>

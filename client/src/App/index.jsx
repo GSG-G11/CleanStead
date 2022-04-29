@@ -1,9 +1,12 @@
 import React from 'react';
 import 'antd/dist/antd.css';
+import WhyUs from '../Components/WhyUs';
 
 function App() {
   return (
-    <div>Clean Stead</div>
+    <div>
+      <WhyUs />
+    </div>
   );
 }
 

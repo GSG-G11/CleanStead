@@ -2,13 +2,27 @@
 .image {
   width: 400px;
   height: 400px;
-  margin: 30px 70px 20px 2px;
+  margin: 30px 90px 20px 2px;
   display: block;
   
 
 }
 .section{
-    margin: 30px 70px 20px 200px;
+    margin: 30px 70px 20px 220px;
     display: block;
     width: 100%;
+}
+.avatar {
+  border-radius: 2200px;
+ left: 350px;
+ 
+}
+.title {
+  font-size: 12px;
+  font-weight: bold;
+  color: #07090c;
+}
+.description {
+  font-size: 12px;
+  color: #595b5f;
 }
