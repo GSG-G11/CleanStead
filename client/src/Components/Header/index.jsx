@@ -2,8 +2,8 @@ import React from 'react';
 import {
   Row, Col, Image, Typography, Button,
 } from 'antd';
-import headerBackground from '../../Assets/images/headerBackground.svg';
-import './header.css';
+import headerBackground from '../../assets/images/headerBackground.svg';
+import './style.css';
 
 const { Title } = Typography;
 

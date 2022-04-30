@@ -8,8 +8,8 @@ import {
   createFromIconfontCN, InstagramOutlined, WhatsAppOutlined,
   YoutubeOutlined,
 } from '@ant-design/icons';
-import logo from '../../Assets/images/logo.svg';
-import map from '../../Assets/images/map.svg';
+import logo from '../../assets/images/logo.svg';
+import map from '../../assets/images/map.svg';
 import './footer.css';
 
 const { Footer } = Layout;
