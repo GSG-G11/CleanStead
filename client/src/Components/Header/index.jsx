@@ -23,6 +23,7 @@ function Header() {
         <div className="header-container">
           <Image
             className="header-image"
+            alt="header image"
             preview={false}
             src={headerBackground}
           />

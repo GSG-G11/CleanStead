@@ -10,7 +10,7 @@ import {
 } from '@ant-design/icons';
 import logo from '../../assets/images/logo.svg';
 import map from '../../assets/images/map.svg';
-import './footer.css';
+import './style.css';
 
 const { Footer } = Layout;
 
@@ -38,7 +38,7 @@ function MainFooter() {
         lg={{ span: 7 }}
         xl={{ span: 7 }}
       >
-        <Image src={logo} />
+        <Image src={logo} alt="logo" />
         <Paragraph type="secondary" strong>
           هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة،
           لقد تم توليد هذا النص من مولد النص العربى،
@@ -108,7 +108,7 @@ function MainFooter() {
               <Button shape="circle" icon={<InstagramOutlined />} />
             </Tooltip>
           </Space>
-          <Image src={map} preview={false} />
+          <Image src={map} alt="map" preview={false} />
         </Space>
       </Col>
       <Footer className="copyright">جميع الحقوق محفوظة © 2022</Footer>
