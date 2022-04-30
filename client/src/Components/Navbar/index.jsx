@@ -60,9 +60,8 @@ function Navbar({ isLogged, categories, user }) {
             ),
         },
         {
-          label: (
-            <div className="logout" onClick={logout}>خروج</div>
-          ),
+          label: 'خروج',
+          onClick: logout,
         },
       ]}
     />
