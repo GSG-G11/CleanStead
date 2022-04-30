@@ -4,7 +4,7 @@ import './app.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from 'antd';
 import axios from 'axios';
-import Navbar from '../Components';
+import { Navbar } from '../Components';
 
 function App() {
   const [categories, setCategories] = useState([{ id: 1, name: 'test' }, { id: 2, name: 'test' }]);
