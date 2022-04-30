@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import { clientError, serverError } from './controllers';
-import apiRouter from './routes';
+import router from './routes';
 
 const app:Application = express();
 dotenv.config();
@@ -24,6 +24,8 @@ if (NODE_ENV === 'development') {
   });
 }
 
+app.use('/api/v1', router);
+
 if (NODE_ENV === 'production') {
   app.use(express.static(join(__dirname, '..', 'client', 'build')));
   app.get('*', (req:Request, res:Response):void => {
@@ -31,7 +33,6 @@ if (NODE_ENV === 'production') {
   });
 }
 
-app.use('/api/v1', apiRouter);
 app.use(clientError);
 app.use(serverError);
 

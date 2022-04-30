@@ -1,9 +1,6 @@
-import router from 'express';
-
+import { Router } from 'express';
 import { getCategories } from '../controllers';
 
-const apiRouter = router.Router();
-
-apiRouter.get('/categories', getCategories);
-
-export default apiRouter;
+const router = Router();
+router.get('/categories', getCategories);
+export default router;
