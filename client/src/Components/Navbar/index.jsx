@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import {
-  Layout, Menu, Image, Button, Avatar, Dropdown, Space,
-} from 'antd';
-import { UserOutlined, DownOutlined } from '@ant-design/icons';
+import { Layout, Menu, Image, Button, Dropdown, Space, Drawer } from 'antd';
+import { DownOutlined, MenuOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
-import logo from '../../assets/images/logo.svg';
+import logo from '../../Assets/images/logo.svg';
+import LeftMenu from './LeftMenu';
+import RightMenu from './RightMenu';
 import './navbar.css';
 
 const { Header } = Layout;
 
 function Navbar({ isLogged, categories, user }) {
+  const [visible, setVisible] = useState(false);
+
+  const showDrawer = () => {
+    setVisible(true);
+  };
+
+  const onClose = () => {
+    setVisible(false);
+  };
+
   const categoriesMenu = () => (
     <Menu
       items={categories.map(({ id, name }) => ({
@@ -21,7 +31,7 @@ function Navbar({ isLogged, categories, user }) {
     />
   );
 
-  const NavItems = [
+  const navItems = [
     <Link to="/">الرئيسية</Link>,
     categories.length ? (
       <Space direction="vertical">
@@ -43,8 +53,8 @@ function Navbar({ isLogged, categories, user }) {
   }));
 
   const logout = () => {
-    axios.get('/logout').then((res) => {
-      console.log(res.data);
+    axios.get('/logout').then(() => {
+      console.log('Logged out');
     });
   };
 
@@ -60,39 +70,54 @@ function Navbar({ isLogged, categories, user }) {
             ),
         },
         {
-          label: 'خروج',
+          label: 'تسجيل خروج',
           onClick: logout,
+          className: 'logout',
         },
       ]}
     />
   );
 
   return (
-    <Header className="header">
-      <Image preview={false} src={logo} width={150} />
-      <Menu
-        mode="horizontal"
-        defaultSelectedKeys={NavItems[0]}
-        items={NavItems}
-      />
-      <div>
-        {isLogged ? (
-          <Space direction="vertical">
-            <Dropdown overlay={avatarMenu} placement="bottom">
-              <Space>
-                <div className="avatar">
-                  <Avatar size={32} icon={<UserOutlined />} />
-                  &nbsp;{user.name}&nbsp;
-                  <DownOutlined style={{ fontSize: '12px' }} />
-                </div>
-              </Space>
-            </Dropdown>
-          </Space>
-        ) : (
-          <Button className="login">دخول</Button>
-        )}
-        <Button type="primary">احجز الآن</Button>
+    <Header className="menu">
+      <div className="menu__logo">
+        <Link to="/">
+          <Image preview={false} src={logo} width={150} />
+        </Link>
       </div>
+      <div className="menu_left">
+        <LeftMenu mode="horizontal" navItems={navItems} />
+      </div>
+      <div className="menu_right">
+        <RightMenu
+          mode="horizontal"
+          isLogged={isLogged}
+          avatarMenu={avatarMenu}
+          user={user}
+        />
+      </div>
+      <Button
+        className="menu__mobile-button"
+        type="primary"
+        onClick={showDrawer}
+      >
+        <MenuOutlined type="align-right" />
+      </Button>
+      <Drawer
+        title="القائمة"
+        placement="left"
+        className="menu_drawer"
+        onClose={onClose}
+        visible={visible}
+      >
+        <LeftMenu mode="inline" navItems={navItems} />
+        <RightMenu
+          mode="inline"
+          isLogged={isLogged}
+          avatarMenu={avatarMenu}
+          user={user}
+        />
+      </Drawer>
     </Header>
   );
 }

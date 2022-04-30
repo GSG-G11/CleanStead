@@ -26,7 +26,7 @@ function App() {
     <Router>
       <Layout>
         <Navbar
-          isLogged={true}
+          isLogged={false}
           categories={categories}
           user={{ name: 'Mohammad', role: 'admin' }}
         />

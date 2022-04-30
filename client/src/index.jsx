@@ -8,5 +8,5 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ConfigProvider locale={ArEg}>
     <App />
-  </ConfigProvider>,
+  </ConfigProvider>
 );
