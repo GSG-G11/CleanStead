@@ -1,3 +1,4 @@
 import WhyUs from './WhyUs';
+import DescriptionCard from './DescriptionCard';
 
-export default WhyUs;
+export default { WhyUs, DescriptionCard };

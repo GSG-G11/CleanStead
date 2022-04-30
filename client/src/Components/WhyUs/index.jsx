@@ -8,7 +8,7 @@ import logo1 from '../../assets/images/logo1.png';
 import logo2 from '../../assets/images/logo2.png';
 import logo3 from '../../assets/images/logo3.png';
 import logo4 from '../../assets/images/logo4.png';
-import './WhyUs.css';
+import './style.css';
 
 function Demo() {
   return (
