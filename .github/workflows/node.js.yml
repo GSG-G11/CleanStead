@@ -12,7 +12,7 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRES_PASSWORD: 12345
+          POSTGRES_PASSWORD: 123456
           POSTGRES_USER: cleansteader
           POSTGRES_DB: cleanstead_test
           POSTGRES_PORT: 5432
