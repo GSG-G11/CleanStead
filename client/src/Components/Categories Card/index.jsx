@@ -1,34 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Typography, Button } from 'antd';
+import { Card, Typography, Image } from 'antd';
 import { LeftOutlined } from '@ant-design/icons';
 import './style.css';
 
 const { Title, Paragraph } = Typography;
-function CategoriesCard() {
+function CategoriesCard({ categoryId,imageUrl,title,description}) {
   return (
     <Card
       hoverable
       className="category-card"
       cover={(
-        <img
+        <Image
           alt="example"
           className="image"
-          src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+          src={imageUrl}
         />
       )}
     >
       <Title level={5} className="category-title">
-        تنظيف المنزل
-        {' '}
+        {title}
       </Title>
       <Paragraph className="category-details">
-        يجب علينا دائما أن نتواجد في مكان نظيف ومرتب لذلك نتوقع دائما أن يكون
-        منزلك بهذا الشكل ونتفهم أيضًا أنه قد لا يكون لديك دائمًا الوقت للقيام
-        بذلك بنفسك أو قد لاتكون لديك الصحة للتنظيف. لذلك لدينا فريق مهني لضمان
-        حصولك على منزل نظيف بما يرضيك
+        {description}
       </Paragraph>
-      <Link to="/category/1">
+      <Link to={`/category/${categoryId}`}>
         رؤية المزيد
         <LeftOutlined className="left-icon" />
       </Link>
