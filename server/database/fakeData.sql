@@ -1,14 +1,14 @@
-INSERT INTO users(name, email, password, phoneNumber, location)
+INSERT INTO users(name, email, password, phone_number, location)
 VALUES
 ('مصطفى قنوع','mostafaqanoo403@gmail.com', '025@$55235', 0559565562, 'غزة'),
 ('محمد الهبيل', 'mohamed403@gmail.com', '025@4$55235', 0555555555, 'الامن العام'),
-('عبد فتحي', 'abed403@gmail.com', '025@24$552335', 0555356555, 'الرياض'),
+(' محمد عبدالهادي', 'abed403@gmail.com', '025@24$552335', 0555356555, 'الرياض'),
 ('اسراء ابوريا', 'israa403@gmail.com', '025@1$255235', 0555543555, 'الشارع التالت'),
 ('جهاد ابوشقرة', 'jehad403@gmail.com', '025@98$55235', 0552455555, 'خانيونس');
 
 INSERT INTO categories(name, description, image)
 VALUES
-('تنظيف المنزل',
+('تنظيف منازل',
 'يجب علينا دائما أن نتواجد في مكان نظيف ومرتب لذلك نتوقع دائما أن يكون منزلك بهذا الشكل ونتفهم أيضًا أنه قد لا يكون لديك دائمًا الوقت للقيام بذلك بنفسك أو قد لاتكون لديك الصحة للتنظيف. لذلك لدينا فريق مهني لضمان حصولك على منزل نظيف بما يرضيك.
 ما عليك سوى التقديم للاستفادة من خدماتنا',
 'https://media.istockphoto.com/photos/the-countdown-to-clean-shiny-floors-picture-id1291180143?b=1&k=20&m=1291180143&s=170667a&w=0&h=Fc66R5Pn_Gs2K1XSKrwqX49aPmVwqINbY_oKqBh5IRo='),
@@ -17,7 +17,7 @@ VALUES
 ما عليك سوى التقديم للاستفادة من خدماتنا',
 'https://media.istockphoto.com/photos/worker-removing-dirt-from-carpet-indoors-closeup-cleaning-service-picture-id1350817454?b=1&k=20&m=1350817454&s=170667a&w=0&h=zA7ymYDnadILctcL-ZlIGNtWdAlUckoN-rvZSpIPpBs='),
 ('تنظيف السيارات',
-'نعرف أن الانتظار طويلا في محطات البنزين لغسيل السيارة الخاصة بك تعمل على تضيع الوقت منك لذلك عملنا على توفير فريق مهني  مدرب لتوفير خدمة تنظيف السيارات حيث اذا كان لديك مكان للقيام بهذه الخدمة  يأتي فريقنا اليك أو يأتي لأخذ السيارة وجلبها إليك في مدة معينة.
+'نعرف أن الانتظار طويلا في محطات البنزين لغسيل السيارة الخاصة بك تعمل على تضيع الوقت منك لذلك عملنا على توفير فريق مهني مدرب لتوفير خدمة تنظيف السيارات حيث اذا كان لديك مكان للقيام بهذه الخدمة يأتي فريقنا اليك أو يأتي لأخذ السيارة وجلبها إليك في مدة معينة.
 ما عليك سوى التقديم للاستفادة من خدماتنا',
 'https://media.istockphoto.com/photos/the-car-wash-picture-id1128018249?b=1&k=20&m=1128018249&s=170667a&w=0&h=Jdq3AGdRlqwp72_pxUBthLrCPM6NKsfpp01tGD07s7w='),
 ('تنظيف المكاتب التجارية',
@@ -29,7 +29,7 @@ VALUES
 ما عليك سوى التقديم للاستفادة من خدماتنا',
 'https://media.istockphoto.com/photos/window-cleaner-using-a-squeegee-to-wash-a-window-picture-id1307939278?b=1&k=20&m=1307939278&s=170667a&w=0&h=sE2iIgtlr8gG6m6frJcxGZn-jz105dtqzoa_jucaTaA=');
 
-INSERT INTO services(name, description, price, image, categoryId)
+INSERT INTO services(name, description, price, image, category_id)
 VALUES
 ('غرفة النوم', 'ارضيات- سرير', 20, 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', 1),
 ('غرفة المعيشة', 'ارضيات- كنب', 30, 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80', 1),
@@ -55,10 +55,10 @@ VALUES
 ('الدرج', 'ارضيات', 27, 'https://images.unsplash.com/photo-1580911498851-4999ad5327b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',4),
 ('الممرات', 'ارضيات', 27, 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80',4);
 
-INSERT INTO appoinment(date, time, timeCreated, price, userId, serviceId)
+INSERT INTO appoinments(date, time, time_created, price, user_id, service_id)
 VALUES
 ('2017-03-14', '10:00', NOW(), 10, 1, 1);
 
-INSERT INTO service_appoinment(quantity, appoinmentId, serviceId)
+INSERT INTO services_appoinments(quantity, appoinment_id, service_id)
 VALUES
 (2, 1, 1);
