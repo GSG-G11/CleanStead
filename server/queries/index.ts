@@ -1,5 +1,6 @@
-import { getCategoriesQuery } from './categories';
+import { getCategoriesQuery, getCategoryServicesQuery } from './categories';
 
 export {
   getCategoriesQuery,
+  getCategoryServicesQuery,
 };
