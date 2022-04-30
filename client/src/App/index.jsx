@@ -4,7 +4,7 @@ import './app.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from 'antd';
 import axios from 'axios';
-import { Navbar } from '../Components';
+import { Navbar, Header } from '../Components';
 
 function App() {
   const [categories, setCategories] = useState([{ id: 1, name: 'test' }, { id: 2, name: 'test' }]);
@@ -25,6 +25,7 @@ function App() {
     <Router>
       <Layout>
         <Navbar isLogged={false} categories={categories} user={{ name: 'Mohammad', role: 'admin' }} />
+        <Header />
         <Routes>
           <Route
             path="/"
