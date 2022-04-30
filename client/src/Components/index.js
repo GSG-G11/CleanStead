@@ -1,4 +1,4 @@
 import CustomTitle from './Custom Title';
-import DescriptionCard from './Description Card';
+import WhoAreWe from './WhoAreWe';
 
-export { CustomTitle, DescriptionCard };
+export { CustomTitle, WhoAreWe };

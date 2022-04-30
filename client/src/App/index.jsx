@@ -1,11 +1,11 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { DescriptionCard } from '../Components';
+import { WhoAreWe } from '../Components';
 
 function App() {
   return (
     <div>
-      <DescriptionCard />
+      <WhoAreWe />
     </div>
   );
 }
