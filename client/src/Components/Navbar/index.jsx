@@ -12,25 +12,25 @@ import './navbar.css';
 const { Header } = Layout;
 
 function Navbar({ isLogged, categories, user }) {
-  const categoriesMenu = (
+  const categoriesMenu = () => (
     <Menu
       items={categories.map(({ id, name }) => ({
         key: id,
-        label: <Link to={`category/${id}`}>{name}</Link>,
+        label: <Link to={`/category/${id}`}>{name}</Link>,
       }))}
     />
   );
 
   const NavItems = [
     <Link to="/">الرئيسية</Link>,
-    <Space direction="vertical">
-      <Dropdown overlay={categoriesMenu} placement="bottom">
+    categories.length ? <Space direction="vertical">
+      <Dropdown overlay={categoriesMenu()} placement="bottom">
         <Space>
           الخدمات
           <DownOutlined style={{ fontSize: '12px' }} />
         </Space>
       </Dropdown>
-    </Space>,
+    </Space> : <Link to={`#category`}>الخدمات</Link>,
     <Link to="/about">من نحن</Link>,
     <Link to="/contact">اتصل بنا</Link>,
   ].map((item, key) => ({
