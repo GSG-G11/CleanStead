@@ -1,5 +1,7 @@
-name: PostgreSQL Test Routes
+name: Test Suits Routes
 on: push
+env:
+  SECRET_KEY: ${{ secrets.SECRET_KEY }}
 
 jobs:
   container-job:
@@ -10,8 +12,8 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRES_PASSWORD: 123456
-          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: 12345
+          POSTGRES_USER: cleansteader
           POSTGRES_DB: cleanstead_test
           POSTGRES_PORT: 5432
         options: >-
@@ -21,7 +23,7 @@ jobs:
           --health-retries 5
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Install dependencies
         run: npm ci
@@ -29,4 +31,4 @@ jobs:
       - name: Testing Routes
         run: npm test
         env:
-          TEST_DB_URL: postgres://postgres:123456@localhost:5432/cleanstead_test
+          TEST_DB_URL: postgres://cleansteader:123456@postgres:5432/cleanstead_test
