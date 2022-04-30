@@ -11,12 +11,13 @@ function App() {
 
   useEffect(() => {
     const cancelTokenSource = axios.CancelToken.source();
-    axios.get('/api/v1/categories', {
-      cancelToken: cancelTokenSource.token,
-    })
-    .then(({ data }) => {
-      setCategories(data.data);
-    });
+    axios
+      .get('/api/v1/categories', {
+        cancelToken: cancelTokenSource.token,
+      })
+      .then(({ data }) => {
+        setCategories(data.data);
+      });
 
     return () => cancelTokenSource.cancel();
   }, [categories]);
@@ -24,13 +25,14 @@ function App() {
   return (
     <Router>
       <Layout>
-        <Navbar isLogged={false} categories={categories} user={{ name: 'Mohammad', role: 'admin' }} />
+        <Navbar
+          isLogged={true}
+          categories={categories}
+          user={{ name: 'Mohammad', role: 'admin' }}
+        />
         <Header />
         <Routes>
-          <Route
-            path="/"
-            element={<div>Home</div>}
-          />
+          <Route path="/" element={<div>Home</div>} />
         </Routes>
       </Layout>
     </Router>

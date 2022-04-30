@@ -26,3 +26,7 @@
   border: 0;
   color: red;
 }
+
+.ant-dropdown-menu {
+  text-align: right;
+}

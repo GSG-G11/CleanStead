@@ -23,14 +23,18 @@ function Navbar({ isLogged, categories, user }) {
 
   const NavItems = [
     <Link to="/">الرئيسية</Link>,
-    categories.length ? <Space direction="vertical">
-      <Dropdown overlay={categoriesMenu()} placement="bottom">
-        <Space>
-          الخدمات
-          <DownOutlined style={{ fontSize: '12px' }} />
-        </Space>
-      </Dropdown>
-    </Space> : <Link to={`#category`}>الخدمات</Link>,
+    categories.length ? (
+      <Space direction="vertical">
+        <Dropdown overlay={categoriesMenu()} placement="bottom">
+          <Space>
+            الخدمات
+            <DownOutlined style={{ fontSize: '12px' }} />
+          </Space>
+        </Dropdown>
+      </Space>
+    ) : (
+      <Link to="#category">الخدمات</Link>
+    ),
     <Link to="/about">من نحن</Link>,
     <Link to="/contact">اتصل بنا</Link>,
   ].map((item, key) => ({
@@ -39,24 +43,25 @@ function Navbar({ isLogged, categories, user }) {
   }));
 
   const logout = () => {
-    axios.get('/logout')
-      .then((res) => {
-        console.log(res.data);
-      });
+    axios.get('/logout').then((res) => {
+      console.log(res.data);
+    });
   };
 
   const avatarMenu = (
     <Menu
       items={[
         {
-          label: user.role === 'admin'
-            ? (<Link to="/dashboard">Dashboard</Link>)
-            : (<Link to="/my-appointment">My Appointment</Link>)
-          ,
+          label:
+            user.role === 'admin' ? (
+              <Link to="/dashboard">لوحة التحكم</Link>
+            ) : (
+              <Link to="/my-appointment">مواعيدي</Link>
+            ),
         },
         {
           label: (
-            <Button className="logout" onClick={logout}>LogOut</Button>
+            <div className="logout" onClick={logout}>خروج</div>
           ),
         },
       ]}
@@ -66,7 +71,11 @@ function Navbar({ isLogged, categories, user }) {
   return (
     <Header className="header">
       <Image preview={false} src={logo} width={150} />
-      <Menu mode="horizontal" defaultSelectedKeys={NavItems[0]} items={NavItems} />
+      <Menu
+        mode="horizontal"
+        defaultSelectedKeys={NavItems[0]}
+        items={NavItems}
+      />
       <div>
         {isLogged ? (
           <Space direction="vertical">
@@ -74,13 +83,15 @@ function Navbar({ isLogged, categories, user }) {
               <Space>
                 <div className="avatar">
                   <Avatar size={32} icon={<UserOutlined />} />
-                  {user.name}
+                  &nbsp;{user.name}&nbsp;
                   <DownOutlined style={{ fontSize: '12px' }} />
                 </div>
               </Space>
             </Dropdown>
           </Space>
-        ) : (<Button className="login">دخول</Button>)}
+        ) : (
+          <Button className="login">دخول</Button>
+        )}
         <Button type="primary">احجز الآن</Button>
       </div>
     </Header>
@@ -90,7 +101,8 @@ function Navbar({ isLogged, categories, user }) {
 Navbar.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   user: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object)).isRequired,
-  categories: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object)).isRequired,
+  categories: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object))
+    .isRequired,
 };
 
 export default Navbar;
