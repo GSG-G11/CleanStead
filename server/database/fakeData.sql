@@ -1,5 +1,5 @@
 INSERT INTO
-    users(name, email, password, phone_number, location)
+    users(name, email, password, phone, location)
 VALUES
     (
         'مصطفى قنوع',
@@ -240,7 +240,7 @@ INSERT INTO
     appoinments(
         date,
         time,
-        time_created,
+        creation_time,
         price,
         user_id,
         service_id

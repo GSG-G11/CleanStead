@@ -12,7 +12,7 @@ CREATE TABLE users (
   name VARCHAR(100) NOT NULL,
   email VARCHAR(255) NOT NULL UNIQUE,
   password VARCHAR(255) NOT NULL,
-  phone_number INT NOT NULL,
+  phone INT NOT NULL,
   location TEXT NOT NULL
 );
 
@@ -46,10 +46,10 @@ CREATE TABLE appoinments (
   id SERIAL PRIMARY KEY,
   date DATE NOT NULL,
   time VARCHAR(50) NOT NULL,
-  time_created TIMESTAMP NOT NULL,
+  creation_time TIMESTAMP NOT NULL,
   price INT NOT NULL,
   user_id INT,
-  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 CREATE TABLE services_appoinments (
