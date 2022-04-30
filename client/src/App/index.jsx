@@ -1,9 +1,12 @@
 import React from 'react';
 import 'antd/dist/antd.css';
+import { DescriptionCard } from '../Components';
 
 function App() {
   return (
-    <div>Clean Stead</div>
+    <div>
+      <DescriptionCard />
+    </div>
   );
 }
 
