@@ -1,0 +1,32 @@
+name: PostgreSQL Test Routes
+on: push
+
+jobs:
+  container-job:
+    runs-on: ubuntu-latest
+    container: node:16
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: 123456
+          POSTGRES_USER: postgres
+          POSTGRES_DB: cleanstead_test
+          POSTGRES_PORT: 5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Testing Routes
+        run: npm test
+        env:
+          TEST_DB_URL: postgres://postgres:123456@localhost:5432/cleanstead_test
