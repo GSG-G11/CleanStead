@@ -3,7 +3,7 @@ import { Typography, Image } from 'antd';
 import PropTypes from 'prop-types';
 import linesRight from '../../assets/images/linesRight.svg';
 import linesLeft from '../../assets/images/linesLeft.svg';
-import './stle.css';
+import './style.css';
 
 const { Title } = Typography;
 
