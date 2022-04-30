@@ -1,3 +1,4 @@
 import CustomTitle from './Custom Title';
+import CategoriesCard from './Categories Card';
 
-export default CustomTitle;
+export { CustomTitle, CategoriesCard };
