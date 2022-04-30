@@ -1,6 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import Header from '../Components';
+import { Header } from '../Components';
 
 function App() {
   return (
