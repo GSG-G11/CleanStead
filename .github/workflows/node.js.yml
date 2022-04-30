@@ -31,4 +31,4 @@ jobs:
       - name: Testing Routes
         run: npm test
         env:
-          TEST_DB_URL: postgres://cleansteader:12345@postgres:5432/cleanstead_test
+          TEST_DB_URL: postgres://cleansteader:123456@postgres:5432/cleanstead_test
