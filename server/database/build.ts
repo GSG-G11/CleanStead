@@ -1,6 +1,6 @@
 import { join } from 'path';
 import { readFileSync } from 'fs';
-import connection from './connection.ts';
+import connection from './connection';
 
 export default () => {
   const sql = readFileSync(join(__dirname, 'build.sql'), 'utf8').toString()
