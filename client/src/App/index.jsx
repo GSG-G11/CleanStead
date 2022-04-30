@@ -7,16 +7,16 @@ import axios from 'axios';
 import { Navbar, Header } from '../Components';
 
 function App() {
-  const [categories, setCategories] = useState([{ id: 1, name: 'test' }, { id: 2, name: 'test' }]);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const cancelTokenSource = axios.CancelToken.source();
     axios.get('/api/v1/categories', {
       cancelToken: cancelTokenSource.token,
     })
-      .then((res) => {
-        setCategories(res.data);
-      });
+    .then(({ data }) => {
+      setCategories(data.data);
+    });
 
     return () => cancelTokenSource.cancel();
   }, [categories]);
