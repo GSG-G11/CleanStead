@@ -242,11 +242,10 @@ INSERT INTO
         time,
         creation_time,
         price,
-        user_id,
-        service_id
+        user_id
     )
 VALUES
-    ('2017-03-14', '10:00', NOW(), 10, 1, 1);
+    ('2017-03-14', '10:00', NOW(), 10, 1);
 
 INSERT INTO
     services_appoinments(quantity, appoinment_id, service_id)
