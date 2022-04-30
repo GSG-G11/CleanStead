@@ -247,7 +247,7 @@ INSERT INTO
 VALUES
     ('2017-03-14', '10:00', NOW(), 10, 1);
 
--- INSERT INTO
---     services_appoinments(quantity, appoinment_id, service_id)
--- VALUES
---     (2, 1, 1);
+INSERT INTO
+    services_appoinments(quantity, appoinment_id, service_id)
+VALUES
+    (2, 1, 1);
