@@ -1,3 +1,4 @@
 import WhyUs from './WhyUs';
+import CustomTitle from './Custom Title';
 
-export default WhyUs;
+export { CustomTitle, WhyUs };
