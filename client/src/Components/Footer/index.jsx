@@ -1,16 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Row, Col, Image, Typography, Space, Tooltip, Layout } from 'antd';
 import {
-  Row, Col, Image, Typography,
-  Button, Space, Tooltip, Layout,
-} from 'antd';
-import {
-  PhoneOutlined, MailOutlined, TwitterOutlined,
-  createFromIconfontCN, InstagramOutlined, WhatsAppOutlined,
+  PhoneOutlined,
+  MailOutlined,
+  TwitterOutlined,
+  createFromIconfontCN,
+  InstagramOutlined,
+  WhatsAppOutlined,
   YoutubeOutlined,
 } from '@ant-design/icons';
-import logo from '../../assets/images/logo.svg';
-import map from '../../assets/images/map.svg';
+import logo from '../../Assets/images/logo.svg';
+import map from '../../Assets/images/map.svg';
 import './style.css';
+import data from '../../data.json';
 
 const { Footer } = Layout;
 
@@ -23,7 +27,7 @@ const IconFont = createFromIconfontCN({
 
 const { Title, Paragraph, Text } = Typography;
 
-function MainFooter() {
+function MainFooter({ categories }) {
   return (
     <Row
       justify="space-between"
@@ -38,12 +42,10 @@ function MainFooter() {
         lg={{ span: 7 }}
         xl={{ span: 7 }}
       >
-        <Image src={logo} alt="logo" />
+        <Image src={logo} alt="logo" preview={false} />
         <Paragraph type="secondary" strong>
-          هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة،
-          لقد تم توليد هذا النص من مولد النص العربى،
-          حيث يمكنك أن تولد مثل هذا النص.
-
+          هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا
+          النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص.
         </Paragraph>
       </Col>
       <Col
@@ -55,12 +57,11 @@ function MainFooter() {
       >
         <Title level={4}>خدماتنا</Title>
         <Space direction="vertical">
-          <Text strong type="secondary">تنظيف المنازل</Text>
-          <Text strong type="secondary">تنظيف السجاد</Text>
-          <Text strong type="secondary">تنظيف النوافذ</Text>
-          <Text strong type="secondary">تنظيف السيارات</Text>
-          <Text strong type="secondary">التنظيف التجاري</Text>
-          <Text strong type="secondary">تنظيف بعد البناء</Text>
+          {categories.map(({ id, name }) => (
+            <Link to={`/category/${id}`} className="categores-list">
+              {name}
+            </Link>
+          ))}
         </Space>
       </Col>
       <Col
@@ -74,11 +75,11 @@ function MainFooter() {
         <Space direction="vertical">
           <Text strong type="secondary">
             <PhoneOutlined style={{ color: '#00ADEE', marginLeft: '5px' }} />
-            0599000000
+            {data.phone}
           </Text>
           <Text strong type="secondary">
             <MailOutlined style={{ color: '#00ADEE', marginLeft: '5px' }} />
-            info@cleanstead.com
+            {data.email}
           </Text>
         </Space>
       </Col>
@@ -91,21 +92,31 @@ function MainFooter() {
       >
         <Title level={4}>تابعنا على</Title>
         <Space direction="vertical">
-          <Space>
+          <Space size={16}>
             <Tooltip title="facebook">
-              <Button shape="circle" icon={<IconFont type="icon-facebook" />} />
+              <a href="#top" style={{ color: '#3b5998', fontSize: '20px' }}>
+                <IconFont type="icon-facebook" />
+              </a>
             </Tooltip>
             <Tooltip title="twitter">
-              <Button shape="circle" icon={<TwitterOutlined />} />
+              <a href="#top" style={{ color: '#55acee', fontSize: '20px' }}>
+                <TwitterOutlined />
+              </a>
             </Tooltip>
             <Tooltip title="whatsapp">
-              <Button shape="circle" icon={<WhatsAppOutlined />} />
+              <a href="#top" style={{ color: '#43d854', fontSize: '20px' }}>
+                <WhatsAppOutlined />
+              </a>
             </Tooltip>
             <Tooltip title="youtube">
-              <Button shape="circle" icon={<YoutubeOutlined />} />
+              <a href="#top" style={{ color: '#cd201f', fontSize: '20px' }}>
+                <YoutubeOutlined />
+              </a>
             </Tooltip>
             <Tooltip title="instagram">
-              <Button shape="circle" icon={<InstagramOutlined />} />
+              <a href="#top" style={{ color: '#3f729b', fontSize: '20px' }}>
+                <InstagramOutlined />
+              </a>
             </Tooltip>
           </Space>
           <Image src={map} alt="map" preview={false} />
@@ -115,4 +126,8 @@ function MainFooter() {
     </Row>
   );
 }
+MainFooter.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object))
+    .isRequired,
+};
 export default MainFooter;

@@ -1,7 +1,3 @@
-/* .footer{
-  width: 90%;
-  margin: auto;
-} */
 .footer-row{
   background-color: #E5F7FD;
   width: 86vw;
@@ -16,4 +12,13 @@
     margin: 25px auto 0;
     font-weight: bold;
     background-color: transparent ;
+}
+.categores-list{
+  color: #00000073;
+  font-weight: bold;
+  box-shadow: 0 2px #00000004;
+  transition: all .3s cubic-bezier(.645,.045,.355,1);
+}
+.categores-list:hover{
+  color: #40a9ff;
 }
