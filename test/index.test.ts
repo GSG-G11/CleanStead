@@ -19,7 +19,7 @@ describe('Test Get Categories', () => {
 describe('Test No Service for id  ', () => {
   it('should return status 404', async () => {
     const { body: { message } } = await supertest(app)
-      .get('/api/v1/category/9/services')
+      .get('/api/v1/categories/9/services')
       .expect(404)
       .expect('Content-Type', /json/);
     const actual = message;
@@ -30,7 +30,7 @@ describe('Test No Service for id  ', () => {
 describe('Test Get Servecis For First Category ', () => {
   it('should return seven servecis', async () => {
     const res = await supertest(app)
-      .get('/api/v1/category/1/services')
+      .get('/api/v1/categories/1/services')
       .expect(200)
       .expect('Content-Type', /json/);
     expect(res.body.data.length).toBe(7);
@@ -39,7 +39,7 @@ describe('Test Get Servecis For First Category ', () => {
 describe('Test Get Servecis For Second Category ', () => {
   it('should return three servecis', async () => {
     const res = await supertest(app)
-      .get('/api/v1/category/2/services')
+      .get('/api/v1/categories/2/services')
       .expect(200)
       .expect('Content-Type', /json/);
     expect(res.body.data.length).toBe(3);
@@ -48,7 +48,7 @@ describe('Test Get Servecis For Second Category ', () => {
 describe('Test Get Servecis For Forth Category ', () => {
   it('should return six servecis', async () => {
     const res = await supertest(app)
-      .get('/api/v1/category/4/services')
+      .get('/api/v1/categories/4/services')
       .expect(200)
       .expect('Content-Type', /json/);
     expect(res.body.data.length).toBe(6);
