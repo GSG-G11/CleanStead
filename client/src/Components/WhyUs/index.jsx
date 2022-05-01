@@ -16,10 +16,10 @@ function WhyUs() {
         <Col span={12}>
           <div className="section">
             <Comment
-              author={<Title className="titlemo">الموثوقية</Title>}
+              author={<Title className="titlewhy"> الموثوقية</Title>}
               avatar={<Avatar className="avatar" src={logo4} alt="Han Solo" />}
               content={
-                <p className="description">
+                <p className="descriptionwhy">
                   ندرك صعوبة القيام بتنظيف السجاد من قبل النساء
                 </p>
               }
@@ -27,10 +27,10 @@ function WhyUs() {
           </div>
           <div className="section">
             <Comment
-              author={<Title className="titlemo">الحجز اونلاين</Title>}
+              author={<Title className="mostafa">الحجز اونلاين</Title>}
               avatar={<Avatar className="avatar" src={logo3} alt="Han Solo" />}
               content={
-                <p className="description">
+                <p className="descriptionwhy">
                   ندرك صعوبة القيام بتنظيف السجاد من قبل النساء
                 </p>
               }
@@ -38,10 +38,10 @@ function WhyUs() {
           </div>
           <div className="section">
             <Comment
-              author={<Title className="titlemo">خصومات دائمة</Title>}
+              author={<Title className="titlewhy">خصومات دائمة</Title>}
               avatar={<Avatar className="avatar" src={logo2} alt="Han Solo" />}
               content={
-                <p className="description">
+                <p className="descriptionwhy">
                   ندرك صعوبة القيام بتنظيف السجاد من قبل النساء
                 </p>
               }
@@ -49,10 +49,10 @@ function WhyUs() {
           </div>
           <div className="section">
             <Comment
-              author={<Title className="titlemo">دعم متواصل</Title>}
+              author={<Title className="titlewhy">دعم متواصل</Title>}
               avatar={<Avatar className="avatar" src={logo1} alt="Han Solo" />}
               content={
-                <p className="description">
+                <p className="descriptionwhy">
                   ندرك صعوبة القيام بتنظيف السجاد من قبل النساء
                 </p>
               }
@@ -61,7 +61,7 @@ function WhyUs() {
         </Col>
         <Col span={12}>
           <div>
-            <Image className="imagemo" src={img} preview={false} />
+            <Image className="imagewhy" src={img} preview={false} />
           </div>
         </Col>
       </Row>

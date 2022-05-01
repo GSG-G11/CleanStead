@@ -1,5 +1,4 @@
-
-.imagemo {
+.imagewhy {
   width: 400px;
   height: 400px;
   margin: 30px 20px 20px 2px;
@@ -8,22 +7,21 @@
 
 }
 .section{
-    margin: 10px 220px 20px 0px;
+    margin: 20px 220px 20px 0px;
     display: block;
     width: 500px;
     height: 80px;
 }
 .avatar {
- left: 010px;
- size: 100px;
- 
+ left: 010px; 
 }
-.titlemo {
-  font-size: 20px;
+.titlewhy {
+  font-size: 17px;
   font-weight: bold;
-  color: #07090c;
+  color: #000000;
 }
-.description {
-  font-size: 12px;
+.descriptionwhy {
+  margin: -14px 0px 0px 0px;
+  font-size: 13px;
   color: #595b5f;
 }
