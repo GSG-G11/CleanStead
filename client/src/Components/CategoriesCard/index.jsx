@@ -18,6 +18,7 @@ function CategoriesCard({
           alt="example"
           className="image"
           src={imageUrl}
+          preview={false}
         />
       )}
     >
