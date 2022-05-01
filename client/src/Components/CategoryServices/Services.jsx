@@ -11,7 +11,7 @@ export default function Services() {
 
   useEffect(() => {
     const cancelTokenSource = axios.CancelToken.source();
-    axios.get('/api/v1/category/1/services', {
+    axios.get('/api/v1/categories/1/services', {
       cancelToken: cancelTokenSource.token,
     })
       .then((res) => {
