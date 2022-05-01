@@ -11,7 +11,7 @@ import './navbar.css';
 
 const { Header } = Layout;
 
-function Navbar({ isLogged, categories, user }) {
+function Navbar({ isLogged, categories, user = { name: '', role: '' } }) {
   const [visible, setVisible] = useState(false);
 
   const showDrawer = () => {
@@ -53,9 +53,7 @@ function Navbar({ isLogged, categories, user }) {
   }));
 
   const logout = () => {
-    axios.get('/logout').then(() => {
-      console.log('Logged out');
-    });
+    console.log('Logged out');
   };
 
   const avatarMenu = (
@@ -124,7 +122,7 @@ function Navbar({ isLogged, categories, user }) {
 
 Navbar.propTypes = {
   isLogged: PropTypes.bool.isRequired,
-  user: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object)).isRequired,
+  user: PropTypes.objectOf(PropTypes.object()),
   categories: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object))
     .isRequired,
 };

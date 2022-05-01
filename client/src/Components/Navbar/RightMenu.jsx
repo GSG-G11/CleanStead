@@ -4,7 +4,12 @@ import { Menu, Button, Avatar, Dropdown, Space } from 'antd';
 import { UserOutlined, DownOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
-function RightMenu({ isLogged, mode, avatarMenu, user }) {
+function RightMenu({
+  isLogged,
+  mode,
+  avatarMenu,
+  user = { name: '', role: '' },
+}) {
   return (
     <Menu mode={mode}>
       <Menu.Item key="avatar">
@@ -36,7 +41,7 @@ function RightMenu({ isLogged, mode, avatarMenu, user }) {
 RightMenu.propTypes = {
   mode: PropTypes.string.isRequired,
   isLogged: PropTypes.bool.isRequired,
-  user: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object)).isRequired,
+  user: PropTypes.objectOf(PropTypes.object()),
   avatarMenu: PropTypes.element.isRequired,
 };
 
