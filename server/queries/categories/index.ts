@@ -1,3 +1,4 @@
 import getCategoriesQuery from './getCategoriesQuery';
+import getCategoryServicesQuery from './getCategoryServicesQuery';
 
-export { getCategoriesQuery };
+export { getCategoriesQuery, getCategoryServicesQuery };

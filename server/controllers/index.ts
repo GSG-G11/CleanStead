@@ -1,8 +1,8 @@
 import {
   serverError, clientError,
 } from './errorHandle';
-import { getCategories } from './categories';
+import { getCategories, getCategoryServices } from './categories';
 
 export {
-  serverError, clientError, getCategories,
+  serverError, clientError, getCategories, getCategoryServices,
 };
