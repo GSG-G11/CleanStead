@@ -1,9 +1,10 @@
 import React from 'react';
-import { CategoriesCard } from '../../Components';
+import { CategoriesCard , Header } from '../../Components';
 
 function Home() {
   return (
     <div>
+      <Header />
       <CategoriesCard
         categoryId={1}
         title="تنظيف المنازل"

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Typography, Image } from 'antd';
 import PropTypes from 'prop-types';
-import linesRight from '../../assets/images/linesRight.svg';
-import linesLeft from '../../assets/images/linesLeft.svg';
+import linesRight from '../../Assets/images/linesRight.svg';
+import linesLeft from '../../Assets/images/linesLeft.svg';
 import './style.css';
 
 const { Title } = Typography;
