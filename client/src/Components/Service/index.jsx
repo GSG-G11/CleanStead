@@ -1,10 +1,8 @@
-import {
-  Image, Row, Col, Typography, Button,
-} from 'antd';
+import { Image, Row, Col, Typography, Button } from 'antd';
 import React from 'react';
-import linesLeft from '../../assets/images/linesLeft.svg';
+import linesLeft from '../../Assets/images/linesLeft.svg';
 import './style.css';
-import Img from '../../assets/images/img1.png';
+import Img from '../../Assets/images/img1.png';
 
 const { Title, Paragraph } = Typography;
 
