@@ -16,7 +16,7 @@ function WhyUs() {
         <Col span={12}>
           <div className="section">
             <Comment
-              author={<Title className="title">الموثوقية</Title>}
+              author={<Title className="titlemo">الموثوقية</Title>}
               avatar={<Avatar className="avatar" src={logo4} alt="Han Solo" />}
               content={
                 <p className="description">
@@ -27,7 +27,7 @@ function WhyUs() {
           </div>
           <div className="section">
             <Comment
-              author={<Title className="title">الحجز اونلاين</Title>}
+              author={<Title className="titlemo">الحجز اونلاين</Title>}
               avatar={<Avatar className="avatar" src={logo3} alt="Han Solo" />}
               content={
                 <p className="description">
@@ -38,7 +38,7 @@ function WhyUs() {
           </div>
           <div className="section">
             <Comment
-              author={<Title className="title">خصومات دائمة</Title>}
+              author={<Title className="titlemo">خصومات دائمة</Title>}
               avatar={<Avatar className="avatar" src={logo2} alt="Han Solo" />}
               content={
                 <p className="description">
@@ -49,7 +49,7 @@ function WhyUs() {
           </div>
           <div className="section">
             <Comment
-              author={<Title className="title">دعم متواصل</Title>}
+              author={<Title className="titlemo">دعم متواصل</Title>}
               avatar={<Avatar className="avatar" src={logo1} alt="Han Solo" />}
               content={
                 <p className="description">
@@ -61,7 +61,7 @@ function WhyUs() {
         </Col>
         <Col span={12}>
           <div>
-            <Image className="image" width={200} src={img} preview={false} />
+            <Image className="imagemo" src={img} preview={false} />
           </div>
         </Col>
       </Row>
