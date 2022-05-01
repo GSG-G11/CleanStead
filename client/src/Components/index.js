@@ -1,5 +1,5 @@
 import CustomTitle from './Custom Title';
 import WhoAreWe from './WhoAreWe';
-import ContactUs from './ContactUs';
+import Service from './Service';
 
-export { CustomTitle, WhoAreWe, ContactUs };
+export { CustomTitle, WhoAreWe, Service };

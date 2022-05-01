@@ -1,11 +1,11 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { ContactUs } from '../Components';
+import { Service } from '../Components';
 
 function App() {
   return (
     <div>
-      <ContactUs />
+      <Service />
     </div>
   );
 }
