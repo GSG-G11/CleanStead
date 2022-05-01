@@ -7,7 +7,7 @@
 
 }
 .section{
-    margin: 20px 220px 20px 0px;
+    margin: 28px 220px 20px 0px;
     display: block;
     width: 500px;
     height: 80px;
@@ -21,7 +21,12 @@
   color: #000000;
 }
 .descriptionwhy {
-  margin: -14px 0px 0px 0px;
+  margin: -12px 0px 0px 0px;
   font-size: 13px;
   color: #595b5f;
 }
+.h1.ant-typography, div.ant-typography-h1, div.ant-typography-h1 > textarea, .ant-typography h1{
+  font-size: 100px important!;
+  font-weight: bold;
+  color: #000000;
+} 
