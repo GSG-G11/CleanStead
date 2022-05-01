@@ -12,14 +12,14 @@ let sslValue: any = false;
 
 switch (NODE_ENV) {
   case 'production':
-    DB_URL = DATABASE_URL;
+    DB_URL = DATABASE_URL as string;
     sslValue = { rejectUnauthorized: false };
     break;
   case 'development':
-    DB_URL = DEV_DB_URL;
+    DB_URL = DEV_DB_URL as string;
     break;
   case 'test':
-    DB_URL = TEST_DB_URL;
+    DB_URL = TEST_DB_URL as string;
     break;
   default:
     throw new Error('No Database Found');
