@@ -8,7 +8,7 @@ function RightMenu({
   isLogged,
   mode,
   avatarMenu,
-  user = { name: '', role: '' },
+  user,
 }) {
   return (
     <Menu mode={mode}>
