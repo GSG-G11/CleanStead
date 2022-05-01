@@ -41,7 +41,10 @@ function RightMenu({
 RightMenu.propTypes = {
   mode: PropTypes.string.isRequired,
   isLogged: PropTypes.bool.isRequired,
-  user: PropTypes.objectOf(PropTypes.object()),
+  user: PropTypes.shape({
+    user: PropTypes.string.isRequired,
+    role: PropTypes.string.isRequired,
+  }),
   avatarMenu: PropTypes.element.isRequired,
 };
 

@@ -46,7 +46,7 @@
             "singleQuote": true
         }
         ],
-        "react/state-in-constructor": [0, "always"],
+        "react/state-in-constructor": [0, "always"]
     },
     "plugins": ["react", "prettier"]
 }
