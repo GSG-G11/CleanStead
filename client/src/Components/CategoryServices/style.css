@@ -1,0 +1,17 @@
+.service-container{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.service-card{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  max-height: 100px;
+  overflow: hidden;
+  border-radius: 20px;
+  margin: auto;
+}
+.service-image{
+  width: 140px;
+}

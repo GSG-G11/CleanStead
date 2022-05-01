@@ -16,6 +16,17 @@ describe('Test Get Categories', () => {
   });
 });
 
+describe('Test No Service for id  ', () => {
+  it('should return status 404', async () => {
+    const { body: { message } } = await supertest(app)
+      .get('/api/v1/category/9/services')
+      .expect(404)
+      .expect('Content-Type', /json/);
+    const actual = message;
+    const expected = 'There is no category with this Id';
+    expect(actual).toBe(expected);
+  });
+});
 describe('Test Get Servecis For First Category ', () => {
   it('should return seven servecis', async () => {
     const res = await supertest(app)
