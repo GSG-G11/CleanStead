@@ -123,7 +123,7 @@ function Navbar({ isLogged, categories, user }) {
 Navbar.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   user: PropTypes.shape({
-    user: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     role: PropTypes.string.isRequired,
   }),
   categories: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object))
