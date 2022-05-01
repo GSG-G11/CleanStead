@@ -17,7 +17,7 @@ function CategoriesCardsContainer({ categories, loading }) {
         ) : categories.length ? (
           <Row gutter={[20, 50]} justify="start">
             {categories.map(({ id, name, description, image }) => (
-              <Col xs={24} sm={12} md={8} lg={6} xl={6}>
+              <Col key={id} xs={24} sm={12} md={8} lg={6} xl={6}>
                 <CategoriesCard
                   title={name}
                   description={description}

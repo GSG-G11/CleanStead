@@ -8,20 +8,23 @@ import '../style/custom-antd.css';
 import './app.css';
 
 function App() {
+  const [loading, setLoaging] = useState(false);
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const cancelTokenSource = axios.CancelToken.source();
+    setLoaging(true);
     axios
       .get('/api/v1/categories', {
         cancelToken: cancelTokenSource.token,
       })
       .then(({ data }) => {
+        setLoaging(false);
         setCategories(data.data);
       });
 
     return () => cancelTokenSource.cancel();
-  }, [categories]);
+  }, []);
 
   return (
     <Router>
@@ -32,7 +35,10 @@ function App() {
           user={{ name: 'Mohammad', role: 'admin' }}
         />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={<Home categories={categories} loading={loading} />}
+          />
           <Route path="/category/:id" element={<Category />} />
         </Routes>
       </Layout>

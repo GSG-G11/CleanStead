@@ -13311,8 +13311,6 @@ _:-ms-fullscreen .ant-picker-range-wrapper .ant-picker-year-panel .ant-picker-ce
   display: inline-block;
 }
 .ant-image-img {
-  width: 100%;
-  height: auto;
   vertical-align: middle;
 }
 .ant-image-img-placeholder {
