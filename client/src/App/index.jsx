@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-// import 'antd/dist/antd.css';
-import '../style/custom-antd.css';
-import { Layout } from 'antd';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Home, Category } from '../Pages';
-import './app.css';
 import axios from 'axios';
+import { Layout } from 'antd';
+import { Home, Category } from '../Pages';
 import { Navbar } from '../Components';
+import '../style/custom-antd.css';
+import './app.css';
 
 function App() {
   const [categories, setCategories] = useState([]);
