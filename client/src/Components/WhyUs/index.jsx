@@ -20,7 +20,7 @@ function WhyUs() {
               avatar={<Avatar className="avatar" src={logo4} alt="Han Solo" />}
               content={
                 <p className="descriptionwhy">
-                  ندرك صعوبة القيام بتنظيف السجاد من قبل النساء
+                  نستحق الثقة منكم والتجربة خير برهان
                 </p>
               }
             />
@@ -31,7 +31,7 @@ function WhyUs() {
               avatar={<Avatar className="avatar" src={logo3} alt="Han Solo" />}
               content={
                 <p className="descriptionwhy">
-                  ندرك صعوبة القيام بتنظيف السجاد من قبل النساء
+                  الطريقة سهلة للحجز والتحقق من الحجز والتأكد من حجزكم
                 </p>
               }
             />
@@ -42,7 +42,7 @@ function WhyUs() {
               avatar={<Avatar className="avatar" src={logo2} alt="Han Solo" />}
               content={
                 <p className="descriptionwhy">
-                  ندرك صعوبة القيام بتنظيف السجاد من قبل النساء
+                  نسعى دائما لراحتكم وتوفير افضل الخصومات لكم
                 </p>
               }
             />
@@ -53,7 +53,7 @@ function WhyUs() {
               avatar={<Avatar className="avatar" src={logo1} alt="Han Solo" />}
               content={
                 <p className="descriptionwhy">
-                  ندرك صعوبة القيام بتنظيف السجاد من قبل النساء
+                  دائما موجودين للرد على استفسارتكم والتواصل معنا
                 </p>
               }
             />
