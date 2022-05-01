@@ -47,7 +47,6 @@
         }
         ],
         "react/state-in-constructor": [0, "always"],
-        "react/require-default-props": "off"
     },
     "plugins": ["react", "prettier"]
 }

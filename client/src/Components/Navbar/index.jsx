@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { Layout, Menu, Image, Button, Dropdown, Space, Drawer } from 'antd';
 import { DownOutlined, MenuOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
@@ -11,7 +10,7 @@ import './navbar.css';
 
 const { Header } = Layout;
 
-function Navbar({ isLogged, categories, user = { name: '', role: '' } }) {
+function Navbar({ isLogged, categories, user }) {
   const [visible, setVisible] = useState(false);
 
   const showDrawer = () => {
@@ -53,6 +52,7 @@ function Navbar({ isLogged, categories, user = { name: '', role: '' } }) {
   }));
 
   const logout = () => {
+    // eslint-disable-next-line no-console
     console.log('Logged out');
   };
 
@@ -125,6 +125,10 @@ Navbar.propTypes = {
   user: PropTypes.objectOf(PropTypes.object()),
   categories: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object))
     .isRequired,
+};
+
+Navbar.defaultProps = {
+  user: { name: '', role: '' },
 };
 
 export default Navbar;

@@ -45,4 +45,8 @@ RightMenu.propTypes = {
   avatarMenu: PropTypes.element.isRequired,
 };
 
+RightMenu.defaultProps = {
+  user: { name: '', role: '' },
+};
+
 export default RightMenu;
