@@ -1,5 +1,5 @@
 import React from 'react';
-import { CategoriesCard , Header } from '../../Components';
+import { CategoriesCard, Header } from '../../Components';
 
 function Home() {
   return (

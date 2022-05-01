@@ -6,28 +6,19 @@ import { LeftOutlined } from '@ant-design/icons';
 import './style.css';
 
 const { Title, Paragraph } = Typography;
-function CategoriesCard({
-  categoryId, imageUrl, title, description,
-}) {
+function CategoriesCard({ categoryId, imageUrl, title, description }) {
   return (
     <Card
       hoverable
       className="category-card"
-      cover={(
-        <Image
-          alt="example"
-          className="image"
-          src={imageUrl}
-          preview={false}
-        />
-      )}
+      cover={
+        <Image alt="example" className="image" src={imageUrl} preview={false} />
+      }
     >
       <Title level={5} className="category-title">
-        { title }
+        {title}
       </Title>
-      <Paragraph className="category-details">
-        { description }
-      </Paragraph>
+      <Paragraph className="category-details">{description}</Paragraph>
       <Link to={`/category/${categoryId}`}>
         رؤية المزيد
         <LeftOutlined className="left-icon" />

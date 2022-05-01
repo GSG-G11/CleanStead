@@ -26,21 +26,15 @@ function App() {
   return (
     <Router>
       <Layout>
-      <Navbar
+        <Navbar
           isLogged={false}
           categories={categories}
           user={{ name: 'Mohammad', role: 'admin' }}
         />
         <Routes>
-          <Route
-            path="/"
-            element={<Home />}
-          />
-          <Route
-            path="/category/:id"
-            element={<Category />}
-          />
-          </Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/category/:id" element={<Category />} />
+        </Routes>
       </Layout>
     </Router>
   );
