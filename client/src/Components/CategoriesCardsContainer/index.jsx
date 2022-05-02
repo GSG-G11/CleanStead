@@ -35,7 +35,7 @@ function CategoriesCardsContainer({ categories, loading }) {
   );
 }
 CategoriesCardsContainer.propTypes = {
-  loading: PropTypes.bool.isRequired,
+  loading: PropTypes.bool,
   categories: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object))
     .isRequired,
 };

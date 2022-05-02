@@ -10,8 +10,11 @@ function Home({ categories, loading }) {
     </div>
   );
 }
+Home.defaultProps = {
+  loading: false,
+};
 Home.propTypes = {
-  loading: PropTypes.bool.isRequired,
+  loading: PropTypes.bool,
   categories: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object))
     .isRequired,
 };
