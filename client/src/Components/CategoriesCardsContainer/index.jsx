@@ -28,7 +28,7 @@ function CategoriesCardsContainer({ categories, loading }) {
             ))}
           </Row>
         ) : (
-          <Empty />
+          <Empty description={"لا يوجد بيانات"} />
         )}
       </div>
     </>
