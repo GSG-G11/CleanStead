@@ -1,40 +1,30 @@
-.custom-title {
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    margin: 30px 150px 20px 310px;
-
-    }
-    .title {
-    margin: 0.2em 0.2em;
-    } 
-    .image{
-        width: 400px;
-        height: 400px;
-        margin: 35px 70px 20px 200px;
-        display: block;
-        
-    }
-    .paragraph{
-        width: 300px;
-        margin: 0px 120px 20px 200px;
-        color: rgb(114, 114, 114);
-        font-size: 16px;
-    }
-    .section{
-        display: block;
-        margin: 30px 150px 20px 0px;
-        width: 100%;
-    }
-    .button{
-        margin: 30px 150px 20px 350px;
-        width: 130px;
-        height: 30px;
-        background-color: rgb(255, 255, 255);
-        color: rgb(78, 173, 228);
-        border-color: rgb(78, 173, 228);
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    
+.custom-titleWho {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  margin: 30px 10px 20px 450px;
+}
+.titleWho {
+  margin: 0.2em 0.2em;
+}
+.paragraphWho {
+  width: 300px;
+  color: rgb(114, 114, 114);
+  font-size: 16px;
+}
+.buttonWho {
+  margin: 30px 150px 20px 350px;
+  width: 130px;
+  height: 30px;
+  background-color: rgb(119, 27, 27);
+  color: rgb(78, 173, 228);
+  border-color: rgb(78, 173, 228);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.imageWho{
+    width: 5000px;
+    height: 5000px;
+    margin: 110px 150px 200px 220px;
+}
