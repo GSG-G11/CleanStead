@@ -8,7 +8,7 @@ import '../style/custom-antd.css';
 import './app.css';
 
 function App() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
