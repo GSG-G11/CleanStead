@@ -34,7 +34,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="Contact" element={<Contact />} />
-          <Route path="WhoAre" element={<WhoAre />} />
+          <Route path="about" element={<WhoAre />} />
           <Route path="/category/:id" element={<Category />} />
         </Routes>
       </Layout>

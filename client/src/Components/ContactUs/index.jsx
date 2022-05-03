@@ -12,45 +12,61 @@ function ContactUs() {
     <div>
       <Row>
         <Col span={12}>
-          <Image preview={false} className="image" width={200} src={Img} />
+          <Image
+            preview={false}
+            className="contact-image"
+            width={500}
+            src={Img}
+          />
         </Col>
         <Col span={12}>
           <div className="section">
-            <div className="custom-title">
-              <Image src={linesLeft} preview={false} />
-              <Title className="title">تواصل معنا </Title>
+            <div className="contact-custom-title">
+              <Title className="contact-title">تواصل معنا </Title>
+              <Image className="imageline" src={linesLeft} preview={false} />
             </div>
             <Form
               form={form}
-              className="form"
+              className="contact-form"
               layout="vertical"
               autoComplete="off"
             >
               <Form.Item label="الخدمة">
-                <Select className="input" placeholder="اسم الخدمة">
+                <Select className="contact-input" placeholder="اسم الخدمة">
                   <Select.Option value="demo">تنظيف المنازل</Select.Option>
                 </Select>
               </Form.Item>
               <Row>
                 <Col span={12}>
-                  <Form.Item name="name" className="name" label="الاسم">
-                    <Input className="input" placeholder="الاسم" />
+                  <Form.Item
+                    name="name"
+                    className="contact-input"
+                    label="الاسم"
+                  >
+                    <Input className="contact-name" placeholder="الاسم" />
                   </Form.Item>
                 </Col>
                 <Col span={12}>
-                  <Form.Item name="age" className="age" label="رقم الجوال">
-                    <Input className="input" placeholder="رقم الجوال" />
+                  <Form.Item
+                    name="number"
+                    className="number"
+                    label="رقم الجوال"
+                  >
+                    <Input className="number" placeholder="رقم الجوال" />
                   </Form.Item>
                 </Col>
               </Row>
+              <Form.Item name="email" className="contact-input" label="الايميل">
+                <Input className="contact-input" placeholder="الايميل" />
+              </Form.Item>
               <Form.Item name="introduction" label="الرسالة">
                 <Input.TextArea
-                  className="input"
+                  className="contact-input"
                   placeholder="اكتب رسالتك هنا.."
                 />
               </Form.Item>
               <Button
-                className="button"
+                className="contact-button"
                 type="primary"
                 shape="round"
                 size="large"
