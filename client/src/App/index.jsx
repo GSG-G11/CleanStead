@@ -8,7 +8,7 @@ import '../style/custom-antd.css';
 import './app.css';
 
 function App() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function App() {
       })
       .then(({ data: {data} }) => {
         setCategories(data);
-        setLoading(false);
+        // setLoading(false);
       }).catch(()=>{
         setLoading(false);
         message.error('حدث خطأ ما');

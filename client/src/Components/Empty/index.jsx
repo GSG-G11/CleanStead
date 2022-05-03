@@ -9,7 +9,7 @@ function EmptyCard({description}) {
     </span>
   } />;
 }
-EmptyCard.PropTypes = {
+EmptyCard.propTypes = {
   description: PropTypes.string.isRequired
 }
 export default EmptyCard;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'antd';
 import PropTypes from 'prop-types';
-import Spinner from '../Spinner';
+import SkeletonLoading from '../SkeletonLoading';
 import Empty from '../Empty';
 import CategoriesCard from '../CategoriesCard';
 import CustomTitle from '../CustomTitle';
@@ -13,7 +13,7 @@ function CategoriesCardsContainer({ categories, loading }) {
       <CustomTitle title="الخدمات التي نقدمها" isLanding />
       <div className="categories">
         {loading ? (
-          <Spinner />
+          <SkeletonLoading />
         ) : categories.length ? (
           <Row gutter={[20, 50]} justify="start">
             {categories.map(({ id, name, description, image }) => (
