@@ -13,7 +13,7 @@ export default function Header() {
         sm={{ span: 23 }}
         md={{ span: 21 }}
         lg={{ span: 20 }}
-        xl={{ span: 18 }}
+        xl={{ span: 20 }}
       >
         <div className="header-container">
           <Image

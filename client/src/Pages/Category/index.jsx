@@ -1,6 +1,7 @@
 import React from 'react';
+import Services from '../../Components/CategoryServices/Services';
 
-function Category() {
-  return <div>Category</div>;
+function Category(categories) {
+  return <Services categories={categories} />;
 }
 export default Category;
