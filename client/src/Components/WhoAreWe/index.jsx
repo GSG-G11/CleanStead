@@ -10,15 +10,15 @@ function WhoAreWe() {
     <div>
       <Row>
         <Col span={12}>
-          <Image preview={false} className="imageWho" width={200} src={Img} />
+          <Image preview={false} className="Who-image" width={400} src={Img} />
         </Col>
-        <Col span={12}>
-          <div className="sectionWho">
-            <div className="custom-titleWho">
-              <Title className="titleWho">من نحن</Title>
-              <Image src={linesLeft} preview={false} />
+        <Col width={400} span={12}>
+          <div className="who-section">
+            <div className="who-custom-title">
+              <Title className="who-title">من نحن</Title>
+              <Image className="Who-line" src={linesLeft} preview={false} />
             </div>
-            <Paragraph className="paragraphWho">
+            <Paragraph className="who-paragraph">
               هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد
               هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو
               العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها
@@ -27,7 +27,7 @@ function WhoAreWe() {
               أخطاء لغوية
             </Paragraph>
             <Button
-              className="buttonWho"
+              className="who-button"
               type="primary"
               shape="round"
               size="large"

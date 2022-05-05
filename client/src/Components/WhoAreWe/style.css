@@ -1,20 +1,23 @@
-.custom-titleWho {
+.who-custom-title {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
-  margin: 30px 10px 20px 450px;
+  font-size: 25px;
+  margin: 40px 10px 20px 450px;
 }
-.titleWho {
+.who-title{
   margin: 0.2em 0.2em;
 }
-.paragraphWho {
+.Who-line{
+  margin-top: -9px;
+}
+.who-paragraph {
   width: 300px;
   color: rgb(114, 114, 114);
   font-size: 16px;
 }
-.buttonWho {
-  margin: 30px 150px 20px 350px;
+.who-button {
+  margin: 30px 10px 20px 50px;
   width: 130px;
   height: 30px;
   background-color: rgb(119, 27, 27);
@@ -23,8 +26,8 @@
   border-radius: 5px;
   cursor: pointer;
 }
-.imageWho{
-    width: 5000px;
-    height: 5000px;
-    margin: 110px 150px 200px 220px;
+.Who-image{
+  margin: 40px 140px 0px 100px;
+  display: block;
+  
 }

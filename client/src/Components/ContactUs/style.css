@@ -1,31 +1,34 @@
+.contact-image{
+    width: 450px;
+    height: 450px;
+    margin: 45px 150px 20px 200px;
+    /* display: block; */
+}
 .contact-custom-title {
     display: flex;
-    font-size: 30px;
-    margin: 35px 0px 0px 35px;
+    justify-content: center;
+    align-items: center;
+    margin: 35px 0px 0px 450px;
+    font-size: 25px;
+
  }
  .contact-title {
-    margin: 0.3em 0.3em;
-    /* margin-left: 10px; */
- }
- .imageline{
-     margin-top: 8px;
+    margin: 0.2em 0.2em;
  }
  .contact-form {
 width: 500px;
-/* margin: 0px 0px 20px 0px; */
+margin: 0px 240px 20px 340px;
+padding-right: 34px;
 
  }
- .contact-image{
-    margin: 40px 70px 0px 0px;
-    display: block;
-    
-}
-/* .contact-name{
-    margin-right: 20px;
-    color: rgb(207, 42, 42);
-} */
-/* .contact-button{
-    margin: 30px 150px 20px 37px;
+ .contact-label{
+   font-size: 16px;
+   margin: 0px 330px 4453px 1530px;
+   color: rgb(201, 51, 51);
+
+ } 
+.contact-button{
+    margin: 10px 20px 20px 370px;
     width: 130px;
     height: 30px;
     background-color: rgb(78, 173, 228);
@@ -34,7 +37,9 @@ width: 500px;
     border-radius: 5px;
     cursor: pointer;
 }
-.contact-button:hover{
-    background-color: rgb(255, 255, 255);
-    color: rgb(50, 151, 50);
-} */
+.contact-input{
+   width: 400px;
+   height: 30px;
+   margin: 2220px 022px 4222px 2210px;
+   border-radius: 5px;
+}

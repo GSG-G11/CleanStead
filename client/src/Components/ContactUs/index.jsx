@@ -15,7 +15,7 @@ function ContactUs() {
           <Image
             preview={false}
             className="contact-image"
-            width={500}
+            width={420}
             src={Img}
           />
         </Col>
@@ -31,7 +31,7 @@ function ContactUs() {
               layout="vertical"
               autoComplete="off"
             >
-              <Form.Item label="الخدمة">
+              <Form.Item className="zuhdi" label="الخدمة">
                 <Select className="contact-input" placeholder="اسم الخدمة">
                   <Select.Option value="demo">تنظيف المنازل</Select.Option>
                 </Select>
@@ -40,26 +40,30 @@ function ContactUs() {
                 <Col span={12}>
                   <Form.Item
                     name="name"
-                    className="contact-input"
+                    className="contact-label"
                     label="الاسم"
                   >
-                    <Input className="contact-name" placeholder="الاسم" />
+                    <Input className="contact-input" placeholder="الاسم" />
                   </Form.Item>
                 </Col>
                 <Col span={12}>
                   <Form.Item
                     name="number"
-                    className="number"
+                    className="contact-label"
                     label="رقم الجوال"
                   >
-                    <Input className="number" placeholder="رقم الجوال" />
+                    <Input className="contact-input" placeholder="رقم الجوال" />
                   </Form.Item>
                 </Col>
               </Row>
-              <Form.Item name="email" className="contact-input" label="الايميل">
+              <Form.Item name="email" className="contact-label" label="الايميل">
                 <Input className="contact-input" placeholder="الايميل" />
               </Form.Item>
-              <Form.Item name="introduction" label="الرسالة">
+              <Form.Item
+                name="introduction"
+                className="contact-label"
+                label="الرسالة"
+              >
                 <Input.TextArea
                   className="contact-input"
                   placeholder="اكتب رسالتك هنا.."
