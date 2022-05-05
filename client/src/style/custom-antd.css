@@ -25061,8 +25061,9 @@ div.ant-typography-h1 > textarea,
   margin-bottom: 0.5em;
   color: rgba(0, 0, 0, 0.85);
   font-weight: 600;
-  font-size: 38px;
+  font-size: 28px;
   line-height: 1.23;
+  margin-bottom: 5px;
 }
 h2.ant-typography,
 div.ant-typography-h2,

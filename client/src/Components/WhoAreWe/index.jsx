@@ -1,5 +1,6 @@
 import { Image, Row, Col, Typography, Button } from 'antd';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import linesLeft from '../../Assets/images/linesLeft.svg';
 import './style.css';
 import Img from '../../Assets/images/img1.png';
@@ -26,14 +27,16 @@ function WhoAreWe() {
               العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي
               أخطاء لغوية
             </Paragraph>
-            <Button
-              className="who-button"
-              type="primary"
-              shape="round"
-              size="large"
-            >
-              تواصل معنا
-            </Button>
+            <Link to="/contact">
+              <Button
+                className="who-button"
+                type="primary"
+                shape="round"
+                size="large"
+              >
+                تواصل معنا
+              </Button>
+            </Link>
           </div>
         </Col>
       </Row>

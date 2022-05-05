@@ -2,29 +2,28 @@
     display:flex;
     justify-content: center;
     align-items: center;
-    font-size: 30px;
-    margin: 30px 50px 20px 0px;
+    margin: 45px 0px 20px 410px;
 
     }
     .title {
     margin: 0.2em 0.2em;
     } 
-    .image{
-        width: 400px;
-        height: 400px;
-        margin: 35px 70px 20px 200px;
+    .service-image{
+        width: 350px;
+        height: 350px;
+        margin: 45px 150px 0px 0px;
         display: block;
         
     }
-    .paragraph{
+    .service-paragraph{
         width: 300px;
-        margin: 0px 120px 20px 120px;
+        margin: 0px 0px 20px 20px;
         color: rgb(114, 114, 114);
         font-size: 16px;
     }
     
-    .button{
-        margin: 30px 150px 20px 270px;
+    .service-button{
+        margin: 30px 0px 20px 270px;
         width: 130px;
         height: 30px;
         background-color: rgb(78, 173, 228);
