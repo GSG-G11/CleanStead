@@ -5,11 +5,10 @@ import CustomizedError from '../../utils/error';
 
 const getCategoryServices: RequestHandler = async (req, res, next) => {
   const { id } = req.params;
-  const { size } = req.query;
 
   try {
     await categroyIdSchema.validate({ id }, { abortEarly: false });
-    const { rows, rowCount } = await getCategoryServicesQuery(id as any, size as any);
+    const { rows, rowCount } = await getCategoryServicesQuery(id as any);
     if (!rowCount) {
       return res.status(404).json({
         message: 'There is no category with this Id',

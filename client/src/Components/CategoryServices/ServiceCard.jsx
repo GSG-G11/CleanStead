@@ -1,30 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Card, Image } from 'antd';
+import { Image, Typography } from 'antd';
 import './style.css';
 
-const { Meta } = Card;
+const { Title } = Typography;
 
 export default function ServiceCard({ service }) {
   return (
-    <Col
-      xs={{ span: 24 }}
-      sm={{ span: 12 }}
-      md={{ span: 12 }}
-      lg={{ span: 8 }}
-      xl={{ span: 8 }}
-    >
-      <Card
-        hoverable
-        style={{ maxWidth: 320 }}
-        className="service-card"
-        cover={
-          <Image className="service-image" src={service.image} alt="service" />
-        }
-      >
-        <Meta title={service.name} />
-      </Card>
-    </Col>
+    <div className="card-box">
+      <Image
+        className="swiper-lazy"
+        src={service.image}
+        alt="service"
+        preview={false}
+      />
+      <Title className="card-title" level={4}>
+        {service.name}
+      </Title>
+    </div>
   );
 }
 ServiceCard.propTypes = {

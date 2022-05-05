@@ -3,15 +3,41 @@
   margin-bottom: 20px;
   padding: 20px;
 }
-.service-card{
+.card-box{
+  position: relative;
+  width: fit-content;
+}
+.card-title{
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,.5);
+  width: 100%;
+  height: 70px;
+  color: white !important;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  max-height: 100px;
-  overflow: hidden;
-  border-radius: 20px;
-  margin: auto !important;
+  justify-content: center;
+  transition: .4s ease-in-out;
 }
-.service-image{
-  width: 140px !important;
+.swiper {
+  width: 100%;
+  padding-top: 50px !important;
+  padding-bottom: 50px !important;
+}
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 50% !important;
+  height: 300px;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+}
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right{
+  height: 98% !important;
 }

@@ -1,16 +1,17 @@
 import React from 'react';
-import { Skeleton, Col } from 'antd';
+import { Skeleton } from 'antd';
+// eslint-disable-next-line import/no-unresolved
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-const items = [1, 2, 3, 4];
 export default function ServicesLoading() {
   return (
     <>
       <Skeleton paragraph={{ rows: 0 }} />
-      {items.map((item) => (
-        <Col key={item} xs={24} sm={12} md={12} lg={8} xl={8}>
-          <Skeleton active avatar paragraph={{ rows: 0 }} />
-        </Col>
-      ))}
+      <Swiper centeredSlides slidesPerView="auto" className="mySwiper">
+        <SwiperSlide
+          style={{ backgroundColor: '#f2f2f2', width: '100%', height: '400px' }}
+        />
+      </Swiper>
     </>
   );
 }

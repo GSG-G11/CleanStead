@@ -2,8 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import { Layout } from 'antd';
+
 import { Home, Category } from '../Pages';
 import { Navbar } from '../Components';
+// eslint-disable-next-line import/no-unresolved
+import 'swiper/css/bundle';
+
 import '../style/custom-antd.css';
 import './app.css';
 
