@@ -1,27 +1,34 @@
-.imagewhy {
-  width: 400px;
-  height: 400px;
-  margin: 30px 20px 20px 2px;
-  display: block;
-  
 
+.section .ant-comment-avatar img {
+  width: 55px;
+  height: 55px;
+  border-radius: 12px;
 }
-.section{
-    margin: 28px 220px 20px 0px;
-    display: block;
-    width: 500px;
-    height: 80px;
+
+.ant-comment-avatar {
+  left: 10px;
 }
-.avatar {
- left: 010px; 
+
+.ant-comment-avatar:hover {
+  cursor: default;
 }
-.titlewhy {
-  font-size: 17px;
-  font-weight: bold;
-  color: #000000;
+
+.ant-comment-content-author:hover {
+  cursor: default;
 }
-.descriptionwhy {
-  margin: -12px 10px 0px 0px;
+
+.section .comment--title {
+  font-size: 23px;
+  font-weight: 400;
+  color: #000;
+}
+
+.section .comment--title:hover {
+  color: #000;
+}
+
+.comment--description {
+  margin: -10px 10px 0px 0px;
   font-size: 13px;
   color: #595b5f;
 }

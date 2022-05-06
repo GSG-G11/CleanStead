@@ -7,6 +7,8 @@ import { Navbar } from '../Components';
 import '../style/custom-antd.css';
 import './app.css';
 
+const { Header, Content } = Layout;
+
 function App() {
   const [categories, setCategories] = useState([]);
 
@@ -26,15 +28,19 @@ function App() {
   return (
     <Router>
       <Layout>
-        <Navbar
-          isLogged={false}
-          categories={categories}
-          user={{ name: 'Mohammad', role: 'admin' }}
-        />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/category/:id" element={<Category />} />
-        </Routes>
+        <Header>
+          <Navbar
+            isLogged={false}
+            categories={categories}
+            user={{ name: 'Mohammad', role: 'admin' }}
+          />
+        </Header>
+        <Content style={{ padding: '0 100px' }}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/category/:id" element={<Category />} />
+          </Routes>
+        </Content>
       </Layout>
     </Router>
   );

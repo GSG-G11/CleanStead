@@ -1,6 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { Comment, Avatar, Image, Row, Col, Typography } from 'antd';
+import { Comment, Image, Row, Col, Typography } from 'antd';
 import img from '../../Assets/images/img.png';
 import logo1 from '../../Assets/images/logo1.png';
 import logo2 from '../../Assets/images/logo2.png';
@@ -11,59 +11,80 @@ import './WhyUs.css';
 const { Title } = Typography;
 function WhyUs() {
   return (
-    <div>
+    <div className="container">
       <Row>
-        <Col span={12}>
-          <div className="section">
-            <Comment
-              author={<Title className="titlewhy"> الموثوقية</Title>}
-              avatar={<Avatar className="avatar" src={logo4} alt="Han Solo" />}
-              content={
-                <p className="descriptionwhy">
-                  نستحق الثقة منكم والتجربة خير برهان
-                </p>
-              }
-            />
-          </div>
-          <div className="section">
-            <Comment
-              author={<Title className="mostafa">الحجز اونلاين</Title>}
-              avatar={<Avatar className="avatar" src={logo3} alt="Han Solo" />}
-              content={
-                <p className="descriptionwhy">
-                  الطريقة سهلة للحجز والتحقق من الحجز والتأكد من حجزكم
-                </p>
-              }
-            />
-          </div>
-          <div className="section">
-            <Comment
-              author={<Title className="titlewhy">خصومات دائمة</Title>}
-              avatar={<Avatar className="avatar" src={logo2} alt="Han Solo" />}
-              content={
-                <p className="descriptionwhy">
-                  نسعى دائما لراحتكم وتوفير افضل الخصومات لكم
-                </p>
-              }
-            />
-          </div>
-          <div className="section">
-            <Comment
-              author={<Title className="titlewhy">دعم متواصل</Title>}
-              avatar={<Avatar className="avatar" src={logo1} alt="Han Solo" />}
-              content={
-                <p className="descriptionwhy">
-                  دائما موجودين للرد على استفسارتكم والتواصل معنا
-                </p>
-              }
-            />
-          </div>
+        <Col xs={0} sm={0} md={1} lg={2} xl={4} xxl={6} />
+        <Col xs={24} sm={24} md={11} lg={10} xl={8} xxl={6}>
+          <Image
+            className="imagewhy"
+            src={img}
+            preview={false}
+            alt="A picture showing man and woman"
+          />
         </Col>
-        <Col span={12}>
-          <div>
-            <Image className="imagewhy" src={img} preview={false} />
-          </div>
+        <Col
+          xs={24}
+          sm={24}
+          md={11}
+          lg={10}
+          xl={10}
+          xxl={8}
+          className="section"
+        >
+          <Comment
+            author={
+              <Title level={3} className="comment--title">
+                الموثوقية
+              </Title>
+            }
+            avatar={logo4}
+            content={
+              <p className="comment--description">
+                نستحق الثقة منكم والتجربة خير برهان
+              </p>
+            }
+          />
+          <Comment
+            author={
+              <Title level={3} className="comment--title">
+                الحجز أونلاين
+              </Title>
+            }
+            avatar={logo3}
+            content={
+              <p className="comment--description">
+                الطريقة سهلة للحجز والتحقق من الحجز والتأكد من حجزكم
+              </p>
+            }
+          />
+          <Comment
+            author={
+              <Title level={3} className="comment--title">
+                خصومات دائمة
+              </Title>
+            }
+            avatar={logo2}
+            content={
+              <p className="comment--description">
+                نسعى دائما لراحتكم وتوفير افضل الخصومات لكم
+              </p>
+            }
+          />
+          <Comment
+            author={
+              <Title level={3} className="comment--title">
+                دعم متواصل
+              </Title>
+            }
+            avatar={logo1}
+            content={
+              <p className="comment--description">
+                دائما موجودين للرد على استفسارتكم والتواصل معنا
+              </p>
+            }
+          />
         </Col>
+        <Col xs={0} sm={0} md={1} lg={2} xl={2} xxl={6} />
       </Row>
     </div>
   );
