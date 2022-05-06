@@ -3,8 +3,9 @@ import { Form, Input, Button } from 'antd';
 import { MailOutlined, LockOutlined } from '@ant-design/icons';
 
 function Login() {
-    const onFinish = (values) => {
-        console.log(values);
+    const onFinish = ({email,password}) => {
+        const userInfoLogin = {email,password}
+        console.log('userInfoLogin',userInfoLogin);
       };
   return (
     <div>

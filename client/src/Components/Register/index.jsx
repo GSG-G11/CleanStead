@@ -9,8 +9,12 @@ import {
 
 function Register() {
 
-  const onFinish = (values) => {
-    console.log(values);
+
+  const onFinish = ({name,email,phone,password}) => {
+    const userInfoRegister = {
+      name,email,phone,password
+    }
+    console.log('userInfoRegister',userInfoRegister);
   };
   return (
     <div>
