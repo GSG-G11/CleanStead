@@ -85,6 +85,7 @@ function Register() {
             },
             { min: 6, message: 'يجب ادخال كلمة السر  على الاقل 6 أحرف' },
           ]}
+          hasFeedback
         >
           <Input.Password
             placeholder="ادخل كلمة المرور"

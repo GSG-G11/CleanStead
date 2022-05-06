@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Tabs } from 'antd';
 import Register from '../Register';
+import Login from '../Login';
 import './style.css';
 
 const { TabPane } = Tabs;
@@ -24,7 +25,7 @@ function LoginRegisterContainer({ isOpen, setIsOpen }) {
           <Register />
         </TabPane>
         <TabPane tab="تسجيل دخول" key="2">
-          Login
+          <Login />
         </TabPane>
       </Tabs>
     </Modal>
