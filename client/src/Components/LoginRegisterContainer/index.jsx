@@ -10,9 +10,6 @@ function LoginRegisterContainer({ isOpen, setIsOpen }) {
   const handleCancel = () => {
     setIsOpen(false);
   };
-  function callback(key) {
-    console.log(key);
-  }
   return (
     <Modal
       title=" من فضلك قم بتسجيل الدخول للاستمرار "
@@ -20,7 +17,7 @@ function LoginRegisterContainer({ isOpen, setIsOpen }) {
       onCancel={handleCancel}
       width={350}
     >
-      <Tabs defaultActiveKey="1" onChange={callback}>
+      <Tabs defaultActiveKey="1">
         <TabPane tab="إنشاء حساب" key="1">
           <Register />
         </TabPane>
