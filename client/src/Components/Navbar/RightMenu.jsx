@@ -4,7 +4,10 @@ import { Menu, Button, Avatar, Dropdown, Space } from 'antd';
 import { UserOutlined, DownOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
-function RightMenu({ isLogged, mode, avatarMenu, user }) {
+function RightMenu({ isLogged, mode, avatarMenu, user,setIsOpen }) {
+  const openModal = () => {
+    setIsOpen(true);
+  };
   return (
     <Menu mode={mode}>
       <Menu.Item key="avatar">
@@ -21,7 +24,7 @@ function RightMenu({ isLogged, mode, avatarMenu, user }) {
             </Dropdown>
           </Space>
         ) : (
-          <Button className="login">دخول</Button>
+          <Button className="login" onClick={openModal}>دخول</Button>
         )}
       </Menu.Item>
       <Menu.Item key="book">
@@ -41,6 +44,7 @@ RightMenu.propTypes = {
     role: PropTypes.string.isRequired,
   }),
   avatarMenu: PropTypes.element.isRequired,
+  setIsOpen: PropTypes.func.isRequired,
 };
 
 RightMenu.defaultProps = {

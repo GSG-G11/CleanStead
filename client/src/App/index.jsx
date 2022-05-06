@@ -3,13 +3,14 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import { Layout, message } from 'antd';
 import { Home, Category } from '../Pages';
-import { Navbar } from '../Components';
+import { Navbar, LoginRegisterContainer } from '../Components';
 import '../style/custom-antd.css';
 import './app.css';
 
 function App() {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const cancelTokenSource = axios.CancelToken.source();
@@ -36,7 +37,11 @@ function App() {
           isLogged={false}
           categories={categories}
           user={{ name: 'Mohammad', role: 'admin' }}
+          setIsOpen={setIsOpen}
         />
+        {isOpen && (
+          <LoginRegisterContainer isOpen={isOpen} setIsOpen={setIsOpen} />
+        )}
         <Routes>
           <Route
             path="/"

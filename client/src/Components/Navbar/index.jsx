@@ -10,7 +10,7 @@ import './navbar.css';
 
 const { Header } = Layout;
 
-function Navbar({ isLogged, categories, user }) {
+function Navbar({ isLogged, categories, user, setIsOpen }) {
   const [visible, setVisible] = useState(false);
 
   const showDrawer = () => {
@@ -92,6 +92,7 @@ function Navbar({ isLogged, categories, user }) {
           isLogged={isLogged}
           avatarMenu={avatarMenu}
           user={user}
+          setIsOpen={setIsOpen}
         />
       </div>
       <Button
@@ -114,6 +115,7 @@ function Navbar({ isLogged, categories, user }) {
           isLogged={isLogged}
           avatarMenu={avatarMenu}
           user={user}
+          setIsOpen={setIsOpen}
         />
       </Drawer>
     </Header>
@@ -128,6 +130,7 @@ Navbar.propTypes = {
   }),
   categories: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object))
     .isRequired,
+  setIsOpen: PropTypes.func.isRequired,
 };
 
 Navbar.defaultProps = {

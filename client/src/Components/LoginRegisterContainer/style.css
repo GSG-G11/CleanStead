@@ -1,0 +1,11 @@
+.ant-modal-body {
+    display: flex;
+    justify-content: center;
+   }
+ 
+   .ant-tabs {
+       width: 90%;
+   }
+   .icon-style {
+     color: #c0c0c0 !important;
+   }
