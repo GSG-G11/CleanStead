@@ -2,7 +2,7 @@
     width: 250px;
     height: 100%;
     border-radius: 10px;
-    margin: 2.5em;
+    margin:  auto !important;
     box-shadow: 0px 8px 24px rgba(0, 173, 238, 0.1);
 }
 .image {
@@ -34,9 +34,6 @@
 .ant-card-body {
     padding: 24px 20px 10px;
  
-}
-.ant-card-bordered {
-    border: none;
 }
 .left-icon {
     font-size: 10px;
