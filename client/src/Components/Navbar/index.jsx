@@ -130,11 +130,12 @@ Navbar.propTypes = {
   }),
   categories: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object))
     .isRequired,
-  setIsOpen: PropTypes.func.isRequired,
+  setIsOpen: PropTypes.func,
 };
 
 Navbar.defaultProps = {
   user: { name: '', role: '' },
+  setIsOpen: () => {setIsOpen(false)},
 };
 
 export default Navbar;

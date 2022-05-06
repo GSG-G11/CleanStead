@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Form, Input, Button } from 'antd';
 import { MailOutlined, LockOutlined } from '@ant-design/icons';
 
-function Login() {
+function Login({setIsOpen}) {
     const onFinish = ({email,password}) => {
         const userInfoLogin = {email,password}
         console.log('userInfoLogin',userInfoLogin);
+        setIsOpen(false);
       };
   return (
     <div>
@@ -55,5 +57,10 @@ function Login() {
     </div>
   );
 }
-Login.propTypes = {};
+Login.defaultProps = { 
+  setIsOpen: () => {setIsOpen(false)},
+};
+Login.propTypes = { 
+  setIsOpen: PropTypes.func,
+};
 export default Login;

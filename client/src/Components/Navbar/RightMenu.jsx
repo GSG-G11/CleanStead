@@ -44,11 +44,12 @@ RightMenu.propTypes = {
     role: PropTypes.string.isRequired,
   }),
   avatarMenu: PropTypes.element.isRequired,
-  setIsOpen: PropTypes.func.isRequired,
+  setIsOpen: PropTypes.func,
 };
 
 RightMenu.defaultProps = {
   user: { name: '', role: '' },
+  setIsOpen: () => {setIsOpen(false)},
 };
 
 export default RightMenu;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Form, Input, Button } from 'antd';
 import {
   UserOutlined,
@@ -7,7 +8,7 @@ import {
   LockOutlined,
 } from '@ant-design/icons';
 
-function Register() {
+function Register({setIsOpen}) {
 
 
   const onFinish = ({name,email,phone,password}) => {
@@ -15,6 +16,7 @@ function Register() {
       name,email,phone,password
     }
     console.log('userInfoRegister',userInfoRegister);
+    setIsOpen(false);
   };
   return (
     <div>
@@ -106,5 +108,10 @@ function Register() {
     </div>
   );
 }
-Register.propTypes = {};
+Register.defaultProps = { 
+  setIsOpen: () => {setIsOpen(false)},
+};
+Register.propTypes = { 
+  setIsOpen: PropTypes.func,
+};
 export default Register;
