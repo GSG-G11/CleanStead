@@ -16,12 +16,13 @@
   border-radius: 150px;
   margin-top: 12px;
 }
+
 @media (min-width: 1440px){
   .title{
     font-size: 26px !important;
   }
   .header-description{
-    right: 170px;
+    right: 10vw;
   }
   .header-button{
     font-size: 20px !important;
@@ -29,16 +30,16 @@
     padding: 4px 35px;
   }
 }
-@media (max-width: 992px){
+@media (min-width: 1920px){
   .header-description{
-    right: 70px;
+    right: 20vw;
   }
 }
-@media (max-width: 768px){
+ @media (min-width: 768px) and (max-width: 1024px){
   .header-description{
-    right: 40px;
+    right: 5vw;
   }
-}
+} 
 @media (max-width: 768px){
   .title{
     font-size: 18px !important;
@@ -49,7 +50,7 @@
     font-size: 13px !important;
   }
   .header-description{
-    right: 20px;
+    right: 4vw;
   }
 }
 @media (max-width: 400px){
@@ -57,7 +58,7 @@
     font-size: 10px !important;
   }
   .header-description{
-    right: 10px;
+    right: 3vw;
   }
   .header-button{
     font-size: 10px !important;
