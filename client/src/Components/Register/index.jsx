@@ -6,7 +6,6 @@ import {
   PhoneOutlined,
   LockOutlined,
 } from '@ant-design/icons';
-import './style.css';
 
 function Register() {
 
@@ -21,7 +20,7 @@ function Register() {
       >
         <Form.Item
           label="الإسم"
-          className="form-item"
+          
           name="name"
           rules={[
             {
@@ -39,7 +38,7 @@ function Register() {
         </Form.Item>
         <Form.Item
           label="الإيميل"
-          className="form-item"
+          
           name="email"
           rules={[
             {
@@ -58,7 +57,7 @@ function Register() {
         </Form.Item>
         <Form.Item
           label="رقم الجوال"
-          className="form-item"
+          
           name="phone"
           rules={[
             {
@@ -67,6 +66,7 @@ function Register() {
             },
             { min: 10, message: 'يجب ادخال رقم جوال  على الاقل 10 أرقام' },
           ]}
+          hasFeedback
         >
           <Input
             placeholder=" ادخل رقم الجوال"
@@ -76,7 +76,7 @@ function Register() {
         </Form.Item>
         <Form.Item
           label="كلمة السر"
-          className="form-item"
+          
           name="password"
           rules={[
             {

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Input, Button } from 'antd';
 import { MailOutlined, LockOutlined } from '@ant-design/icons';
-// import PropTypes from 'prop-types';
-import './style.css';
 
 function Login() {
     const onFinish = (values) => {
@@ -12,10 +10,9 @@ function Login() {
     <div>
       <Form layout="vertical" onFinish={onFinish}>
         <Form.Item
-         label="الإيميل"
-          className="form-item"
-           name="email"
-            rules={[
+          label="الإيميل"
+          name="email"
+          rules={[
             {
               required: true,
               message: 'إيميل المستخدم مطلوب',
@@ -26,12 +23,12 @@ function Login() {
           >
           <Input
             placeholder=" ادخل الإيميل"
+            className="input"
             prefix={<MailOutlined className="icon-style"/>}
           />
         </Form.Item>
         <Form.Item
          label="كلمة السر"
-        className="form-item"
         name="password"
         rules={[
             {
@@ -44,8 +41,8 @@ function Login() {
           >
           <Input.Password
             placeholder="ادخل كلمة المرور"
+            className="input"
             prefix={<LockOutlined className="icon-style" />}
-            
           />
         </Form.Item>
         <Form.Item>

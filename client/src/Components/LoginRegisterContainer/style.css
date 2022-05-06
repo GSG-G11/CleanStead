@@ -1,11 +1,16 @@
 .ant-modal-body {
-    display: flex;
-    justify-content: center;
-   }
- 
-   .ant-tabs {
-       width: 90%;
-   }
-   .icon-style {
-     color: #c0c0c0 !important;
-   }
+  display: flex;
+  justify-content: center;
+}
+.ant-tabs {
+  width: 90%;
+}
+.icon-style {
+  color: #c0c0c0 !important;
+}
+.input {
+  border: 1px solid #F2F2F2 !important;
+}
+.ant-form-item {
+  margin-bottom: 5px !important;
+}
