@@ -8,10 +8,8 @@
 .copyright{
   text-align: center;
   border-top: 3px solid #fff;
-    width: 100%;
-    margin: 25px auto 0;
-    font-weight: bold;
-    background-color: transparent ;
+  width: 100%;
+  padding-top: 1em;
 }
 .categores-list{
   color: #00000073;
@@ -19,6 +17,7 @@
   box-shadow: 0 2px #00000004;
   transition: all .3s cubic-bezier(.645,.045,.355,1);
 }
-.categores-list:hover{
-  color: #40a9ff;
+.categores-list:hover,
+.email-link:hover{
+  color: #40a9ff !important;
 }

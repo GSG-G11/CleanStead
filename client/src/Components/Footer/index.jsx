@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Row, Col, Image, Typography, Space, Tooltip, Layout } from 'antd';
+import { Row, Col, Image, Typography, Space, Tooltip } from 'antd';
 import {
   PhoneOutlined,
   MailOutlined,
@@ -16,8 +16,6 @@ import map from '../../Assets/images/map.svg';
 import './style.css';
 import data from '../../data.json';
 
-const { Footer } = Layout;
-
 const IconFont = createFromIconfontCN({
   scriptUrl: [
     '//at.alicdn.com/t/font_1788044_0dwu4guekcwr.js', // icon-javascript, icon-java, icon-shoppingcart (overrided)
@@ -27,7 +25,7 @@ const IconFont = createFromIconfontCN({
 
 const { Title, Paragraph, Text } = Typography;
 
-function MainFooter({ categories }) {
+function Footer({ categories }) {
   return (
     <Row
       justify="space-between"
@@ -58,7 +56,7 @@ function MainFooter({ categories }) {
         <Title level={4}>خدماتنا</Title>
         <Space direction="vertical">
           {categories.map(({ id, name }) => (
-            <Link to={`/category/${id}`} className="categores-list">
+            <Link key={id} to={`/category/${id}`} className="categores-list">
               {name}
             </Link>
           ))}
@@ -74,12 +72,22 @@ function MainFooter({ categories }) {
         <Title level={4}>تواصل معنا</Title>
         <Space direction="vertical">
           <Text strong type="secondary">
-            <PhoneOutlined style={{ color: '#00ADEE', marginLeft: '5px' }} />
-            {data.phone}
+            <Space>
+              <PhoneOutlined style={{ color: '#00ADEE' }} />
+              {data.phone}
+            </Space>
           </Text>
           <Text strong type="secondary">
-            <MailOutlined style={{ color: '#00ADEE', marginLeft: '5px' }} />
-            {data.email}
+            <Space>
+              <MailOutlined style={{ color: '#00ADEE' }} />
+              <a
+                href={`mailto:${data.email}`}
+                style={{ color: '#00000073' }}
+                className="email-link"
+              >
+                {data.email}
+              </a>
+            </Space>
           </Text>
         </Space>
       </Col>
@@ -122,12 +130,20 @@ function MainFooter({ categories }) {
           <Image src={map} alt="map" preview={false} />
         </Space>
       </Col>
-      <Footer className="copyright">جميع الحقوق محفوظة © 2022</Footer>
+      <Paragraph strong className="copyright">
+        جميع الحقوق محفوظة &copy; 2022
+      </Paragraph>
     </Row>
   );
 }
-MainFooter.propTypes = {
-  categories: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object))
-    .isRequired,
+Footer.propTypes = {
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      description: PropTypes.string,
+      image: PropTypes.string,
+    })
+  ).isRequired,
 };
-export default MainFooter;
+export default Footer;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import { Layout } from 'antd';
-import { Navbar, MainFooter } from '../Components';
+import { Navbar, Footer } from '../Components';
 import { Home, Category } from '../Pages';
 import '../style/custom-antd.css';
 import './app.css';
@@ -35,7 +35,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/category/:id" element={<Category />} />
         </Routes>
-        <MainFooter categories={categories} />
+        <Footer categories={categories} />
       </Layout>
     </Router>
   );
