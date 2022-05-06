@@ -39,9 +39,7 @@ function App() {
           user={{ name: 'Mohammad', role: 'admin' }}
           setIsOpen={setIsOpen}
         />
-        {isOpen && (
-          <LoginRegisterContainer isOpen={isOpen} setIsOpen={setIsOpen} />
-        )}
+        <LoginRegisterContainer isOpen={isOpen} setIsOpen={setIsOpen} />
         <Routes>
           <Route
             path="/"
