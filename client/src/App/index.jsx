@@ -20,7 +20,7 @@ function App() {
       })
       .then(({ data: {data} }) => {
         setCategories(data);
-        // setLoading(false);
+        setLoading(false);
       }).catch(()=>{
         setLoading(false);
         message.error('حدث خطأ ما');

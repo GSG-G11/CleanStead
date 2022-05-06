@@ -28,15 +28,22 @@ function CategoriesCardsContainer({ categories, loading }) {
             ))}
           </Row>
         ) : (
-          <Empty description={"لا يوجد بيانات"} />
+          <Empty description="لا يوجد بيانات" />
         )}
       </div>
     </>
   );
 }
+CategoriesCardsContainer.defaultProps = {
+  loading: false,
+};
 CategoriesCardsContainer.propTypes = {
   loading: PropTypes.bool,
-  categories: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object))
-    .isRequired,
+  categories: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    description: PropTypes.string,
+    image: PropTypes.string,
+  })).isRequired,
 };
 export default CategoriesCardsContainer;
