@@ -2,10 +2,10 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import { Comment, Image, Row, Col, Typography } from 'antd';
 import img from '../../Assets/images/img.png';
-import logo1 from '../../Assets/images/logo1.png';
-import logo2 from '../../Assets/images/logo2.png';
-import logo3 from '../../Assets/images/logo3.png';
-import logo4 from '../../Assets/images/logo4.png';
+import support from '../../Assets/images/support.png';
+import discounts from '../../Assets/images/discounts.png';
+import Reservation from '../../Assets/images/Reservation.png';
+import reliability from '../../Assets/images/reliability.png';
 import './WhyUs.css';
 
 const { Title } = Typography;
@@ -37,7 +37,7 @@ function WhyUs() {
                 الموثوقية
               </Title>
             }
-            avatar={logo4}
+            avatar={reliability}
             content={
               <p className="comment--description">
                 نستحق الثقة منكم والتجربة خير برهان
@@ -50,7 +50,7 @@ function WhyUs() {
                 الحجز أونلاين
               </Title>
             }
-            avatar={logo3}
+            avatar={Reservation}
             content={
               <p className="comment--description">
                 الطريقة سهلة للحجز والتحقق من الحجز والتأكد من حجزكم
@@ -63,7 +63,7 @@ function WhyUs() {
                 خصومات دائمة
               </Title>
             }
-            avatar={logo2}
+            avatar={discounts}
             content={
               <p className="comment--description">
                 نسعى دائما لراحتكم وتوفير افضل الخصومات لكم
@@ -76,7 +76,7 @@ function WhyUs() {
                 دعم متواصل
               </Title>
             }
-            avatar={logo1}
+            avatar={support}
             content={
               <p className="comment--description">
                 دائما موجودين للرد على استفسارتكم والتواصل معنا

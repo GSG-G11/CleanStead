@@ -1,11 +1,10 @@
-.imagewhy{
-  margin-right: -35px;
+.section{
+  margin-right: 20px;
 }
 .section .ant-comment-avatar img {
   width: 55px;
   height: 55px;
   border-radius: 12px;
-  margin-left: px;
 }
 
 .ant-comment-avatar {
