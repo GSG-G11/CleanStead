@@ -7622,7 +7622,6 @@ _:-ms-fullscreen .ant-picker-range-wrapper .ant-picker-year-panel .ant-picker-ce
   padding: 0 0 8px;
   line-height: 1.5715;
   white-space: initial;
-  text-align: left;
 }
 .ant-form-vertical .ant-form-item-label > label,
 .ant-col-24.ant-form-item-label > label,
@@ -13311,8 +13310,6 @@ _:-ms-fullscreen .ant-picker-range-wrapper .ant-picker-year-panel .ant-picker-ce
   display: inline-block;
 }
 .ant-image-img {
-  width: 100%;
-  height: auto;
   vertical-align: middle;
 }
 .ant-image-img-placeholder {

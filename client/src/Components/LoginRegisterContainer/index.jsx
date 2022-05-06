@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Tabs } from 'antd';
+import Register from '../Register';
 import './style.css';
 
 const { TabPane } = Tabs;
@@ -20,7 +21,7 @@ function LoginRegisterContainer({ isOpen, setIsOpen }) {
     >
       <Tabs defaultActiveKey="1" onChange={callback}>
         <TabPane tab="إنشاء حساب" key="1">
-          Register
+          <Register />
         </TabPane>
         <TabPane tab="تسجيل دخول" key="2">
           Login
