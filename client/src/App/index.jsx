@@ -18,13 +18,14 @@ function App() {
       .get('/api/v1/categories', {
         cancelToken: cancelTokenSource.token,
       })
-      .then(({ data: {data} }) => {
+      .then(({ data: { data } }) => {
         setCategories(data);
         setLoading(false);
-      }).catch(()=>{
+      })
+      .catch(() => {
         setLoading(false);
         message.error('حدث خطأ ما');
-      })
+      });
 
     return () => cancelTokenSource.cancel();
   }, []);
