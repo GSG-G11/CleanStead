@@ -11,17 +11,12 @@ function Header() {
       <Col
         xs={{ span: 23 }}
         sm={{ span: 23 }}
-        md={{ span: 21 }}
-        lg={{ span: 22 }}
-        xl={{ span: 22 }}
+        md={{ span: 23 }}
+        lg={{ span: 23 }}
+        xl={{ span: 23 }}
       >
         <div className="header-container">
-          <Image
-            className="header-image"
-            alt="header image"
-            preview={false}
-            src={headerBackground}
-          />
+          <Image alt="header image" preview={false} src={headerBackground} />
           <div className="header-description">
             <Title level={2} className="title">
               اختار يلي بخلصك
