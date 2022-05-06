@@ -5,7 +5,13 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Empty, message, Row, Col, Typography } from 'antd';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Pagination, Navigation, Lazy } from 'swiper';
+import {
+  EffectCoverflow,
+  Pagination,
+  Navigation,
+  Lazy,
+  Autoplay,
+} from 'swiper';
 import ServiceCard from './ServiceCard';
 import ServicesLoading from './ServicesLoading';
 import './style.css';
@@ -17,7 +23,7 @@ import 'swiper/css/navigation';
 
 const { Title } = Typography;
 
-export default function Services({ categories: { categories } }) {
+export default function Services({ categories }) {
   const [loading, setLoading] = useState(false);
   const [services, setServices] = useState([]);
   const [category, setCategory] = useState({});
@@ -81,11 +87,21 @@ export default function Services({ categories: { categories } }) {
                 modifier: 1,
                 slideShadows: true,
               }}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
               pagination={{
                 clickable: true,
               }}
               navigation
-              modules={[EffectCoverflow, Pagination, Navigation, Lazy]}
+              modules={[
+                EffectCoverflow,
+                Pagination,
+                Navigation,
+                Lazy,
+                Autoplay,
+              ]}
               className="mySwiper"
             >
               {services.map((service) => (
@@ -107,6 +123,12 @@ export default function Services({ categories: { categories } }) {
 }
 
 Services.propTypes = {
-  categories: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object))
-    .isRequired,
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      description: PropTypes.string,
+      image: PropTypes.string,
+    })
+  ).isRequired,
 };
