@@ -17,7 +17,7 @@ const addContact: RequestHandler = async (req, res, next) => {
     if (!rowCount) {
       throw new CustomizedError(400, 'يوجد خلل حاول مرة أخرى');
     }
-    return res.json({ message: 'تمت إضافة طلبك سوف يتم التاوصل معك قريبا', status: 201 });
+    return res.json({ message: 'تمت إضافة طلبك سوف يتم التواصل معك قريبا', status: 201 });
   } catch (error:any) {
     if (error.name === 'ValidationError') {
       return next(new CustomizedError(400, error.errors[0]));
