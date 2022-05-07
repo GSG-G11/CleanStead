@@ -6,14 +6,15 @@ import {
   MailOutlined,
   PhoneOutlined,
   LockOutlined,
+  HomeOutlined,
 } from '@ant-design/icons';
 
 function Register({setIsOpen}) {
 
 
-  const onFinish = ({name,email,phone,password}) => {
+  const onFinish = ({name,email,phone,password,location}) => {
     const userInfoRegister = {
-      name,email,phone,password
+      name,email,phone,password,location
     }
     console.log('userInfoRegister',userInfoRegister);
     setIsOpen(false);
@@ -81,8 +82,24 @@ function Register({setIsOpen}) {
           />
         </Form.Item>
         <Form.Item
-          label="كلمة السر"
-          
+          label="العنوان"
+          name="location"
+          rules={[
+            {
+              required: true,
+              message: 'عنوان المستخدم مطلوب',
+            },
+          ]}
+          hasFeedback
+        >
+          <Input
+            placeholder=" ادخل العنوان"
+            className="input"
+            prefix={<HomeOutlined className="icon-style" />}
+          />
+        </Form.Item>
+        <Form.Item
+          label="كلمة السر"  
           name="password"
           rules={[
             {
