@@ -73,6 +73,7 @@ function Register({ setIsOpen }) {
           hasFeedback
         >
           <Input
+            type="number"
             placeholder=" ادخل رقم الجوال"
             className="input"
             prefix={<PhoneOutlined className="icon-style" rotate={90} />}

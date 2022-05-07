@@ -6,14 +6,18 @@
   width: 90% !important;
 }
 .icon-style {
+  margin-left: 5px;
   color: #c0c0c0 !important;
 }
 .input {
+  height: 40px !important;
+  /* padding: 5px 11px !important; */
   border: 1px solid #F2F2F2 !important;
 }
 .ant-form-item {
   margin-bottom: 5px !important;
 }
 .button {
+  height: 40px !important;
   margin-top: 1em !important;
 }
