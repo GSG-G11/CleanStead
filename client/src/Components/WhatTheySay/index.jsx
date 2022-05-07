@@ -12,10 +12,11 @@ import CustomTitle from '../CustomTitle';
 const { useBreakpoint } = Grid;
 function WhatTheySay() {
   const screens = useBreakpoint();
+  console.log('file: index.jsx ~ line 15 ~ WhatTheySay ~ screens', screens);
   let count = 3;
-  if (screens.xl) count = 4;
-  else if (screens.lg) count = 3;
-  else if (screens.md) count = 3;
+  if (screens.xl) count = 3;
+  // else if (screens.lg) count = 3;
+  // else if (screens.md) count = 3;
   else if (screens.sm) count = 2;
   else if (screens.xs) count = 1;
 
@@ -43,12 +44,14 @@ function WhatTheySay() {
   ];
 
   return (
-    <Row justify="center" className="what-they-say-section">
-      <Row>
-        <CustomTitle title="ماذا يقولون عملائنا" isLanding />
+    <>
+      <Row align="middle" justify="center" className="title-what-says">
+        <Col xs={{ span: 23 }}>
+          <CustomTitle title="ماذا يقولون عملائنا" isLanding />
+        </Col>
       </Row>
       <Row align="middle" justify="center">
-        <Col xs={{ span: 23 }}>
+        <Col xs={{ span: 20 }}>
           <Swiper
             slidesPerView={count}
             spaceBetween={30}
@@ -67,7 +70,7 @@ function WhatTheySay() {
           </Swiper>
         </Col>
       </Row>
-    </Row>
+    </>
   );
 }
 
