@@ -1,9 +1,9 @@
 .ant-modal-body {
-  display: flex;
-  justify-content: center;
+  display: flex !important;
+  justify-content: center !important;
 }
 .ant-tabs {
-  width: 90%;
+  width: 90% !important;
 }
 .icon-style {
   color: #c0c0c0 !important;

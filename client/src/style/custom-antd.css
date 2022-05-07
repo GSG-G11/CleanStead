@@ -7898,6 +7898,9 @@ _:-ms-fullscreen .ant-picker-range-wrapper .ant-picker-year-panel .ant-picker-ce
   line-height: 1;
   content: '*';
 }
+.ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+  content: '';
+}
 .ant-form-hide-required-mark .ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
   display: none;
 }
@@ -17084,6 +17087,7 @@ textarea.ant-mentions {
   color: rgba(0, 0, 0, 0.85);
   background: #fff;
   border-radius: 8px 8px 0 0;
+  border: none;
 }
 .ant-modal-body {
   padding: 0px 20px 10px;
@@ -23005,9 +23009,9 @@ tr.ant-table-expanded-row .ant-descriptions-view table {
 .ant-tabs-tab .anticon {
   margin-right: 12px;
 }
-/* .ant-tabs-tab + .ant-tabs-tab {
+.ant-tabs-tab + .ant-tabs-tab {
   margin: 0 ;
-} */
+}
 .ant-tabs-content {
   display: flex;
   width: 100%;
@@ -25977,6 +25981,9 @@ div.ant-typography-edit-content.ant-typography-rtl {
 .ant-upload-list-rtl.ant-upload-list-picture-card .ant-upload-list-item-file + .ant-upload-list-item-name {
   margin: 8px 0 0;
   padding: 0;
+}
+.ant-form-vertical .ant-form-item-label, .ant-col-24.ant-form-item-label, .ant-col-xl-24.ant-form-item-label {
+  text-align: right;
 }
 @font-face {
   font-family: 'Tajawal';

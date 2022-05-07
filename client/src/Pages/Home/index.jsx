@@ -6,8 +6,8 @@ function Home({ categories, loading }) {
   return (
     <div>
       <Header />
-      <WhyUs />
       <CategoriesCardsContainer categories={categories} loading={loading} />
+      <WhyUs />
     </div>
   );
 }

@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import { Layout, message } from 'antd';
-import { Navbar, Footer } from '../Components';
+import { Navbar, Footer, LoginRegisterContainer } from '../Components';
 import { Home, Category } from '../Pages';
-import { Navbar, LoginRegisterContainer } from '../Components';
 import '../style/custom-antd.css';
 import './app.css';
 
