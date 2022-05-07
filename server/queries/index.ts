@@ -1,8 +1,9 @@
 import { getCategoriesQuery, getCategoryServicesQuery } from './categories';
-import { getContactsQuery } from './contact';
+import { getContactsQuery, addContactQuery } from './contact';
 
 export {
   getCategoriesQuery,
   getCategoryServicesQuery,
   getContactsQuery,
+  addContactQuery,
 };
