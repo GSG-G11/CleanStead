@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import { Layout } from 'antd';
-import { Home, Category, Contact, WhoAre } from '../Pages';
+import { Home, Description } from '../Pages';
 import { Navbar } from '../Components';
 import '../style/custom-antd.css';
 import './app.css';
@@ -33,9 +33,9 @@ function App() {
         />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="Contact" element={<Contact />} />
-          <Route path="about" element={<WhoAre />} />
-          <Route path="/category/:id" element={<Category />} />
+          <Route path="Contact" element={<Description />} />
+          <Route path="about" element={<Description />} />
+          <Route path="/category/:id" element={<Description />} />
         </Routes>
       </Layout>
     </Router>
