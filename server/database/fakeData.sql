@@ -70,6 +70,23 @@ VALUES
 ما عليك سوى التقديم للاستفادة من خدماتنا',
         'https://media.istockphoto.com/photos/window-cleaner-using-a-squeegee-to-wash-a-window-picture-id1307939278?b=1&k=20&m=1307939278&s=170667a&w=0&h=sE2iIgtlr8gG6m6frJcxGZn-jz105dtqzoa_jucaTaA='
     );
+        INSERT INTO
+    contacts(name, email, message, phone, category_id)
+VALUES
+    (
+        'مصطفى قنوع',
+        'mostafaqandfoo403@gmail.com',
+        'انا بحاجة للمساعدة',
+        0559565562,
+        1
+    ),
+    (
+        'محمد الهبيل',
+        'mohameddf403@gmail.com',
+        'اريد ان اعرف اكتر تفاصيل عن هذه الخدمة ',
+        0555555555,
+        2
+    );
 
 INSERT INTO
     services(name, description, price, image, category_id)
