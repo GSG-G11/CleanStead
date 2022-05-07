@@ -81,7 +81,3 @@ describe('Test to add Contact', () => {
     expect(res.body.status).toBe(201);
   });
 });
-
-// describe('Test to add contact', () => {
-//   test('Test to add contact', () => addContactQuery( ).then((res) => {console.log(res) }));
-// });
