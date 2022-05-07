@@ -2,10 +2,15 @@ import React from 'react';
 import { Grid, Row, Col } from 'antd';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
+// import Swiper, { Pagination, SwiperSlide } from 'swiper';
 import QuoteCard from '../QuoteCard';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+// import 'swiper/css/bundle';
+// import 'swiper/css';
+// import 'swiper/css/pagination';
+
+import 'swiper/swiper-bundle.min.css';
+import 'swiper/swiper.min.css';
+import 'swiper/components/pagination/pagination.min.css';
 import './style.css';
 
 const { useBreakpoint } = Grid;
