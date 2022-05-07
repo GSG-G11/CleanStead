@@ -63,3 +63,35 @@ describe('Test Get Contacts', () => {
     expect(res.body.data.length).toBe(2);
   });
 });
+describe('Test to register', () => {
+  it('should return text successfuly message', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/signup')
+      .send({
+        name: 'Israa',
+        email: 'israa@hotmail.com',
+        phone: 5645,
+        password: '123456',
+        location: 'Gaza',
+      })
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('تم تسجيلك حسابك بنجاح');
+  });
+});
+describe('Test to register', () => {
+  it('should return user exist', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/signup')
+      .send({
+        name: 'Israa',
+        email: 'israa403@gmail.com',
+        phone: 5645,
+        password: '123456',
+        location: 'Gaza',
+      })
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('الإيميل موجود مسبقاً');
+  });
+});
