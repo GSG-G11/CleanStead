@@ -54,3 +54,12 @@ describe('Test Get Servecis For Forth Category ', () => {
     expect(res.body.data.length).toBe(6);
   });
 });
+describe('Test Get Contacts', () => {
+  it('should return two contacts', async () => {
+    const res = await supertest(app)
+      .get('/api/v1/contact')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.data.length).toBe(2);
+  });
+});

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import { Layout, message } from 'antd';
+import { Navbar, Footer } from '../Components';
 import { Home, Category } from '../Pages';
 import { Navbar, LoginRegisterContainer } from '../Components';
 import '../style/custom-antd.css';
@@ -19,13 +20,14 @@ function App() {
       .get('/api/v1/categories', {
         cancelToken: cancelTokenSource.token,
       })
-      .then(({ data: {data} }) => {
+      .then(({ data: { data } }) => {
         setCategories(data);
         setLoading(false);
-      }).catch(()=>{
+      })
+      .catch(() => {
         setLoading(false);
         message.error('حدث خطأ ما');
-      })
+      });
 
     return () => cancelTokenSource.cancel();
   }, []);
@@ -47,6 +49,7 @@ function App() {
           />
           <Route path="/category/:id" element={<Category />} />
         </Routes>
+        <Footer categories={categories} />
       </Layout>
     </Router>
   );
