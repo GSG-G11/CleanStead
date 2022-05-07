@@ -45,7 +45,7 @@ function WhatTheySay() {
   return (
     <Row justify="center" className="what-they-say-section">
       <Row>
-        <CustomTitle title="الخدمات التي نقدمها" isLanding />
+        <CustomTitle title="ماذا يقولون عملائنا" isLanding />
       </Row>
       <Row align="middle" justify="center">
         <Col xs={{ span: 23 }}>
