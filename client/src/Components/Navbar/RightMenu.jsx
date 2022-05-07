@@ -1,10 +1,11 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Menu, Button, Avatar, Dropdown, Space } from 'antd';
 import { UserOutlined, DownOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
-function RightMenu({ isLogged, mode, avatarMenu, user,setIsOpen }) {
+function RightMenu({ isLogged, mode, avatarMenu, user, setIsOpen }) {
   const openModal = () => {
     setIsOpen(true);
   };
@@ -24,7 +25,9 @@ function RightMenu({ isLogged, mode, avatarMenu, user,setIsOpen }) {
             </Dropdown>
           </Space>
         ) : (
-          <Button className="login" onClick={openModal}>دخول</Button>
+          <Button className="login" onClick={openModal}>
+            دخول
+          </Button>
         )}
       </Menu.Item>
       <Menu.Item key="book">
@@ -49,7 +52,9 @@ RightMenu.propTypes = {
 
 RightMenu.defaultProps = {
   user: { name: '', role: '' },
-  setIsOpen: () => {setIsOpen(false)},
+  setIsOpen: () => {
+    setIsOpen(false);
+  },
 };
 
 export default RightMenu;

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Layout, Menu, Image, Button, Dropdown, Space, Drawer } from 'antd';
@@ -134,7 +135,9 @@ Navbar.propTypes = {
 
 Navbar.defaultProps = {
   user: { name: '', role: '' },
-  setIsOpen: () => {setIsOpen(false)},
+  setIsOpen: () => {
+    setIsOpen(false);
+  },
 };
 
 export default Navbar;

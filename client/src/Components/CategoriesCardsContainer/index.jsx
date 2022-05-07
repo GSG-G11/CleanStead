@@ -9,7 +9,7 @@ import './style.css';
 
 function CategoriesCardsContainer({ categories, loading }) {
   return (
-    <>
+    <div className="categories-card">
       <CustomTitle title="الخدمات التي نقدمها" isLanding />
       <div className="categories">
         {loading ? (
@@ -17,7 +17,7 @@ function CategoriesCardsContainer({ categories, loading }) {
         ) : categories.length ? (
           <Row gutter={[20, 50]} justify="start">
             {categories.map(({ id, name, description, image }) => (
-              <Col key={id} xs={24} sm={12} md={8} lg={6} xl={6}>
+              <Col key={id} xs={24} sm={12} md={12} lg={8} xl={8}>
                 <CategoriesCard
                   title={name}
                   description={description}
@@ -31,7 +31,7 @@ function CategoriesCardsContainer({ categories, loading }) {
           <Empty description="لا يوجد بيانات" />
         )}
       </div>
-    </>
+    </div>
   );
 }
 CategoriesCardsContainer.defaultProps = {
@@ -39,11 +39,13 @@ CategoriesCardsContainer.defaultProps = {
 };
 CategoriesCardsContainer.propTypes = {
   loading: PropTypes.bool,
-  categories: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    description: PropTypes.string,
-    image: PropTypes.string,
-  })).isRequired,
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      description: PropTypes.string,
+      image: PropTypes.string,
+    })
+  ).isRequired,
 };
 export default CategoriesCardsContainer;

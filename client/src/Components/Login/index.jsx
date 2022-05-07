@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+/* eslint-disable no-undef */
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Input, Button } from 'antd';
 import { MailOutlined, LockOutlined } from '@ant-design/icons';
 
-function Login({setIsOpen}) {
-    const onFinish = ({email,password}) => {
-        const userInfoLogin = {email,password}
-        console.log('userInfoLogin',userInfoLogin);
-        setIsOpen(false);
-      };
+function Login({ setIsOpen }) {
+  const onFinish = ({ email, password }) => {
+    const userInfoLogin = { email, password };
+    console.log('userInfoLogin', userInfoLogin);
+    setIsOpen(false);
+  };
   return (
     <div>
       <Form layout="vertical" onFinish={onFinish}>
@@ -23,17 +24,17 @@ function Login({setIsOpen}) {
             { type: 'email', message: 'يجب ادخال إيميل صحيح' },
           ]}
           hasFeedback
-          >
+        >
           <Input
             placeholder=" ادخل الإيميل"
             className="input"
-            prefix={<MailOutlined className="icon-style"/>}
+            prefix={<MailOutlined className="icon-style" />}
           />
         </Form.Item>
         <Form.Item
-         label="كلمة السر"
-        name="password"
-        rules={[
+          label="كلمة السر"
+          name="password"
+          rules={[
             {
               required: true,
               message: ' كلمة السر للمستخدم مطلوبة',
@@ -41,7 +42,7 @@ function Login({setIsOpen}) {
             { min: 6, message: 'يجب ادخال كلمة السر  على الاقل 6 أحرف' },
           ]}
           hasFeedback
-          >
+        >
           <Input.Password
             placeholder="ادخل كلمة المرور"
             className="input"
@@ -49,7 +50,7 @@ function Login({setIsOpen}) {
           />
         </Form.Item>
         <Form.Item>
-          <Button block type="primary"  htmlType="submit" >
+          <Button block type="primary" htmlType="submit" className="button">
             دخول
           </Button>
         </Form.Item>
@@ -57,10 +58,12 @@ function Login({setIsOpen}) {
     </div>
   );
 }
-Login.defaultProps = { 
-  setIsOpen: () => {setIsOpen(false)},
+Login.defaultProps = {
+  setIsOpen: () => {
+    setIsOpen(false);
+  },
 };
-Login.propTypes = { 
+Login.propTypes = {
   setIsOpen: PropTypes.func,
 };
 export default Login;

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable no-undef */
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Input, Button } from 'antd';
 import {
@@ -9,25 +10,23 @@ import {
   HomeOutlined,
 } from '@ant-design/icons';
 
-function Register({setIsOpen}) {
-
-
-  const onFinish = ({name,email,phone,password,location}) => {
+function Register({ setIsOpen }) {
+  const onFinish = ({ name, email, phone, password, location }) => {
     const userInfoRegister = {
-      name,email,phone,password,location
-    }
-    console.log('userInfoRegister',userInfoRegister);
+      name,
+      email,
+      phone,
+      password,
+      location,
+    };
+    console.log('userInfoRegister', userInfoRegister);
     setIsOpen(false);
   };
   return (
     <div>
-      <Form
-        layout="vertical"
-        onFinish={onFinish}
-      >
+      <Form layout="vertical" onFinish={onFinish}>
         <Form.Item
           label="الإسم"
-          
           name="name"
           rules={[
             {
@@ -45,7 +44,6 @@ function Register({setIsOpen}) {
         </Form.Item>
         <Form.Item
           label="الإيميل"
-          
           name="email"
           rules={[
             {
@@ -64,7 +62,6 @@ function Register({setIsOpen}) {
         </Form.Item>
         <Form.Item
           label="رقم الجوال"
-          
           name="phone"
           rules={[
             {
@@ -99,7 +96,7 @@ function Register({setIsOpen}) {
           />
         </Form.Item>
         <Form.Item
-          label="كلمة السر"  
+          label="كلمة السر"
           name="password"
           rules={[
             {
@@ -117,7 +114,7 @@ function Register({setIsOpen}) {
           />
         </Form.Item>
         <Form.Item>
-          <Button block type="primary" htmlType="submit">
+          <Button block type="primary" htmlType="submit" className="button">
             إنشاء حساب
           </Button>
         </Form.Item>
@@ -125,10 +122,12 @@ function Register({setIsOpen}) {
     </div>
   );
 }
-Register.defaultProps = { 
-  setIsOpen: () => {setIsOpen(false)},
+Register.defaultProps = {
+  setIsOpen: () => {
+    setIsOpen(false);
+  },
 };
-Register.propTypes = { 
+Register.propTypes = {
   setIsOpen: PropTypes.func,
 };
 export default Register;

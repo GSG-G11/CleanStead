@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable no-undef */
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Modal, Tabs } from 'antd';
 import Register from '../Register';
@@ -29,11 +30,13 @@ function LoginRegisterContainer({ isOpen, setIsOpen }) {
     </Modal>
   );
 }
-LoginRegisterContainer.defaultProps = { 
+LoginRegisterContainer.defaultProps = {
   isOpen: false,
-  setIsOpen: () => {setIsOpen(false)},
+  setIsOpen: () => {
+    setIsOpen(false);
+  },
 };
-LoginRegisterContainer.propTypes = { 
+LoginRegisterContainer.propTypes = {
   isOpen: PropTypes.bool,
   setIsOpen: PropTypes.func,
 };
