@@ -1,20 +1,14 @@
 import React from 'react';
 import { Grid, Row, Col } from 'antd';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
-// import Swiper, { Pagination, SwiperSlide } from 'swiper';
-import QuoteCard from '../QuoteCard';
-// import 'swiper/css/bundle';
-// import 'swiper/css';
-// import 'swiper/css/pagination';
-
+import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
 import 'swiper/components/pagination/pagination.min.css';
+import QuoteCard from '../QuoteCard';
 import './style.css';
 
 const { useBreakpoint } = Grid;
-
 function WhatTheySay() {
   const screens = useBreakpoint();
   let count = 3;
@@ -28,22 +22,22 @@ function WhatTheySay() {
     {
       name: 'محمد',
       desc: 'دائما يقومون بعمل جيد وبالوقت المحدد, انا حقا سعيد بهذه التجربة',
-      img: 'https://picsum.photos/200/300',
+      img: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
     },
     {
       name: 'اسراء',
       desc: 'دائما يقومون بعمل جيد وبالوقت المحدد, انا حقا سعيد بهذه التجربة',
-      img: 'https://picsum.photos/200/300',
+      img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
     },
     {
       name: 'جهاد',
       desc: 'دائما يقومون بعمل جيد وبالوقت المحدد, انا حقا سعيد بهذه التجربة',
-      img: 'https://picsum.photos/200/300',
+      img: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80',
     },
     {
       name: 'مصطفى',
       desc: 'دائما يقومون بعمل جيد وبالوقت المحدد, انا حقا سعيد بهذه التجربة',
-      img: 'https://picsum.photos/200/300',
+      img: 'https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
     },
   ];
 
