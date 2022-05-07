@@ -1,10 +1,11 @@
+/* eslint-disable import/no-unresolved */
 import React from 'react';
 import { Grid, Row, Col } from 'antd';
 import { Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.min.css';
-import 'swiper/swiper.min.css';
-import 'swiper/components/pagination/pagination.min.css';
+import 'swiper/css/bundle';
+import 'swiper/css';
+import 'swiper/css/pagination';
 import QuoteCard from '../QuoteCard';
 import './style.css';
 import CustomTitle from '../CustomTitle';
@@ -43,7 +44,7 @@ function WhatTheySay() {
   return (
     <>
       <Row align="middle" justify="center" className="title-what-says">
-        <Col xs={{ span: 23 }}>
+        <Col xs={{ span: 20 }}>
           <CustomTitle title="ماذا يقولون عملائنا" isLanding />
         </Col>
       </Row>
