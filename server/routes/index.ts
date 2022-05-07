@@ -1,5 +1,7 @@
 import { Router } from 'express';
-import { getCategories, getCategoryServices, getContacts, signup } from '../controllers';
+import {
+  getCategories, getCategoryServices, getContacts, signup,
+} from '../controllers';
 
 const router = Router();
 router.get('/categories', getCategories);

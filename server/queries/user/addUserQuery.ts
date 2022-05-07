@@ -5,10 +5,11 @@ const addUserQuery = (
   email: String,
   phone: number,
   password: String,
+  location: String,
 ) => {
   const sql = {
-    text: 'INSERT INTO users(name, email, phone, password) VALUES ($1,$2,$3,$4) RETURNING *',
-    values: [name, email, phone, password],
+    text: 'INSERT INTO users(name, email, phone, password, location) VALUES ($1,$2,$3,$4,$5) RETURNING *',
+    values: [name, email, phone, password, location],
   };
   return connection.query(sql);
 };
