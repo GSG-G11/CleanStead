@@ -7,6 +7,7 @@ import 'swiper/swiper.min.css';
 import 'swiper/components/pagination/pagination.min.css';
 import QuoteCard from '../QuoteCard';
 import './style.css';
+import CustomTitle from '../CustomTitle';
 
 const { useBreakpoint } = Grid;
 function WhatTheySay() {
@@ -42,25 +43,30 @@ function WhatTheySay() {
   ];
 
   return (
-    <Row align="middle" justify="center">
-      <Col xs={{ span: 23 }}>
-        <Swiper
-          slidesPerView={count}
-          spaceBetween={30}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Pagination]}
-          className="mySwiper"
-        >
-          {quotes.length &&
-            quotes.map((quote) => (
-              <SwiperSlide key={Math.random()}>
-                <QuoteCard quote={quote} />
-              </SwiperSlide>
-            ))}
-        </Swiper>
-      </Col>
+    <Row justify="center" className="what-they-say-section">
+      <Row>
+        <CustomTitle title="الخدمات التي نقدمها" isLanding />
+      </Row>
+      <Row align="middle" justify="center">
+        <Col xs={{ span: 23 }}>
+          <Swiper
+            slidesPerView={count}
+            spaceBetween={30}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[Pagination]}
+            className="mySwiper"
+          >
+            {quotes.length &&
+              quotes.map((quote) => (
+                <SwiperSlide key={Math.random()}>
+                  <QuoteCard quote={quote} />
+                </SwiperSlide>
+              ))}
+          </Swiper>
+        </Col>
+      </Row>
     </Row>
   );
 }
