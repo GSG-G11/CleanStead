@@ -2,8 +2,8 @@ import {
   serverError, clientError,
 } from './errorHandle';
 import { getCategories, getCategoryServices } from './categories';
-import { getContacts } from './contact';
+import { getContacts, addContact } from './contact';
 
 export {
-  serverError, clientError, getCategories, getCategoryServices, getContacts,
+  serverError, clientError, getCategories, getCategoryServices, getContacts, addContact
 };
