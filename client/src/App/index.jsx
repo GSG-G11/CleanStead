@@ -43,8 +43,9 @@ function App() {
             path="/"
             element={<Home categories={categories} loading={loading} />}
           />
-          <Route path="Contact" element={<Description />} />
-          <Route path="/category/:id" element={<Description />} />
+          <Route path="/contact" element={<Description />} />
+          <Route path="/about" element={<Description />} />
+          <Route path="/category" element={<Description />} />
         </Routes>
         <Footer categories={categories} />
       </Layout>
