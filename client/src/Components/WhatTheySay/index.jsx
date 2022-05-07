@@ -12,11 +12,8 @@ import CustomTitle from '../CustomTitle';
 const { useBreakpoint } = Grid;
 function WhatTheySay() {
   const screens = useBreakpoint();
-  console.log('file: index.jsx ~ line 15 ~ WhatTheySay ~ screens', screens);
   let count = 3;
   if (screens.xl) count = 3;
-  // else if (screens.lg) count = 3;
-  // else if (screens.md) count = 3;
   else if (screens.sm) count = 2;
   else if (screens.xs) count = 1;
 
