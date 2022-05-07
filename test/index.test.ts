@@ -2,6 +2,7 @@ import supertest from 'supertest';
 import connection from '../server/database/connection';
 import dbBuild from '../server/database/build';
 import app from '../server/app';
+import { addContactQuery } from '../server/queries';
 
 beforeAll(dbBuild);
 afterAll(() => connection.end());
@@ -63,3 +64,24 @@ describe('Test Get Contacts', () => {
     expect(res.body.data.length).toBe(2);
   });
 });
+
+describe('Test to add Contact', () => {
+  it('should return one contact', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/contact')
+      .send({
+        name: 'Israa',
+        email: 'israa@hotmail.com',
+        message: 'i need more details',
+        phone: 5645,
+        category_id: 1,
+      })
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.status).toBe(201);
+  });
+});
+
+// describe('Test to add contact', () => {
+//   test('Test to add contact', () => addContactQuery( ).then((res) => {console.log(res) }));
+// });
