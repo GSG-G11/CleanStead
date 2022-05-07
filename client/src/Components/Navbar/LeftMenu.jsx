@@ -15,7 +15,7 @@ function LeftMenu({ mode, navItems }) {
 
 LeftMenu.propTypes = {
   mode: PropTypes.string.isRequired,
-  navItems: PropTypes.element.isRequired,
+  navItems: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export default LeftMenu;

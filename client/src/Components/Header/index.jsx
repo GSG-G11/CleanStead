@@ -5,22 +5,18 @@ import './style.css';
 
 const { Title } = Typography;
 
-export default function Header() {
+function Header() {
   return (
     <Row justify="center" align="middle">
       <Col
         xs={{ span: 23 }}
         sm={{ span: 23 }}
-        md={{ span: 21 }}
-        lg={{ span: 20 }}
-        xl={{ span: 18 }}
+        md={{ span: 23 }}
+        lg={{ span: 23 }}
+        xl={{ span: 23 }}
       >
         <div className="header-container">
-          <Image
-            className="header-image"
-            preview={false}
-            src={headerBackground}
-          />
+          <Image alt="header image" preview={false} src={headerBackground} />
           <div className="header-description">
             <Title level={2} className="title">
               اختار يلي بخلصك
@@ -37,3 +33,5 @@ export default function Header() {
     </Row>
   );
 }
+
+export default Header;

@@ -1,27 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
-import { Layout } from 'antd';
+import { Layout, message } from 'antd';
+import { Navbar, Footer } from '../Components';
 import { Home, Category } from '../Pages';
-import { Navbar } from '../Components';
 import '../style/custom-antd.css';
 import './app.css';
 
 function App() {
+  const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const cancelTokenSource = axios.CancelToken.source();
+    setLoading(true);
     axios
       .get('/api/v1/categories', {
         cancelToken: cancelTokenSource.token,
       })
-      .then(({ data }) => {
-        setCategories(data.data);
+      .then(({ data: { data } }) => {
+        setCategories(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+        message.error('حدث خطأ ما');
       });
 
     return () => cancelTokenSource.cancel();
-  }, [categories]);
+  }, []);
 
   return (
     <Router>
@@ -32,9 +39,13 @@ function App() {
           user={{ name: 'Mohammad', role: 'admin' }}
         />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={<Home categories={categories} loading={loading} />}
+          />
           <Route path="/category/:id" element={<Category />} />
         </Routes>
+        <Footer categories={categories} />
       </Layout>
     </Router>
   );

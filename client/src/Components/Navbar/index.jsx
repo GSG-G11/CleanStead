@@ -126,8 +126,7 @@ Navbar.propTypes = {
     name: PropTypes.string.isRequired,
     role: PropTypes.string.isRequired,
   }),
-  categories: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.object))
-    .isRequired,
+  categories: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 Navbar.defaultProps = {
