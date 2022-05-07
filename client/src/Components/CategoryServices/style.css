@@ -21,6 +21,26 @@
   justify-content: center;
   transition: .4s ease-in-out;
 }
+@media (max-width: 768px){
+  .card-title{
+    bottom: -1px;
+    height: 50px;
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 425px){
+  .card-title{
+    bottom: -1px;
+    height: 30px;
+    font-size: 11px !important;
+  }
+}
+@media (min-width: 1650px){
+  .swiper-slide-shadow-left,
+  .swiper-slide-shadow-right{
+    width: auto !important;
+  }
+}
 .swiper {
   width: 100%;
   padding-top: 50px !important;

@@ -116,7 +116,7 @@ VALUES
         'المكتب',
         'ارضيات- مكتب',
         15,
-        'https://nabeeh.net/image?iurl=http://nabeeh.net:9000/service/Office%20cleaning.png',
+        'https://media.istockphoto.com/photos/man-disinfecting-an-office-desk-picture-id1294313698?k=20&m=1294313698&s=612x612&w=0&h=MtvDk5Dpiq8KZsVD2UZWkTL6QVnJj_6tTUwx7RQkbso=',
         1
     ),
     (
