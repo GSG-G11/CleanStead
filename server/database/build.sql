@@ -38,7 +38,7 @@ CREATE TABLE contacts (
   name VARCHAR(50) NOT NULL,
   email VARCHAR(255) NOT NULL,
   message TEXT NOT NULL,
-  phone INT NOT NULL,
+  phone BIGINT NOT NULL,
   category_id INT,
   FOREIGN KEY (category_id) REFERENCES categories(id)
 );
