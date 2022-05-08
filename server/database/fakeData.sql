@@ -95,161 +95,162 @@ VALUES
         'غرفة النوم',
         'ارضيات- سرير',
         20,
-        'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
+        'https://media.istockphoto.com/photos/female-housekeeper-cleaning-floor-with-mop-picture-id1218844911?k=20&m=1218844911&s=612x612&w=0&h=jrjMgYxwElhwhuHz1goIANUziDbW_jfITsQDzuVHCyQ=',
         1
     ),
     (
         'غرفة المعيشة',
         'ارضيات- كنب',
         30,
-        'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        'https://media.istockphoto.com/photos/plastic-bucket-with-cleaning-supplies-in-home-picture-id620730254?k=20&m=620730254&s=612x612&w=0&h=DGy6mtNONlREBGbfhZhZ3H3vrn6B5yFSSRhC8hHhyZ4=',
         1
     ),
     (
         'المطبخ',
         'ارضيات- جلي - تعزيل المطبخ',
         40,
-        'https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80',
+        'https://media.istockphoto.com/photos/hands-in-gloves-disinfecting-kitchen-counter-picture-id1214477617?k=20&m=1214477617&s=612x612&w=0&h=Y0yLYjTF3RdDxJ9LZ9LYFCpV27tVSu7d9cgDQPn5JsQ=',
         1
     ),
     (
         'المكتب',
         'ارضيات- مكتب',
         15,
-        'https://images.unsplash.com/photo-1570126688035-1e6adbd61053?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=374&q=80',
+        'https://media.istockphoto.com/photos/man-disinfecting-an-office-desk-picture-id1294313698?k=20&m=1294313698&s=612x612&w=0&h=MtvDk5Dpiq8KZsVD2UZWkTL6QVnJj_6tTUwx7RQkbso=',
         1
     ),
     (
         'الحمام',
         'ارضيات-بانيو-كلو على بعضو',
         20,
-        'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        'https://media.istockphoto.com/photos/woman-doing-chores-cleaning-bathroom-at-home-picture-id153187215?k=20&m=153187215&s=612x612&w=0&h=isPAjaYT8UpPYIN0I047CPmZPsVgGdfdse6WP9L8l4U=',
         1
     ),
     (
         'الدرج',
         'ارضيات',
         27,
-        'https://images.unsplash.com/photo-1580911498851-4999ad5327b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        'https://media.istockphoto.com/photos/young-woman-in-white-apron-cleaning-stairs-picture-id947729984?k=20&m=947729984&s=612x612&w=0&h=DgKho6E__lc8aRLEL9sjfUABSkIbOtEVcxyPWWBl63s=',
         1
     ),
     (
         'البلكونة',
         'ارضيات',
         15,
-        'https://images.unsplash.com/photo-1560448205-d82bf18b9bcf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
+        'https://media.istockphoto.com/photos/teenage-girl-cleaning-balcony-picture-id1227174030?k=20&m=1227174030&s=612x612&w=0&h=IH7WDdKZwJnHoL9mNGr7JStwvnd7mX649I5md235R4Y=',
         1
     ),
     (
         'سجاد صغير',
         'طول لا يتجاوز 1 متر',
         10,
-        'https://images.unsplash.com/photo-1621700052663-f1170e9b26ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=465&q=80',
+        'https://media.istockphoto.com/photos/woman-using-cordless-vacuum-cleaner-picture-id656204420?k=20&m=656204420&s=612x612&w=0&h=7RWNDIp5KOOuL44bMeQa69Zj9JGpppqtpucTExMj9_s=',
         2
     ),
     (
         'سجاد متوسط',
         'طول ما بين 1 - 2 متر',
         15,
-        'https://images.unsplash.com/photo-1597665863042-47e00964d899?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80',
+        'https://media.istockphoto.com/photos/person-cleaning-carpet-with-vacuum-cleaner-picture-id1146967802?k=20&m=1146967802&s=612x612&w=0&h=9Ms7lEwxSGk_64wpkfMAeoTxL_TDYQ8uuZwJKfgNlWU=',
         2
     ),
     (
         'سجاد كبير',
         'طول اكبر من 2 متر ',
         20,
-        'https://images.unsplash.com/photo-1534889156217-d643df14f14a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80',
+        'https://media.istockphoto.com/photos/steam-cleaning-the-office-carpet-picture-id518333126?k=20&m=518333126&s=612x612&w=0&h=Z9EN51AiD_sX0cQJa494OEfClmvYzzqw6lEFu3v8sYw=',
         2
     ),
     (
         'دراجة نارية',
         '',
         17,
-        'https://images.unsplash.com/photo-1591637333184-19aa84b3e01f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        'https://i.postimg.cc/W3B62gSK/image.jpg',
         3
     ),
     (
         'سيارة خاصة',
         'تنظيف داخلي وخارجي',
         20,
-        'https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80',
+        'https://media.istockphoto.com/photos/worker-washing-red-car-with-sponge-on-a-car-wash-picture-id1287044692?k=20&m=1287044692&s=612x612&w=0&h=8AlrQA3fFW5XN7cI3dT4xu10vG1msxtiMkELCZiEStw=',
         3
     ),
     (
         'شاحنة',
         'تنظيف داخلي وخارجي',
         25,
-        'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
+        'https://media.istockphoto.com/photos/mature-man-washing-his-truck-picture-id483587565?k=20&m=483587565&s=612x612&w=0&h=C2a0jkDRpAFmUwZXxN9RsxfXFNiJBiC6L8Tan74Qo_w=',
         3
     ),
     (
         'باص',
         'تنظيف داخلي وخارجي',
         25,
-        'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
+        'https://media.istockphoto.com/photos/keeping-the-public-safe-picture-id1263884505?k=20&m=1263884505&s=612x612&w=0&h=TkbChVRWhXXMJ2crXw6OUHwLhdV5FsshVAIaOY8r_-0=',
         3
     ),
     (
         'شباك صغير',
         'طوله لا يتجاوز 0.5 متر',
         10,
-        'https://images.unsplash.com/photo-1646578264746-480cc7c7bf6a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c21hbGwlMjB3aW5kb3d8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+        'https://media.istockphoto.com/photos/cleaning-windows-picture-id1264844094?k=20&m=1264844094&s=612x612&w=0&h=aEQy5Ls1kaHj95AK80MMuFvMRz1aXB1erBHPFHTYloQ=',
         5
     ),
     (
         'شباك متوسط',
         'طوله مابين 0.5 - 1.5 متر',
         15,
-        'https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8d2luZG93fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+        'https://media.istockphoto.com/photos/washing-her-aluminium-windows-picture-id1159393458?k=20&m=1159393458&s=612x612&w=0&h=K8Jg_uSm2ptJyTPwcSbNBNJWNaqVtUFzCqBJxE_XucA=',
+
         5
     ),
     (
-        'شباك صغير',
+        'شباك كبير',
         'طوله أكبر من 1.5متر',
         20,
-        'https://images.unsplash.com/photo-1598578273217-940b4e49c8da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFyZ2UlMjB3aW5kb3d8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+        'https://media.istockphoto.com/photos/window-cleaner-using-the-water-fed-pole-system-picture-id480640117?k=20&m=480640117&s=612x612&w=0&h=At-5Sg-vgyvfYiV0POfti1J3bolmYoO7EKhlhGvardE=',
         5
     ),
     (
         'غرفة اجتماعات',
         '',
         10,
-        'https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8b2ZmaWNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+        'https://media.istockphoto.com/photos/business-assistants-preparing-conference-room-picture-id1280207400?k=20&m=1280207400&s=612x612&w=0&h=OdYNBfN3VWLUq9n8Zub4tNXeZk3II90tc8bL5dlCAOY=',
         4
     ),
     (
         'الحمام',
         'ارضيات-بانيو-كلو على بعضو',
         20,
-        'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        'https://media.istockphoto.com/photos/cleaning-door-toilet-handle-at-toilet-with-alcohol-and-tissue-at-and-picture-id1352083541?k=20&m=1352083541&s=612x612&w=0&h=yfbYMoOavEy4jUcccacxHvoTSil3f7bO6rkJOKxO9bM=',
         4
     ),
     (
         'غرفة مكتب شخصية',
         '',
         10,
-        'https://images.unsplash.com/photo-1570126688035-1e6adbd61053?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fG9mZmljZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+        'https://media.istockphoto.com/photos/man-cleaning-the-glass-office-desk-with-rag-picture-id1191081830?k=20&m=1191081830&s=612x612&w=0&h=72KsSArEwC1jAEhnsR3zte86K0wQoPGxO-QiOpsFiCE=',
         4
     ),
     (
         'المطبخ',
         'ارضيات- جلي - تعزيل المطبخ',
         40,
-        'https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80',
+        'https://media.istockphoto.com/photos/woman-cleaning-kitchen-cabinets-with-sponge-and-spray-cleaner-picture-id635801162?k=20&m=635801162&s=612x612&w=0&h=o1FPKcIJH_FW9Sc1ug883lxxFgW0CzA1HpCo7ikw4EU=',
         4
     ),
     (
         'الدرج',
         'ارضيات',
         27,
-        'https://images.unsplash.com/photo-1580911498851-4999ad5327b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        'https://media.istockphoto.com/photos/woman-washes-stairway-at-house-cleaning-service-concept-picture-id1250419227?k=20&m=1250419227&s=612x612&w=0&h=Xg6AFiHAJfJu5a871ol0kBrLbQoyExH6VDmADL4WhSk=',
         4
     ),
     (
         'الممرات',
         'ارضيات',
         27,
-        'https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80',
+        'https://media.istockphoto.com/photos/cleaning-staff-performing-disinfection-and-hygiene-work-in-hospital-picture-id1277547094?k=20&m=1277547094&s=612x612&w=0&h=iOtVD4XRldLX044ubXM55khtMOJ2yEnzmL6lIbiHOAc=',
         4
     );
 

@@ -1,9 +1,11 @@
+/* eslint-disable import/no-unresolved */
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import { Layout, message } from 'antd';
 import { Navbar, Footer } from '../Components';
-import { Home, Description } from '../Pages';
+import { Home, Category, Description } from '../Pages';
+import 'swiper/css/bundle';
 import '../style/custom-antd.css';
 import './app.css';
 
@@ -45,7 +47,10 @@ function App() {
           />
           <Route path="/contact" element={<Description />} />
           <Route path="/about" element={<Description />} />
-          <Route path="/category" element={<Description />} />
+          <Route
+            path="/category/:id"
+            element={<Category categories={categories} />}
+          />
         </Routes>
         <Footer categories={categories} />
       </Layout>
