@@ -12,12 +12,12 @@ const desc = `              هذا النص هو مثال لنص يمكن أن �
 const { Paragraph } = Typography;
 function DescriptionContent({ title, button, description, link }) {
   return (
-    <div className="who-section">
+    <div className="content-section">
       <CustomTitle title={title} />
-      <Paragraph className="who-paragraph">{description}</Paragraph>
+      <Paragraph className="content-paragraph">{description}</Paragraph>
       <Link to={link}>
         <Button
-          className="who-button"
+          className="content-button"
           type="primary"
           shape="round"
           size="large"

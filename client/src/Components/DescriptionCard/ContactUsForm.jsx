@@ -10,7 +10,7 @@ function ContactUsForm() {
 
   return (
     <div>
-      <div className="section">
+      <div className="contact-section">
         <div className="contact-custom-title">
           <Title className="contact-title">تواصل معنا </Title>
           <Image className="imageline" src={linesLeft} preview={false} />
