@@ -70,13 +70,13 @@ describe('Test to register', () => {
       .send({
         name: 'Israa',
         email: 'israa@hotmail.com',
-        phone: 5645,
+        phone: 5645458712,
         password: '123456',
         location: 'Gaza',
       })
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('تم تسجيلك حسابك بنجاح');
+    expect(res.body.message).toBe('تم تسجيل حسابك بنجاح');
   });
 });
 describe('Test to register', () => {
@@ -86,12 +86,13 @@ describe('Test to register', () => {
       .send({
         name: 'Israa',
         email: 'israa403@gmail.com',
-        phone: 5645,
+        phone: 564545871,
         password: '123456',
         location: 'Gaza',
       })
-      .expect(200)
+      .expect(400)
       .expect('Content-Type', /json/);
+      // console.log(res);
     expect(res.body.message).toBe('الإيميل موجود مسبقاً');
   });
 });
