@@ -11,8 +11,7 @@ const signin: RequestHandler = async (req, res, next) => {
   try {
     const {
       email, password,
-    } = req.body;
-    await signinSchema.validate(req.body, { abortEarly: false });
+    } = await signinSchema.validate(req.body, { abortEarly: false });
     const { rowCount, rows: data } = await checkEmailExistsQuery(email);
     if (rowCount === 0) {
       throw new CustomizedError(400, 'ًيوجد خطأ بالإيميل أو كلمة السر');
