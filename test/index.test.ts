@@ -159,3 +159,29 @@ describe('Test to add register', () => {
     expect(res.body.message).toBe('Your email must be a valid email');
   });
 });
+describe('Test to login', () => {
+  it('should return status code 400 and error message for email validation', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/signin')
+      .send({
+        email: 'israa403',
+        password: '1545465',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('Your email must be a valid email');
+  });
+});
+describe('Test to login', () => {
+  it('should return status code 400 and error message for email validation', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/signin')
+      .send({
+        email: 'israahamdi@hotmail.com',
+        password: '1545465412',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('الايميل غير موجودة مسبقاً الرجاء تسجيل حسابك أولاً');
+  });
+});

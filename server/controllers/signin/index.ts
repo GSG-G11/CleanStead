@@ -21,7 +21,7 @@ const signin: RequestHandler = async (req, res, next) => {
     if (!resultComapre) {
       throw new CustomizedError(400, 'يرجى التأكد من كلمة السر ');
     }
-    const token = sign({ id: data[0].id, email: data[0].email }, process.env.SECRET_KEY as string);
+    const token = sign({ id: data[0].id, email }, process.env.SECRET_KEY as string);
     res.cookie('token', token, { httpOnly: true, secure: true }).status(200).json({ message: 'تم تسجيل دخولك بنجاح', status: 200 });
   } catch (error: any) {
     if (error.name === 'ValidationError') {
