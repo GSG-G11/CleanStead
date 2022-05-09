@@ -2,7 +2,6 @@ import supertest from 'supertest';
 import connection from '../server/database/connection';
 import dbBuild from '../server/database/build';
 import app from '../server/app';
-import { addContactQuery } from '../server/queries';
 
 beforeAll(dbBuild);
 afterAll(() => connection.end());
@@ -64,7 +63,70 @@ describe('Test Get Contacts', () => {
     expect(res.body.data.length).toBe(2);
   });
 });
-
+describe('Test to register', () => {
+  it('should return text successfuly message', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/signup')
+      .send({
+        name: 'Israa',
+        email: 'israa@hotmail.com',
+        phone: '5645458712',
+        password: '12345678',
+        location: 'Gaza',
+      })
+      .expect(201)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('تم تسجيل حسابك بنجاح');
+  });
+});
+describe('Test to register', () => {
+  it('should return status code 400 and error message for email exist', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/signup')
+      .send({
+        name: 'Israa',
+        email: 'israa403@gmail.com',
+        phone: '5645458714',
+        password: '1234567548',
+        location: 'Gaza',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('الإيميل موجود مسبقاً');
+  });
+});
+describe('Test to register', () => {
+  it('should return status code 400 and error message for email validation', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/signup')
+      .send({
+        name: 'Israa',
+        email: 'israa403',
+        phone: '564545871',
+        password: '123456',
+        location: 'Gaza',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('Your email must be a valid email');
+  });
+});
+describe('Test to register', () => {
+  it('should return status code 400 and error message for phone validation', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/signup')
+      .send({
+        name: 'Israa',
+        email: 'israa403@gmail.com',
+        phone: '5645471',
+        password: '123456',
+        location: 'Gaza',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('your phone number must be 10 digits');
+  });
+});
 describe('Test to add Contact', () => {
   it('should return one contact', async () => {
     const res = await supertest(app)
