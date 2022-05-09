@@ -14,7 +14,6 @@ const signin: RequestHandler = async (req, res, next) => {
     } = req.body;
     await signinSchema.validate(req.body, { abortEarly: false });
     const { rowCount, rows: data } = await checkEmailExistsQuery(email);
-    console.log(data);
     if (rowCount === 0) {
       throw new CustomizedError(400, 'الايميل غير موجودة مسبقاً الرجاء تسجيل حسابك أولاً');
     }
