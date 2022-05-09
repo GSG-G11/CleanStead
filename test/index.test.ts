@@ -73,7 +73,7 @@ describe('Test to add Contact', () => {
         name: 'Israa',
         email: 'israa@hotmail.com',
         message: 'i need more details',
-        phone: "101546545",
+        phone: '1015465455',
         category_id: 1,
       })
       .expect(201)
