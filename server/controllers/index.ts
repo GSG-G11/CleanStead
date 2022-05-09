@@ -8,5 +8,13 @@ import logout from './logout';
 import checkAuth from './middlewares/auth';
 
 export {
-  serverError, clientError, getCategories, getCategoryServices, getContacts, addContact, signup,logout,checkAuth,
+  serverError,
+  clientError,
+  getCategories,
+  getCategoryServices,
+  getContacts,
+  addContact,
+  signup,
+  logout,
+  checkAuth,
 };
