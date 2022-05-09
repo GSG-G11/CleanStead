@@ -15,12 +15,7 @@
  .contact-title {
     margin: 0.2em 0.2em;
  }
- .contact-form {
-width: 500px;
-margin: 0px 240px 20px 340px;
-padding-right: 34px;
 
- }
  .contact-label{
    font-size: 16px;
    margin: 0px 330px 4453px 1530px;
@@ -33,13 +28,10 @@ padding-right: 34px;
     height: 30px;
     background-color: rgb(78, 173, 228);
     color: rgb(255, 255, 255);
-    border-color: rgb(78, 173, 228);
     border-radius: 5px;
     cursor: pointer;
 }
-.contact-input{
-   width: 400px;
-   height: 30px;
-   margin: 2220px 022px 4222px 2210px;
-   border-radius: 5px;
+
+.contact-label .ant-input, .contact-label .ant-select-selector {
+    border: 1px solid #E6E6E6 !important;
 }

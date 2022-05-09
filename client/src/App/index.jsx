@@ -49,7 +49,7 @@ function App() {
           <Route path="/about" element={<Description page="about" />} />
           <Route
             path="/category/:id"
-            element={<Category categories={categories} />}
+            element={<Description page="category" categories={categories} />}
           />
         </Routes>
         <Footer categories={categories} />

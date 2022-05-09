@@ -21,7 +21,7 @@ function ContactUsForm() {
           layout="vertical"
           autoComplete="off"
         >
-          <Form.Item className="zuhdi" label="الخدمة">
+          <Form.Item className="contact-label" label="الخدمة">
             <Select className="contact-input" placeholder="اسم الخدمة">
               <Select.Option value="demo">تنظيف المنازل</Select.Option>
             </Select>
@@ -29,7 +29,7 @@ function ContactUsForm() {
           <Row>
             <Col span={12}>
               <Form.Item name="name" className="contact-label" label="الاسم">
-                <Input className="contact-input" placeholder="الاسم" />
+                <Input placeholder="الاسم" />
               </Form.Item>
             </Col>
             <Col span={12}>
