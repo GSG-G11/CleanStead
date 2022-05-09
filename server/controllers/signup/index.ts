@@ -18,7 +18,6 @@ const signup: RequestHandler = async (req, res, next) => {
     }
     const hashedPassword = await hash(password, 10);
     const { rows: data } = await addUserQuery(name, email, phone, hashedPassword, location);
-    console.log(data)
     const token = sign({ id: data[0].id, email: data[0].email }, process.env.SECRET_KEY as string);
     res.cookie('token', token, { httpOnly: true, secure: true }).status(201).json({ message: 'تم تسجيل حسابك بنجاح', status: 201 });
   } catch (error: any) {

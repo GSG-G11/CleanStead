@@ -111,19 +111,19 @@ describe('Test to register', () => {
     expect(res.body.message).toBe('Your email must be a valid email');
   });
 });
-// describe('Test to register', () => {
-//   it('should return status code 400 and error message for phone validation', async () => {
-//     const res = await supertest(app)
-//       .post('/api/v1/signup')
-//       .send({
-//         name: 'Israa',
-//         email: 'israa403@gmail.com',
-//         phone: '5645471',
-//         password: '123456',
-//         location: 'Gaza',
-//       })
-//       .expect(400)
-//       .expect('Content-Type', /json/);
-//     expect(res.body.message).toBe('Your phone number must be 10 digits at least');
-//   });
-// });
+describe('Test to register', () => {
+  it('should return status code 400 and error message for phone validation', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/signup')
+      .send({
+        name: 'Israa',
+        email: 'israa403@gmail.com',
+        phone: '5645471',
+        password: '123456',
+        location: 'Gaza',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('your phone number must be 10 digits');
+  });
+});
