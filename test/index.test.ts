@@ -79,6 +79,19 @@ describe('Test to register', () => {
     expect(res.body.message).toBe('تم تسجيل حسابك بنجاح');
   });
 });
+describe('Test to login', () => {
+  it('should return text successfuly message', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/signin')
+      .send({
+        email: 'israa@hotmail.com',
+        password: '12345678',
+      })
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('تم تسجيل دخولك بنجاح');
+  });
+});
 describe('Test to register', () => {
   it('should return status code 400 and error message for email exist', async () => {
     const res = await supertest(app)
@@ -182,6 +195,6 @@ describe('Test to login', () => {
       })
       .expect(400)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('الايميل غير موجودة مسبقاً الرجاء تسجيل حسابك أولاً');
+    expect(res.body.message).toBe('ًيوجد خطأ بالإيميل أو كلمة السر');
   });
 });
