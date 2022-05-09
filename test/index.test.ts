@@ -73,11 +73,27 @@ describe('Test to add Contact', () => {
         name: 'Israa',
         email: 'israa@hotmail.com',
         message: 'i need more details',
-        phone: 5645,
+        phone: "101546545",
         category_id: 1,
       })
       .expect(201)
       .expect('Content-Type', /json/);
     expect(res.body.status).toBe(201);
+  });
+});
+describe('Test to add register', () => {
+  it('should return status code 400 and error message for email validation', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/contact')
+      .send({
+        name: 'Israa',
+        email: 'israa403',
+        message: 'i need more details',
+        phone: 5645,
+        category_id: 1,
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('Your email must be a valid email');
   });
 });

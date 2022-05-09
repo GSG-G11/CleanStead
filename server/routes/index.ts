@@ -6,6 +6,5 @@ import {
 const router = Router();
 router.get('/categories', getCategories);
 router.get('/categories/:id/services', getCategoryServices);
-router.get('/contact', getContacts);
-router.post('/contact', addContact);
+router.route('/contact').get(getContacts).post(addContact);
 export default router;
