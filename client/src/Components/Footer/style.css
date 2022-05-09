@@ -1,6 +1,6 @@
 .footer-row{
   background-color: #E5F7FD;
-  width: 86vw;
+  width: calc(100vw - 70px);
   margin: 40px auto 0 !important;
   padding: 30px 30px 0;
   border-radius: 25px 25px 0 0;
