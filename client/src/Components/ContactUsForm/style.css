@@ -1,27 +1,20 @@
 .contact-image{
     width: 450px;
     height: 450px;
-    margin: 45px 150px 20px 200px;
-    /* display: block; */
 }
 .contact-custom-title {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 35px 0px 0px 450px;
     font-size: 25px;
+    margin-left: 430px;
+    margin-bottom: 20px;
 
  }
  .contact-title {
     margin: 0.2em 0.2em;
  }
 
- .contact-label{
-   font-size: 16px;
-   margin: 0px 330px 4453px 1530px;
-   color: rgb(201, 51, 51);
-
- } 
 .contact-button{
     margin: 10px 20px 20px 370px;
     width: 130px;

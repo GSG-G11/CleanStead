@@ -1,28 +1,18 @@
 .description-image {
   width: 450px;
-  height: 550px;
+  height: 450px;
 }
-.contact-custom-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.description-custom-title {
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
   font-size: 25px;
+  padding-left: 200px;
 }
-.contact-title {
+.description-title {
   margin: 0.2em 0.2em;
 }
 
-
-.contact-button {
-  margin: 10px 20px 20px 370px;
-  width: 130px;
-  height: 30px;
-  background-color: rgb(78, 173, 228);
-  color: rgb(255, 255, 255);
-  border-color: rgb(78, 173, 228);
-  border-radius: 5px;
-  cursor: pointer;
-}
 
 .custom-title {
   display: flex;
@@ -33,14 +23,14 @@
   margin: 0.2em 0.2em;
 }
 
-.content-paragraph {
-  width: 300px;
+.description-paragraph {
+  width: 320px;
   color: rgb(114, 114, 114);
-  font-size: 16px;
-  margin: 0px 0px 20px 20px;
+  font-size: 17px;
+  margin: 20px 0px 0px 210px;
 }
-.content-button {
-  margin: 30px 10px 20px 50px;
+.description-button {
+  margin: 30px 10px 20px 380px;
   width: 130px;
   height: 30px;
   background-color: rgb(255, 255, 255);

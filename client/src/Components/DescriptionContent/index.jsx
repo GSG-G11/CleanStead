@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Typography, Button } from 'antd';
+import { Typography, Button, Image, Row, Col } from 'antd';
 import { useParams, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import CustomTitle from '../CustomTitle';
 import Services from '../CategoryServices/Services';
+import Img from '../../Assets/images/img1.png';
 
 import './style.css';
 
@@ -18,47 +19,76 @@ function DescriptionContent({ page, categories }) {
     button: 'تواصل معنا',
     description: desc,
     link: '/contact',
+    image: '',
   });
 
   const { id } = useParams();
 
   useEffect(() => {
     if (page === 'category') {
-      categories.filter((category) => {
-        console.log(category);
-        return category.id === +id ? setData(category) : false;
-      });
-      console.log(data);
+      categories.filter((category) =>
+        category.id === +id ? setData(category) : false
+      );
     }
   });
 
   return (
-    <div className="content-section">
-      <CustomTitle title={data.name} />
-      <Paragraph className="content-paragraph">{data.description}</Paragraph>
-      {page === 'category' ? (
-        <Link to="/book">
-          <Button
-            className="content-button"
-            type="primary"
-            shape="round"
-            size="large"
-          >
-            احجز الان
-          </Button>
-        </Link>
-      ) : (
-        <Link to="/book">
-          <Button
-            className="content-button"
-            type="primary"
-            shape="round"
-            size="large"
-          >
-            {data.button}
-          </Button>
-        </Link>
-      )}
+    <div>
+      <Row>
+        <Col span={12}>
+          <div className="description-section">
+            <CustomTitle
+              className="description-custom-title"
+              title={data.name}
+            />
+            <Paragraph className="description-paragraph">
+              {data.description}
+            </Paragraph>
+            {page === 'category' ? (
+              <Link to="/book">
+                <Button
+                  className="description-button"
+                  type="primary"
+                  shape="round"
+                  size="large"
+                >
+                  احجز الان
+                </Button>
+              </Link>
+            ) : (
+              <Link to="/book">
+                <Button
+                  className="description-button"
+                  type="primary"
+                  shape="round"
+                  size="large"
+                >
+                  {data.button}
+                </Button>
+              </Link>
+            )}
+          </div>
+        </Col>
+
+        <Col span={12}>
+          {page === 'category' ? (
+            <Image
+              preview={false}
+              className="description-image"
+              width={450}
+              src={data.image}
+            />
+          ) : (
+            <Image
+              preview={false}
+              className="description-image"
+              width={450}
+              src={Img}
+            />
+          )}
+        </Col>
+      </Row>
+
       {page === 'category' && <Services categories={categories} />}
     </div>
   );
