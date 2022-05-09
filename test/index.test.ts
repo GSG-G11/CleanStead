@@ -76,7 +76,7 @@ describe('Test to add Contact', () => {
         phone: 5645,
         category_id: 1,
       })
-      .expect(200)
+      .expect(201)
       .expect('Content-Type', /json/);
     expect(res.body.status).toBe(201);
   });
