@@ -12,7 +12,7 @@ CREATE TABLE users (
   name VARCHAR(100) NOT NULL,
   email VARCHAR(255) NOT NULL UNIQUE,
   password VARCHAR(255) NOT NULL,
-  phone BIGINT NOT NULL,
+  phone VARCHAR(30) NOT NULL,
   location TEXT NOT NULL
 );
 

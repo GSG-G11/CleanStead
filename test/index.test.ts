@@ -74,13 +74,45 @@ describe('Test to register', () => {
         password: '123456',
         location: 'Gaza',
       })
-      .expect(200)
+      .expect(201)
       .expect('Content-Type', /json/);
     expect(res.body.message).toBe('تم تسجيل حسابك بنجاح');
   });
 });
 describe('Test to register', () => {
-  it('should return user exist', async () => {
+  it('should return status code 400 and error message for email exist', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/signup')
+      .send({
+        name: 'Israa',
+        email: 'israa403@gmail.com',
+        phone: 5645458714,
+        password: '1234567548',
+        location: 'Gaza',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('الإيميل موجود مسبقاً');
+  });
+});
+describe('Test to register', () => {
+  it('should return status code 400 and error message for email validation', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/signup')
+      .send({
+        name: 'Israa',
+        email: 'israa403',
+        phone: 564545871,
+        password: '123456',
+        location: 'Gaza',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('Your email must be a valid email');
+  });
+});
+describe('Test to register', () => {
+  it('should return status code 400 and error message for phone validation', async () => {
     const res = await supertest(app)
       .post('/api/v1/signup')
       .send({
@@ -92,7 +124,6 @@ describe('Test to register', () => {
       })
       .expect(400)
       .expect('Content-Type', /json/);
-      // console.log(res);
-    expect(res.body.message).toBe('الإيميل موجود مسبقاً');
+    expect(res.body.message).toBe('Your phone number must be 10 digits at least');
   });
 });

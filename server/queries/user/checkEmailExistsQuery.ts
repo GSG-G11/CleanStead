@@ -4,7 +4,7 @@ const checkEmailExistsQuery = (
   email: String,
 ) => {
   const sql = {
-    text: 'select * from users where email = $1',
+    text: 'select id from users where email = $1',
     values: [email],
   };
   return connection.query(sql);

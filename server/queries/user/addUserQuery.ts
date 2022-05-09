@@ -3,7 +3,7 @@ import connection from '../../database/connection';
 const addUserQuery = (
   name: String,
   email: String,
-  phone: number,
+  phone: String,
   password: String,
   location: String,
 ) => {
