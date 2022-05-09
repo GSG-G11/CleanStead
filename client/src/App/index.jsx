@@ -45,8 +45,8 @@ function App() {
             path="/"
             element={<Home categories={categories} loading={loading} />}
           />
-          <Route path="/contact" element={<Description />} />
-          <Route path="/about" element={<Description />} />
+          <Route path="/contact" element={<Description page="contact" />} />
+          <Route path="/about" element={<Description page="about" />} />
           <Route
             path="/category/:id"
             element={<Category categories={categories} />}
