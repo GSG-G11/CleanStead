@@ -1,6 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Comment, Image, Row, Col, Typography } from 'antd';
+import CustomTitle from '../CustomTitle';
 import img from '../../Assets/images/img.png';
 import support from '../../Assets/images/support.png';
 import discounts from '../../Assets/images/discounts.png';
@@ -12,6 +13,8 @@ const { Title } = Typography;
 function WhyUs() {
   return (
     <div className="container">
+      <CustomTitle title="الخدمات التي نقدمها" isLanding />
+
       <Row>
         <Col xs={0} sm={0} md={1} lg={2} xl={4} xxl={6} />
         <Col xs={24} sm={24} md={11} lg={10} xl={8} xxl={6}>
