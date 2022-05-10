@@ -31,6 +31,22 @@ function DescriptionContent({ page, categories }) {
       );
     }
   });
+  useEffect(() => {
+    if (page === 'category') {
+      categories.filter((category) =>
+        category.id === +id ? setData(category) : false
+      );
+    } else {
+      setData({
+        name: 'من نحن',
+        button: 'تواصل معنا',
+        description: desc,
+        link: '/contact',
+        image: '',
+      });
+    }
+  }, [page]);
+
 
   return (
     <div>
