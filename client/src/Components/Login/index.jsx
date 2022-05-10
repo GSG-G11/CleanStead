@@ -1,14 +1,22 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input, Button } from 'antd';
-import { MailOutlined, LockOutlined } from '@ant-design/icons';
+import { Form, Input, Button, message } from 'antd';
+import { MailOutlined, LockOutlined, MessageTwoTone } from '@ant-design/icons';
 
 function Login({ setIsOpen }) {
   const onFinish = ({ email, password }) => {
     const userInfoLogin = { email, password };
     console.log('userInfoLogin', userInfoLogin);
-    setIsOpen(false);
+    axios
+      .post('/api/v1/login', { email, password })
+      .then(({ data }) => {
+        console.log('data', data);
+        setIsOpen(false);
+      })
+      .catch(() => {
+        message.error('حدث خطأ ما');
+      });
   };
   return (
     <div>
