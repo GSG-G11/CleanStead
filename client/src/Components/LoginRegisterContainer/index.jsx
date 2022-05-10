@@ -17,7 +17,7 @@ function LoginRegisterContainer({ isOpen, setIsOpen }) {
       title=" من فضلك قم بتسجيل الدخول للاستمرار "
       visible={isOpen}
       onCancel={handleCancel}
-      width={350}
+      width={430}
     >
       <Tabs defaultActiveKey="1">
         <TabPane tab="إنشاء حساب" key="1">
