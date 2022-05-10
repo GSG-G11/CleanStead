@@ -1,11 +1,19 @@
 BEGIN;
 
 DROP TABLE IF EXISTS users,
+admins,
 categories,
 services,
 contacts,
 appoinments,
 services_appoinments CASCADE;
+
+CREATE TABLE admins (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL
+);
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
@@ -50,6 +58,7 @@ CREATE TABLE appoinments (
   creation_time TIMESTAMP NOT NULL,
   price INT NOT NULL,
   user_id INT,
+  status VARCHAR(50) DEFAULT 'Pending',
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
 

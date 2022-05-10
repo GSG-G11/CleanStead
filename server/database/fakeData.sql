@@ -254,6 +254,15 @@ VALUES
         4
     );
 
+INSERT INTO
+    admins(name, email, password)
+VALUES
+    (
+        'admin',
+        'admin@gmail.com',
+        '@admin123'
+    );
+
 -- INSERT INTO
 --     appoinments(
 --         date,
