@@ -1,3 +1,4 @@
 import getContacts from './getContacts';
+import addContact from './addContact';
 
-export { getContacts };
+export { getContacts, addContact };
