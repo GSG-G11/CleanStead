@@ -76,7 +76,7 @@ function Register({ setIsOpen }) {
               required: true,
               message: ' كلمة السر للمستخدم مطلوبة',
             },
-            { min: 6, message: 'يجب ادخال كلمة السر  على الاقل 6 أحرف' },
+            { min: 8, message: 'يجب ادخال كلمة السر  على الاقل 8 أحرف' },
           ]}
           hasFeedback
         >
