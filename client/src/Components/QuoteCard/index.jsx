@@ -13,7 +13,7 @@ function QuoteCard({ quote: { name, desc, img } }) {
         width={120}
         height={120}
         src={img}
-        alt="person-img"
+        alt="person image"
         className="person-img"
       />
       <div className="quote-words">

@@ -1,5 +1,4 @@
 import React from 'react';
-import 'antd/dist/antd.css';
 import { Comment, Image, Row, Col, Typography } from 'antd';
 import img from '../../Assets/images/img.png';
 import support from '../../Assets/images/support.png';

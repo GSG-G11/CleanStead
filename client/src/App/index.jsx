@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import { Layout, message } from 'antd';
-import { Navbar, Footer } from '../Components';
+import { Navbar, OurFooter } from '../Components';
 import { Home, Category } from '../Pages';
 import '../style/custom-antd.css';
 import './app.css';
+
+const { Header, Footer, Content } = Layout;
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -32,20 +34,26 @@ function App() {
 
   return (
     <Router>
-      <Layout>
-        <Navbar
-          isLogged={false}
-          categories={categories}
-          user={{ name: 'Mohammad', role: 'admin' }}
-        />
-        <Routes>
-          <Route
-            path="/"
-            element={<Home categories={categories} loading={loading} />}
+      <Layout className="page--layout">
+        <Header>
+          <Navbar
+            isLogged={false}
+            categories={categories}
+            user={{ name: 'Mohammad', role: 'admin' }}
           />
-          <Route path="/category/:id" element={<Category />} />
-        </Routes>
-        <Footer categories={categories} />
+        </Header>
+        <Content className="page--content">
+          <Routes>
+            <Route
+              path="/"
+              element={<Home categories={categories} loading={loading} />}
+            />
+            <Route path="/category/:id" element={<Category />} />
+          </Routes>
+        </Content>
+        <Footer>
+          <OurFooter categories={categories} />
+        </Footer>
       </Layout>
     </Router>
   );
