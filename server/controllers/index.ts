@@ -5,6 +5,7 @@ import { getCategories, getCategoryServices } from './categories';
 import { getContacts, addContact } from './contact';
 import signup from './signup';
 import signin from './signin';
+import { postService } from './services';
 
 export {
   serverError,
@@ -14,4 +15,5 @@ export {
   getContacts, addContact,
   signup,
   signin,
+  postService,
 };

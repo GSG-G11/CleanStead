@@ -198,3 +198,52 @@ describe('Test to login', () => {
     expect(res.body.message).toBe('ًيوجد خطأ بالإيميل أو كلمة السر');
   });
 });
+
+describe('Test post service', () => {
+  it('should return status 201', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/services')
+      .send({
+        name: 'test',
+        description: 'test',
+        price: 10,
+        image: 'ka;hkjdgh;askdh',
+        category_id: 1,
+      })
+      .expect(201)
+      .expect('Content-Type', /json/);
+    expect(res.body.status).toBe(201);
+  });
+});
+describe('Test post service', () => {
+  it('should return status 201 and text successfuly message', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/services')
+      .send({
+        name: 'test',
+        description: 'test',
+        price: 10,
+        image: 'ka;hkjdgh;askdh',
+        category_id: 1,
+      })
+      .expect(201)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('تم إضافة الخدمة بنجاح');
+  });
+});
+describe('Test post service', () => {
+  it('should return status code 400 and error message for price validation', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/services')
+      .send({
+        name: 'test',
+        description: 'test',
+        price: 0,
+        image: 'ka;hkjdgh;askdh',
+        category_id: 1,
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('Price must be large than 0');
+  });
+});
