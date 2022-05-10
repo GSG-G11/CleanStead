@@ -2,14 +2,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Input, Button, message } from 'antd';
-import { MailOutlined, LockOutlined, MessageTwoTone } from '@ant-design/icons';
+import { MailOutlined, LockOutlined } from '@ant-design/icons';
 
 function Login({ setIsOpen }) {
   const onFinish = ({ email, password }) => {
     const userInfoLogin = { email, password };
     console.log('userInfoLogin', userInfoLogin);
     axios
-      .post('/api/v1/login', { email, password })
+      .post('/api/v1/signin', { email, password })
       .then(({ data }) => {
         console.log('data', data);
         setIsOpen(false);

@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import {
   UserOutlined,
   MailOutlined,
@@ -20,7 +20,15 @@ function Register({ setIsOpen }) {
       location,
     };
     console.log('userInfoRegister', userInfoRegister);
-    setIsOpen(false);
+    axios
+      .post('/api/v1/signup', { name, email, phone, password, location })
+      .then(({ data }) => {
+        console.log('data', data);
+        setIsOpen(false);
+      })
+      .catch(() => {
+        message.error('حدث خطأ ما');
+      });
   };
   return (
     <div>
@@ -61,6 +69,24 @@ function Register({ setIsOpen }) {
           />
         </Form.Item>
         <Form.Item
+          label="كلمة السر"
+          name="password"
+          rules={[
+            {
+              required: true,
+              message: ' كلمة السر للمستخدم مطلوبة',
+            },
+            { min: 6, message: 'يجب ادخال كلمة السر  على الاقل 6 أحرف' },
+          ]}
+          hasFeedback
+        >
+          <Input.Password
+            placeholder="ادخل كلمة المرور"
+            className="input"
+            prefix={<LockOutlined className="icon-style" />}
+          />
+        </Form.Item>
+        <Form.Item
           label="رقم الجوال"
           name="phone"
           rules={[
@@ -73,7 +99,7 @@ function Register({ setIsOpen }) {
           hasFeedback
         >
           <Input
-            type="number"
+            type="tel"
             placeholder=" ادخل رقم الجوال"
             className="input"
             prefix={<PhoneOutlined className="icon-style" rotate={90} />}
@@ -94,24 +120,6 @@ function Register({ setIsOpen }) {
             placeholder=" ادخل العنوان"
             className="input"
             prefix={<HomeOutlined className="icon-style" />}
-          />
-        </Form.Item>
-        <Form.Item
-          label="كلمة السر"
-          name="password"
-          rules={[
-            {
-              required: true,
-              message: ' كلمة السر للمستخدم مطلوبة',
-            },
-            { min: 6, message: 'يجب ادخال كلمة السر  على الاقل 6 أحرف' },
-          ]}
-          hasFeedback
-        >
-          <Input.Password
-            placeholder="ادخل كلمة المرور"
-            className="input"
-            prefix={<LockOutlined className="icon-style" />}
           />
         </Form.Item>
         <Form.Item>
