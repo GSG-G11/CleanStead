@@ -1,9 +1,11 @@
+/* eslint-disable import/no-unresolved */
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import { Layout, message } from 'antd';
 import { Navbar, OurFooter } from '../Components';
 import { Home, Category } from '../Pages';
+import 'swiper/css/bundle';
 import '../style/custom-antd.css';
 import './app.css';
 

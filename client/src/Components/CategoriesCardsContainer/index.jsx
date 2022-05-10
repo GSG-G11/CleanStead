@@ -39,11 +39,13 @@ CategoriesCardsContainer.defaultProps = {
 };
 CategoriesCardsContainer.propTypes = {
   loading: PropTypes.bool,
-  categories: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    description: PropTypes.string,
-    image: PropTypes.string,
-  })).isRequired,
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      description: PropTypes.string,
+      image: PropTypes.string,
+    })
+  ).isRequired,
 };
 export default CategoriesCardsContainer;
