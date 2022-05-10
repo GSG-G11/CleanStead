@@ -34,7 +34,9 @@ function DescriptionContent({ page, categories }) {
 
   return (
     <div>
-      <Row>
+      <Row justify="center" 
+      align="center"
+      gutter={[0, 30]}>
         <Col span={12}>
           <div className="description-section">
             <CustomTitle
