@@ -12,7 +12,7 @@ const { Title } = Typography;
 function WhyUs() {
   return (
     <div className="container">
-      <CustomTitle title="الخدمات التي نقدمها" isLanding />
+      <CustomTitle title="لماذا تختارنا" isLanding />
 
       <Row>
         <Col xs={0} sm={0} md={1} lg={2} xl={4} xxl={6} />
