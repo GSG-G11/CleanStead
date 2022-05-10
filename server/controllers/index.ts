@@ -6,6 +6,7 @@ import { getContacts, addContact } from './contact';
 import signup from './signup';
 import logout from './logout';
 import checkAuth from './middlewares/auth';
+import signin from './signin';
 
 export {
   serverError,
@@ -17,4 +18,5 @@ export {
   signup,
   logout,
   checkAuth,
+  signin,
 };
