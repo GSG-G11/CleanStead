@@ -1,5 +1,3 @@
-import Home from './Home';
-import Description from './Description';
-import Category from './Category';
-
-export { Home, Description, Category };
+export { default as Home } from './Home';
+export { default as Category } from './Category';
+export { default as Description } from './Description';
