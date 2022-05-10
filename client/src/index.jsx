@@ -6,7 +6,7 @@ import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ConfigProvider locale={ArEg}>
+  <ConfigProvider direction="rtl" locale={ArEg}>
     <App />
   </ConfigProvider>
 );

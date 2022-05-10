@@ -25,7 +25,7 @@ const IconFont = createFromIconfontCN({
 
 const { Title, Paragraph, Text } = Typography;
 
-function Footer({ categories }) {
+function OurFooter({ categories }) {
   return (
     <Row
       justify="space-between"
@@ -136,7 +136,8 @@ function Footer({ categories }) {
     </Row>
   );
 }
-Footer.propTypes = {
+
+OurFooter.propTypes = {
   categories: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
@@ -146,4 +147,5 @@ Footer.propTypes = {
     })
   ).isRequired,
 };
-export default Footer;
+
+export default OurFooter;
