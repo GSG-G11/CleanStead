@@ -27,4 +27,6 @@
 
 .contact-label .ant-input, .contact-label .ant-select-selector {
     border: 1px solid #E6E6E6 !important;
+    border-radius: 5px !important;
+    width: 100% !important;
 }

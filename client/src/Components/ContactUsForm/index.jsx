@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Form, Input, Image, Col, Row, Select, Typography, Button } from 'antd';
-import { Link } from 'react-router-dom';
 import linesLeft from '../../Assets/images/linesLeft.svg';
 import './style.css';
 import Img from '../../Assets/images/img1.png';
@@ -9,12 +9,6 @@ function ContactUsForm({ categories }) {
   const [form] = Form.useForm();
   const Title = Typography;
 
-  // const categoriesMnu = () => (
-  //     items={categories.map(({ id, name }) => ({
-  //       key: id,
-  //       label: <Link to={`/category/${id}`}>{name}</Link>,
-  //     }))}
-  // );
   return (
     <Row>
       <Col span={12}>
@@ -31,7 +25,15 @@ function ContactUsForm({ categories }) {
           >
             <Form.Item className="contact-label" label="الخدمة">
               <Select className="contact-input" placeholder="اسم الخدمة">
-                <Select.Option value="demo">تنظيف المنازل</Select.Option>
+                {categories.map(({ id, name }) => (
+                  <Select.Option
+                    key={id}
+                    to={`/category/${id}`}
+                    className="categores-list"
+                  >
+                    {name}
+                  </Select.Option>
+                ))}
               </Select>
             </Form.Item>
             <Row>
@@ -86,16 +88,17 @@ function ContactUsForm({ categories }) {
                 placeholder="اكتب رسالتك هنا.."
               />
             </Form.Item>
-            <Link to="/">
-              <Button
-                className="contact-button"
-                type="primary"
-                shape="round"
-                size="large"
-              >
-                ارسل
-              </Button>
-            </Link>
+            <Button
+              className="contact-button"
+              type="primary"
+              shape="round"
+              size="large"
+              onClick={() => {
+                form.resetFields();
+              }}
+            >
+              ارسل
+            </Button>
           </Form>
         </div>
       </Col>
@@ -111,5 +114,14 @@ function ContactUsForm({ categories }) {
     </Row>
   );
 }
-
+ContactUsForm.propTypes = {
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      description: PropTypes.string,
+      image: PropTypes.string,
+    })
+  ).isRequired,
+};
 export default ContactUsForm;

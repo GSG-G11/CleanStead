@@ -44,18 +44,7 @@ function DescriptionContent({ page, categories }) {
             <Paragraph className="description-paragraph">
               {data.description}
             </Paragraph>
-            {page === 'category' ? (
-              <Link to="/book">
-                <Button
-                  className="description-button"
-                  type="primary"
-                  shape="round"
-                  size="large"
-                >
-                  احجز الان
-                </Button>
-              </Link>
-            ) : (
+            {page === 'about' ? (
               <Link to="/book">
                 <Button
                   className="description-button"
@@ -66,24 +55,35 @@ function DescriptionContent({ page, categories }) {
                   {data.button}
                 </Button>
               </Link>
+            ) : (
+              <Link to="/book">
+                <Button
+                  className="description-button"
+                  type="primary"
+                  shape="round"
+                  size="large"
+                >
+                  احجز الان
+                </Button>
+              </Link>
             )}
           </div>
         </Col>
 
         <Col span={12}>
-          {page === 'category' ? (
+          {page === 'about' ? (
             <Image
               preview={false}
               className="description-image"
               width={450}
-              src={data.image}
+              src={Img}
             />
           ) : (
             <Image
               preview={false}
               className="description-image"
               width={450}
-              src={Img}
+              src={data.image}
             />
           )}
         </Col>

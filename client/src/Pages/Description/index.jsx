@@ -11,7 +11,7 @@ function Description({ page, categories }) {
       style={{ marginTop: '50px' }}
     >
       {page === 'contact' ? (
-        <ContactUsForm />
+        <ContactUsForm categories={categories} />
       ) : (
         <DescriptionContent page={page} categories={categories} />
       )}

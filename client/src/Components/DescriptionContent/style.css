@@ -3,34 +3,21 @@
   height: 450px;
 }
 .description-custom-title {
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
-  font-size: 25px;
+  font-size: 25px ;
   padding-left: 200px;
 }
 .description-title {
   margin: 0.2em 0.2em;
 }
-
-
-.custom-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.title {
-  margin: 0.2em 0.2em;
-}
-
 .description-paragraph {
   width: 320px;
   color: rgb(114, 114, 114);
   font-size: 17px;
-  margin: 20px 0px 0px 210px;
+  line-height: 1.5;
+  margin: 0.2em 0.2em;
 }
 .description-button {
-  margin: 30px 10px 20px 380px;
+  margin: 30px 10px 20px 80px;
   width: 130px;
   height: 30px;
   background-color: rgb(255, 255, 255);
