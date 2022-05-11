@@ -1,20 +1,20 @@
 import { RequestHandler } from 'express';
-import { getCategoryServicesQuery } from '../../queries';
+import { deleteServiceQuery } from '../../queries';
 import { idSchema } from '../../validation';
 import { CustomizedError } from '../../utils';
 
-const getCategoryServices: RequestHandler = async (req, res, next) => {
+const deleteService: RequestHandler = async (req, res, next) => {
   const { id } = req.params;
 
   try {
     await idSchema.validate({ id }, { abortEarly: false });
-    const { rows, rowCount } = await getCategoryServicesQuery(id as any);
+    const { rowCount } = await deleteServiceQuery(id as any);
     if (!rowCount) {
       return res.status(404).json({
-        message: 'There is no category with this Id',
+        message: 'There is no service with this Id',
       });
     }
-    return res.json({ message: 'Successfully retrieved services', status: 200, data: rows });
+    return res.json({ message: 'Service Delete Successfuly!', status: 200 });
   } catch (error:any) {
     if (error.errors) {
       return next(new CustomizedError(400, error.errors[0]));
@@ -23,4 +23,4 @@ const getCategoryServices: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default getCategoryServices;
+export default deleteService;

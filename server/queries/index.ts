@@ -1,7 +1,7 @@
 import { getCategoriesQuery, getCategoryServicesQuery } from './categories';
 import { getContactsQuery, addContactQuery } from './contact';
 import { addUserQuery, checkEmailExistsQuery } from './user';
-import { postServiceQuery } from './services';
+import { postServiceQuery, deleteServiceQuery } from './services';
 
 export {
   getCategoriesQuery,
@@ -11,4 +11,5 @@ export {
   addUserQuery,
   checkEmailExistsQuery,
   postServiceQuery,
+  deleteServiceQuery,
 };

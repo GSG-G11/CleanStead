@@ -232,3 +232,13 @@ describe('Test post service', () => {
     expect(res.body.message).toBe('Price must be large than 0');
   });
 });
+
+describe('Test delete service', () => {
+  it('should return status 204', async () => {
+    const res = await supertest(app)
+      .delete('/api/v1/services/7')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('Service Delete Successfuly!');
+  });
+});
