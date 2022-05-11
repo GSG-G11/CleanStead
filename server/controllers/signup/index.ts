@@ -2,8 +2,7 @@ import { RequestHandler } from 'express';
 import { hash } from 'bcrypt';
 import dotenv from 'dotenv';
 import { addUserQuery, checkEmailExistsQuery } from '../../queries';
-import CustomizedError from '../../utils/error';
-import { jwtSign } from '../../utils/jwt';
+import { jwtSign, CustomizedError } from '../../utils';
 import { signupSchema } from '../../validation';
 
 dotenv.config();
