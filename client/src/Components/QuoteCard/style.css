@@ -1,0 +1,38 @@
+.quote-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.person-img {
+  position: absolute;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.quote-words {
+  position: relative;
+  padding: 80px 20px 20px 20px;
+  box-shadow: 0px 8px 24px rgba(0, 173, 238, 0.1);
+  background-color: #fff;
+  border-radius: 16px;
+}
+
+.quote-words::after {
+  content: url('../../Assets/icons/quote.svg');
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+
+.quote-words::before {
+  content: url('../../Assets/icons/quote.svg');
+  transform: rotate(180deg);
+  position: absolute;
+  bottom: -10px;
+  left: -10px;
+}

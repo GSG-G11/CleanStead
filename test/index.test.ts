@@ -63,3 +63,138 @@ describe('Test Get Contacts', () => {
     expect(res.body.data.length).toBe(2);
   });
 });
+describe('Test to register', () => {
+  it('should return text successfuly message', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/signup')
+      .send({
+        name: 'Israa',
+        email: 'israa@hotmail.com',
+        phone: '5645458712',
+        password: '12345678',
+        location: 'Gaza',
+      })
+      .expect(201)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('تم تسجيل حسابك بنجاح');
+  });
+});
+describe('Test to login', () => {
+  it('should return text successfuly message', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/signin')
+      .send({
+        email: 'israa@hotmail.com',
+        password: '12345678',
+      })
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('تم تسجيل دخولك بنجاح');
+  });
+});
+describe('Test to register', () => {
+  it('should return status code 400 and error message for email exist', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/signup')
+      .send({
+        name: 'Israa',
+        email: 'israa403@gmail.com',
+        phone: '5645458714',
+        password: '1234567548',
+        location: 'Gaza',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('الإيميل موجود مسبقاً');
+  });
+});
+describe('Test to register', () => {
+  it('should return status code 400 and error message for email validation', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/signup')
+      .send({
+        name: 'Israa',
+        email: 'israa403',
+        phone: '564545871',
+        password: '123456',
+        location: 'Gaza',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('Your email must be a valid email');
+  });
+});
+describe('Test to register', () => {
+  it('should return status code 400 and error message for phone validation', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/signup')
+      .send({
+        name: 'Israa',
+        email: 'israa403@gmail.com',
+        phone: '5645471',
+        password: '123456',
+        location: 'Gaza',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('your phone number must be 10 digits');
+  });
+});
+describe('Test to add Contact', () => {
+  it('should return one contact', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/contact')
+      .send({
+        name: 'Israa',
+        email: 'israa@hotmail.com',
+        message: 'i need more details',
+        phone: '1015465455',
+        category_id: 1,
+      })
+      .expect(201)
+      .expect('Content-Type', /json/);
+    expect(res.body.status).toBe(201);
+  });
+});
+describe('Test to add register', () => {
+  it('should return status code 400 and error message for email validation', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/contact')
+      .send({
+        name: 'Israa',
+        email: 'israa403',
+        message: 'i need more details',
+        phone: 5645,
+        category_id: 1,
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('Your email must be a valid email');
+  });
+});
+describe('Test to login', () => {
+  it('should return status code 400 and error message for email validation', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/signin')
+      .send({
+        email: 'israa403',
+        password: '1545465',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('Your email must be a valid email');
+  });
+});
+describe('Test to login', () => {
+  it('should return status code 400 and error message for email validation', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/signin')
+      .send({
+        email: 'israahamdi@hotmail.com',
+        password: '1545465412',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('ًيوجد خطأ بالإيميل أو كلمة السر');
+  });
+});

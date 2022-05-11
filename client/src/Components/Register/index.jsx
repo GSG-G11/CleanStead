@@ -1,16 +1,20 @@
 /* eslint-disable no-undef */
 import React from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
-import { Form, Input, Button, message } from 'antd';
+import { Form, Input, Button, message, Spin } from 'antd';
 import {
   UserOutlined,
   MailOutlined,
   PhoneOutlined,
   LockOutlined,
   HomeOutlined,
+  LoadingOutlined,
 } from '@ant-design/icons';
+const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 function Register({ setIsOpen }) {
+  const [isloading, setIsLoading] = React.useState(false);
   const onFinish = ({ name, email, phone, password, location }) => {
     const userInfoRegister = {
       name,
@@ -20,10 +24,12 @@ function Register({ setIsOpen }) {
       location,
     };
     console.log('userInfoRegister', userInfoRegister);
+    setIsLoading(true);
     axios
       .post('/api/v1/signup', { name, email, phone, password, location })
       .then(({ data }) => {
         console.log('data', data);
+        setIsLoading(false);
         setIsOpen(false);
       })
       .catch(() => {
@@ -122,6 +128,7 @@ function Register({ setIsOpen }) {
             prefix={<HomeOutlined className="icon-style" />}
           />
         </Form.Item>
+        {isloading && <Spin indicator={antIcon} />}
         <Form.Item>
           <Button block type="primary" htmlType="submit" className="button">
             إنشاء حساب
