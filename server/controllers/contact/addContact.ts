@@ -1,7 +1,7 @@
 import { RequestHandler } from 'express';
 import { addContactQuery } from '../../queries';
 import { contactSchema } from '../../validation';
-import CustomizedError from '../../utils/error';
+import { CustomizedError } from '../../utils';
 
 const addContact: RequestHandler = async (req, res, next) => {
   const {
