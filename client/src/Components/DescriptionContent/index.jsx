@@ -29,13 +29,6 @@ function DescriptionContent({ page, categories }) {
       categories.filter((category) =>
         category.id === +id ? setData(category) : false
       );
-    }
-  });
-  useEffect(() => {
-    if (page === 'category') {
-      categories.filter((category) =>
-        category.id === +id ? setData(category) : false
-      );
     } else {
       setData({
         name: 'من نحن',
@@ -47,12 +40,9 @@ function DescriptionContent({ page, categories }) {
     }
   }, [page]);
 
-
   return (
     <div>
-      <Row justify="center" 
-      align="center"
-      gutter={[0, 30]}>
+      <Row justify="center" align="center" gutter={[0, 30]}>
         <Col span={12}>
           <div className="description-section">
             <CustomTitle
