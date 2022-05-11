@@ -1,21 +1,34 @@
 /* eslint-disable no-undef */
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
-import { Form, Input, Button, message } from 'antd';
-import { MailOutlined, LockOutlined } from '@ant-design/icons';
+import { Form, Input, Button, message, Spin } from 'antd';
+import { MailOutlined, LockOutlined, LoadingOutlined } from '@ant-design/icons';
 
-function Login({ setIsOpen }) {
+const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+
+function Login({ setIsOpen, setIsLogged }) {
+  const [isloading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   const onFinish = ({ email, password }) => {
-    const userInfoLogin = { email, password };
-    console.log('userInfoLogin', userInfoLogin);
+    setIsLoading(true);
+    setError('');
     axios
       .post('/api/v1/signin', { email, password })
       .then(({ data }) => {
-        console.log('data', data);
+        message.success(data.message);
+        setIsLoading(false);
         setIsOpen(false);
+        setIsLogged(true);
       })
-      .catch(() => {
-        message.error('حدث خطأ ما');
+      .catch((err) => {
+        if (err.response) {
+          setError(err.response.data.message);
+          setIsLoading(false);
+        } else {
+          message.error('حدث خطأ ما');
+          setIsLoading(false);
+        }
       });
   };
   return (
@@ -57,6 +70,8 @@ function Login({ setIsOpen }) {
             prefix={<LockOutlined className="icon-style" />}
           />
         </Form.Item>
+        {error && <span className="error">{error}</span>}
+        {isloading && <Spin indicator={antIcon} />}
         <Form.Item>
           <Button block type="primary" htmlType="submit" className="button">
             دخول
@@ -70,8 +85,12 @@ Login.defaultProps = {
   setIsOpen: () => {
     setIsOpen(false);
   },
+  setIsLogged: () => {
+    setIsLogged(false);
+  },
 };
 Login.propTypes = {
   setIsOpen: PropTypes.func,
+  setIsLogged: PropTypes.func,
 };
 export default Login;

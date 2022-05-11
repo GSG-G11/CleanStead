@@ -8,7 +8,7 @@ import './style.css';
 
 const { TabPane } = Tabs;
 
-function LoginRegisterContainer({ isOpen, setIsOpen }) {
+function LoginRegisterContainer({ isOpen, setIsOpen, setIsLogged }) {
   const handleCancel = () => {
     setIsOpen(false);
   };
@@ -21,10 +21,10 @@ function LoginRegisterContainer({ isOpen, setIsOpen }) {
     >
       <Tabs defaultActiveKey="1">
         <TabPane tab="إنشاء حساب" key="1">
-          <Register setIsOpen={setIsOpen} />
+          <Register setIsOpen={setIsOpen} setIsLogged={setIsLogged} />
         </TabPane>
         <TabPane tab="تسجيل دخول" key="2">
-          <Login setIsOpen={setIsOpen} />
+          <Login setIsOpen={setIsOpen} setIsLogged={setIsLogged} />
         </TabPane>
       </Tabs>
     </Modal>
@@ -35,9 +35,13 @@ LoginRegisterContainer.defaultProps = {
   setIsOpen: () => {
     setIsOpen(false);
   },
+  setIsLogged: () => {
+    setIsLogged(false);
+  },
 };
 LoginRegisterContainer.propTypes = {
   isOpen: PropTypes.bool,
   setIsOpen: PropTypes.func,
+  setIsLogged: PropTypes.func,
 };
 export default LoginRegisterContainer;

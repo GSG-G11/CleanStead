@@ -1,7 +1,17 @@
 /* eslint-disable no-undef */
 import React, { useState } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Layout, Menu, Image, Button, Dropdown, Space, Drawer } from 'antd';
+import {
+  Layout,
+  Menu,
+  Image,
+  Button,
+  Dropdown,
+  Space,
+  Drawer,
+  message,
+} from 'antd';
 import { DownOutlined, MenuOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
 import logo from '../../Assets/images/logo.svg';
@@ -11,7 +21,7 @@ import './navbar.css';
 
 const { Header } = Layout;
 
-function Navbar({ isLogged, categories, user, setIsOpen }) {
+function Navbar({ isLogged, categories, user, setIsOpen, setIsLogged }) {
   const [visible, setVisible] = useState(false);
 
   const showDrawer = () => {
@@ -53,8 +63,15 @@ function Navbar({ isLogged, categories, user, setIsOpen }) {
   }));
 
   const logout = () => {
-    // eslint-disable-next-line no-console
-    console.log('Logged out');
+    axios
+      .get('/api/v1/logout')
+      .then(({ data }) => {
+        message.success(data.message);
+        setIsLogged(false);
+      })
+      .catch(() => {
+        message.error('حدث خطأ ما');
+      });
   };
 
   const avatarMenu = (
@@ -124,19 +141,24 @@ function Navbar({ isLogged, categories, user, setIsOpen }) {
 }
 
 Navbar.propTypes = {
-  isLogged: PropTypes.bool.isRequired,
+  isLogged: PropTypes.bool,
   user: PropTypes.shape({
     name: PropTypes.string.isRequired,
     role: PropTypes.string.isRequired,
   }),
   categories: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   setIsOpen: PropTypes.func,
+  setIsLogged: PropTypes.func,
 };
 
 Navbar.defaultProps = {
   user: { name: '', role: '' },
   setIsOpen: () => {
     setIsOpen(false);
+  },
+  isLogged: false,
+  setIsLogged: () => {
+    setIsLogged(false);
   },
 };
 

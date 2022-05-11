@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Form, Input, Button, message, Spin } from 'antd';
@@ -11,29 +11,31 @@ import {
   HomeOutlined,
   LoadingOutlined,
 } from '@ant-design/icons';
+
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-function Register({ setIsOpen }) {
-  const [isloading, setIsLoading] = React.useState(false);
+function Register({ setIsOpen, setIsLogged }) {
+  const [isloading, setIsLoading] = useState(false);
+  const [errorEmail, setErrorEmail] = useState('');
   const onFinish = ({ name, email, phone, password, location }) => {
-    const userInfoRegister = {
-      name,
-      email,
-      phone,
-      password,
-      location,
-    };
-    console.log('userInfoRegister', userInfoRegister);
     setIsLoading(true);
+    setErrorEmail('');
     axios
       .post('/api/v1/signup', { name, email, phone, password, location })
       .then(({ data }) => {
-        console.log('data', data);
+        message.success(data.message);
         setIsLoading(false);
         setIsOpen(false);
+        setIsLogged(true);
       })
-      .catch(() => {
-        message.error('حدث خطأ ما');
+      .catch((err) => {
+        if (err.response) {
+          setErrorEmail(err.response.data.message);
+          setIsLoading(false);
+        } else {
+          message.error('حدث خطأ ما');
+          setIsLoading(false);
+        }
       });
   };
   return (
@@ -74,6 +76,7 @@ function Register({ setIsOpen }) {
             prefix={<MailOutlined className="icon-style" />}
           />
         </Form.Item>
+        {errorEmail && <span className="error">{errorEmail}</span>}
         <Form.Item
           label="كلمة السر"
           name="password"
@@ -142,8 +145,12 @@ Register.defaultProps = {
   setIsOpen: () => {
     setIsOpen(false);
   },
+  setIsLogged: () => {
+    setIsLogged(false);
+  },
 };
 Register.propTypes = {
   setIsOpen: PropTypes.func,
+  setIsLogged: PropTypes.func,
 };
 export default Register;

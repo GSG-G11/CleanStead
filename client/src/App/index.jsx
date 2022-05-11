@@ -15,6 +15,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [isLogged, setIsLogged] = useState(false);
 
   useEffect(() => {
     const cancelTokenSource = axios.CancelToken.source();
@@ -40,12 +41,17 @@ function App() {
       <Layout className="page--layout">
         <Header>
           <Navbar
-            isLogged={false}
+            isLogged={isLogged}
             categories={categories}
             user={{ name: 'Mohammad', role: 'admin' }}
             setIsOpen={setIsOpen}
+            setIsLogged={setIsLogged}
           />
-          <LoginRegisterContainer isOpen={isOpen} setIsOpen={setIsOpen} />
+          <LoginRegisterContainer
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            setIsLogged={setIsLogged}
+          />
         </Header>
         <Content className="page--content">
           <Routes>

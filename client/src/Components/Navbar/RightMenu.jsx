@@ -41,7 +41,7 @@ function RightMenu({ isLogged, mode, avatarMenu, user, setIsOpen }) {
 
 RightMenu.propTypes = {
   mode: PropTypes.string.isRequired,
-  isLogged: PropTypes.bool.isRequired,
+  isLogged: PropTypes.bool,
   user: PropTypes.shape({
     name: PropTypes.string.isRequired,
     role: PropTypes.string.isRequired,
@@ -55,6 +55,7 @@ RightMenu.defaultProps = {
   setIsOpen: () => {
     setIsOpen(false);
   },
+  isLogged: false,
 };
 
 export default RightMenu;
