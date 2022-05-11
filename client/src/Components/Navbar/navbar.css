@@ -30,7 +30,7 @@
 }
 
 .ant-dropdown-menu,.ant-menu {
-  text-align: right;
+  text-align: right !important;
 }
 
 .menu__mobile-button {
