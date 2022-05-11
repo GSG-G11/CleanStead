@@ -12,7 +12,7 @@ const checkAuth: RequestHandler = async (req: any, res, next) => {
     req.user = decoded;
     next();
   } catch (err) {
-    next(err);
+    next(new CustomizedError(401, 'UnAuthorized'));
   }
 };
 
