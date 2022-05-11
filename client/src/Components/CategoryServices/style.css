@@ -41,23 +41,23 @@
     width: auto !important;
   }
 }
-.swiper {
+.service-container .swiper {
   width: 100%;
   padding-top: 50px !important;
   padding-bottom: 50px !important;
 }
-.swiper-slide {
+.service-container .swiper-slide {
   background-position: center;
   background-size: cover;
   width: 40% !important;
   height: 300px;
 }
 
-.swiper-slide img {
+.service-container .swiper-slide img {
   display: block;
   width: 100%;
 }
-.swiper-slide-shadow-left,
-.swiper-slide-shadow-right{
+.service-container .swiper-slide-shadow-left,
+.service-container .swiper-slide-shadow-right{
   height: 98% !important;
 }

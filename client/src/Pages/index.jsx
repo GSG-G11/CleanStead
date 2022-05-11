@@ -1,5 +1,4 @@
-import Home from './Home';
-import Category from './Category';
-import Book from './Book';
-
-export { Home, Category, Book };
+export { default as Home } from './Home';
+export { default as Category } from './Category';
+export { default as Book } from './Book';
+export { default as Description } from './Description';

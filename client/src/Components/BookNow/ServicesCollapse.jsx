@@ -1,17 +1,21 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import { Collapse, Checkbox, Avatar, Button } from 'antd';
+import { Collapse, Checkbox, Avatar, Button, Typography } from 'antd';
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
 
+const { Paragraph, Text } = Typography;
 const { Panel } = Collapse;
 
 function ServicesCollapse({ item }) {
-  const [count, setCount] = useState(0);
-  const [check, setCheck] = useState(true);
+  const [count, setCount] = useState(1);
+  const [check, setCheck] = useState(false);
 
-  const onChange = () => {
+  const onCheck = () => {
     setCheck(!check);
-    console.log(`checked = ${check}`);
+  };
+
+  const onMouseEnter = (e) => {
+    e.stopPropagation();
   };
 
   return (
@@ -24,15 +28,17 @@ function ServicesCollapse({ item }) {
       <Panel
         header={
           <div className="service-info">
-            <Checkbox onChange={onChange} value={item.name}>
-              {item.name}
+            <Checkbox onClick={onMouseEnter} onChange={onCheck}>
+              <span className="test" onClick={onMouseEnter} aria-hidden="true">
+                {item.name}
+              </span>
             </Checkbox>
             <Avatar src={item.image} shape="square" size={80} />
-            <span>{item.price}&#36;</span>
-            <Button.Group>
+            <span className="price">{item.price}&#36;</span>
+            <Button.Group onClick={onMouseEnter}>
               <Button
                 className="count-btn"
-                onClick={() => (count > 0 ? setCount(count - 1) : false)}
+                onClick={() => (count > 1 ? setCount(count - 1) : false)}
                 icon={<MinusOutlined />}
               />
               <span className="count">{count}</span>
@@ -45,7 +51,18 @@ function ServicesCollapse({ item }) {
           </div>
         }
       >
-        <p>{item.description}</p>
+        <Paragraph>
+          <Text type="secondary" className="items-title" level={5}>
+            العناصر التي سيتم تنظيفها
+          </Text>
+          <ul className="description-list">
+            {item.description.split('-').map((desc, i) => (
+              <li className="description-item" key={i}>
+                <Text>{desc}</Text>
+              </li>
+            ))}
+          </ul>
+        </Paragraph>
       </Panel>
     </Collapse>
   );

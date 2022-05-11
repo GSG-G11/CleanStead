@@ -11,11 +11,11 @@ function ServicesChoice({ categories }) {
   const [categoryServices, setCategoryServices] = useState([]);
 
   const expand = (key) => {
-    if (key !== undefined) {
+    if (key !== undefined && !Array.isArray(categoryServices[key])) {
       axios
         .get(`/api/v1/categories/${key}/services`)
         .then(({ data: { data } }) => {
-          setCategoryServices(data);
+          setCategoryServices({ ...categoryServices, [key]: data });
         })
         .catch(() => {
           message.error('حدث خطأ ما');
@@ -38,9 +38,10 @@ function ServicesChoice({ categories }) {
         {categories.map((category) => (
           <Panel header={category.name} key={category.id}>
             <Space direction="vertical">
-              {categoryServices.map((item) => (
-                <ServicesCollapse key={item.id} item={item} />
-              ))}
+              {Array.isArray(categoryServices[category.id]) &&
+                categoryServices[category.id].map((item) => (
+                  <ServicesCollapse key={item.id} item={item} />
+                ))}
             </Space>
           </Panel>
         ))}

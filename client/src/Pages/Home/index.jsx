@@ -1,13 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Header, CategoriesCardsContainer, WhyUs } from '../../Components';
+import {
+  Header,
+  CategoriesCardsContainer,
+  WhyUs,
+  WhatTheySay,
+} from '../../Components';
 
 function Home({ categories, loading }) {
   return (
     <div>
       <Header />
-      <WhyUs />
       <CategoriesCardsContainer categories={categories} loading={loading} />
+      <WhyUs />
+      <WhatTheySay />
     </div>
   );
 }
