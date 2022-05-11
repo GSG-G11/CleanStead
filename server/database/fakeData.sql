@@ -70,7 +70,8 @@ VALUES
 ما عليك سوى التقديم للاستفادة من خدماتنا',
         'https://media.istockphoto.com/photos/window-cleaner-using-a-squeegee-to-wash-a-window-picture-id1307939278?b=1&k=20&m=1307939278&s=170667a&w=0&h=sE2iIgtlr8gG6m6frJcxGZn-jz105dtqzoa_jucaTaA='
     );
-        INSERT INTO
+
+INSERT INTO
     contacts(name, email, message, phone, category_id)
 VALUES
     (
@@ -201,7 +202,6 @@ VALUES
         'طوله مابين 0.5 - 1.5 متر',
         15,
         'https://media.istockphoto.com/photos/washing-her-aluminium-windows-picture-id1159393458?k=20&m=1159393458&s=612x612&w=0&h=K8Jg_uSm2ptJyTPwcSbNBNJWNaqVtUFzCqBJxE_XucA=',
-
         5
     ),
     (
@@ -260,9 +260,8 @@ VALUES
     (
         'admin',
         'admin@gmail.com',
-        '@admin123'
+        '$2b$10$OzSWWRuPsFtz3HVgMo0vDOzOBI4xTOfJrKBGDKMaDhqUMLt2DWcYC'
     );
-
 
 INSERT INTO
     appoinments(date, time, creation_time, price, user_id)
