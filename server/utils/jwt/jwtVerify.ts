@@ -3,7 +3,7 @@ import { verify } from 'jsonwebtoken';
 
 dotenv.config();
 const jwtVerify = (token:string) => new Promise((resolve, reject) => {
-  verify(token, process.env.SECRET_KEY as string, (err:any, decoded:any) => {
+  verify(token, process.env.SECRET_KEY as string, (err, decoded) => {
     if (err) {
       reject(err);
     } else {
