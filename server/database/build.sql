@@ -59,6 +59,7 @@ CREATE TABLE appoinments (
   price INT NOT NULL,
   user_id INT,
   status VARCHAR(50) DEFAULT 'Pending',
+  repeat VARCHAR(50) DEFAULT 'Once',
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
