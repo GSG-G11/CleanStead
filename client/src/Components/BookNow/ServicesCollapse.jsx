@@ -9,7 +9,7 @@ const { Panel } = Collapse;
 function ServicesCollapse({ item }) {
   const [count, setCount] = useState(1);
   const [check, setCheck] = useState(false);
-  console.log(item);
+
   const onCheck = () => {
     setCheck(!check);
   };
