@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import { Layout, message } from 'antd';
 import { Navbar, OurFooter } from '../Components';
-import { Home, Category } from '../Pages';
+import { Home, Category, Description } from '../Pages';
 import 'swiper/css/bundle';
 import '../style/custom-antd.css';
 import './app.css';
@@ -49,6 +49,15 @@ function App() {
             <Route
               path="/"
               element={<Home categories={categories} loading={loading} />}
+            />
+            <Route
+              path="/contact"
+              element={<Description page="contact" categories={categories} />}
+            />
+            <Route path="/about" element={<Description page="about" />} />
+            <Route
+              path="/category/:id"
+              element={<Description page="category" categories={categories} />}
             />
             <Route path="/category/:id" element={<Category />} />
           </Routes>
