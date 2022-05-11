@@ -8,6 +8,7 @@ import logout from './logout';
 import checkAuth from './middlewares/auth';
 import signin from './signin';
 import { getBooks } from './book';
+import { postService } from './services';
 
 export {
   serverError,
@@ -21,4 +22,5 @@ export {
   checkAuth,
   signin,
   getBooks,
+  postService,
 };

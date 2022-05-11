@@ -10,7 +10,7 @@ const getBooksQuery = () => connection.query(`
     a.repeat,
     a.user_id,
     u.name,
-    u.location,
+    u.location
   FROM
     appoinments AS a
   JOIN  users AS u ON  a.user_id = u.id`);
