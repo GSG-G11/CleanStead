@@ -38,7 +38,7 @@ function DescriptionContent({ page, categories }) {
         image: '',
       });
     }
-  }, [page]);
+  }, [page, id]);
 
   return (
     <div>
@@ -53,7 +53,7 @@ function DescriptionContent({ page, categories }) {
               {data.description}
             </Paragraph>
             {page === 'about' ? (
-              <Link to="/book">
+              <Link to="/contact">
                 <Button
                   className="description-button"
                   type="primary"
