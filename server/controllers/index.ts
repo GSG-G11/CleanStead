@@ -7,6 +7,7 @@ import signup from './signup';
 import logout from './logout';
 import checkAuth from './middlewares/auth';
 import signin from './signin';
+import { postService } from './services';
 
 export {
   serverError,
@@ -19,4 +20,5 @@ export {
   logout,
   checkAuth,
   signin,
+  postService,
 };
