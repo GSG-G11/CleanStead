@@ -1,7 +1,6 @@
 import { RequestHandler } from 'express';
 import dotenv from 'dotenv';
-import { jwtVerify } from '../../../utils/jwt';
-import CustomizedError from '../../../utils/error';
+import { jwtVerify, CustomizedError } from '../../../utils';
 
 dotenv.config();
 
