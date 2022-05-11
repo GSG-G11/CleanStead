@@ -4,15 +4,10 @@ import { servicesSchema } from '../../validation';
 import CustomizedError from '../../utils/error';
 
 const postService: RequestHandler = async (req, res, next) => {
-  const {
-    name, description, price, image,
-  } = req.body;
-  const categoryId = req.body.category_id;
-
   try {
-    await servicesSchema.validate({
+    const {
       name, description, price, image, categoryId,
-    }, { abortEarly: false });
+    } = await servicesSchema.validate(req.body, { abortEarly: false });
     const { rowCount } = await postServiceQuery(name, description, price, image, categoryId);
     if (!rowCount) {
       throw new CustomizedError(400, 'يوجد خلل حاول مرة أخرى');

@@ -208,29 +208,14 @@ describe('Test post service', () => {
         description: 'test',
         price: 10,
         image: 'ka;hkjdgh;askdh',
-        category_id: 1,
-      })
-      .expect(201)
-      .expect('Content-Type', /json/);
-    expect(res.body.status).toBe(201);
-  });
-});
-describe('Test post service', () => {
-  it('should return status 201 and text successfuly message', async () => {
-    const res = await supertest(app)
-      .post('/api/v1/services')
-      .send({
-        name: 'test',
-        description: 'test',
-        price: 10,
-        image: 'ka;hkjdgh;askdh',
-        category_id: 1,
+        categoryId: 1,
       })
       .expect(201)
       .expect('Content-Type', /json/);
     expect(res.body.message).toBe('تم إضافة الخدمة بنجاح');
   });
 });
+
 describe('Test post service', () => {
   it('should return status code 400 and error message for price validation', async () => {
     const res = await supertest(app)
@@ -240,7 +225,7 @@ describe('Test post service', () => {
         description: 'test',
         price: 0,
         image: 'ka;hkjdgh;askdh',
-        category_id: 1,
+        categoryId: 1,
       })
       .expect(400)
       .expect('Content-Type', /json/);
