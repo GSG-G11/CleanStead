@@ -1,0 +1,32 @@
+.contact-image{
+    width: 450px;
+    height: 450px;
+}
+.contact-custom-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    margin-left: 390px;
+    margin-bottom: 20px;
+
+ }
+ .contact-title {
+    margin: 0.2em 0.2em;
+ }
+
+.contact-button{
+    margin: 10px 20px 20px 370px;
+    width: 130px;
+    height: 30px;
+    background-color: rgb(78, 173, 228);
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-label .ant-input, .contact-label .ant-select-selector {
+    border: 1px solid #E6E6E6 !important;
+    border-radius: 5px !important;
+    width: 100% !important;
+}

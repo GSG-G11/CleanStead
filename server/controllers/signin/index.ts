@@ -1,9 +1,8 @@
 import { RequestHandler } from 'express';
-import { sign } from 'jsonwebtoken';
 import { compare } from 'bcrypt';
 import dotenv from 'dotenv';
 import { checkEmailExistsQuery } from '../../queries';
-import CustomizedError from '../../utils/error';
+import { jwtSign, CustomizedError } from '../../utils';
 import { signinSchema } from '../../validation';
 
 dotenv.config();
@@ -20,7 +19,7 @@ const signin: RequestHandler = async (req, res, next) => {
     if (!resultComapre) {
       throw new CustomizedError(400, 'ًيوجد خطأ بالإيميل أو كلمة السر');
     }
-    const token = sign({ id: data[0].id, email }, process.env.SECRET_KEY as string);
+    const token = await jwtSign({ id: data[0].id, email });
     res.cookie('token', token, { httpOnly: true, secure: true }).json({ message: 'تم تسجيل دخولك بنجاح', status: 200 });
   } catch (error: any) {
     if (error.name === 'ValidationError') {

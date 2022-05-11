@@ -1,7 +1,7 @@
 import { RequestHandler } from 'express';
 import { getCategoryServicesQuery } from '../../queries';
 import { categroyIdSchema } from '../../validation';
-import CustomizedError from '../../utils/error';
+import { CustomizedError } from '../../utils';
 
 const getCategoryServices: RequestHandler = async (req, res, next) => {
   const { id } = req.params;
