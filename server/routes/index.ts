@@ -9,6 +9,7 @@ import {
   signin,
   getBooks,
   postService,
+  putService,
 } from '../controllers';
 
 const router = Router();
@@ -16,6 +17,7 @@ router.get('/categories', getCategories);
 router.get('/categories/:id/services', getCategoryServices);
 router.get('/book', getBooks);
 router.post('/services', postService);
+router.put('/services/:id', putService);
 router.route('/contact').get(getContacts).post(addContact);
 router.post('/signup', signup);
 router.get('/logout', logout);

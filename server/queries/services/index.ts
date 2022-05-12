@@ -1,3 +1,4 @@
 import postServiceQuery from './postServiceQuery';
+import putServiceQuery from './putServiceQuery';
 
-export { postServiceQuery };
+export { postServiceQuery, putServiceQuery };

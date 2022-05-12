@@ -1,3 +1,4 @@
 import postService from './postService';
+import putService from './putService';
 
-export { postService };
+export { postService, putService };
