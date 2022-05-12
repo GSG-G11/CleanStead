@@ -234,11 +234,21 @@ describe('Test post service', () => {
 });
 
 describe('Test delete service', () => {
-  it('should return status 204', async () => {
+  it('should return status 200', async () => {
     const res = await supertest(app)
-      .delete('/api/v1/services/7')
+      .delete('/api/v1/services/11')
       .expect(200)
       .expect('Content-Type', /json/);
     expect(res.body.message).toBe('Service Delete Successfuly!');
+  });
+});
+
+describe('Test get books', () => {
+  it('should return status code 200 and the length 6', async () => {
+    const res = await supertest(app)
+      .get('/api/v1/book')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.data.length).toBe(6);
   });
 });

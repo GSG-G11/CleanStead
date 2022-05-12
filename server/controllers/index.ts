@@ -7,6 +7,7 @@ import signup from './signup';
 import logout from './logout';
 import checkAuth from './middlewares/auth';
 import signin from './signin';
+import { getBooks } from './book';
 import { postService, deleteService } from './services';
 
 export {
@@ -20,6 +21,7 @@ export {
   logout,
   checkAuth,
   signin,
+  getBooks,
   postService,
   deleteService,
 };
