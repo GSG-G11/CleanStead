@@ -232,3 +232,13 @@ describe('Test post service', () => {
     expect(res.body.message).toBe('Price must be large than 0');
   });
 });
+
+describe('Test get books', () => {
+  it('should return status code 200 and the length 6', async () => {
+    const res = await supertest(app)
+      .get('/api/v1/book')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.data.length).toBe(6);
+  });
+});
