@@ -242,3 +242,20 @@ describe('Test get books', () => {
     expect(res.body.data.length).toBe(6);
   });
 });
+
+describe('Test put service', () => {
+  it('should return status 201', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/services/2')
+      .send({
+        name: 'testtestdaf',
+        description: 'testgadga',
+        price: 20,
+        image: 'ka;hkjdgh;askdh',
+        categoryId: 2,
+      })
+      .expect(201)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('تم تعديل الخدمة بنجاح');
+  });
+});
