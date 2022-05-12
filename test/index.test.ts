@@ -241,4 +241,20 @@ describe('Test get books', () => {
       .expect('Content-Type', /json/);
     expect(res.body.data.length).toBe(6);
   });
+
+  it('should return status code 200 and the length 2', async () => {
+    const res = await supertest(app)
+      .get('/api/v1/user/1/book')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.data.length).toBe(2);
+  });
+
+  it('should return status code 200 and the length 1', async () => {
+    const res = await supertest(app)
+      .get('/api/v1/book/1')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.data.length).toBe(1);
+  });
 });
