@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Collapse, Checkbox, Avatar, Button, Typography } from 'antd';
@@ -6,13 +7,8 @@ import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
 const { Paragraph, Text } = Typography;
 const { Panel } = Collapse;
 
-function ServicesCollapse({ item }) {
+function ServicesCollapse({ item, onCheck }) {
   const [count, setCount] = useState(1);
-  const [check, setCheck] = useState(false);
-
-  const onCheck = () => {
-    setCheck(!check);
-  };
 
   const onMouseEnter = (e) => {
     e.stopPropagation();
@@ -28,7 +24,11 @@ function ServicesCollapse({ item }) {
       <Panel
         header={
           <div className="service-info">
-            <Checkbox onClick={onMouseEnter} onChange={onCheck}>
+            <Checkbox
+              value={item.name}
+              onClick={onMouseEnter}
+              onChange={onCheck}
+            >
               <span className="test" onClick={onMouseEnter} aria-hidden="true">
                 {item.name}
               </span>
@@ -69,6 +69,7 @@ function ServicesCollapse({ item }) {
 }
 ServicesCollapse.propTypes = {
   item: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,

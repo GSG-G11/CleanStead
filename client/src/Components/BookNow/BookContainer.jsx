@@ -1,29 +1,41 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Col,
-  Row,
-  Steps,
-  Button,
-  message,
-  Divider,
-  Typography,
-  Space,
-} from 'antd';
+import { Col, Row, Steps, Button, message } from 'antd';
 import CustomTitle from '../CustomTitle';
 import ServicesChoice from './ServicesChoice';
 import DateTimeChoice from './DateTimeChoice';
 import UserInformation from './UserInformation';
+import Summary from './Summary';
 import './style.css';
 
-const { Title, Text } = Typography;
 const { Step } = Steps;
 
 function BookContainer({ categories }) {
+  const [current, setCurrent] = useState(0);
+  const [checked, setChecked] = useState([]);
+
+  const onCheck = (event) => {
+    const isChecked = event.target.checked;
+    if (isChecked) {
+      setChecked([...checked, event.target.value]);
+    } else {
+      const index = checked.indexOf(event.target.value);
+      setChecked(checked.filter((c) => c !== checked[index]));
+    }
+  };
+  console.log(checked);
+  const next = () => {
+    setCurrent(current + 1);
+  };
+
+  const prev = () => {
+    setCurrent(current - 1);
+  };
+
   const steps = [
     {
       title: 'اختر الخدمات',
-      content: <ServicesChoice categories={categories} />,
+      content: <ServicesChoice categories={categories} onCheck={onCheck} />,
     },
     {
       title: 'التاريخ والوقت',
@@ -34,19 +46,9 @@ function BookContainer({ categories }) {
       content: <UserInformation />,
     },
   ];
-  const [current, setCurrent] = useState(0);
-
-  const next = () => {
-    setCurrent(current + 1);
-  };
-
-  const prev = () => {
-    setCurrent(current - 1);
-  };
 
   return (
     <div className="book-container">
-      <CustomTitle isLanding={false} title="احجز الآن" />
       <Row justify="center" align="top" gutter={[0, 30]}>
         <Col
           xs={{ span: 22 }}
@@ -55,6 +57,7 @@ function BookContainer({ categories }) {
           lg={{ span: 15 }}
           xl={{ span: 15 }}
         >
+          <CustomTitle isLanding={false} title="احجز الآن" />
           <Steps current={current}>
             {steps.map((item) => (
               <Step key={item.title} title={item.title} />
@@ -70,7 +73,7 @@ function BookContainer({ categories }) {
             {current === steps.length - 1 && (
               <Button
                 type="primary"
-                onClick={() => message.success('Processing complete!')}
+                onClick={() => message.success('تم ارسال الطلب بنجاح!')}
               >
                 ارسال
               </Button>
@@ -89,36 +92,7 @@ function BookContainer({ categories }) {
           lg={{ span: 7 }}
           xl={{ span: 7 }}
         >
-          <div className="summary">
-            <Divider>ملخص</Divider>
-            <Space
-              direction="vertical"
-              size="middle"
-              style={{ display: 'flex' }}
-            >
-              <div>
-                <Title type="secondary" className="summary-title" level={5}>
-                  الخدمة
-                </Title>
-                <Text strong>تنظيف المنزل</Text>
-              </div>
-              <div>
-                <Title type="secondary" className="summary-title" level={5}>
-                  العناصر المختارة
-                </Title>
-                <ul>
-                  <li>واحد</li>
-                  <li>اثنين</li>
-                </ul>
-              </div>
-              <div>
-                <Title type="secondary" className="summary-title" level={5}>
-                  إجمالي السعر
-                </Title>
-                <Text strong>20 &#36;</Text>
-              </div>
-            </Space>
-          </div>
+          <Summary checked={checked} />
         </Col>
       </Row>
     </div>

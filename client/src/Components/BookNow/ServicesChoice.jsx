@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
@@ -7,7 +8,7 @@ import ServicesCollapse from './ServicesCollapse';
 const { Title } = Typography;
 const { Panel } = Collapse;
 
-function ServicesChoice({ categories }) {
+function ServicesChoice({ categories, onCheck }) {
   const [categoryServices, setCategoryServices] = useState([]);
 
   const expand = (key) => {
@@ -22,7 +23,7 @@ function ServicesChoice({ categories }) {
         });
     }
   };
-
+  console.log(categoryServices);
   return (
     <>
       <Title className="choice-title" level={5}>
@@ -40,7 +41,11 @@ function ServicesChoice({ categories }) {
             <Space direction="vertical">
               {Array.isArray(categoryServices[category.id]) &&
                 categoryServices[category.id].map((item) => (
-                  <ServicesCollapse key={item.id} item={item} />
+                  <ServicesCollapse
+                    key={item.id}
+                    item={item}
+                    onCheck={onCheck}
+                  />
                 ))}
             </Space>
           </Panel>
