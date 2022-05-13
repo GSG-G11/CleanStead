@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import uuid from 'react-uuid';
 import PropTypes from 'prop-types';
-import { Collapse, Checkbox, Avatar, Button, Typography } from 'antd';
+import { Collapse, Checkbox, Avatar, Button, Typography, Form } from 'antd';
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
 
 const { Paragraph, Text } = Typography;
@@ -24,15 +24,23 @@ function ServicesCollapse({ item, onCheck }) {
       <Panel
         header={
           <div className="service-info">
-            <Checkbox
-              value={item.name}
-              onClick={onMouseEnter}
-              onChange={onCheck}
-            >
-              <span className="test" onClick={onMouseEnter} aria-hidden="true">
-                {item.name}
-              </span>
-            </Checkbox>
+            <Form>
+              <Form.Item name="myProp" valuePropName="checked">
+                <Checkbox
+                  value={item.name}
+                  onClick={onMouseEnter}
+                  onChange={onCheck}
+                >
+                  <span
+                    className="test"
+                    onClick={onMouseEnter}
+                    aria-hidden="true"
+                  >
+                    {item.name}
+                  </span>
+                </Checkbox>
+              </Form.Item>
+            </Form>
             <Avatar src={item.image} shape="square" size={80} />
             <span className="price">{item.price}&#36;</span>
             <Button.Group onClick={onMouseEnter}>
@@ -56,8 +64,8 @@ function ServicesCollapse({ item, onCheck }) {
             العناصر التي سيتم تنظيفها
           </Text>
           <ul className="description-list">
-            {item.description.split('-').map((desc, i) => (
-              <li className="description-item" key={i}>
+            {item.description.split('-').map((desc) => (
+              <li className="description-item" key={uuid()}>
                 <Text>{desc}</Text>
               </li>
             ))}
@@ -75,6 +83,7 @@ ServicesCollapse.propTypes = {
     price: PropTypes.number.isRequired,
     description: PropTypes.string,
   }).isRequired,
+  onCheck: PropTypes.func.isRequired,
 };
 
 export default ServicesCollapse;

@@ -23,7 +23,7 @@ function ServicesChoice({ categories, onCheck }) {
         });
     }
   };
-  console.log(categoryServices);
+
   return (
     <>
       <Title className="choice-title" level={5}>
@@ -57,10 +57,10 @@ function ServicesChoice({ categories, onCheck }) {
 ServicesChoice.propTypes = {
   categories: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-      description: PropTypes.string,
-      image: PropTypes.string,
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
     })
   ).isRequired,
 };

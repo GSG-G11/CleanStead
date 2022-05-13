@@ -1,5 +1,6 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import uuid from 'react-uuid';
+import PropTypes from 'prop-types';
 import { Divider, Typography, Space } from 'antd';
 
 const { Title, Text } = Typography;
@@ -15,7 +16,7 @@ function Summary({ checked }) {
           </Title>
           <ul>
             {checked.length ? (
-              checked.map((item, index) => <li key={index}>{item}</li>)
+              checked.map((item) => <li key={uuid()}>{item}</li>)
             ) : (
               <Text>لا يجود خدمات مختارة</Text>
             )}
@@ -31,4 +32,8 @@ function Summary({ checked }) {
     </div>
   );
 }
+Summary.propTypes = {
+  checked: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
 export default Summary;

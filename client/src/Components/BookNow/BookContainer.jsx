@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import uuid from 'react-uuid';
 import PropTypes from 'prop-types';
 import { Col, Row, Steps, Button, message } from 'antd';
 import CustomTitle from '../CustomTitle';
@@ -23,7 +24,7 @@ function BookContainer({ categories }) {
       setChecked(checked.filter((c) => c !== checked[index]));
     }
   };
-  console.log(checked);
+
   const next = () => {
     setCurrent(current + 1);
   };
@@ -60,7 +61,7 @@ function BookContainer({ categories }) {
           <CustomTitle isLanding={false} title="احجز الآن" />
           <Steps current={current}>
             {steps.map((item) => (
-              <Step key={item.title} title={item.title} />
+              <Step key={uuid()} title={item.title} />
             ))}
           </Steps>
           <div className="steps-content">{steps[current].content}</div>
@@ -102,10 +103,10 @@ function BookContainer({ categories }) {
 BookContainer.propTypes = {
   categories: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-      description: PropTypes.string,
-      image: PropTypes.string,
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
     })
   ).isRequired,
 };
