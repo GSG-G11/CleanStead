@@ -121,6 +121,7 @@ function ContactUsForm({ categories }) {
           className="contact-image"
           width={450}
           src={Img}
+          alt="contact"
         />
       </Col>
     </Row>

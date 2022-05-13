@@ -85,6 +85,7 @@ function DescriptionContent({ page, categories }) {
               className="description-image"
               width={450}
               src={Img}
+              alt="description"
             />
           ) : (
             <Image
@@ -92,6 +93,7 @@ function DescriptionContent({ page, categories }) {
               className="description-image"
               width={450}
               src={data.image}
+              alt="description"
             />
           )}
         </Col>
