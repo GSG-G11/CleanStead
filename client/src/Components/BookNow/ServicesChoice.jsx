@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
@@ -63,5 +62,6 @@ ServicesChoice.propTypes = {
       image: PropTypes.string.isRequired,
     })
   ).isRequired,
+  onCheck: PropTypes.func.isRequired,
 };
 export default ServicesChoice;
