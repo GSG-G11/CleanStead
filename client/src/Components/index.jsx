@@ -8,3 +8,4 @@ export { default as OurFooter } from './Footer';
 export { default as CategoriesCardsContainer } from './CategoriesCardsContainer';
 export { default as DescriptionContent } from './DescriptionContent';
 export { default as ContactUsForm } from './ContactUsForm';
+export { Book, Categories, Contact, General, Services } from './Dashborad';
