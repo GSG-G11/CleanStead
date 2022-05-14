@@ -147,9 +147,9 @@ describe('Test to add Contact', () => {
       .send({
         name: 'Israa',
         email: 'israa@hotmail.com',
-        message: 'i need more details',
+        messageInfo: 'i need more details',
         phone: '1015465455',
-        category_id: 1,
+        categoryId: 1,
       })
       .expect(201)
       .expect('Content-Type', /json/);
@@ -163,9 +163,9 @@ describe('Test to add register', () => {
       .send({
         name: 'Israa',
         email: 'israa403',
-        message: 'i need more details',
+        messageInfo: 'i need more details',
         phone: 5645,
-        category_id: 1,
+        categoryId: 1,
       })
       .expect(400)
       .expect('Content-Type', /json/);
