@@ -14,9 +14,11 @@ const { Step } = Steps;
 function BookContainer({ categories }) {
   const [current, setCurrent] = useState(0);
   const [checked, setChecked] = useState([]);
+  const [isCheck, setIsCheck] = useState(false);
 
   const onCheck = (event) => {
     const isChecked = event.target.checked;
+    setIsCheck(isChecked);
     if (isChecked) {
       setChecked([...checked, event.target.value]);
     } else {
@@ -93,7 +95,7 @@ function BookContainer({ categories }) {
           lg={{ span: 7 }}
           xl={{ span: 7 }}
         >
-          <Summary checked={checked} />
+          <Summary checked={checked} isCheck={isCheck} />
         </Col>
       </Row>
     </div>

@@ -6,7 +6,28 @@ import ServicesCollapse from './ServicesCollapse';
 
 const { Title } = Typography;
 const { Panel } = Collapse;
-
+// const columns = [
+//   {
+//     title: 'الصنف',
+//     dataIndex: 'name',
+//     key: 'name',
+//   },
+// ];
+// const rowSelection = {
+//   onChange: (selectedRowKeys, selectedRows) => {
+//     console.log(
+//       `selectedRowKeys: ${selectedRowKeys}`,
+//       'selectedRows: ',
+//       selectedRows
+//     );
+//   },
+//   onSelect: (record, selected, selectedRows) => {
+//     console.log(record, selected, selectedRows);
+//   },
+//   onSelectAll: (selected, selectedRows, changeRows) => {
+//     console.log(selected, selectedRows, changeRows);
+//   },
+// };
 function ServicesChoice({ categories, onCheck }) {
   const [categoryServices, setCategoryServices] = useState([]);
 
@@ -23,8 +44,29 @@ function ServicesChoice({ categories, onCheck }) {
     }
   };
 
+  // const data = [];
+  // categories.forEach((category) => {
+  //   data.push({
+  //     key: category.id,
+  //     name: category.name,
+  //   });
+  // });
+  // for (let i = 0; i < categories.length; i++) {
+  //   data.push({
+  //     key: i,
+  //     name: `Edward King ${i}`,
+  //     age: 32,
+  //     address: `London, Park Lane no. ${i}`,
+  //   });
+  // }
+
   return (
     <>
+      {/* <Table
+        columns={columns}
+        rowSelection={{ ...rowSelection }}
+        dataSource={data}
+      /> */}
       <Title className="choice-title" level={5}>
         اختر الخدمات التي تحتاج الى تنظيفها من اي تصنيف تريده
       </Title>

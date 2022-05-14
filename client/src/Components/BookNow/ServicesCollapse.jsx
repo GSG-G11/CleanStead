@@ -27,7 +27,7 @@ function ServicesCollapse({ item, onCheck }) {
             <Form>
               <Form.Item name="myProp" valuePropName="checked">
                 <Checkbox
-                  value={item.name}
+                  value={item}
                   onClick={onMouseEnter}
                   onChange={onCheck}
                 >
