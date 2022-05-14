@@ -4,9 +4,12 @@ import { Typography, Radio, Form, DatePicker } from 'antd';
 
 const { Title } = Typography;
 const repeated = ['مرة واحدة', 'يومياً', 'أسبوعياً', 'شهرياً'];
-function DateTimeChoice({ valueRadio, onChangeRadio, setValueDate }) {
+function DateTimeChoice({ valueRadio, setValueRadio, setValueDate }) {
   const onChange = (value, dateString) => {
     setValueDate(dateString);
+  };
+  const onChangeRadio = (e) => {
+    setValueRadio(e.target.value);
   };
   return (
     <div>
@@ -32,7 +35,7 @@ DateTimeChoice.defaultProps = {
   valueRadio: 'مرة واحدة',
 };
 DateTimeChoice.propTypes = {
-  onChangeRadio: PropTypes.func.isRequired,
+  setValueRadio: PropTypes.func.isRequired,
   setValueDate: PropTypes.func.isRequired,
   valueRadio: PropTypes.string,
 };

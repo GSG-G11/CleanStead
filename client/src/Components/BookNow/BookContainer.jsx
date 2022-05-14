@@ -48,7 +48,7 @@ function BookContainer({ categories }) {
       content: (
         <DateTimeChoice
           valueRadio={valueRadio}
-          onChangeRadio={onChangeRadio}
+          setValueRadio={setValueRadio}
           setValueDate={setValueDate}
         />
       ),
