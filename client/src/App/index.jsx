@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import { Layout, message } from 'antd';
-import { Navbar, OurFooter } from '../Components';
+import { Navbar, OurFooter, LoginRegisterContainer } from '../Components';
 import { Home, Category, Description, Book } from '../Pages';
 import 'swiper/css/bundle';
 import '../style/custom-antd.css';
@@ -14,6 +14,8 @@ const { Header, Footer, Content } = Layout;
 function App() {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isLogged, setIsLogged] = useState(false);
 
   useEffect(() => {
     const cancelTokenSource = axios.CancelToken.source();
@@ -39,9 +41,16 @@ function App() {
       <Layout className="page--layout">
         <Header>
           <Navbar
-            isLogged={false}
+            isLogged={isLogged}
             categories={categories}
             user={{ name: 'Mohammad', role: 'admin' }}
+            setIsOpen={setIsOpen}
+            setIsLogged={setIsLogged}
+          />
+          <LoginRegisterContainer
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            setIsLogged={setIsLogged}
           />
         </Header>
         <Content className="page--content">
