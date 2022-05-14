@@ -14,6 +14,11 @@ const { Step } = Steps;
 function BookContainer({ categories }) {
   const [current, setCurrent] = useState(0);
   const [checked, setChecked] = useState([]);
+  const [valueRadio, setValueRadio] = useState('مرة واحدة');
+  const [valueDate, setValueDate] = useState('لم يتم تحديد موعد بعد');
+  const onChangeRadio = (e) => {
+    setValueRadio(e.target.value);
+  };
 
   const onCheck = (event) => {
     const isChecked = event.target.checked;
@@ -40,7 +45,13 @@ function BookContainer({ categories }) {
     },
     {
       title: 'التاريخ والوقت',
-      content: <DateTimeChoice />,
+      content: (
+        <DateTimeChoice
+          valueRadio={valueRadio}
+          onChangeRadio={onChangeRadio}
+          setValueDate={setValueDate}
+        />
+      ),
     },
     {
       title: 'معلوماتك',
@@ -93,7 +104,11 @@ function BookContainer({ categories }) {
           lg={{ span: 7 }}
           xl={{ span: 7 }}
         >
-          <Summary checked={checked} />
+          <Summary
+            checked={checked}
+            valueRadio={valueRadio}
+            valueDate={valueDate}
+          />
         </Col>
       </Row>
     </div>

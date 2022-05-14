@@ -5,7 +5,7 @@ import { Divider, Typography, Space } from 'antd';
 
 const { Title, Text } = Typography;
 
-function Summary({ checked }) {
+function Summary({ checked, valueDate, valueRadio }) {
   let totalPrice = 0;
 
   for (let i = 0; i < checked.length; i += 1) {
@@ -35,6 +35,22 @@ function Summary({ checked }) {
         </div>
         <div>
           <Title type="secondary" className="summary-title" level={5}>
+            مدة التكرار
+          </Title>
+          <Text strong className="title">
+            {valueRadio}
+          </Text>
+        </div>
+        <div>
+          <Title type="secondary" className="summary-title" level={5}>
+            التاريخ والوقت
+          </Title>
+          <Text strong className="title">
+            {valueDate}
+          </Text>
+        </div>
+        <div>
+          <Title type="secondary" className="summary-title" level={5}>
             إجمالي السعر
           </Title>
           <Text className="total-price" strong>
@@ -45,6 +61,10 @@ function Summary({ checked }) {
     </div>
   );
 }
+Summary.defaultProps = {
+  valueDate: 'لم يتم تحديد موعد بعد',
+  valueRadio: 'مرة وحدة',
+};
 Summary.propTypes = {
   checked: PropTypes.arrayOf(
     PropTypes.shape({
@@ -56,5 +76,7 @@ Summary.propTypes = {
       description: PropTypes.string,
     })
   ).isRequired,
+  valueDate: PropTypes.string,
+  valueRadio: PropTypes.string,
 };
 export default Summary;
