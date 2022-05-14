@@ -7,8 +7,9 @@ const { Title, Text } = Typography;
 
 function Summary({ checked }) {
   let totalPrice = 0;
+
   for (let i = 0; i < checked.length; i += 1) {
-    totalPrice += checked[i].price;
+    totalPrice += checked[i].price * checked[i].count;
   }
 
   return (
@@ -23,7 +24,8 @@ function Summary({ checked }) {
             {checked.length ? (
               checked.map((item) => (
                 <li key={uuid()}>
-                  {item.name} - <Text strong>{item.price}&#36;</Text>
+                  {item.name}({item.count}){' '}
+                  <Text strong>{item.price}&#36;</Text>
                 </li>
               ))
             ) : (
@@ -35,7 +37,9 @@ function Summary({ checked }) {
           <Title type="secondary" className="summary-title" level={5}>
             إجمالي السعر
           </Title>
-          <Text strong>{totalPrice}&#36;</Text>
+          <Text className="total-price" strong>
+            {totalPrice}&#36;
+          </Text>
         </div>
       </Space>
     </div>
@@ -48,6 +52,7 @@ Summary.propTypes = {
       name: PropTypes.string,
       image: PropTypes.string,
       price: PropTypes.number,
+      count: PropTypes.number,
       description: PropTypes.string,
     })
   ).isRequired,

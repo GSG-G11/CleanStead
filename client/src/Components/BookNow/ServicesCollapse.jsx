@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import uuid from 'react-uuid';
 import PropTypes from 'prop-types';
 import { Collapse, Checkbox, Avatar, Button, Typography, Form } from 'antd';
@@ -9,6 +9,11 @@ const { Panel } = Collapse;
 
 function ServicesCollapse({ item, onCheck }) {
   const [count, setCount] = useState(1);
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    setData({ ...item, count });
+  }, [count]);
 
   const onMouseEnter = (e) => {
     e.stopPropagation();
@@ -27,12 +32,12 @@ function ServicesCollapse({ item, onCheck }) {
             <Form>
               <Form.Item name="myProp" valuePropName="checked">
                 <Checkbox
-                  value={item}
+                  value={data}
                   onClick={onMouseEnter}
                   onChange={onCheck}
                 >
                   <span
-                    className="test"
+                    className="label"
                     onClick={onMouseEnter}
                     aria-hidden="true"
                   >

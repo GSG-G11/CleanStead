@@ -150,3 +150,12 @@
     width: fit-content;
 }
 }
+.total-price{
+  text-align: center;
+    display: block;
+    font-size: 24px;
+}
+.label{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
