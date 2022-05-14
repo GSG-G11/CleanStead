@@ -21,8 +21,6 @@ const { Header, Footer, Content } = Layout;
 
 function App() {
   const location = useLocation();
-
-  // const location = useHref();
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
 
