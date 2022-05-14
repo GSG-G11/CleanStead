@@ -236,10 +236,10 @@ describe('Test post service', () => {
 describe('Test delete service', () => {
   it('should return status 200', async () => {
     const res = await supertest(app)
-      .delete('/api/v1/services/12')
+      .delete('/api/v1/services/4')
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('Service Deleted Successfuly!');
+    expect(res.body.message).toBe('تم حذف الخدمة بنجاح!');
   });
 });
 

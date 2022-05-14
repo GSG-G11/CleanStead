@@ -14,7 +14,7 @@ const deleteService: RequestHandler = async (req, res, next) => {
         message: 'There is no service with this Id',
       });
     }
-    return res.json({ message: 'Service Deleted Successfuly!', status: 200 });
+    return res.json({ message: 'تم حذف الخدمة بنجاح!', status: 200 });
   } catch (error:any) {
     if (error.errors) {
       return next(new CustomizedError(400, error.errors[0]));

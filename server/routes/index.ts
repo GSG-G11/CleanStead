@@ -10,6 +10,7 @@ import {
   getBooks,
   postService,
   deleteService,
+  checkAuth,
 } from '../controllers';
 
 const router = Router();
