@@ -195,7 +195,7 @@ describe('Test to login', () => {
       })
       .expect(400)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('ًيوجد خطأ بالإيميل أو كلمة السر');
+    expect(res.body.message).toBe('يوجد خطأ بالإيميل أو كلمة السر');
   });
 });
 

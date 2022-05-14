@@ -1,3 +1,7 @@
+.categories-card {
+    margin-top: 1em !important;
+    padding: 0px 50px;
+}
 .categories {
-    padding: 50px 50px;
+    padding: 55px 0;
  }
