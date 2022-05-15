@@ -4,7 +4,7 @@ import {
 
 const paramsIdSchema = object({
   params: object({
-    id: number().required(),
+    id: number().required('Id is requried and must be number'),
   }),
 });
 

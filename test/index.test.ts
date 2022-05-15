@@ -3,6 +3,8 @@ import connection from '../server/database/connection';
 import dbBuild from '../server/database/build';
 import app from '../server/app';
 
+const token = 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImVtYWlsIjoiaXNyYWE2NTZAaG90bWFpbC5jb20iLCJpYXQiOjE2NTI2MDI3ODB9.o0VgCAxids643zfDxO30Vhb2jaBYDZnR3v6p-3ev4Hc';
+
 beforeAll(dbBuild);
 afterAll(() => connection.end());
 
@@ -271,6 +273,17 @@ describe('Test post service', () => {
       .expect(400)
       .expect('Content-Type', /json/);
     expect(res.body.message).toBe('Price must be large than 0');
+  });
+});
+
+describe('Test delete service', () => {
+  it('should return status 200', async () => {
+    const res = await supertest(app)
+      .delete('/api/v1/services/4')
+      .set({ Cookie: token })
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('تم حذف الخدمة بنجاح!');
   });
 });
 
