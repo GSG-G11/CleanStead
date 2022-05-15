@@ -10,13 +10,7 @@
 .description-title {
   margin: 0.2em 0.2em;
 }
-.description-paragraph {
-  width: 320px;
-  color: rgb(114, 114, 114);
-  font-size: 17px;
-  line-height: 1.5;
-  margin: 0.2em 0.2em;
-}
+
 .description-button {
   margin: 30px 10px 20px 80px;
   width: 130px;
@@ -27,4 +21,20 @@
   border-radius: 5px;
   cursor: pointer;
 }
-
+.ant-typography.ant-typography-rtl.description-paragraph {
+  width: 320px;
+  color: rgb(114, 114, 114);
+  font-size: 17px;
+  line-height: 1.8;
+  margin: 0.2em 0.2em;
+  text-align: right;
+}
+.custom-title {
+  font-size: 25px ;
+  /* padding-left: 100px; */
+  margin-bottom: 20px;
+  margin-left: 50px;
+}
+.ant-btn.ant-btn-round.ant-btn-primary.ant-btn-lg.ant-btn-rtl.description-button {
+  margin: 30px 10px 20px 200px;
+}

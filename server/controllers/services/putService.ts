@@ -1,6 +1,6 @@
 import { RequestHandler } from 'express';
 import { putServiceQuery } from '../../queries';
-import { servicesSchema, categroyIdSchema } from '../../validation';
+import { servicesSchema } from '../../validation';
 import CustomizedError from '../../utils/error';
 
 const puttService: RequestHandler = async (req, res, next) => {
@@ -9,7 +9,6 @@ const puttService: RequestHandler = async (req, res, next) => {
     const {
       name, description, price, image, categoryId,
     } = await servicesSchema.validate(req.body, { abortEarly: false });
-    await categroyIdSchema.validate({ id }, { abortEarly: false });
     const { rows, rowCount } = await putServiceQuery(
       id as any,
       name,

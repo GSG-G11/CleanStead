@@ -147,9 +147,9 @@ describe('Test to add Contact', () => {
       .send({
         name: 'Israa',
         email: 'israa@hotmail.com',
-        message: 'i need more details',
+        messageInfo: 'i need more details',
         phone: '1015465455',
-        category_id: 1,
+        categoryId: 1,
       })
       .expect(201)
       .expect('Content-Type', /json/);
@@ -163,9 +163,9 @@ describe('Test to add register', () => {
       .send({
         name: 'Israa',
         email: 'israa403',
-        message: 'i need more details',
+        messageInfo: 'i need more details',
         phone: 5645,
-        category_id: 1,
+        categoryId: 1,
       })
       .expect(400)
       .expect('Content-Type', /json/);
@@ -195,7 +195,7 @@ describe('Test to login', () => {
       })
       .expect(400)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('ًيوجد خطأ بالإيميل أو كلمة السر');
+    expect(res.body.message).toBe('يوجد خطأ بالإيميل أو كلمة السر');
   });
 });
 
@@ -241,6 +241,22 @@ describe('Test get books', () => {
       .expect('Content-Type', /json/);
     expect(res.body.data.length).toBe(6);
   });
+
+  it('should return status code 200 and the length 2', async () => {
+    const res = await supertest(app)
+      .get('/api/v1/user/1/book')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.data.length).toBe(2);
+  });
+
+  it('should return status code 200 and the length 1', async () => {
+    const res = await supertest(app)
+      .get('/api/v1/book/1')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.data.length).toBe(1);
+  });
 });
 
 describe('Test put service', () => {
@@ -257,5 +273,21 @@ describe('Test put service', () => {
       .expect(201)
       .expect('Content-Type', /json/);
     expect(res.body.message).toBe('تم تعديل الخدمة بنجاح');
+  });
+});
+describe('Test put service', () => {
+  it('should return status 400', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/services/2')
+      .send({
+        name: 'testtestdaf',
+        description: '',
+        price: 20,
+        image: 'ka;hkjdgh;askdh',
+        categoryId: 2,
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('Description is required');
   });
 });
