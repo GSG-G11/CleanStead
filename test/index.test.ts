@@ -3,7 +3,7 @@ import connection from '../server/database/connection';
 import dbBuild from '../server/database/build';
 import app from '../server/app';
 
-const token = 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImVtYWlsIjoiamVoYWQxN0BnbWFpbC5jb20iLCJpYXQiOjE2NTI1OTY1NDd9.5Tr9hsa4-v4s7Rh7oCh9af_nD3eWfiKrjZ9ZSB-HTXQ';
+const token = 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImVtYWlsIjoiaXNyYWE2NTZAaG90bWFpbC5jb20iLCJpYXQiOjE2NTI2MDI3ODB9.o0VgCAxids643zfDxO30Vhb2jaBYDZnR3v6p-3ev4Hc';
 
 beforeAll(dbBuild);
 afterAll(() => connection.end());
