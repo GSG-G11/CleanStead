@@ -6,5 +6,6 @@ export { default as WhatTheySay } from './WhatTheySay';
 export { default as WhyUs } from './WhyUs';
 export { default as OurFooter } from './Footer';
 export { default as CategoriesCardsContainer } from './CategoriesCardsContainer';
+export { default as LoginRegisterContainer } from './LoginRegisterContainer';
 export { default as DescriptionContent } from './DescriptionContent';
 export { default as ContactUsForm } from './ContactUsForm';

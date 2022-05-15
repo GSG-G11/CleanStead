@@ -1,30 +1,24 @@
 import { RequestHandler } from 'express';
-import { putCategoriesQuery } from '../../queries';
+import { postCategoriesQuery } from '../../queries';
 import { categoriesSchema } from '../../validation';
 import CustomizedError from '../../utils/error';
 
-const putCategories: RequestHandler = async (req, res, next) => {
-  const { id: categoryId } = req.params;
+const postCategories: RequestHandler = async (req, res, next) => {
   try {
     const {
       name, description, image,
     } = await categoriesSchema.validate(req.body, { abortEarly: false });
-    const { rows, rowCount } = await putCategoriesQuery(
-      categoryId as any,
-      name,
-      description,
-      image,
-    );
+    const { rowCount } = await postCategoriesQuery(name, description, image);
     if (!rowCount) {
       throw new CustomizedError(400, 'يوجد خلل حاول مرة أخرى');
     }
-    return res.status(201).json({ message: 'تم تعديل الخدمة بنجاح', status: 201, data: rows[0] });
+    return res.status(201).json({ message: 'تم إضافة الخدمة بنجاح', status: 201 });
   } catch (error:any) {
-    if (error.errors) {
+    if (error.name === 'ValidationError') {
       return next(new CustomizedError(400, error.errors[0]));
     }
     return next(error);
   }
 };
 
-export default putCategories;
+export default postCategories;
