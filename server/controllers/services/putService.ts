@@ -4,13 +4,13 @@ import { servicesSchema } from '../../validation';
 import CustomizedError from '../../utils/error';
 
 const puttService: RequestHandler = async (req, res, next) => {
-  const { id } = req.params;
+  const { id: serviceId } = req.params;
   try {
     const {
       name, description, price, image, categoryId,
     } = await servicesSchema.validate(req.body, { abortEarly: false });
     const { rows, rowCount } = await putServiceQuery(
-      id as any,
+      serviceId as any,
       name,
       description,
       price,
