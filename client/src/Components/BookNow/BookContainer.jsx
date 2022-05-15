@@ -11,15 +11,33 @@ import './style.css';
 
 const { Step } = Steps;
 
-function BookContainer({ categories }) {
+function BookContainer({ categories, setIsOpen }) {
   const [current, setCurrent] = useState(0);
   const [checked, setChecked] = useState([]);
   const [valueRadio, setValueRadio] = useState('مرة واحدة');
   const [valueDate, setValueDate] = useState('لم يتم تحديد موعد بعد');
-  const onChangeRadio = (e) => {
-    setValueRadio(e.target.value);
+  const [username, setUserName] = useState('');
+  const [userPhone, setUserPhone] = useState('');
+  const [userAddress, setUserAddress] = useState('');
+  const [userSpesificAddress, setUserSpesificAddress] = useState('');
+  const onChandeInput = ({ target: { name, value } }) => {
+    switch (name) {
+      case 'username':
+        setUserName(value);
+        break;
+      case 'userPhone':
+        setUserPhone(value);
+        break;
+      case 'userAddress':
+        setUserAddress(value);
+        break;
+      case 'userSpesificAddress':
+        setUserSpesificAddress(value);
+        break;
+      default:
+        break;
+    }
   };
-
   const onCheck = (event) => {
     const isChecked = event.target.checked;
     if (isChecked) {
@@ -55,7 +73,9 @@ function BookContainer({ categories }) {
     },
     {
       title: 'معلوماتك',
-      content: <UserInformation />,
+      content: (
+        <UserInformation onChandeInput={onChandeInput} setIsOpen={setIsOpen} />
+      ),
     },
   ];
 
@@ -114,7 +134,11 @@ function BookContainer({ categories }) {
     </div>
   );
 }
-
+BookContainer.defaultProps = {
+  setIsOpen: () => {
+    setIsOpen(false);
+  },
+};
 BookContainer.propTypes = {
   categories: PropTypes.arrayOf(
     PropTypes.shape({
@@ -124,5 +148,6 @@ BookContainer.propTypes = {
       image: PropTypes.string.isRequired,
     })
   ).isRequired,
+  setIsOpen: PropTypes.func,
 };
 export default BookContainer;

@@ -169,7 +169,7 @@
 .ant-radio-wrapper.ant-radio-wrapper-rtl {
   padding: 10px  !important;
 }
-.ant-picker {
+.ant-picker, .ant-input.input-user {
 border: 1px solid #F2F2F2  !important;
 }
 .ant-radio-inner {
@@ -178,4 +178,11 @@ border: 1px solid #F2F2F2  !important;
 .ant-form-vertical .ant-form-item-label > label {
   font-weight: 600 !important;
   margin-top: 15px !important;
+}
+.input-user {
+  width:250px !important;
+}
+.btn-login{
+  padding: 0 !important;
+  color: #00ADEE !important;
 }
