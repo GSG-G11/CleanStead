@@ -9,6 +9,7 @@ import {
   signin,
   getBooks,
   postService,
+  deleteCategory,
 } from '../controllers';
 
 const router = Router();
@@ -16,6 +17,7 @@ router.get('/categories', getCategories);
 router.get('/categories/:id/services', getCategoryServices);
 router.get('/book', getBooks);
 router.post('/services', postService);
+router.delete('/categories/:id', deleteCategory);
 router.route('/contact').get(getContacts).post(addContact);
 router.post('/signup', signup);
 router.get('/logout', logout);
