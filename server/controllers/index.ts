@@ -9,6 +9,7 @@ import checkAuth from './middlewares/auth';
 import signin from './signin';
 import { getBooks, getUserBooks, getBook } from './book';
 import { postService } from './services';
+import { validateLink } from './middlewares';
 
 export {
   serverError,
@@ -25,4 +26,5 @@ export {
   postService,
   getUserBooks,
   getBook,
+  validateLink,
 };
