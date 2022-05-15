@@ -3,6 +3,8 @@ import connection from '../server/database/connection';
 import dbBuild from '../server/database/build';
 import app from '../server/app';
 
+const token = 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImVtYWlsIjoiaXNyYWE2NTZAaG90bWFpbC5jb20iLCJpYXQiOjE2NTI2MDI3ODB9.o0VgCAxids643zfDxO30Vhb2jaBYDZnR3v6p-3ev4Hc';
+
 beforeAll(dbBuild);
 afterAll(() => connection.end());
 
@@ -274,6 +276,17 @@ describe('Test post service', () => {
   });
 });
 
+describe('Test delete service', () => {
+  it('should return status 200', async () => {
+    const res = await supertest(app)
+      .delete('/api/v1/services/4')
+      .set({ Cookie: token })
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('تم حذف الخدمة بنجاح!');
+  });
+});
+
 describe('Test get books', () => {
   it('should return status code 200 and the length 6', async () => {
     const res = await supertest(app)
@@ -299,6 +312,77 @@ describe('Test get books', () => {
     expect(res.body.data.length).toBe(1);
   });
 });
+
+describe('Test put service', () => {
+  it('should return status 201', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/services/2')
+      .send({
+        name: 'testtestdaf',
+        description: 'testgadga',
+        price: 20,
+        image: 'ka;hkjdgh;askdh',
+        categoryId: 2,
+      })
+      .set({ Cookie: token })
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('تم تعديل الخدمة بنجاح');
+  });
+});
+describe('Test put service', () => {
+  it('should return status 400', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/services/2')
+      .send({
+        name: 'testtestdaf',
+        description: '',
+        price: 20,
+        image: 'ka;hkjdgh;askdh',
+        categoryId: 2,
+      })
+      .set({ Cookie: token })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('Description is required');
+  });
+});
+
+describe('Test put category', () => {
+  it('should return status 400', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/categories/2')
+      .send({
+        name: 'testtestdaf',
+        description: 'asdasdasd',
+        price: 20,
+        image: 'ka;hkjdgh;askdh',
+        categoryId: 2,
+      })
+      .set({ Cookie: token })
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('تم تعديل الخدمة بنجاح');
+  });
+});
+
+describe('Test put category', () => {
+  it('should return status 400', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/categories/2')
+      .send({
+        name: 'testtestdaf',
+        description: 'adasdsa',
+        price: 20,
+        image: 'ka;hkjdgh;askdh',
+        categoryId: 2,
+      })
+      .expect(401)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('UnAuthorized');
+  });
+});
+
 describe('Test put category', () => {
   it('should return status 400', async () => {
     const res = await supertest(app)

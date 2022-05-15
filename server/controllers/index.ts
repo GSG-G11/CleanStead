@@ -7,10 +7,10 @@ import {
 import { getContacts, addContact } from './contact';
 import signup from './signup';
 import logout from './logout';
-import checkAuth from './middlewares/auth';
+import { checkAuth } from './middlewares/auth';
 import signin from './signin';
 import { getBooks, getUserBooks, getBook } from './book';
-import { postService } from './services';
+import { postService, deleteService, putService } from './services';
 import { validateLink } from './middlewares';
 
 export {
@@ -28,6 +28,8 @@ export {
   getBooks,
   putCategories,
   postService,
+  putService,
+  deleteService,
   getUserBooks,
   getBook,
   validateLink,
