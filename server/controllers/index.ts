@@ -8,7 +8,7 @@ import logout from './logout';
 import { checkAuth } from './middlewares/auth';
 import signin from './signin';
 import { getBooks, getUserBooks, getBook } from './book';
-import { postService, deleteService } from './services';
+import { postService, deleteService, putService } from './services';
 import { validateLink } from './middlewares';
 
 export {
@@ -25,6 +25,7 @@ export {
   postCategories,
   getBooks,
   postService,
+  putService,
   deleteService,
   getUserBooks,
   getBook,

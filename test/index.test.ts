@@ -312,3 +312,38 @@ describe('Test get books', () => {
     expect(res.body.data.length).toBe(1);
   });
 });
+
+describe('Test put service', () => {
+  it('should return status 201', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/services/2')
+      .send({
+        name: 'testtestdaf',
+        description: 'testgadga',
+        price: 20,
+        image: 'ka;hkjdgh;askdh',
+        categoryId: 2,
+      })
+      .set({ Cookie: token })
+      .expect(201)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('تم تعديل الخدمة بنجاح');
+  });
+});
+describe('Test put service', () => {
+  it('should return status 400', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/services/2')
+      .send({
+        name: 'testtestdaf',
+        description: '',
+        price: 20,
+        image: 'ka;hkjdgh;askdh',
+        categoryId: 2,
+      })
+      .set({ Cookie: token })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('Description is required');
+  });
+});
