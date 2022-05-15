@@ -9,6 +9,7 @@ import {
   signin,
   getBooks,
   postService,
+  putCategories,
 } from '../controllers';
 
 const router = Router();
@@ -19,6 +20,6 @@ router.post('/services', postService);
 router.route('/contact').get(getContacts).post(addContact);
 router.post('/signup', signup);
 router.get('/logout', logout);
-router.put('/category/:id', putCategory;
+router.put('/category/:id', putCategories);
 router.post('/signin', signin);
 export default router;
