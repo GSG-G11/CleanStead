@@ -5,7 +5,7 @@ import { getCategories, getCategoryServices } from './categories';
 import { getContacts, addContact } from './contact';
 import signup from './signup';
 import logout from './logout';
-import checkAuth from './middlewares/auth';
+import { checkAuth } from './middlewares/auth';
 import signin from './signin';
 import { getBooks } from './book';
 import { postService, deleteService } from './services';

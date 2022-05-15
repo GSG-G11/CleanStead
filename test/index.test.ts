@@ -3,6 +3,8 @@ import connection from '../server/database/connection';
 import dbBuild from '../server/database/build';
 import app from '../server/app';
 
+const token = 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImVtYWlsIjoiamVoYWQxN0BnbWFpbC5jb20iLCJpYXQiOjE2NTI1OTY1NDd9.5Tr9hsa4-v4s7Rh7oCh9af_nD3eWfiKrjZ9ZSB-HTXQ';
+
 beforeAll(dbBuild);
 afterAll(() => connection.end());
 
@@ -237,6 +239,7 @@ describe('Test delete service', () => {
   it('should return status 200', async () => {
     const res = await supertest(app)
       .delete('/api/v1/services/4')
+      .set({ Cookie: token })
       .expect(200)
       .expect('Content-Type', /json/);
     expect(res.body.message).toBe('تم حذف الخدمة بنجاح!');
