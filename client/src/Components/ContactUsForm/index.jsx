@@ -10,14 +10,14 @@ function ContactUsForm({ categories }) {
   const Title = Typography;
 
   return (
-    <Row justify="center" 
-    align="center"
-    gutter={[0, 30]}>
-      <Col xs={{ span: 23 }}
+    <Row justify="center" align="center" gutter={[0, 30]}>
+      <Col
+        xs={{ span: 23 }}
         sm={{ span: 23 }}
         md={{ span: 23 }}
         lg={{ span: 11 }}
-        xl={{ span: 11 }}>
+        xl={{ span: 11 }}
+      >
         <div className="contact-section">
           <div className="contact-custom-title">
             <Title className="contact-title">تواصل معنا </Title>
@@ -42,9 +42,7 @@ function ContactUsForm({ categories }) {
                 ))}
               </Select>
             </Form.Item>
-            <Row justify="center" 
-      align="center"
-      gutter={[0, 30]}>
+            <Row justify="center" align="center" gutter={[0, 30]}>
               <Col span={12}>
                 <Form.Item
                   name="name"
@@ -111,16 +109,19 @@ function ContactUsForm({ categories }) {
         </div>
       </Col>
 
-      <Col xs={{ span: 23 }}
+      <Col
+        xs={{ span: 23 }}
         sm={{ span: 23 }}
         md={{ span: 23 }}
         lg={{ span: 11 }}
-        xl={{ span: 11 }}>
+        xl={{ span: 11 }}
+      >
         <Image
           preview={false}
           className="contact-image"
           width={450}
           src={Img}
+          alt="contact"
         />
       </Col>
     </Row>
