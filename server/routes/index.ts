@@ -19,5 +19,6 @@ router.post('/services', postService);
 router.route('/contact').get(getContacts).post(addContact);
 router.post('/signup', signup);
 router.get('/logout', logout);
+router.put('/category/:id', putCategory;
 router.post('/signin', signin);
 export default router;
