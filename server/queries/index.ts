@@ -1,4 +1,4 @@
-import { getCategoriesQuery, getCategoryServicesQuery } from './categories';
+import { getCategoriesQuery, getCategoryServicesQuery, postCategoriesQuery } from './categories';
 import { getContactsQuery, addContactQuery } from './contact';
 import { addUserQuery, checkEmailExistsQuery } from './user';
 import { getBooksQuery, getUserBooksQuery, getBookQuery } from './book';
@@ -11,6 +11,7 @@ export {
   addContactQuery,
   addUserQuery,
   checkEmailExistsQuery,
+  postCategoriesQuery,
   getBooksQuery,
   postServiceQuery,
   getUserBooksQuery,

@@ -198,7 +198,48 @@ describe('Test to login', () => {
     expect(res.body.message).toBe('يوجد خطأ بالإيميل أو كلمة السر');
   });
 });
-
+describe('Test post categories', () => {
+  it('should return status 201', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/categories')
+      .send({
+        name: 'mostafa',
+        description: 'mostafa',
+        image: 'dsfdsfsdggs',
+      })
+      .expect(201)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('تم إضافة الخدمة بنجاح');
+  });
+});
+describe('Test post categories', () => {
+  it('should return status 201', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/categories')
+      .send({
+        name: 'mostafa',
+        description: '',
+        image: 'dsfdsfsdggs',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('Description is required');
+  });
+});
+describe('Test post categories', () => {
+  it('should return status 201', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/categories')
+      .send({
+        name: '',
+        description: 'mostafa sadasd',
+        image: 'dsfdsfsdggs',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('Name is required');
+  });
+});
 describe('Test post service', () => {
   it('should return status 201', async () => {
     const res = await supertest(app)

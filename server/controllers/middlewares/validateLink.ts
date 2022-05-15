@@ -8,7 +8,7 @@ const validateLink: RequestHandler = async (req, res, next) => {
     });
     return next();
   } catch (err:any) {
-    return res.status(500)
+    return res.status(400)
       .json({ type: err.name, message: err.message });
   }
 };

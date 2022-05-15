@@ -1,7 +1,7 @@
 import {
   serverError, clientError,
 } from './errorHandle';
-import { getCategories, getCategoryServices } from './categories';
+import { getCategories, getCategoryServices, postCategories } from './categories';
 import { getContacts, addContact } from './contact';
 import signup from './signup';
 import logout from './logout';
@@ -22,6 +22,7 @@ export {
   logout,
   checkAuth,
   signin,
+  postCategories,
   getBooks,
   postService,
   getUserBooks,
