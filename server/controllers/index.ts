@@ -5,10 +5,10 @@ import { getCategories, getCategoryServices, postCategories } from './categories
 import { getContacts, addContact } from './contact';
 import signup from './signup';
 import logout from './logout';
-import checkAuth from './middlewares/auth';
+import { checkAuth } from './middlewares/auth';
 import signin from './signin';
 import { getBooks, getUserBooks, getBook } from './book';
-import { postService } from './services';
+import { postService, deleteService, putService } from './services';
 import { validateLink } from './middlewares';
 import signinAdmin from './signinAdmin';
 
@@ -26,6 +26,8 @@ export {
   postCategories,
   getBooks,
   postService,
+  putService,
+  deleteService,
   getUserBooks,
   getBook,
   validateLink,

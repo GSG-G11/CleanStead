@@ -38,7 +38,7 @@ CREATE TABLE services (
   price INT NOT NULL,
   image TEXT NOT NULL,
   category_id INT,
-  FOREIGN KEY (category_id) REFERENCES categories(id)
+  FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
 );
 
 CREATE TABLE contacts (
@@ -48,7 +48,7 @@ CREATE TABLE contacts (
   message TEXT NOT NULL,
   phone VARCHAR(30) NOT NULL,
   category_id INT,
-  FOREIGN KEY (category_id) REFERENCES categories(id)
+  FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
 );
 
 CREATE TABLE appoinments (
@@ -60,16 +60,16 @@ CREATE TABLE appoinments (
   user_id INT,
   status VARCHAR(50) DEFAULT 'Pending',
   repeat VARCHAR(50) DEFAULT 'Once',
-  FOREIGN KEY (user_id) REFERENCES users(id)
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE services_appoinments (
   id SERIAL PRIMARY KEY,
   quantity INT NOT NULL,
   appoinment_id INT,
-  FOREIGN KEY (appoinment_id) REFERENCES appoinments(id),
+  FOREIGN KEY (appoinment_id) REFERENCES appoinments(id) ON DELETE CASCADE,
   service_id INT,
-  FOREIGN KEY (service_id) REFERENCES services(id)
+  FOREIGN KEY (service_id) REFERENCES services(id) ON DELETE CASCADE
 );
 
 COMMIT;
