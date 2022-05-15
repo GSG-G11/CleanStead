@@ -13,6 +13,7 @@ import {
   getUserBooks,
   getBook,
   validateLink,
+  checkAuth,
 } from '../controllers';
 
 const router = Router();
@@ -22,7 +23,7 @@ router.get('/book', getBooks);
 router.get('/book/:id', validateLink, getBook);
 router.get('/user/:id/book', validateLink, getUserBooks);
 router.post('/services', postService);
-router.put('/services/:id', validateLink, putService);
+router.put('/services/:id', validateLink, checkAuth, putService);
 router.route('/contact').get(getContacts).post(addContact);
 router.post('/signup', signup);
 router.get('/logout', logout);

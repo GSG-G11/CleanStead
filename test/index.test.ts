@@ -3,6 +3,8 @@ import connection from '../server/database/connection';
 import dbBuild from '../server/database/build';
 import app from '../server/app';
 
+const token = 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImVtYWlsIjoiaXNyYWE2NTZAaG90bWFpbC5jb20iLCJpYXQiOjE2NTI2MDI3ODB9.o0VgCAxids643zfDxO30Vhb2jaBYDZnR3v6p-3ev4Hc';
+
 beforeAll(dbBuild);
 afterAll(() => connection.end());
 
@@ -270,6 +272,7 @@ describe('Test put service', () => {
         image: 'ka;hkjdgh;askdh',
         categoryId: 2,
       })
+      .set({ Cookie: token })
       .expect(201)
       .expect('Content-Type', /json/);
     expect(res.body.message).toBe('تم تعديل الخدمة بنجاح');
@@ -286,6 +289,7 @@ describe('Test put service', () => {
         image: 'ka;hkjdgh;askdh',
         categoryId: 2,
       })
+      .set({ Cookie: token })
       .expect(400)
       .expect('Content-Type', /json/);
     expect(res.body.message).toBe('Description is required');
