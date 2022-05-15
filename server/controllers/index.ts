@@ -10,6 +10,7 @@ import signin from './signin';
 import { getBooks, getUserBooks, getBook } from './book';
 import { postService } from './services';
 import { validateLink } from './middlewares';
+import signinAdmin from './signinAdmin';
 
 export {
   serverError,
@@ -28,4 +29,5 @@ export {
   getUserBooks,
   getBook,
   validateLink,
+  signinAdmin,
 };

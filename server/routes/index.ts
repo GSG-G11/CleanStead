@@ -13,6 +13,7 @@ import {
   getUserBooks,
   getBook,
   validateLink,
+  signinAdmin,
 } from '../controllers';
 
 const router = Router();
@@ -27,4 +28,5 @@ router.route('/contact').get(getContacts).post(addContact);
 router.post('/signup', signup);
 router.get('/logout', logout);
 router.post('/signin', signin);
+router.post('/admin/signin', signinAdmin);
 export default router;
