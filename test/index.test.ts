@@ -223,7 +223,21 @@ describe('Test post categories', () => {
       })
       .expect(400)
       .expect('Content-Type', /json/);
-    expect(res.body.status).toBe(400);
+    expect(res.body.message).toBe('Description is required');
+  });
+});
+describe('Test post categories', () => {
+  it('should return status 201', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/categories')
+      .send({
+        name: '',
+        description: 'mostafa sadasd',
+        image: 'dsfdsfsdggs',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('Name is required');
   });
 });
 describe('Test post service', () => {
