@@ -1,21 +1,61 @@
 import React, { useState } from 'react';
 import uuid from 'react-uuid';
 import PropTypes from 'prop-types';
-import { Col, Row, Steps, Button, message } from 'antd';
+import { Col, Row, Steps, Button } from 'antd';
+import { Navigate } from 'react-router-dom';
 import CustomTitle from '../CustomTitle';
 import ServicesChoice from './ServicesChoice';
 import DateTimeChoice from './DateTimeChoice';
 import UserInformation from './UserInformation';
 import Summary from './Summary';
+import CompleteBook from './CompleteBook';
 import './style.css';
 
 const { Step } = Steps;
 
-function BookContainer({ categories }) {
+function BookContainer({ categories, setIsOpen }) {
   const [current, setCurrent] = useState(0);
   const [categoryServices, setCategoryServices] = useState({});
   const [valueRadio, setValueRadio] = useState('مرة واحدة');
   const [valueDate, setValueDate] = useState('لم يتم تحديد موعد بعد');
+  const [username, setUserName] = useState('');
+  const [userPhone, setUserPhone] = useState('');
+  const [userAddress, setUserAddress] = useState('');
+  const [userSpesificAddress, setUserSpesificAddress] = useState('');
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setCurrent(0);
+    <Navigate to="/book" />;
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  const onChangeInput = ({ target: { name, value } }) => {
+    switch (name) {
+      case 'username':
+        setUserName(value);
+        break;
+      case 'userPhone':
+        setUserPhone(value);
+        break;
+      case 'userAddress':
+        setUserAddress(value);
+        break;
+      case 'userSpesificAddress':
+        setUserSpesificAddress(value);
+        break;
+      default:
+        break;
+    }
+  };
 
   const next = () => {
     setCurrent(current + 1);
@@ -48,12 +88,19 @@ function BookContainer({ categories }) {
     },
     {
       title: 'معلوماتك',
-      content: <UserInformation />,
+      content: (
+        <UserInformation onChangeInput={onChangeInput} setIsOpen={setIsOpen} />
+      ),
     },
   ];
 
   return (
     <div className="book-container">
+      <CompleteBook
+        handleOk={handleOk}
+        handleCancel={handleCancel}
+        isModalVisible={isModalVisible}
+      />
       <Row justify="center" align="top" gutter={[0, 30]}>
         <Col
           xs={{ span: 22 }}
@@ -76,10 +123,7 @@ function BookContainer({ categories }) {
               </Button>
             )}
             {current === steps.length - 1 && (
-              <Button
-                type="primary"
-                onClick={() => message.success('تم ارسال الطلب بنجاح!')}
-              >
+              <Button type="primary" onClick={showModal}>
                 ارسال
               </Button>
             )}
@@ -107,7 +151,11 @@ function BookContainer({ categories }) {
     </div>
   );
 }
-
+BookContainer.defaultProps = {
+  setIsOpen: () => {
+    setIsOpen(false);
+  },
+};
 BookContainer.propTypes = {
   categories: PropTypes.arrayOf(
     PropTypes.shape({
@@ -117,5 +165,6 @@ BookContainer.propTypes = {
       image: PropTypes.string.isRequired,
     })
   ).isRequired,
+  setIsOpen: PropTypes.func,
 };
 export default BookContainer;

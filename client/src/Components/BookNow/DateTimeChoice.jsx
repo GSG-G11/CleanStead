@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import { Typography, Radio, Form, DatePicker } from 'antd';
 
 const { Title } = Typography;
@@ -8,9 +9,16 @@ function DateTimeChoice({ valueRadio, setValueRadio, setValueDate }) {
   const onChange = (value, dateString) => {
     setValueDate(dateString);
   };
+
   const onChangeRadio = (e) => {
     setValueRadio(e.target.value);
   };
+
+  const disabledDate = (current) => {
+    const customDate = moment().format('YYYY-MM-DD');
+    return current && current < moment(customDate, 'YYYY-MM-DD');
+  };
+
   return (
     <div>
       <Title level={4}>اختر موعد الحجز</Title>
@@ -25,18 +33,27 @@ function DateTimeChoice({ valueRadio, setValueRadio, setValueDate }) {
           </Radio.Group>
         </Form.Item>
         <Form.Item label="التاريخ والوقت">
-          <DatePicker showTime onChange={onChange} />
+          <DatePicker
+            use12Hours
+            onChange={onChange}
+            format="A h:mm | YYYY-MM-DD"
+            disabledDate={disabledDate}
+            showTime
+          />
         </Form.Item>
       </Form>
     </div>
   );
 }
+
 DateTimeChoice.defaultProps = {
   valueRadio: 'مرة واحدة',
 };
+
 DateTimeChoice.propTypes = {
   setValueRadio: PropTypes.func.isRequired,
   setValueDate: PropTypes.func.isRequired,
   valueRadio: PropTypes.string,
 };
+
 export default DateTimeChoice;

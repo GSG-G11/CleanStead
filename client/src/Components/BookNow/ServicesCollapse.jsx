@@ -45,6 +45,7 @@ function ServicesCollapse({
     }
   };
 
+  console.log(categoryServices[item.category_id][itemIndex].isChecked);
   return (
     <Collapse
       expandIconPosition="right"
@@ -59,6 +60,9 @@ function ServicesCollapse({
               <Form.Item name="myProp" valuePropName="checked">
                 <Checkbox
                   value={
+                    categoryServices[item.category_id][itemIndex].isChecked
+                  }
+                  checked={
                     categoryServices[item.category_id][itemIndex].isChecked
                   }
                   onClick={onMouse}

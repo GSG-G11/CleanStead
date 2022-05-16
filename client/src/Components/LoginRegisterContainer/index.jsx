@@ -18,6 +18,7 @@ function LoginRegisterContainer({ isOpen, setIsOpen, setIsLogged }) {
       visible={isOpen}
       onCancel={handleCancel}
       width={430}
+      className="login-register-container"
     >
       <Tabs defaultActiveKey="1">
         <TabPane tab="إنشاء حساب" key="1">

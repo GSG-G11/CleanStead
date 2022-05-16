@@ -69,7 +69,10 @@ function App() {
               element={<Description page="category" categories={categories} />}
             />
             <Route path="/category/:id" element={<Category />} />
-            <Route path="/book" element={<Book categories={categories} />} />
+            <Route
+              path="/book"
+              element={<Book categories={categories} setIsOpen={setIsOpen} />}
+            />
           </Routes>
         </Content>
         <Footer>
