@@ -63,7 +63,7 @@ CREATE TABLE appoinments (
   date_time TIMESTAMP NOT NULL,
   creation_time TIMESTAMP NOT NULL,
   price INT NOT NULL,
-  status VARCHAR(50) DEFAULT 'ملعق',
+  status VARCHAR(50) DEFAULT 'معلق',
   repeat VARCHAR(50) DEFAULT 'مرة واحدة',
   archived BOOLEAN DEFAULT FALSE,
   user_id INT,
