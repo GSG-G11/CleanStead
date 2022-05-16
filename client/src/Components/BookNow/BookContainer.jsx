@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import uuid from 'react-uuid';
 import PropTypes from 'prop-types';
-import { Col, Row, Steps, Button } from 'antd';
+import { Col, Row, Steps, Button, message } from 'antd';
 import { Navigate } from 'react-router-dom';
 import CustomTitle from '../CustomTitle';
 import ServicesChoice from './ServicesChoice';
@@ -24,8 +24,18 @@ function BookContainer({ categories, setIsOpen }) {
   const [userSpesificAddress, setUserSpecificAddress] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+  // console.log(categoryServices);
   const showModal = () => {
-    setIsModalVisible(true);
+    if (
+      username === '' ||
+      userPhone === '' ||
+      userAddress === '' ||
+      userSpesificAddress === ''
+    ) {
+      message.error('يجب إدخال جميع البيانات');
+    } else {
+      setIsModalVisible(true);
+    }
   };
 
   const handleOk = () => {
@@ -62,9 +72,27 @@ function BookContainer({ categories, setIsOpen }) {
         break;
     }
   };
+  const checkServices = () => {
+    let checkedTrue = false;
+    if (Object.keys(categoryServices).length) {
+      Object.values(categoryServices).forEach((value) => {
+        checkedTrue =
+          value.filter((item) => item.isChecked === true).length !== 0;
+      });
+      return checkedTrue;
+    }
+    return checkedTrue;
+  };
 
   const next = () => {
-    setCurrent(current + 1);
+    if (current === 0) {
+      if (checkServices()) setCurrent(current + 1);
+      else message.error('يجب إختيار خدمة');
+    }
+    if (current === 1) {
+      if (valueDate === '') message.error('يرجى اختيار التاريخ');
+      else setCurrent(current + 1);
+    }
   };
 
   const prev = () => {

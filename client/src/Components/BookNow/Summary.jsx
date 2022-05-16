@@ -7,22 +7,20 @@ const { Title, Text } = Typography;
 
 function Summary({ categoryServices, valueDate, valueRadio }) {
   let totalPrice = 0;
-  const services = [];
+  let services = [];
 
   if (Object.keys(categoryServices).length) {
-    for (const key in categoryServices) {
-      categoryServices[key].forEach((item) => {
-        if (item.isChecked) {
-          services.push(item);
-        }
-      });
-    }
+    Object.values(categoryServices).forEach((value) => {
+      services = value.filter((item) => item.isChecked === true);
+    });
   }
 
-  totalPrice = services.reduce(
-    (acc, curr) => acc + curr.price * curr.quantity,
-    0
-  );
+  if (services.length) {
+    totalPrice = services.reduce(
+      (acc, curr) => acc + curr.price * curr.quantity,
+      0
+    );
+  }
 
   return (
     <div className="summary">
