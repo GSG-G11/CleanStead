@@ -56,7 +56,7 @@ function UserInformation({ onChangeInput, setIsOpen }) {
               <Input
                 placeholder="العنوان التفصيلي"
                 className="input-user"
-                name="userSpesificAddress"
+                name="userSpecificAddress"
                 onChange={onChangeInput}
               />
             </Form.Item>

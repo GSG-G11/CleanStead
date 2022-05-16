@@ -1,7 +1,7 @@
 import React from 'react';
 import uuid from 'react-uuid';
 import PropTypes from 'prop-types';
-import { Collapse, Checkbox, Avatar, Button, Typography, Form } from 'antd';
+import { Collapse, Checkbox, Avatar, Button, Typography } from 'antd';
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
 
 const { Paragraph, Text } = Typography;
@@ -24,7 +24,7 @@ function ServicesCollapse({
       categoryServices[categoryId][serviceIndex].quantity = 1;
     } else if (
       categoryServices[categoryId][serviceIndex].isChecked &&
-      categoryServices[categoryId][serviceIndex].quantity === 1
+      categoryServices[categoryId][serviceIndex].quantity > 1
     ) {
       categoryServices[categoryId][serviceIndex].quantity = 0;
     }
@@ -33,19 +33,30 @@ function ServicesCollapse({
     setCategoryServices({ ...categoryServices });
   };
 
-  const increment = (categoryId, serviceIndex) => {
-    categoryServices[categoryId][serviceIndex].quantity += 1;
+  const increment = (id, index) => {
+    if (
+      categoryServices[id][index].isChecked === false &&
+      categoryServices[id][index].quantity === 0
+    ) {
+      categoryServices[id][index].isChecked = true;
+    }
+    categoryServices[id][index].quantity += 1;
     setCategoryServices({ ...categoryServices });
   };
 
-  const decrement = (categoryId, serviceIndex) => {
-    if (categoryServices[categoryId][serviceIndex].quantity > 0) {
-      categoryServices[categoryId][serviceIndex].quantity -= 1;
-      setCategoryServices({ ...categoryServices });
+  const decrement = (id, index) => {
+    if (categoryServices[id][index].quantity > 0) {
+      if (categoryServices[id][index].quantity === 1) {
+        categoryServices[id][index].isChecked = false;
+        categoryServices[id][index].quantity -= 1;
+        setCategoryServices({ ...categoryServices });
+      } else {
+        categoryServices[id][index].quantity -= 1;
+        setCategoryServices({ ...categoryServices });
+      }
     }
   };
 
-  console.log(categoryServices[item.category_id][itemIndex].isChecked);
   return (
     <Collapse
       expandIconPosition="right"
@@ -56,24 +67,15 @@ function ServicesCollapse({
       <Panel
         header={
           <div className="service-info">
-            <Form>
-              <Form.Item name="myProp" valuePropName="checked">
-                <Checkbox
-                  value={
-                    categoryServices[item.category_id][itemIndex].isChecked
-                  }
-                  checked={
-                    categoryServices[item.category_id][itemIndex].isChecked
-                  }
-                  onClick={onMouse}
-                  onChange={() => changCheck(item.category_id, itemIndex)}
-                >
-                  <span className="label" onClick={onMouse} aria-hidden="true">
-                    {item.name}
-                  </span>
-                </Checkbox>
-              </Form.Item>
-            </Form>
+            <Checkbox
+              checked={categoryServices[item.category_id][itemIndex].isChecked}
+              onClick={onMouse}
+              onChange={() => changCheck(item.category_id, itemIndex)}
+            >
+              <span className="label" onClick={onMouse} aria-hidden="true">
+                {item.name}
+              </span>
+            </Checkbox>
             <Avatar src={item.image} shape="square" size={80} />
             <span className="price">{item.price}&#36;</span>
             <Button.Group onClick={onMouse}>

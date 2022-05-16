@@ -17,11 +17,11 @@ function BookContainer({ categories, setIsOpen }) {
   const [current, setCurrent] = useState(0);
   const [categoryServices, setCategoryServices] = useState({});
   const [valueRadio, setValueRadio] = useState('مرة واحدة');
-  const [valueDate, setValueDate] = useState('لم يتم تحديد موعد بعد');
+  const [valueDate, setValueDate] = useState('');
   const [username, setUserName] = useState('');
   const [userPhone, setUserPhone] = useState('');
   const [userAddress, setUserAddress] = useState('');
-  const [userSpesificAddress, setUserSpesificAddress] = useState('');
+  const [userSpesificAddress, setUserSpecificAddress] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
@@ -30,7 +30,13 @@ function BookContainer({ categories, setIsOpen }) {
 
   const handleOk = () => {
     setCurrent(0);
-    <Navigate to="/book" />;
+    setCategoryServices({});
+    setValueRadio('مرة واحدة');
+    setValueDate('');
+    setUserName('');
+    setUserPhone('');
+    setUserAddress('');
+    setUserSpecificAddress('');
     setIsModalVisible(false);
   };
 
@@ -49,8 +55,8 @@ function BookContainer({ categories, setIsOpen }) {
       case 'userAddress':
         setUserAddress(value);
         break;
-      case 'userSpesificAddress':
-        setUserSpesificAddress(value);
+      case 'userSpecificAddress':
+        setUserSpecificAddress(value);
         break;
       default:
         break;
@@ -80,6 +86,7 @@ function BookContainer({ categories, setIsOpen }) {
       title: 'التاريخ والوقت',
       content: (
         <DateTimeChoice
+          valueDate={valueDate}
           valueRadio={valueRadio}
           setValueRadio={setValueRadio}
           setValueDate={setValueDate}

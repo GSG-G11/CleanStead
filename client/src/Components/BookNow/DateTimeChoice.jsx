@@ -5,7 +5,12 @@ import { Typography, Radio, Form, DatePicker } from 'antd';
 
 const { Title } = Typography;
 const repeated = ['مرة واحدة', 'يومياً', 'أسبوعياً', 'شهرياً'];
-function DateTimeChoice({ valueRadio, setValueRadio, setValueDate }) {
+function DateTimeChoice({
+  valueDate,
+  valueRadio,
+  setValueRadio,
+  setValueDate,
+}) {
   const onChange = (value, dateString) => {
     setValueDate(dateString);
   };
@@ -34,11 +39,15 @@ function DateTimeChoice({ valueRadio, setValueRadio, setValueDate }) {
         </Form.Item>
         <Form.Item label="التاريخ والوقت">
           <DatePicker
+            value={
+              valueDate.length ? moment(valueDate, 'A h:mm | YYYY-MM-DD') : ''
+            }
             use12Hours
             onChange={onChange}
             format="A h:mm | YYYY-MM-DD"
             disabledDate={disabledDate}
             showTime
+            allowClear={false}
           />
         </Form.Item>
       </Form>
@@ -47,10 +56,12 @@ function DateTimeChoice({ valueRadio, setValueRadio, setValueDate }) {
 }
 
 DateTimeChoice.defaultProps = {
+  valueDate: '',
   valueRadio: 'مرة واحدة',
 };
 
 DateTimeChoice.propTypes = {
+  valueDate: PropTypes.string,
   setValueRadio: PropTypes.func.isRequired,
   setValueDate: PropTypes.func.isRequired,
   valueRadio: PropTypes.string,
