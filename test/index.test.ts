@@ -338,6 +338,19 @@ describe('Test to admin login', () => {
     expect(res.body.message).toBe('يوجد خطأ بالإيميل أو كلمة السر');
   });
 });
+describe('Test to admin login', () => {
+  it('should return successfuly message for login', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/admin/signin')
+      .send({
+        email: 'admin@gmail.com',
+        password: 'admin@password.com',
+      })
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('تم تسجيل دخولك بنجاح');
+  });
+});
 
 describe('Test put service', () => {
   it('should return status 201', async () => {
