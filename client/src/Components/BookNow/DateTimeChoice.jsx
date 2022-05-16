@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import { Typography, Radio, Form, DatePicker } from 'antd';
 
 const { Title } = Typography;
@@ -10,6 +11,10 @@ function DateTimeChoice({ valueRadio, setValueRadio, setValueDate }) {
   };
   const onChangeRadio = (e) => {
     setValueRadio(e.target.value);
+  };
+  const disabledDate = (current) => {
+    const customDate = moment().format('YYYY-MM-DD');
+    return current && current < moment(customDate, 'YYYY-MM-DD');
   };
   return (
     <div>
@@ -25,7 +30,12 @@ function DateTimeChoice({ valueRadio, setValueRadio, setValueDate }) {
           </Radio.Group>
         </Form.Item>
         <Form.Item label="التاريخ والوقت">
-          <DatePicker showTime onChange={onChange} />
+          <DatePicker
+            onChange={onChange}
+            format="YYYY-MM-DD HH:mm"
+            disabledDate={disabledDate}
+            showTime
+          />
         </Form.Item>
       </Form>
     </div>
