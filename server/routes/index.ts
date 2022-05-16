@@ -10,6 +10,7 @@ import {
   signin,
   getBooks,
   postService,
+  putCategories,
   putService,
   deleteService,
   getUserBooks,
@@ -31,5 +32,6 @@ router.delete('/services/:id', validateLink, checkAuth, deleteService);
 router.route('/contact').get(getContacts).post(addContact);
 router.post('/signup', signup);
 router.get('/logout', logout);
+router.put('/categories/:id', validateLink, checkAuth, putCategories);
 router.post('/signin', signin);
 export default router;
