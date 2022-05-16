@@ -4,7 +4,7 @@ const addContactQuery = (
   name: String,
   email: String,
   message: String,
-  phone: number,
+  phone: string,
   categoryId: number,
 ) => {
   const sql = {

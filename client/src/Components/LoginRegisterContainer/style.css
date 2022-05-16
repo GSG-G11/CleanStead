@@ -1,0 +1,41 @@
+.ant-modal-body {
+  display: flex !important;
+  justify-content: center !important;
+}
+.ant-tabs {
+  width: 90% !important;
+}
+.icon-style {
+  margin-left: 5px;
+  color: #c0c0c0 !important;
+}
+.input {
+  height: 40px !important;
+  border: 1px solid #F2F2F2 !important;
+}
+.ant-form-item {
+  margin-bottom: 15px !important;
+}
+.button {
+  height: 40px !important;
+  margin-top: 1em !important;
+}
+
+element.style {
+  text-align: center;
+}
+.ant-modal-header {
+  text-align: center !important; 
+}
+.ant-modal-title {
+  font-weight: 800 !important;
+}
+.ant-spin-spinning {
+  display: flex !important;
+  width: 20px !important;
+  margin: 10px auto !important;
+}
+.error {
+  margin-right: 20px;
+  color: #ff4d4f;
+}

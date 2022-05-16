@@ -5,6 +5,7 @@ import axios from 'axios';
 import { message } from 'antd';
 import { Book, Categories, Contact, General, Services } from '../Components';
 import { Home, Category, Description, Dashboard } from '../Pages';
+import { Navbar, OurFooter, LoginRegisterContainer } from '../Components';
 import 'swiper/css/bundle';
 import '../style/custom-antd.css';
 import './app.css';
@@ -38,10 +39,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Dashboard />}>
           <Route path="dashborad" element={<General />} />
-          <Route path="/categories/admin" element={<Categories />} />
-          <Route path="/book/admin" element={<Book />} />
-          <Route path="/contact/admin" element={<Contact />} />
-          <Route path="/services/admin" element={<Services />} />
+          <Route path="categories/admin" element={<Categories />} />
+          <Route path="book/admin" element={<Book />} />
+          <Route path="contact/admin" element={<Contact />} />
+          <Route path="services/admin" element={<Services />} />
         </Route>
         <Route path="/" element={<LayoutUser categories={categories} />}>
           <Route
@@ -50,15 +51,15 @@ function App() {
             element={<Home categories={categories} loading={loading} />}
           />
           <Route
-            path="/contact"
+            path="contact"
             element={<Description page="contact" categories={categories} />}
           />
-          <Route path="/about" element={<Description page="about" />} />
+          <Route path="about" element={<Description page="about" />} />
           <Route
-            path="/category/:id"
+            path="category/:id"
             element={<Description page="category" categories={categories} />}
           />
-          <Route path="/category/:id" element={<Category />} />
+          <Route path="category/:id" element={<Category />} />
         </Route>
       </Routes>
     </div>

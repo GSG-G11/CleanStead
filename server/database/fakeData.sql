@@ -70,7 +70,8 @@ VALUES
 ما عليك سوى التقديم للاستفادة من خدماتنا',
         'https://media.istockphoto.com/photos/window-cleaner-using-a-squeegee-to-wash-a-window-picture-id1307939278?b=1&k=20&m=1307939278&s=170667a&w=0&h=sE2iIgtlr8gG6m6frJcxGZn-jz105dtqzoa_jucaTaA='
     );
-        INSERT INTO
+
+INSERT INTO
     contacts(name, email, message, phone, category_id)
 VALUES
     (
@@ -201,7 +202,6 @@ VALUES
         'طوله مابين 0.5 - 1.5 متر',
         15,
         'https://media.istockphoto.com/photos/washing-her-aluminium-windows-picture-id1159393458?k=20&m=1159393458&s=612x612&w=0&h=K8Jg_uSm2ptJyTPwcSbNBNJWNaqVtUFzCqBJxE_XucA=',
-
         5
     ),
     (
@@ -254,18 +254,73 @@ VALUES
         4
     );
 
--- INSERT INTO
---     appoinments(
---         date,
---         time,
---         creation_time,
---         price,
---         user_id
---     )
--- VALUES
---     ('2017-03-14', '10:00', NOW(), 10, 1);
+INSERT INTO
+    admins(name, email, password)
+VALUES
+    (
+        'admin',
+        'admin@gmail.com',
+        '$2b$10$OzSWWRuPsFtz3HVgMo0vDOzOBI4xTOfJrKBGDKMaDhqUMLt2DWcYC'
+    );
 
--- INSERT INTO
---     services_appoinments(quantity, appoinment_id, service_id)
--- VALUES
---     (2, 1, 1);
+INSERT INTO
+    appoinments(date, time, creation_time, price, user_id)
+VALUES
+    (
+        '2020-06-01',
+        '09:00',
+        '2020-06-01 00:00',
+        50,
+        1
+    ),
+    (
+        '2020-06-01',
+        '10:00',
+        NOW(),
+        99,
+        1
+    ),
+    (
+        '2020-06-01',
+        '10:00',
+        NOW(),
+        452,
+        2
+    ),
+    (
+        '2020-06-01',
+        '10:00',
+        NOW(),
+        78,
+        3
+    ),
+    (
+        '2020-06-01',
+        '10:00',
+        NOW(),
+        561,
+        4
+    ),
+    (
+        '2020-06-01',
+        '09:00',
+        '2020-06-01 00:00',
+        135,
+        5
+    );
+
+INSERT INTO
+    services_appoinments(quantity, appoinment_id, service_id)
+VALUES
+    (1, 1, 1),
+    (2, 1, 2),
+    (4, 1, 3),
+    (3, 2, 1),
+    (1, 2, 4),
+    (1, 3, 4),
+    (1, 3, 5),
+    (1, 3, 6),
+    (1, 3, 7),
+    (1, 4, 8),
+    (1, 4, 9),
+    (2, 5, 5);

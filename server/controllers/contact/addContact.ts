@@ -4,16 +4,14 @@ import { contactSchema } from '../../validation';
 import { CustomizedError } from '../../utils';
 
 const addContact: RequestHandler = async (req, res, next) => {
-  const {
-    name, email, message, phone,
-  } = req.body;
-  const categoryId = req.body.category_id;
-
   try {
-    await contactSchema.validate({
-      name, email, message, phone, categoryId,
-    }, { abortEarly: false });
-    const { rowCount } = await addContactQuery(name, email, message, phone, categoryId);
+    const {
+      name, email, messageInfo, phone, categoryId,
+    } = await contactSchema.validate(
+      req.body,
+      { abortEarly: false },
+    );
+    const { rowCount } = await addContactQuery(name, email, messageInfo, phone, categoryId);
     if (!rowCount) {
       throw new CustomizedError(400, 'يوجد خلل حاول مرة أخرى');
     }

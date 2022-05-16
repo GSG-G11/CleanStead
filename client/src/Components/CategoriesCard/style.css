@@ -1,5 +1,5 @@
 .category-card {
-    width: 250px;
+    width: 370px;
     height: 100%;
     border-radius: 10px;
     margin:  auto !important;
@@ -7,8 +7,8 @@
 }
 .image {
     border-radius: 50% !important;
-    width: 100px;
-    height: 100px;
+    width: 100px !important;
+    height: 100px !important;
     position: absolute;
     top: -50px;
     right: 15px;

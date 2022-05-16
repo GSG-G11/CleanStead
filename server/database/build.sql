@@ -1,11 +1,19 @@
 BEGIN;
 
 DROP TABLE IF EXISTS users,
+admins,
 categories,
 services,
 contacts,
 appoinments,
 services_appoinments CASCADE;
+
+CREATE TABLE admins (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL
+);
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
@@ -30,7 +38,7 @@ CREATE TABLE services (
   price INT NOT NULL,
   image TEXT NOT NULL,
   category_id INT,
-  FOREIGN KEY (category_id) REFERENCES categories(id)
+  FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
 );
 
 CREATE TABLE contacts (
@@ -40,7 +48,7 @@ CREATE TABLE contacts (
   message TEXT NOT NULL,
   phone VARCHAR(30) NOT NULL,
   category_id INT,
-  FOREIGN KEY (category_id) REFERENCES categories(id)
+  FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
 );
 
 CREATE TABLE appoinments (
@@ -50,16 +58,18 @@ CREATE TABLE appoinments (
   creation_time TIMESTAMP NOT NULL,
   price INT NOT NULL,
   user_id INT,
-  FOREIGN KEY (user_id) REFERENCES users(id)
+  status VARCHAR(50) DEFAULT 'Pending',
+  repeat VARCHAR(50) DEFAULT 'Once',
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE services_appoinments (
   id SERIAL PRIMARY KEY,
   quantity INT NOT NULL,
   appoinment_id INT,
-  FOREIGN KEY (appoinment_id) REFERENCES appoinments(id),
+  FOREIGN KEY (appoinment_id) REFERENCES appoinments(id) ON DELETE CASCADE,
   service_id INT,
-  FOREIGN KEY (service_id) REFERENCES services(id)
+  FOREIGN KEY (service_id) REFERENCES services(id) ON DELETE CASCADE
 );
 
 COMMIT;
