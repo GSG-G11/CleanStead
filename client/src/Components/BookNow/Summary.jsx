@@ -5,12 +5,24 @@ import { Divider, Typography, Space } from 'antd';
 
 const { Title, Text } = Typography;
 
-function Summary({ checked, valueDate, valueRadio }) {
+function Summary({ categoryServices, valueDate, valueRadio }) {
   let totalPrice = 0;
+  const services = [];
 
-  for (let i = 0; i < checked.length; i += 1) {
-    totalPrice += checked[i].price * checked[i].count;
+  if (Object.keys(categoryServices).length) {
+    for (const key in categoryServices) {
+      categoryServices[key].forEach((item) => {
+        if (item.isChecked) {
+          services.push(item);
+        }
+      });
+    }
   }
+
+  totalPrice = services.reduce(
+    (acc, curr) => acc + curr.price * curr.quantity,
+    0
+  );
 
   return (
     <div className="summary">
@@ -21,10 +33,10 @@ function Summary({ checked, valueDate, valueRadio }) {
             العناصر المختارة
           </Title>
           <ul>
-            {checked.length ? (
-              checked.map((item) => (
+            {services.length ? (
+              services.map((item) => (
                 <li key={uuid()}>
-                  {item.name}({item.count}){' '}
+                  {item.name}({item.quantity}){' '}
                   <Text strong>{item.price}&#36;</Text>
                 </li>
               ))
@@ -61,22 +73,28 @@ function Summary({ checked, valueDate, valueRadio }) {
     </div>
   );
 }
+
 Summary.defaultProps = {
   valueDate: 'لم يتم تحديد موعد بعد',
   valueRadio: 'مرة وحدة',
 };
+
 Summary.propTypes = {
-  checked: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-      image: PropTypes.string,
-      price: PropTypes.number,
-      count: PropTypes.number,
-      description: PropTypes.string,
-    })
-  ).isRequired,
+  categoryServices: PropTypes.shape({
+    id: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number,
+        name: PropTypes.string,
+        image: PropTypes.string,
+        price: PropTypes.number,
+        description: PropTypes.string,
+        quantity: PropTypes.number,
+        isChecked: PropTypes.bool,
+      })
+    ),
+  }).isRequired,
   valueDate: PropTypes.string,
   valueRadio: PropTypes.string,
 };
+
 export default Summary;

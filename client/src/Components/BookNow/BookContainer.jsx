@@ -13,22 +13,9 @@ const { Step } = Steps;
 
 function BookContainer({ categories }) {
   const [current, setCurrent] = useState(0);
-  const [checked, setChecked] = useState([]);
+  const [categoryServices, setCategoryServices] = useState({});
   const [valueRadio, setValueRadio] = useState('مرة واحدة');
   const [valueDate, setValueDate] = useState('لم يتم تحديد موعد بعد');
-  const onChangeRadio = (e) => {
-    setValueRadio(e.target.value);
-  };
-
-  const onCheck = (event) => {
-    const isChecked = event.target.checked;
-    if (isChecked) {
-      setChecked([...checked, event.target.value]);
-    } else {
-      const index = checked.indexOf(event.target.value);
-      setChecked(checked.filter((c) => c !== checked[index]));
-    }
-  };
 
   const next = () => {
     setCurrent(current + 1);
@@ -41,7 +28,13 @@ function BookContainer({ categories }) {
   const steps = [
     {
       title: 'اختر الخدمات',
-      content: <ServicesChoice categories={categories} onCheck={onCheck} />,
+      content: (
+        <ServicesChoice
+          categories={categories}
+          categoryServices={categoryServices}
+          setCategoryServices={setCategoryServices}
+        />
+      ),
     },
     {
       title: 'التاريخ والوقت',
@@ -105,7 +98,7 @@ function BookContainer({ categories }) {
           xl={{ span: 7 }}
         >
           <Summary
-            checked={checked}
+            categoryServices={categoryServices}
             valueRadio={valueRadio}
             valueDate={valueDate}
           />
