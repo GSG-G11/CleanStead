@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Outlet } from 'react-router-dom';
 import { Layout } from 'antd';
 import OurFooter from '../Footer';
@@ -24,4 +25,14 @@ function LayoutUser({ categories }) {
     </Layout>
   );
 }
+LayoutUser.propTypes = {
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      description: PropTypes.string,
+      image: PropTypes.string,
+    })
+  ).isRequired,
+};
 export default LayoutUser;
