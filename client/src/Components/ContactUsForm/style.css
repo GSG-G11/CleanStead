@@ -26,7 +26,15 @@
 }
 
 .contact-label .ant-input, .contact-label .ant-select-selector {
-    border: 1px solid #E6E6E6 !important;
     border-radius: 5px !important;
     width: 100% !important;
+}
+.ant-select:not(.ant-select-customize-input) .ant-select-selector, .ant-input-affix-wrapper  {
+    border: 1px solid #F2F2F2 !important;
+}
+.ant-input.text-area {
+    border: 1px solid #F2F2F2 !important;
+}
+.ant-form-item-with-help .ant-form-item-explain {
+    text-align: right !important;
 }

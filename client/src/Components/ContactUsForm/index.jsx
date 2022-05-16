@@ -1,13 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input, Image, Col, Row, Select, Typography, Button } from 'antd';
+import axios from 'axios';
+import {
+  Form,
+  Input,
+  Image,
+  Col,
+  Row,
+  Select,
+  Typography,
+  Button,
+  message,
+  Spin,
+} from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 import linesLeft from '../../Assets/images/linesLeft.svg';
 import './style.css';
 import Img from '../../Assets/images/img1.png';
 
+const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+
 function ContactUsForm({ categories }) {
   const [form] = Form.useForm();
   const Title = Typography;
+  const [error, setError] = useState('');
+  const [isloading, setIsLoading] = useState(false);
+  const onFinish = ({ name, email, phone, messageInfo, categoryId }) => {
+    setError('');
+    setIsLoading(true);
+    axios
+      .post('/api/v1/contact', { name, email, phone, messageInfo, categoryId })
+      .then(({ data }) => {
+        message.success(data.message);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        if (err.response) {
+          setError(err.response.data.message);
+          setIsLoading(false);
+        } else {
+          message.error('حدث خطأ ما');
+        }
+      });
+  };
 
   return (
     <Row justify="center" align="center" gutter={[0, 30]}>
@@ -28,8 +63,20 @@ function ContactUsForm({ categories }) {
             className="contact-form"
             layout="vertical"
             autoComplete="off"
+            onFinish={onFinish}
           >
-            <Form.Item className="contact-label" label="الخدمة">
+            <Form.Item
+              className="contact-label"
+              label="الخدمة"
+              name="categoryId"
+              rules={[
+                {
+                  required: true,
+                  message: ' يجب اختيار الخدمة المراد الاستفسار بخصوصها',
+                },
+              ]}
+              hasFeedback
+            >
               <Select className="contact-input" placeholder="اسم الخدمة">
                 {categories.map(({ id, name }) => (
                   <Select.Option
@@ -48,26 +95,34 @@ function ContactUsForm({ categories }) {
                   name="name"
                   className="contact-label"
                   label="الاسم"
-                  rules={[
-                    { required: true, message: '!Please input your name' },
-                  ]}
+                  rules={[{ required: true, message: 'اسم المستخدم مطلوب' }]}
+                  hasFeedback
                 >
                   <Input placeholder="الاسم" />
                 </Form.Item>
               </Col>
               <Col span={12}>
                 <Form.Item
-                  name="number"
+                  name="phone"
                   className="contact-label"
                   label="رقم الجوال"
                   rules={[
                     {
                       required: true,
-                      message: '!Please input your phone number',
+                      message: 'رقم جوال المستخدم مطلوب',
+                    },
+                    {
+                      min: 10,
+                      message: 'يجب ادخال رقم جوال  على الاقل 10 أرقام',
                     },
                   ]}
+                  hasFeedback
                 >
-                  <Input className="contact-input" placeholder="رقم الجوال" />
+                  <Input
+                    type="tel"
+                    className="contact-input"
+                    placeholder="رقم الجوال"
+                  />
                 </Form.Item>
               </Col>
             </Row>
@@ -78,30 +133,39 @@ function ContactUsForm({ categories }) {
               rules={[
                 {
                   required: true,
-                  message: '!Please input your email',
+                  message: 'إيميل المستخدم مطلوب',
                 },
+                { type: 'email', message: 'يجب ادخال إيميل صحيح' },
               ]}
+              hasFeedback
             >
               <Input className="contact-input" placeholder="الايميل" />
             </Form.Item>
             <Form.Item
-              name="introduction"
-              className="contact-label"
+              name="messageInfo"
+              className="contact-label "
               label="الرسالة"
+              rules={[
+                {
+                  required: true,
+                  message: 'رسالة المستخدم مطلوبة',
+                },
+              ]}
+              hasFeedback
             >
               <Input.TextArea
-                className="contact-input"
+                className="contact-input text-area"
                 placeholder="اكتب رسالتك هنا.."
               />
             </Form.Item>
+            {error && <span className="error">{error}</span>}
+            {isloading && <Spin indicator={antIcon} />}
             <Button
               className="contact-button"
               type="primary"
+              htmlType="submit"
               shape="round"
               size="large"
-              onClick={() => {
-                form.resetFields();
-              }}
             >
               ارسل
             </Button>
