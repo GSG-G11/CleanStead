@@ -3,9 +3,15 @@ import React, { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import { message } from 'antd';
-import { Book, Categories, Contact, General, Services } from '../Components';
+import {
+  Book,
+  Categories,
+  Contact,
+  General,
+  Services,
+  LoginAdmin,
+} from '../Components';
 import { Home, Category, Description, Dashboard } from '../Pages';
-import { Navbar, OurFooter, LoginRegisterContainer } from '../Components';
 import 'swiper/css/bundle';
 import '../style/custom-antd.css';
 import './app.css';
@@ -37,6 +43,7 @@ function App() {
   return (
     <div>
       <Routes>
+        <Route path="/login/admin" element={<LoginAdmin />} />
         <Route path="/" element={<Dashboard />}>
           <Route path="dashborad" element={<General />} />
           <Route path="categories/admin" element={<Categories />} />

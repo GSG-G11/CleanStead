@@ -6,4 +6,11 @@ export { default as WhyUs } from './WhyUs';
 export { default as CategoriesCardsContainer } from './CategoriesCardsContainer';
 export { default as DescriptionContent } from './DescriptionContent';
 export { default as ContactUsForm } from './ContactUsForm';
-export { Book, Categories, Contact, General, Services } from './Dashborad';
+export {
+  Book,
+  Categories,
+  Contact,
+  General,
+  Services,
+  LoginAdmin,
+} from './Dashborad';
