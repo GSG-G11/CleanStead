@@ -1,21 +1,19 @@
 import { RequestHandler } from 'express';
-import { putServiceQuery } from '../../queries';
-import { servicesSchema } from '../../validation';
+import { putCategoriesQuery } from '../../queries';
+import { categoriesSchema } from '../../validation';
 import CustomizedError from '../../utils/error';
 
-const puttService: RequestHandler = async (req, res, next) => {
-  const { id: serviceId } = req.params;
+const putCategories: RequestHandler = async (req, res, next) => {
+  const { id: categoryId } = req.params;
   try {
     const {
-      name, description, price, image, categoryId,
-    } = await servicesSchema.validate(req.body, { abortEarly: false });
-    const { rows, rowCount } = await putServiceQuery(
-      serviceId as any,
+      name, description, image,
+    } = await categoriesSchema.validate(req.body, { abortEarly: false });
+    const { rows, rowCount } = await putCategoriesQuery(
+      categoryId as any,
       name,
       description,
-      price,
       image,
-      categoryId,
     );
     if (!rowCount) {
       throw new CustomizedError(400, 'يوجد خلل حاول مرة أخرى');
@@ -29,4 +27,4 @@ const puttService: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default puttService;
+export default putCategories;
