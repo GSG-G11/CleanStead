@@ -2,6 +2,7 @@ import { Router } from 'express';
 import {
   getCategories,
   getCategoryServices,
+  postCategories,
   getContacts,
   addContact,
   signup,
@@ -9,17 +10,32 @@ import {
   signin,
   getBooks,
   postService,
+  putCategories,
+  putService,
+  deleteService,
   deleteCategory,
+  getUserBooks,
+  getBook,
+  validateLink,
+  signinAdmin,
+  checkAuth,
 } from '../controllers';
 
 const router = Router();
 router.get('/categories', getCategories);
-router.get('/categories/:id/services', getCategoryServices);
+router.post('/categories', postCategories);
+router.get('/categories/:id/services', validateLink, getCategoryServices);
 router.get('/book', getBooks);
+router.get('/book/:id', validateLink, getBook);
+router.get('/user/:id/book', validateLink, getUserBooks);
 router.post('/services', postService);
-router.delete('/categories/:id', deleteCategory);
+router.delete('/categories/:id', validateLink, deleteCategory);
+router.put('/services/:id', validateLink, checkAuth, putService);
+router.delete('/services/:id', validateLink, checkAuth, deleteService);
 router.route('/contact').get(getContacts).post(addContact);
 router.post('/signup', signup);
 router.get('/logout', logout);
+router.put('/categories/:id', validateLink, checkAuth, putCategories);
 router.post('/signin', signin);
+router.post('/admin/signin', signinAdmin);
 export default router;

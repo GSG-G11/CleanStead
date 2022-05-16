@@ -1,8 +1,12 @@
-import { getCategoriesQuery, getCategoryServicesQuery, deleteCategoryQuery } from './categories';
+import {
+  getCategoriesQuery,
+  getCategoryServicesQuery, postCategoriesQuery, putCategoriesQuery, deleteCategoryQuery,
+} from './categories';
 import { getContactsQuery, addContactQuery } from './contact';
 import { addUserQuery, checkEmailExistsQuery } from './user';
-import { getBooksQuery } from './book';
-import { postServiceQuery } from './services';
+import { getBooksQuery, getUserBooksQuery, getBookQuery } from './book';
+import checkEmailAdminExistsQuery from './admin';
+import { postServiceQuery, deleteServiceQuery, putServiceQuery } from './services';
 
 export {
   getCategoriesQuery,
@@ -11,7 +15,14 @@ export {
   addContactQuery,
   addUserQuery,
   checkEmailExistsQuery,
+  postCategoriesQuery,
   getBooksQuery,
   postServiceQuery,
   deleteCategoryQuery,
+  putCategoriesQuery,
+  putServiceQuery,
+  deleteServiceQuery,
+  getUserBooksQuery,
+  getBookQuery,
+  checkEmailAdminExistsQuery,
 };
