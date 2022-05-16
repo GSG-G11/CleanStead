@@ -16,6 +16,7 @@ import {
   getUserBooks,
   getBook,
   validateLink,
+  signinAdmin,
   checkAuth,
 } from '../controllers';
 
@@ -34,4 +35,5 @@ router.post('/signup', signup);
 router.get('/logout', logout);
 router.put('/categories/:id', validateLink, checkAuth, putCategories);
 router.post('/signin', signin);
+router.post('/admin/signin', signinAdmin);
 export default router;
