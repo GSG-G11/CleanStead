@@ -14,16 +14,18 @@ import {
 } from 'antd';
 import { DownOutlined, MenuOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
+import { useContext } from 'react';
 import logo from '../../Assets/images/logo.svg';
 import LeftMenu from './LeftMenu';
 import RightMenu from './RightMenu';
 import './navbar.css';
+import { CategoriesContext } from '../../Contexts/CategoriesContext';
 
 const { Header } = Layout;
 
-function Navbar({ isLogged, categories, user, setIsOpen, setIsLogged }) {
+function Navbar({ isLogged, user, setIsOpen, setIsLogged }) {
   const [visible, setVisible] = useState(false);
-
+  const { categories } = useContext(CategoriesContext);
   const showDrawer = () => {
     setVisible(true);
   };
@@ -146,7 +148,6 @@ Navbar.propTypes = {
     name: PropTypes.string.isRequired,
     role: PropTypes.string.isRequired,
   }),
-  categories: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   setIsOpen: PropTypes.func,
   setIsLogged: PropTypes.func,
 };
