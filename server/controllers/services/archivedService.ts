@@ -1,12 +1,12 @@
 import { RequestHandler } from 'express';
-import { deleteServiceQuery } from '../../queries';
+import { archivedServiceQuery } from '../../queries';
 import CustomizedError from '../../utils/error';
 
-const deleteService: RequestHandler = async (req, res, next) => {
+const archivedService: RequestHandler = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const { rowCount } = await deleteServiceQuery(
+    const { rowCount } = await archivedServiceQuery(
       id as any,
     );
     if (!rowCount) {
@@ -22,4 +22,4 @@ const deleteService: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default deleteService;
+export default archivedService;
