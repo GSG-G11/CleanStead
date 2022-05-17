@@ -439,3 +439,43 @@ describe('Test put category', () => {
     expect(res.body.message).toBe('Description is required');
   });
 });
+
+describe('Test post book', () => {
+  it('should return status 201', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/book')
+      .send({
+        dateTime: '2022-05-17 13:00',
+        creationTime: '2022-05-17 13:30',
+        price: 17,
+        repeat: 'مرة واحدة',
+        userId: 1,
+        quantity: 2,
+        serviceId: 1,
+      })
+      .set({ Cookie: token })
+      .expect(201)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('تم إضافة الطلب بنجاح');
+  });
+});
+
+describe('Test post book', () => {
+  it('should return status 400', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/book')
+      .send({
+        dateTime: '2022-05-17 13:00',
+        creationTime: '2022-05-17 13:30',
+        price: 0,
+        repeat: 'مرة واحدة',
+        userId: 1,
+        quantity: 2,
+        serviceId: 1,
+      })
+      .set({ Cookie: token })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('Price must be large than 0');
+  });
+});
