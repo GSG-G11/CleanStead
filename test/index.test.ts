@@ -75,7 +75,6 @@ describe('Test to register', () => {
         phone: '5645458712',
         password: '12345678',
         locationDetails: {
-          id: 1,
           name: 'غزة',
         },
       })
@@ -107,12 +106,9 @@ describe('Test to register', () => {
         phone: '5645458714',
         password: '1234567548',
         locationDetails: {
-          id: 1,
           name: 'الشمال',
-          coordinates: {
-            lat: '31.529191502894275',
-            lng: '34.47942428475519',
-          },
+          lat: '31.529191502894275',
+          lng: '34.47942428475519',
         },
       })
       .expect(400)
@@ -130,12 +126,9 @@ describe('Test to register', () => {
         phone: '564545871',
         password: '123456',
         locationDetails: {
-          id: 1,
           name: 'الشمال',
-          coordinates: {
-            lat: '31.529191502894275',
-            lng: '34.47942428475519',
-          },
+          lat: '31.529191502894275',
+          lng: '34.47942428475519',
         },
       })
       .expect(400)

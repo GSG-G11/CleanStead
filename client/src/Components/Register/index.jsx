@@ -8,7 +8,6 @@ import {
   MailOutlined,
   PhoneOutlined,
   LockOutlined,
-  HomeOutlined,
   LoadingOutlined,
 } from '@ant-design/icons';
 import cities from '../../cities.json';
@@ -23,7 +22,12 @@ function Register({ setIsOpen, setIsLogged }) {
   const onFinish = ({ name, email, phone, password, location }) => {
     setIsLoading(true);
     setErrorEmail('');
-    const locationDetails = cities[location - 1];
+    const locationData = cities.filter((city) => city.name === location)[0];
+    const locationDetails = {
+      name: locationData.name,
+      lat: locationData.coordinates.lat,
+      lng: locationData.coordinates.lng,
+    };
     axios
       .post('/api/v1/signup', { name, email, phone, password, locationDetails })
       .then(({ data }) => {
@@ -131,7 +135,7 @@ function Register({ setIsOpen, setIsLogged }) {
         >
           <Select placeholder="اختر موقعك">
             {cities.map(({ name, id }) => (
-              <Option key={id}>{name}</Option>
+              <Option key={id} value={name} />
             ))}
           </Select>
         </Form.Item>

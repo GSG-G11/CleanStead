@@ -22,8 +22,8 @@ const signup: RequestHandler = async (req, res, next) => {
       phone,
       hashedPassword,
       locationDetails.name,
-      locationDetails.coordinates.lat,
-      locationDetails.coordinates.lng,
+      locationDetails.lat,
+      locationDetails.lng,
     );
     const token = await jwtSign({ id: data[0].id, email: data[0].email });
     res.cookie('token', token, { httpOnly: true, secure: true }).status(201).json({ message: 'تم تسجيل حسابك بنجاح', status: 201 });

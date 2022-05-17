@@ -8,12 +8,9 @@ const signupSchema = object({
   phone: string().min(10, 'your phone number must be 10 digits').required('Your phone number is required'),
   password: string().min(8, 'Your password must be 8 digits at least').required('Password is required'),
   locationDetails: object().shape({
-    id: string().required(),
     name: string().required(),
-    coordinates: object().shape({
-      lat: string(),
-      lng: string(),
-    }),
+    lat: string(),
+    lng: string(),
   }).required('Your location is required'),
 });
 
