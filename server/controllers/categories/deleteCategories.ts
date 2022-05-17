@@ -4,13 +4,11 @@ import CustomizedError from '../../utils/error';
 
 const deleteCategory: RequestHandler = async (req, res, next) => {
   const { id } = req.params;
-  console.log(id);
 
   try {
     const { rowCount } = await deleteCategoryQuery(
       id as any,
     );
-    console.log(rowCount);
     if (!rowCount) {
       throw new CustomizedError(400, ' There is no category with this Id');
     }
@@ -20,7 +18,6 @@ const deleteCategory: RequestHandler = async (req, res, next) => {
     if (error.errors) {
       return next(new CustomizedError(400, error.errors[0]));
     }
-    console.log(error);
     return next(error);
   }
 };
