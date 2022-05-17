@@ -34,7 +34,7 @@ function getItem(label, key, icon) {
 }
 
 const items = [
-  getItem(<Link to="/dashborad">نظرة عامة</Link>, '1', <PieChartOutlined />),
+  getItem(<Link to="/dashboard">نظرة عامة</Link>, '1', <PieChartOutlined />),
   getItem(<Link to="/book/admin">الحجوزات</Link>, '2', <CalendarOutlined />),
   getItem(<Link to="/contact/admin">التواصل</Link>, '3', <MailOutlined />),
   getItem(
@@ -49,7 +49,7 @@ const items = [
   ),
 ];
 const breadcrumbNameMap = {
-  '/dashborad': 'نظرة عامة',
+  '/dashboard': 'نظرة عامة',
   '/book/admin': 'الحجوزات',
   '/contact/admin': 'التواصل',
   '/services/admin': 'التصنيفات',
@@ -59,7 +59,6 @@ const breadcrumbNameMap = {
 function Dashboard() {
   const location = useLocation();
   const pathSnippets = location.pathname.split('/').filter((i) => i);
-  console.log(pathSnippets);
   const extraBreadcrumbItems = pathSnippets.map((_, index) => {
     const url = `/${pathSnippets.slice(0, index + 1).join('/')}`;
     return (
@@ -90,7 +89,7 @@ function Dashboard() {
       </Sider>
       <Layout className="site-layout">
         <Header
-          className="dashborad-header"
+          className="dashboard-header"
           style={{
             padding: 0,
           }}

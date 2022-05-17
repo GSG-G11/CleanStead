@@ -39,7 +39,7 @@
     font-size: 25px;
     font-weight: 600;
 }
-.dashborad-header {
+.dashboard-header {
     display: flex;
     justify-content: space-between;
     align-items: center;

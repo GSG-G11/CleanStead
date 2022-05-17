@@ -13,4 +13,4 @@ export {
   General,
   Services,
   LoginAdmin,
-} from './Dashborad';
+} from './Dashboard';
