@@ -70,7 +70,12 @@ function Dashboard() {
       className="page-layout"
     >
       <Sider className="sidebar" width={270}>
-        <Image preview={false} src={logo} className="logo-image" />
+        <Image
+          preview={false}
+          src={logo}
+          className="logo-image"
+          alt="adminImage"
+        />
         <Menu
           theme="light"
           defaultSelectedKeys={['1']}
