@@ -1,8 +1,8 @@
 import getBooksQuery from './getBooksQuery';
 import getUserBooksQuery from './getUserBooksQuery';
 import getBookQuery from './getBookQuery';
-import postBookQuery from './postBookQuery';
+import { postBookQuery, postServiceBookQuery } from './postBookQuery';
 
 export {
-  getBooksQuery, getUserBooksQuery, getBookQuery, postBookQuery,
+  getBooksQuery, getUserBooksQuery, getBookQuery, postBookQuery, postServiceBookQuery,
 };

@@ -388,7 +388,7 @@ describe('Test put service', () => {
 });
 
 describe('Test put category', () => {
-  it('should return status 400', async () => {
+  it('should return status 200', async () => {
     const res = await supertest(app)
       .put('/api/v1/categories/2')
       .send({
@@ -402,23 +402,6 @@ describe('Test put category', () => {
       .expect(200)
       .expect('Content-Type', /json/);
     expect(res.body.message).toBe('تم تعديل الخدمة بنجاح');
-  });
-});
-
-describe('Test put category', () => {
-  it('should return status 400', async () => {
-    const res = await supertest(app)
-      .put('/api/v1/categories/2')
-      .send({
-        name: 'testtestdaf',
-        description: 'adasdsa',
-        price: 20,
-        image: 'ka;hkjdgh;askdh',
-        categoryId: 2,
-      })
-      .expect(401)
-      .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('UnAuthorized');
   });
 });
 
@@ -449,8 +432,7 @@ describe('Test post book', () => {
         price: 17,
         repeat: 'مرة واحدة',
         userId: 1,
-        quantity: 2,
-        serviceId: 1,
+        services: [{ serviceId: 1, quantity: 5 }, { serviceId: 2, quantity: 5 }, { serviceId: 3, quantity: 5 }],
       })
       .set({ Cookie: token })
       .expect(201)
@@ -468,8 +450,7 @@ describe('Test post book', () => {
         price: 0,
         repeat: 'مرة واحدة',
         userId: 1,
-        quantity: 2,
-        serviceId: 1,
+        services: [{ serviceId: 1, quantity: 5 }, { serviceId: 2, quantity: 5 }, { serviceId: 3, quantity: 5 }],
       })
       .set({ Cookie: token })
       .expect(400)

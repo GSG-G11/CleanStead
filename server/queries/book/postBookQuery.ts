@@ -5,21 +5,32 @@ const postBookQuery = (
   price: number,
   repeat: string,
   userId: number,
+) => {
+  const sql = {
+    text: `
+          INSERT INTO
+            appoinments(date_time,price,repeat,user_id)
+          VALUES ($1, $2, $3, $4)
+            RETURNING id;
+          `,
+    values: [dateTime, price, repeat, userId],
+  };
+  return connection.query(sql);
+};
+
+const postServiceBookQuery = (
   quantity: number,
+  appoinmentId: number,
   serviceId: number,
 ) => {
   const sql = {
     text: `
-    WITH ins1 AS (
-      INSERT INTO appoinments(date_time,price,repeat,user_id) 
-      VALUES($1, $2, $3, $4)
-      ON CONFLICT DO NOTHING
-      RETURNING id AS appoinment_id
-       )
-       INSERT INTO services_appoinments(quantity, appoinment_id, service_id)
-       SELECT $5, appoinment_id, $6 FROM ins1`,
-    values: [dateTime, price, repeat, userId, quantity, serviceId],
+          INSERT INTO
+            services_appoinments(quantity, appoinment_id, service_id)
+          VALUES ($1,$2,$3);
+          `,
+    values: [quantity, appoinmentId, serviceId],
   };
   return connection.query(sql);
 };
-export default postBookQuery;
+export { postBookQuery, postServiceBookQuery };
