@@ -5,7 +5,7 @@ import { getCategories, getCategoryServices, postCategories } from './categories
 import { getContacts, addContact } from './contact';
 import signup from './signup';
 import logout from './logout';
-import { checkAuth } from './middlewares/auth';
+import { checkAuth, checkAdmin } from './middlewares/auth';
 import signin from './signin';
 import { getBooks, getUserBooks, getBook } from './book';
 import { postService, deleteService, putService } from './services';
@@ -21,6 +21,7 @@ export {
   signup,
   logout,
   checkAuth,
+  checkAdmin,
   signin,
   postCategories,
   getBooks,
