@@ -8,7 +8,7 @@ import {
   MailOutlined,
   PhoneOutlined,
   LockOutlined,
-  // HomeOutlined,
+  HomeOutlined,
   LoadingOutlined,
 } from '@ant-design/icons';
 import cities from '../../cities.json';
@@ -121,25 +121,19 @@ function Register({ setIsOpen, setIsLogged }) {
         <Form.Item
           label="العنوان"
           name="location"
-          // rules={[
-          //   {
-          //     required: true,
-          //     message: 'عنوان المستخدم مطلوب',
-          //   },
-          // ]}
-          // hasFeedback
+          rules={[
+            {
+              required: true,
+              message: 'عنوان المستخدم مطلوب',
+            },
+          ]}
+          hasFeedback
         >
-          {/* <Input
-            placeholder=" ادخل العنوان"
-            className="input"
-            prefix={<HomeOutlined className="icon-style" />}
-          /> */}
           <Select placeholder="اختر موقعك">
             {cities.map(({ name, id }) => (
               <Option key={id}>{name}</Option>
             ))}
           </Select>
-          {/* <LocationSelect  onChange={onChange}/> */}
         </Form.Item>
         {isloading && <Spin indicator={antIcon} />}
         <Form.Item>
