@@ -35,7 +35,7 @@ router.delete('/services/:id', validateLink, checkAuth, deleteService);
 router.route('/contact').get(getContacts).post(addContact);
 router.post('/signup', signup);
 router.get('/logout', logout);
-router.put('/categories/:id', validateLink, checkAuth, putCategories);
+router.put('/categories/:id', validateLink, putCategories);
 router.post('/signin', signin);
 router.post('/admin/signin', signinAdmin);
 export default router;

@@ -2,7 +2,7 @@ import connection from '../../database/connection';
 
 const deleteCategoryQuery = (categoryId:number) => {
   const sql = {
-    text: 'INSERT INTO table2 SELECT * FROM categories WHERE id=$1;',
+    text: 'UPDATE categories SET archived = TRUE WHERE id = $1 RETURNING *;',
     values: [categoryId],
   };
   return connection.query(sql);

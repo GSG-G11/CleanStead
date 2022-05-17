@@ -439,3 +439,12 @@ describe('Test put category', () => {
     expect(res.body.message).toBe('Description is required');
   });
 });
+describe('Test archived category', () => {
+  it('should return status code 200 and message', async () => {
+    const res = await supertest(app)
+      .delete('/api/v1/categories/3')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('category archived Successfully!');
+  });
+});
