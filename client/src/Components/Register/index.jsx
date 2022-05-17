@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import React, { useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Form, Input, Button, message, Spin } from 'antd';
 import {
@@ -14,8 +15,8 @@ import { ModalLoginContext } from '../../Context/ModalLogin';
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-function Register() {
-  const { setIsOpen, setIsLogged } = useContext(ModalLoginContext);
+function Register({ setIsLogged }) {
+  const { setIsOpen } = useContext(ModalLoginContext);
   const [isloading, setIsLoading] = useState(false);
   const [errorEmail, setErrorEmail] = useState('');
   const onFinish = ({ name, email, phone, password, location }) => {
@@ -142,5 +143,15 @@ function Register() {
     </div>
   );
 }
+
+Register.defaultProps = {
+  setIsLogged: () => {
+    setIsLogged(false);
+  },
+};
+
+Register.propTypes = {
+  setIsLogged: PropTypes.func,
+};
 
 export default Register;

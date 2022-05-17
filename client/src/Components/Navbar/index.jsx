@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import {
@@ -18,12 +18,10 @@ import logo from '../../Assets/images/logo.svg';
 import LeftMenu from './LeftMenu';
 import RightMenu from './RightMenu';
 import './navbar.css';
-import { ModalLoginContext } from '../../Context/ModalLogin';
 
 const { Header } = Layout;
 
-function Navbar({ categories, user }) {
-  const { setIsLogged } = useContext(ModalLoginContext);
+function Navbar({ categories, user, setIsLogged, isLogged }) {
   const [visible, setVisible] = useState(false);
 
   const showDrawer = () => {
@@ -107,7 +105,12 @@ function Navbar({ categories, user }) {
         <LeftMenu mode="horizontal" navItems={navItems} />
       </div>
       <div className="menu_right">
-        <RightMenu mode="horizontal" avatarMenu={avatarMenu} user={user} />
+        <RightMenu
+          mode="horizontal"
+          avatarMenu={avatarMenu}
+          user={user}
+          isLogged={isLogged}
+        />
       </div>
       <Button
         className="menu__mobile-button"
@@ -124,22 +127,33 @@ function Navbar({ categories, user }) {
         visible={visible}
       >
         <LeftMenu mode="inline" navItems={navItems} />
-        <RightMenu mode="inline" avatarMenu={avatarMenu} user={user} />
+        <RightMenu
+          mode="inline"
+          avatarMenu={avatarMenu}
+          user={user}
+          isLogged={isLogged}
+        />
       </Drawer>
     </Header>
   );
 }
 
 Navbar.propTypes = {
+  isLogged: PropTypes.bool,
   user: PropTypes.shape({
     name: PropTypes.string.isRequired,
     role: PropTypes.string.isRequired,
   }),
   categories: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  setIsLogged: PropTypes.func,
 };
 
 Navbar.defaultProps = {
   user: { name: '', role: '' },
+  isLogged: false,
+  setIsLogged: () => {
+    setIsLogged(false);
+  },
 };
 
 export default Navbar;

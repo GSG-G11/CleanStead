@@ -6,8 +6,8 @@ import { UserOutlined, DownOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { ModalLoginContext } from '../../Context/ModalLogin';
 
-function RightMenu({ mode, avatarMenu, user }) {
-  const { setIsOpen, isLogged } = useContext(ModalLoginContext);
+function RightMenu({ isLogged, mode, avatarMenu, user }) {
+  const { setIsOpen } = useContext(ModalLoginContext);
   const openModal = () => {
     setIsOpen(true);
   };
@@ -43,6 +43,7 @@ function RightMenu({ mode, avatarMenu, user }) {
 
 RightMenu.propTypes = {
   mode: PropTypes.string.isRequired,
+  isLogged: PropTypes.bool,
   user: PropTypes.shape({
     name: PropTypes.string.isRequired,
     role: PropTypes.string.isRequired,
@@ -52,6 +53,7 @@ RightMenu.propTypes = {
 
 RightMenu.defaultProps = {
   user: { name: '', role: '' },
+  isLogged: false,
 };
 
 export default RightMenu;

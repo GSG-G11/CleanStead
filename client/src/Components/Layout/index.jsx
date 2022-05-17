@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Outlet } from 'react-router-dom';
 import { Layout } from 'antd';
@@ -9,15 +9,18 @@ import { ModalLoginProvider } from '../../Context/ModalLogin';
 
 const { Header, Footer, Content } = Layout;
 function LayoutUser({ categories }) {
+  const [isLogged, setIsLogged] = useState(false);
   return (
     <ModalLoginProvider>
       <Layout className="page--layout">
         <Header>
           <Navbar
+            isLogged={isLogged}
             categories={categories}
             user={{ name: 'Mohammad', role: 'admin' }}
+            setIsLogged={setIsLogged}
           />
-          <LoginRegisterContainer />
+          <LoginRegisterContainer setIsLogged={setIsLogged} />
         </Header>
         <Content className="page--content">
           <Outlet />

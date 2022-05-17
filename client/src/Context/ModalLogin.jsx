@@ -5,11 +5,7 @@ const ModalLoginContext = createContext();
 
 function ModalLoginProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLogged, setIsLogged] = useState(false);
-  const contextData = useMemo(
-    () => ({ isOpen, setIsOpen, isLogged, setIsLogged }),
-    [isOpen, isLogged]
-  );
+  const contextData = useMemo(() => ({ isOpen, setIsOpen }), [isOpen]);
 
   return (
     <ModalLoginContext.Provider value={contextData}>

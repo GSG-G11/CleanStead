@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { Modal, Tabs } from 'antd';
 import { ModalLoginContext } from '../../Context/ModalLogin';
 import Register from '../Register';
@@ -8,7 +9,7 @@ import './style.css';
 
 const { TabPane } = Tabs;
 
-function LoginRegisterContainer() {
+function LoginRegisterContainer({ setIsLogged }) {
   const { isOpen, setIsOpen } = useContext(ModalLoginContext);
   const handleCancel = () => {
     setIsOpen(false);
@@ -22,14 +23,24 @@ function LoginRegisterContainer() {
     >
       <Tabs defaultActiveKey="1">
         <TabPane tab="إنشاء حساب" key="1">
-          <Register />
+          <Register setIsLogged={setIsLogged} />
         </TabPane>
         <TabPane tab="تسجيل دخول" key="2">
-          <Login />
+          <Login setIsLogged={setIsLogged} />
         </TabPane>
       </Tabs>
     </Modal>
   );
 }
+
+LoginRegisterContainer.defaultProps = {
+  setIsLogged: () => {
+    setIsLogged(false);
+  },
+};
+
+LoginRegisterContainer.propTypes = {
+  setIsLogged: PropTypes.func,
+};
 
 export default LoginRegisterContainer;
