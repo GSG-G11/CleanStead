@@ -1,12 +1,12 @@
 import { RequestHandler } from 'express';
-import { deleteCategoryQuery } from '../../queries';
+import { archivedCategoriesQuery } from '../../queries';
 import CustomizedError from '../../utils/error';
 
-const deleteCategory: RequestHandler = async (req, res, next) => {
+const archivedCategory: RequestHandler = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const { rowCount } = await deleteCategoryQuery(
+    const { rowCount } = await archivedCategoriesQuery(
       id as any,
     );
     if (!rowCount) {
@@ -22,4 +22,4 @@ const deleteCategory: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default deleteCategory;
+export default archivedCategory;
