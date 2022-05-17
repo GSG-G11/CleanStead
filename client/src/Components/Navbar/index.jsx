@@ -21,7 +21,7 @@ import './navbar.css';
 
 const { Header } = Layout;
 
-function Navbar({ isLogged, categories, user, setIsOpen, setIsLogged }) {
+function Navbar({ isLogged, categories, setIsOpen, setIsLogged }) {
   const [visible, setVisible] = useState(false);
 
   const showDrawer = () => {
@@ -78,12 +78,7 @@ function Navbar({ isLogged, categories, user, setIsOpen, setIsLogged }) {
     <Menu
       items={[
         {
-          label:
-            user.role === 'admin' ? (
-              <Link to="/dashboard">لوحة التحكم</Link>
-            ) : (
-              <Link to="/my-appointment">مواعيدي</Link>
-            ),
+          label: <Link to="/profile">مواعيدي</Link>,
         },
         {
           label: 'تسجيل خروج',
@@ -109,7 +104,6 @@ function Navbar({ isLogged, categories, user, setIsOpen, setIsLogged }) {
           mode="horizontal"
           isLogged={isLogged}
           avatarMenu={avatarMenu}
-          user={user}
           setIsOpen={setIsOpen}
         />
       </div>
@@ -132,7 +126,6 @@ function Navbar({ isLogged, categories, user, setIsOpen, setIsLogged }) {
           mode="inline"
           isLogged={isLogged}
           avatarMenu={avatarMenu}
-          user={user}
           setIsOpen={setIsOpen}
         />
       </Drawer>
@@ -142,17 +135,12 @@ function Navbar({ isLogged, categories, user, setIsOpen, setIsLogged }) {
 
 Navbar.propTypes = {
   isLogged: PropTypes.bool,
-  user: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    role: PropTypes.string.isRequired,
-  }),
   categories: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   setIsOpen: PropTypes.func,
   setIsLogged: PropTypes.func,
 };
 
 Navbar.defaultProps = {
-  user: { name: '', role: '' },
   setIsOpen: () => {
     setIsOpen(false);
   },

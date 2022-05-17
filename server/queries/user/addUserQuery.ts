@@ -8,7 +8,11 @@ const addUserQuery = (
   location: String,
 ) => {
   const sql = {
-    text: 'INSERT INTO users(name, email, phone, password, location) VALUES ($1,$2,$3,$4,$5) RETURNING id,email',
+    text: `INSERT INTO
+            users(name, email, phone, password, location)
+          VALUES ($1,$2,$3,$4,$5)
+          RETURNING
+            id, name, email, phone, location`,
     values: [name, email, phone, password, location],
   };
   return connection.query(sql);

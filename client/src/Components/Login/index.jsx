@@ -10,12 +10,15 @@ const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 function Login({ setIsOpen, setIsLogged }) {
   const [isloading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const { setUserInfo } = useContext(userContext);
+
   const onFinish = ({ email, password }) => {
     setIsLoading(true);
     setError('');
     axios
       .post('/api/v1/signin', { email, password })
       .then(({ data }) => {
+        setUserInfo(data);
         message.success(data.message);
         setIsLoading(false);
         setIsOpen(false);
