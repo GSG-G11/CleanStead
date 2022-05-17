@@ -394,9 +394,7 @@ describe('Test put category', () => {
       .send({
         name: 'testtestdaf',
         description: 'asdasdasd',
-        price: 20,
         image: 'ka;hkjdgh;askdh',
-        categoryId: 2,
       })
       .set({ Cookie: token })
       .expect(200)
@@ -405,22 +403,7 @@ describe('Test put category', () => {
   });
 });
 
-describe('Test put category', () => {
-  it('should return status 400', async () => {
-    const res = await supertest(app)
-      .put('/api/v1/categories/2')
-      .send({
-        name: 'testtestdaf',
-        description: 'adasdsa',
-        price: 20,
-        image: 'ka;hkjdgh;askdh',
-        categoryId: 2,
-      })
-      .expect(401)
-      .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('UnAuthorized');
-  });
-});
+
 
 describe('Test put category', () => {
   it('should return status 400', async () => {
@@ -429,9 +412,7 @@ describe('Test put category', () => {
       .send({
         name: 'testtestdaf',
         description: '',
-        price: 20,
         image: 'ka;hkjdgh;askdh',
-        categoryId: 2,
       })
       .set({ Cookie: token })
       .expect(400)
