@@ -70,12 +70,7 @@ function Dashboard() {
       className="page-layout"
     >
       <Sider className="sidebar" width={270}>
-        <Image
-          preview={false}
-          src={logo}
-          className="logo-image"
-          alt="adminImage"
-        />
+        <Image preview={false} src={logo} className="logo-image" alt="logo" />
         <Menu
           theme="light"
           defaultSelectedKeys={['1']}
@@ -112,6 +107,7 @@ function Dashboard() {
                   preview={false}
                 />
               }
+              alt="admin-image"
             />
             <Title level={5}>محمد الهبيل</Title>
           </Space>
