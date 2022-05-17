@@ -44,12 +44,19 @@ function App() {
     <div>
       <Routes>
         <Route path="/login/admin" element={<LoginAdmin />} />
-        <Route path="/" element={<Dashboard />}>
+        {/* <Route path="/" element={<Dashboard />}>
           <Route path="dashboard" element={<General />} />
           <Route path="categories/admin" element={<Categories />} />
           <Route path="book/admin" element={<Book />} />
           <Route path="contact/admin" element={<Contact />} />
           <Route path="services/admin" element={<Services />} />
+        </Route> */}
+        <Route path="dashboard" element={<Dashboard />}>
+          <Route path="/dashboard" element={<General />} />
+          <Route path="categories" element={<Categories />} />
+          <Route path="book" element={<Book />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="services" element={<Services />} />
         </Route>
         <Route path="/" element={<LayoutUser categories={categories} />}>
           <Route

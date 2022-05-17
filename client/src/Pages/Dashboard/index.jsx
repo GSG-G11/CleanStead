@@ -35,38 +35,33 @@ function getItem(label, key, icon) {
 
 const items = [
   getItem(<Link to="/dashboard">نظرة عامة</Link>, '1', <PieChartOutlined />),
-  getItem(<Link to="/book/admin">الحجوزات</Link>, '2', <CalendarOutlined />),
-  getItem(<Link to="/contact/admin">التواصل</Link>, '3', <MailOutlined />),
   getItem(
-    <Link to="/services/admin"> التصنيفات</Link>,
+    <Link to="/dashboard/book">الحجوزات</Link>,
+    '2',
+    <CalendarOutlined />
+  ),
+  getItem(<Link to="/dashboard/contact">التواصل</Link>, '3', <MailOutlined />),
+  getItem(
+    <Link to="/dashboard/services"> التصنيفات</Link>,
     '4',
     <AppstoreOutlined />
   ),
   getItem(
-    <Link to="/categories/admin"> الخدمات</Link>,
+    <Link to="/dashboard/categories"> الخدمات</Link>,
     '5',
     <ShoppingOutlined />
   ),
 ];
 const breadcrumbNameMap = {
   '/dashboard': 'نظرة عامة',
-  '/book/admin': 'الحجوزات',
-  '/contact/admin': 'التواصل',
-  '/services/admin': 'التصنيفات',
-  '/categories/admin': 'الخدمات',
+  '/dashboard/book': 'الحجوزات',
+  '/dashboard/contact': 'التواصل',
+  '/dashboard/services': 'التصنيفات',
+  '/dashboard/categories': 'الخدمات',
 };
 
 function Dashboard() {
-  const location = useLocation();
-  const pathSnippets = location.pathname.split('/').filter((i) => i);
-  const extraBreadcrumbItems = pathSnippets.map((_, index) => {
-    const url = `/${pathSnippets.slice(0, index + 1).join('/')}`;
-    return (
-      <span className="title" key={url}>
-        {breadcrumbNameMap[url]}
-      </span>
-    );
-  });
+  const { pathname } = useLocation();
   return (
     <Layout
       style={{
@@ -94,7 +89,7 @@ function Dashboard() {
             padding: 0,
           }}
         >
-          <Title>{extraBreadcrumbItems}</Title>
+          <Title>{breadcrumbNameMap[pathname]}</Title>
           <Space>
             <Badge dot>
               <Avatar shape="square" icon={<BellOutlined />} />
