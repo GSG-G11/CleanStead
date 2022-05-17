@@ -12,7 +12,8 @@ CREATE TABLE admins (
   id SERIAL PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
   email VARCHAR(255) NOT NULL UNIQUE,
-  password VARCHAR(255) NOT NULL
+  password VARCHAR(255) NOT NULL,
+  archived BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE users (
@@ -21,14 +22,18 @@ CREATE TABLE users (
   email VARCHAR(255) NOT NULL UNIQUE,
   password VARCHAR(255) NOT NULL,
   phone VARCHAR(30) NOT NULL,
-  location TEXT NOT NULL
+  lat TEXT DEFAULT '31.50310344657815',
+  lng TEXT DEFAULT '34.46672153290604',
+  location TEXT NOT NULL,
+  archived BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE categories (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   description TEXT NOT NULL,
-  image TEXT NOT NULL
+  image TEXT NOT NULL,
+  archived BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE services (
@@ -38,6 +43,7 @@ CREATE TABLE services (
   price INT NOT NULL,
   image TEXT NOT NULL,
   category_id INT,
+  archived BOOLEAN DEFAULT FALSE,
   FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
 );
 
@@ -48,18 +54,19 @@ CREATE TABLE contacts (
   message TEXT NOT NULL,
   phone VARCHAR(30) NOT NULL,
   category_id INT,
+  archived BOOLEAN DEFAULT FALSE,
   FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
 );
 
 CREATE TABLE appoinments (
   id SERIAL PRIMARY KEY,
-  date DATE NOT NULL,
-  time VARCHAR(50) NOT NULL,
+  date_time TIMESTAMP NOT NULL,
   creation_time TIMESTAMP NOT NULL,
   price INT NOT NULL,
+  status VARCHAR(50) DEFAULT 'معلق',
+  repeat VARCHAR(50) DEFAULT 'مرة واحدة',
+  archived BOOLEAN DEFAULT FALSE,
   user_id INT,
-  status VARCHAR(50) DEFAULT 'Pending',
-  repeat VARCHAR(50) DEFAULT 'Once',
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
