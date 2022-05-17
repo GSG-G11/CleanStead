@@ -2,26 +2,30 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { Form, Input, Button, message, Spin } from 'antd';
+import { Form, Input, Button, message, Spin, Select } from 'antd';
 import {
   UserOutlined,
   MailOutlined,
   PhoneOutlined,
   LockOutlined,
-  HomeOutlined,
+  // HomeOutlined,
   LoadingOutlined,
 } from '@ant-design/icons';
+import cities from '../../cities.json';
 
+const { Option } = Select;
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 function Register({ setIsOpen, setIsLogged }) {
   const [isloading, setIsLoading] = useState(false);
   const [errorEmail, setErrorEmail] = useState('');
+
   const onFinish = ({ name, email, phone, password, location }) => {
     setIsLoading(true);
     setErrorEmail('');
+    const locationDetails = cities[location - 1];
     axios
-      .post('/api/v1/signup', { name, email, phone, password, location })
+      .post('/api/v1/signup', { name, email, phone, password, locationDetails })
       .then(({ data }) => {
         message.success(data.message);
         setIsLoading(false);
@@ -117,19 +121,25 @@ function Register({ setIsOpen, setIsLogged }) {
         <Form.Item
           label="العنوان"
           name="location"
-          rules={[
-            {
-              required: true,
-              message: 'عنوان المستخدم مطلوب',
-            },
-          ]}
-          hasFeedback
+          // rules={[
+          //   {
+          //     required: true,
+          //     message: 'عنوان المستخدم مطلوب',
+          //   },
+          // ]}
+          // hasFeedback
         >
-          <Input
+          {/* <Input
             placeholder=" ادخل العنوان"
             className="input"
             prefix={<HomeOutlined className="icon-style" />}
-          />
+          /> */}
+          <Select placeholder="اختر موقعك">
+            {cities.map(({ name, id }) => (
+              <Option key={id}>{name}</Option>
+            ))}
+          </Select>
+          {/* <LocationSelect  onChange={onChange}/> */}
         </Form.Item>
         {isloading && <Spin indicator={antIcon} />}
         <Form.Item>
