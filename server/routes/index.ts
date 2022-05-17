@@ -26,7 +26,7 @@ router.get('/categories', getCategories);
 router.post('/categories', postCategories);
 router.get('/categories/:id/services', validateLink, getCategoryServices);
 router.get('/book', getBooks);
-router.post('/book', checkAuth, postBook);
+router.post('/book', postBook);
 router.get('/book/:id', validateLink, getBook);
 router.get('/user/:id/book', validateLink, getUserBooks);
 router.post('/services', postService);

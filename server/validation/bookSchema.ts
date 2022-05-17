@@ -4,7 +4,6 @@ import {
 
 const categoriesSchema = object({
   dateTime: string().required('Date Time is required'),
-  creationTime: string().required('Creation Time is required'),
   price: number().min(1, 'Price must be large than 0').required('Price is required'),
   repeat: string().required('Repeat Time is required'),
   userId: number().min(1, 'Id must be a positive number').required('User Id is required'),

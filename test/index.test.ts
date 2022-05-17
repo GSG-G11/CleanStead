@@ -446,7 +446,6 @@ describe('Test post book', () => {
       .post('/api/v1/book')
       .send({
         dateTime: '2022-05-17 13:00',
-        creationTime: '2022-05-17 13:30',
         price: 17,
         repeat: 'مرة واحدة',
         userId: 1,
@@ -466,7 +465,6 @@ describe('Test post book', () => {
       .post('/api/v1/book')
       .send({
         dateTime: '2022-05-17 13:00',
-        creationTime: '2022-05-17 13:30',
         price: 0,
         repeat: 'مرة واحدة',
         userId: 1,

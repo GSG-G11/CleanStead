@@ -6,11 +6,10 @@ import CustomizedError from '../../utils/error';
 const postBook: RequestHandler = async (req, res, next) => {
   try {
     const {
-      dateTime, creationTime, price, repeat, userId, quantity, serviceId,
+      dateTime, price, repeat, userId, quantity, serviceId,
     } = await bookSchema.validate(req.body, { abortEarly: false });
     const { rowCount } = await postBookQuery(
       dateTime,
-      creationTime,
       price,
       repeat,
       userId,
