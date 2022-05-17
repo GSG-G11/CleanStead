@@ -24,7 +24,7 @@ function ServicesCollapse({
       categoryServices[categoryId][serviceIndex].quantity = 1;
     } else if (
       categoryServices[categoryId][serviceIndex].isChecked &&
-      categoryServices[categoryId][serviceIndex].quantity > 1
+      categoryServices[categoryId][serviceIndex].quantity >= 1
     ) {
       categoryServices[categoryId][serviceIndex].quantity = 0;
     }
