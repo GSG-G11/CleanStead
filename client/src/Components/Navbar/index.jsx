@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import {
@@ -18,10 +18,12 @@ import logo from '../../Assets/images/logo.svg';
 import LeftMenu from './LeftMenu';
 import RightMenu from './RightMenu';
 import './navbar.css';
+import { ModalLoginContext } from '../../Context/ModalLogin';
 
 const { Header } = Layout;
 
-function Navbar({ isLogged, categories, user, setIsOpen, setIsLogged }) {
+function Navbar({ categories, user }) {
+  const { setIsLogged } = useContext(ModalLoginContext);
   const [visible, setVisible] = useState(false);
 
   const showDrawer = () => {
@@ -105,13 +107,7 @@ function Navbar({ isLogged, categories, user, setIsOpen, setIsLogged }) {
         <LeftMenu mode="horizontal" navItems={navItems} />
       </div>
       <div className="menu_right">
-        <RightMenu
-          mode="horizontal"
-          isLogged={isLogged}
-          avatarMenu={avatarMenu}
-          user={user}
-          setIsOpen={setIsOpen}
-        />
+        <RightMenu mode="horizontal" avatarMenu={avatarMenu} user={user} />
       </div>
       <Button
         className="menu__mobile-button"
@@ -128,38 +124,22 @@ function Navbar({ isLogged, categories, user, setIsOpen, setIsLogged }) {
         visible={visible}
       >
         <LeftMenu mode="inline" navItems={navItems} />
-        <RightMenu
-          mode="inline"
-          isLogged={isLogged}
-          avatarMenu={avatarMenu}
-          user={user}
-          setIsOpen={setIsOpen}
-        />
+        <RightMenu mode="inline" avatarMenu={avatarMenu} user={user} />
       </Drawer>
     </Header>
   );
 }
 
 Navbar.propTypes = {
-  isLogged: PropTypes.bool,
   user: PropTypes.shape({
     name: PropTypes.string.isRequired,
     role: PropTypes.string.isRequired,
   }),
   categories: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  setIsOpen: PropTypes.func,
-  setIsLogged: PropTypes.func,
 };
 
 Navbar.defaultProps = {
   user: { name: '', role: '' },
-  setIsOpen: () => {
-    setIsOpen(false);
-  },
-  isLogged: false,
-  setIsLogged: () => {
-    setIsLogged(false);
-  },
 };
 
 export default Navbar;

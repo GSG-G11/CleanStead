@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 import { Form, Input, Button, message, Spin } from 'antd';
 import {
   UserOutlined,
@@ -11,10 +10,12 @@ import {
   HomeOutlined,
   LoadingOutlined,
 } from '@ant-design/icons';
+import { ModalLoginContext } from '../../Context/ModalLogin';
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-function Register({ setIsOpen, setIsLogged }) {
+function Register() {
+  const { setIsOpen, setIsLogged } = useContext(ModalLoginContext);
   const [isloading, setIsLoading] = useState(false);
   const [errorEmail, setErrorEmail] = useState('');
   const onFinish = ({ name, email, phone, password, location }) => {
@@ -141,16 +142,5 @@ function Register({ setIsOpen, setIsLogged }) {
     </div>
   );
 }
-Register.defaultProps = {
-  setIsOpen: () => {
-    setIsOpen(false);
-  },
-  setIsLogged: () => {
-    setIsLogged(false);
-  },
-};
-Register.propTypes = {
-  setIsOpen: PropTypes.func,
-  setIsLogged: PropTypes.func,
-};
+
 export default Register;
