@@ -29,7 +29,7 @@ router.get('/book/:id', validateLink, getBook);
 router.get('/user/:id/book', validateLink, getUserBooks);
 router.post('/services', postService);
 router.put('/services/:id', validateLink, checkAuth, putService);
-router.delete('/services/:id', validateLink, checkAuth, deleteService);
+router.delete('/services/:id', validateLink, deleteService);
 router.route('/contact').get(getContacts).post(addContact);
 router.post('/signup', signup);
 router.get('/logout', logout);
