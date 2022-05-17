@@ -10,22 +10,13 @@ import { UserProvider } from '../../context/userContext';
 const { Header, Footer, Content } = Layout;
 function LayoutUser({ categories }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLogged, setIsLogged] = useState(false);
+
   return (
     <UserProvider>
       <Layout className="page--layout">
         <Header>
-          <Navbar
-            isLogged={isLogged}
-            categories={categories}
-            setIsOpen={setIsOpen}
-            setIsLogged={setIsLogged}
-          />
-          <LoginRegisterContainer
-            isOpen={isOpen}
-            setIsOpen={setIsOpen}
-            setIsLogged={setIsLogged}
-          />
+          <Navbar categories={categories} setIsOpen={setIsOpen} />
+          <LoginRegisterContainer isOpen={isOpen} setIsOpen={setIsOpen} />
         </Header>
         <Content className="page--content">
           <Outlet />

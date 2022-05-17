@@ -7,6 +7,7 @@ import {
 import { getContacts, addContact } from './contact';
 import signup from './signup';
 import logout from './logout';
+import getUserInfo from './user';
 import { checkAuth, checkAdmin } from './middlewares/auth';
 import signin from './signin';
 import { getBooks, getUserBooks, getBook } from './book';
@@ -36,4 +37,5 @@ export {
   getBook,
   validateLink,
   signinAdmin,
+  getUserInfo,
 };

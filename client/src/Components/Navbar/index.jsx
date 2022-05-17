@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import {
@@ -18,11 +18,13 @@ import logo from '../../Assets/images/logo.svg';
 import LeftMenu from './LeftMenu';
 import RightMenu from './RightMenu';
 import './navbar.css';
+import { userContext } from '../../context/userContext';
 
 const { Header } = Layout;
 
-function Navbar({ isLogged, categories, setIsOpen, setIsLogged }) {
+function Navbar({ categories, setIsOpen }) {
   const [visible, setVisible] = useState(false);
+  const { setIsLogged } = useContext(userContext);
 
   const showDrawer = () => {
     setVisible(true);
@@ -102,7 +104,6 @@ function Navbar({ isLogged, categories, setIsOpen, setIsLogged }) {
       <div className="menu_right">
         <RightMenu
           mode="horizontal"
-          isLogged={isLogged}
           avatarMenu={avatarMenu}
           setIsOpen={setIsOpen}
         />
@@ -124,7 +125,6 @@ function Navbar({ isLogged, categories, setIsOpen, setIsLogged }) {
         <LeftMenu mode="inline" navItems={navItems} />
         <RightMenu
           mode="inline"
-          isLogged={isLogged}
           avatarMenu={avatarMenu}
           setIsOpen={setIsOpen}
         />
@@ -134,19 +134,13 @@ function Navbar({ isLogged, categories, setIsOpen, setIsLogged }) {
 }
 
 Navbar.propTypes = {
-  isLogged: PropTypes.bool,
   categories: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   setIsOpen: PropTypes.func,
-  setIsLogged: PropTypes.func,
 };
 
 Navbar.defaultProps = {
   setIsOpen: () => {
     setIsOpen(false);
-  },
-  isLogged: false,
-  setIsLogged: () => {
-    setIsLogged(false);
   },
 };
 

@@ -15,10 +15,10 @@ import { userContext } from '../../context/userContext';
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-function Register({ setIsOpen, setIsLogged }) {
+function Register({ setIsOpen }) {
   const [isloading, setIsLoading] = useState(false);
   const [errorEmail, setErrorEmail] = useState('');
-  const { setUserInfo } = useContext(userContext);
+  const { setUserInfo, setIsLogged } = useContext(userContext);
 
   const onFinish = ({ name, email, phone, password, location }) => {
     setIsLoading(true);
@@ -149,12 +149,8 @@ Register.defaultProps = {
   setIsOpen: () => {
     setIsOpen(false);
   },
-  setIsLogged: () => {
-    setIsLogged(false);
-  },
 };
 Register.propTypes = {
   setIsOpen: PropTypes.func,
-  setIsLogged: PropTypes.func,
 };
 export default Register;

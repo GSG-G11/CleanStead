@@ -6,8 +6,8 @@ import { UserOutlined, DownOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { userContext } from '../../context/userContext';
 
-function RightMenu({ isLogged, mode, avatarMenu, setIsOpen }) {
-  const { userInfo } = useContext(userContext);
+function RightMenu({ mode, avatarMenu, setIsOpen }) {
+  const { userInfo, isLogged } = useContext(userContext);
 
   const openModal = () => {
     setIsOpen(true);
@@ -45,7 +45,6 @@ function RightMenu({ isLogged, mode, avatarMenu, setIsOpen }) {
 
 RightMenu.propTypes = {
   mode: PropTypes.string.isRequired,
-  isLogged: PropTypes.bool,
   avatarMenu: PropTypes.element.isRequired,
   setIsOpen: PropTypes.func,
 };
@@ -54,7 +53,6 @@ RightMenu.defaultProps = {
   setIsOpen: () => {
     setIsOpen(false);
   },
-  isLogged: false,
 };
 
 export default RightMenu;
