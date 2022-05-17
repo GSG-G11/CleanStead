@@ -105,9 +105,9 @@ function Dashboard() {
                     borderRadius: '50%',
                   }}
                   preview={false}
+                  alt="admin-image"
                 />
               }
-              alt="admin-image"
             />
             <Title level={5}>محمد الهبيل</Title>
           </Space>
