@@ -1,34 +1,27 @@
 import React, { createContext, useState, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
+import jwt_decode from 'jwt-decode';
 
 const userContext = createContext();
 
 function UserProvider({ children }) {
   const [userInfo, setUserInfo] = useState({});
   const [isLogged, setIsLogged] = useState(false);
+  const token = document.cookie.split('token=')[1];
 
   const userData = useMemo(
     () => ({ userInfo, setUserInfo, isLogged, setIsLogged }),
     [userInfo]
   );
-
   useEffect(() => {
-    const cancelTokenSource = axios.CancelToken.source();
-    axios
-      .get(`/api/v1/cookies`, {
-        cancelToken: cancelTokenSource.token,
-      })
-      .then(({ data: { data } }) => {
-        setUserInfo(data);
-        setIsLogged(true);
-      })
-      .catch(() => {
-        setIsLogged(false);
-        setUserInfo({});
-      });
-    return () => cancelTokenSource.cancel();
-  }, [isLogged]);
+    if (token) {
+      setUserInfo(jwt_decode(token));
+      setIsLogged(true);
+    } else {
+      setIsLogged(false);
+      setUserInfo({});
+    }
+  }, [token]);
 
   return (
     <userContext.Provider value={userData}>{children}</userContext.Provider>

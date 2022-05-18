@@ -18,11 +18,9 @@ import {
   validateLink,
   signinAdmin,
   checkAuth,
-  getUserInfo,
 } from '../controllers';
 
 const router = Router();
-router.get('/cookies', checkAuth, getUserInfo);
 router.get('/categories', getCategories);
 router.post('/categories', postCategories);
 router.get('/categories/:id/services', validateLink, getCategoryServices);
