@@ -1,13 +1,15 @@
 /* eslint-disable no-undef */
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Form, Input, Button, message, Spin } from 'antd';
 import { MailOutlined, LockOutlined, LoadingOutlined } from '@ant-design/icons';
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-function Login({ setIsOpen, setIsLogged }) {
+function Login({ setIsOpen, setIsLogged, admin }) {
+  const navigate = useNavigate();
   const [isloading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const onFinish = ({ email, password }) => {
@@ -31,9 +33,33 @@ function Login({ setIsOpen, setIsLogged }) {
         }
       });
   };
+  const onAdminFinish = ({ email, password }) => {
+    setIsLoading(true);
+    setError('');
+    axios
+      .post('/api/v1/admin/signin', { email, password })
+      .then(({ data }) => {
+        message.success(data.message);
+        navigate('/dashboard', { replace: true });
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        if (err.response) {
+          setError(err.response.data.message);
+          setIsLoading(false);
+        } else {
+          message.error('حدث خطأ ما');
+          setIsLoading(false);
+        }
+      });
+  };
   return (
     <div>
-      <Form layout="vertical" onFinish={onFinish}>
+      <Form
+        layout="vertical"
+        className={admin ? 'form-width' : ''}
+        onFinish={admin ? onAdminFinish : onFinish}
+      >
         <Form.Item
           label="الإيميل"
           name="email"
@@ -88,9 +114,11 @@ Login.defaultProps = {
   setIsLogged: () => {
     setIsLogged(false);
   },
+  admin: false,
 };
 Login.propTypes = {
   setIsOpen: PropTypes.func,
   setIsLogged: PropTypes.func,
+  admin: PropTypes.bool,
 };
 export default Login;

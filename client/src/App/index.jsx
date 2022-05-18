@@ -9,7 +9,7 @@ import {
   Contact,
   General,
   Services,
-  LoginAdmin,
+  AdminLogin,
 } from '../Components';
 import { Home, Category, Description, Dashboard } from '../Pages';
 import 'swiper/css/bundle';
@@ -43,7 +43,7 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/login/admin" element={<LoginAdmin />} />
+        <Route path="/login/admin" element={<AdminLogin />} />
         <Route path="dashboard" element={<Dashboard />}>
           <Route path="/dashboard" element={<General />} />
           <Route path="categories" element={<Categories />} />

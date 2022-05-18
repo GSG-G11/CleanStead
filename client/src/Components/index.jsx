@@ -12,5 +12,5 @@ export {
   Contact,
   General,
   Services,
-  LoginAdmin,
+  AdminLogin,
 } from './Dashboard';

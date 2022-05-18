@@ -8,8 +8,9 @@ import {
   Avatar,
   Button,
   Badge,
+  message,
 } from 'antd';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import {
   PieChartOutlined,
   MailOutlined,
@@ -20,6 +21,7 @@ import {
   BellOutlined,
 } from '@ant-design/icons';
 import './style.css';
+import axios from 'axios';
 import logo from '../../Assets/images/logo.svg';
 import user from '../../Assets/images/user.png';
 
@@ -62,6 +64,18 @@ const breadcrumbNameMap = {
 
 function Dashboard() {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const logout = () => {
+    axios
+      .get('/api/v1/logout')
+      .then(({ data }) => {
+        message.success(data.message);
+        navigate('/login/admin', { replace: true });
+      })
+      .catch(() => {
+        message.error('حدث خطأ ما');
+      });
+  };
   return (
     <Layout
       style={{
@@ -78,7 +92,11 @@ function Dashboard() {
           items={items}
           className="sidebar-menu"
         />
-        <Button className="logout-btn" icon={<LogoutOutlined />}>
+        <Button
+          className="logout-btn"
+          onClick={logout}
+          icon={<LogoutOutlined />}
+        >
           تسجيل الخروج
         </Button>
       </Sider>
