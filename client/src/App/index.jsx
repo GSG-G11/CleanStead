@@ -4,14 +4,13 @@ import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import { message } from 'antd';
 import {
-  Book,
   Categories,
   Contact,
   General,
   Services,
   LoginAdmin,
 } from '../Components';
-import { Home, Category, Description, Dashboard } from '../Pages';
+import { Home, Category, Description, Dashboard, Book } from '../Pages';
 import 'swiper/css/bundle';
 import '../style/custom-antd.css';
 import './app.css';
@@ -20,6 +19,7 @@ import LayoutUser from '../Components/Layout';
 function App() {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const cancelTokenSource = axios.CancelToken.source();
@@ -67,6 +67,10 @@ function App() {
             element={<Description page="category" categories={categories} />}
           />
           <Route path="category/:id" element={<Category />} />
+          <Route
+            path="/book"
+            element={<Book categories={categories} setIsOpen={setIsOpen} />}
+          />
         </Route>
       </Routes>
     </div>
