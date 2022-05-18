@@ -9,7 +9,7 @@ const checkAuth: RequestHandler = async (req: any, res, next) => {
   try {
     if (!token) throw new CustomizedError(401, 'UnAuthorized');
     const decoded = await jwtVerify(token);
-    req.user = decoded;
+    req.userInformation = decoded;
     next();
   } catch (err) {
     next(new CustomizedError(401, 'UnAuthorized'));
