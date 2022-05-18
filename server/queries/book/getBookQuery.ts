@@ -3,8 +3,7 @@ import connection from '../../database/connection';
 const getBookQuery = (id:number) => connection.query(`
   SELECT
     a.id,
-    a.date,
-    a.time,
+    a.date_time,
     a.price,
     a.status,
     a.repeat,
