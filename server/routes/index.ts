@@ -19,6 +19,7 @@ import {
   validateLink,
   signinAdmin,
   checkAdmin,
+  checkAuth,
 } from '../controllers';
 
 const router = Router();
@@ -32,7 +33,7 @@ router.post('/signup', signup);
 router.get('/logout', logout);
 router.post('/signin', signin);
 router.post('/admin/signin', signinAdmin);
-router.post('/book', postBook);
+router.post('/book', checkAuth, postBook);
 // router.use(checkAdmin);
 router.post('/services', postService);
 router.post('/categories', postCategories);

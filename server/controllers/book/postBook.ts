@@ -3,11 +3,13 @@ import { postBookQuery, postServiceBookQuery } from '../../queries';
 import { bookSchema } from '../../validation';
 import CustomizedError from '../../utils/error';
 
-const postBook: RequestHandler = async (req, res, next) => {
+const postBook: RequestHandler = async (req:any, res, next) => {
   try {
+    const { id: userId } = req.user;
+
     const {
-      dateTime, price, repeat, userId, services,
-    } = await bookSchema.validate(req.body, { abortEarly: false });
+      dateTime, price, repeat, services,
+    } = await bookSchema.validate({ ...req.body, userId }, { abortEarly: false });
 
     const { rows } = await postBookQuery(
       dateTime,
