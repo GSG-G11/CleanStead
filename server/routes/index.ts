@@ -20,6 +20,7 @@ import {
   signinAdmin,
   checkAdmin,
   checkAuth,
+  getStatus,
 } from '../controllers';
 
 const router = Router();
@@ -40,4 +41,5 @@ router.post('/categories', postCategories);
 router.put('/services/:id', validateLink, putService);
 router.delete('/services/:id', validateLink, deleteService);
 router.put('/categories/:id', validateLink, putCategories);
+router.get('/status', getStatus);
 export default router;

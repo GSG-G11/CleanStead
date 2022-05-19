@@ -293,7 +293,7 @@ describe('Test get books', () => {
       .get('/api/v1/book')
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.data.length).toBe(6);
+    expect(res.body.data.length).toBe(9);
   });
 
   it('should return status code 200 and the length 2', async () => {
@@ -456,5 +456,21 @@ describe('Test post book', () => {
       .expect(400)
       .expect('Content-Type', /json/);
     expect(res.body.message).toBe('Price must be large than 0');
+  });
+});
+describe('Test Status Book', () => {
+  it('should return status 200', async () => {
+    const res = await supertest(app)
+      .get('/api/v1/status')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.data.length).toBe(3);
+  });
+  it('should return status 200 and response for total second item 2', async () => {
+    const res = await supertest(app)
+      .get('/api/v1/status')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.data[1].total).toBe('2');
   });
 });

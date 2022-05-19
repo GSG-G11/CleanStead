@@ -4,7 +4,12 @@ import {
 import { getContactsQuery, addContactQuery } from './contact';
 import { addUserQuery, checkEmailExistsQuery } from './user';
 import {
-  getBooksQuery, getUserBooksQuery, getBookQuery, postBookQuery, postServiceBookQuery,
+  getBooksQuery,
+  getUserBooksQuery,
+  getBookQuery,
+  postBookQuery,
+  postServiceBookQuery,
+  getStatusQuery,
 } from './book';
 import checkEmailAdminExistsQuery from './admin';
 import { postServiceQuery, deleteServiceQuery, putServiceQuery } from './services';
@@ -27,4 +32,5 @@ export {
   postBookQuery,
   postServiceBookQuery,
   checkEmailAdminExistsQuery,
+  getStatusQuery,
 };
