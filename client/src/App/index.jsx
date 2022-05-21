@@ -2,14 +2,13 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import {
-  Book,
   Categories,
   Contact,
   General,
   Services,
   LoginAdmin,
 } from '../Components';
-import { Home, Category, Description, Dashboard } from '../Pages';
+import { Home, Category, Description, Dashboard, Book } from '../Pages';
 import 'swiper/css/bundle';
 import '../style/custom-antd.css';
 import './app.css';
@@ -38,6 +37,7 @@ function App() {
               element={<Description page="category" />}
             />
             <Route path="category/:id" element={<Category />} />
+            <Route path="/book" element={<Book />} />
           </Route>
         </Routes>
       </CategoriesProvider>
