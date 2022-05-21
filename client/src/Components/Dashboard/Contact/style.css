@@ -1,0 +1,22 @@
+.message > span{
+  padding: 10px !important;
+  background: #f6f7f9;
+  display: block;
+  white-space: pre;
+}
+.delete-contact-button{
+  background: #F7F8FC !important;
+  border-radius: 12px !important;
+}
+.ant-layout-content{
+  margin: 40px 15px !important;
+}
+.ant-pro-core-label-tip{
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.ant-table table,
+.ant-table-thead > tr > th{
+  text-align: right !important;
+}

@@ -72,21 +72,43 @@ VALUES
     );
 
 INSERT INTO
-    contacts(name, email, message, phone, category_id)
+    contacts(name, email, message, status, sendTime, phone, category_id)
 VALUES
     (
         'مصطفى قنوع',
         'mostafaqandfoo403@gmail.com',
         'انا بحاجة للمساعدة',
+        'تم الرد',
+        NOW(),
         0559565562,
         1
+    ),
+    (
+        'اسراء ابوريا',
+        'israaaburayya@gmail.com',
+        'انا بحاجة للمساعدة',
+        'معلق',
+        NOW(),
+        0559565562,
+        2
     ),
     (
         'محمد الهبيل',
         'mohameddf403@gmail.com',
         'اريد ان اعرف اكتر تفاصيل عن هذه الخدمة ',
+        'تم الرد',
+        NOW(),
         0555555555,
-        2
+        3
+    ),
+    (
+        'جهاد ابوشقرة',
+        'jehadjawad@gmail.com',
+        'انا بحاجة للمساعدة',
+        'تم الرد',
+        NOW(),
+        0559565562,
+        4
     );
 
 INSERT INTO
