@@ -17102,7 +17102,7 @@ textarea.ant-mentions {
   word-wrap: break-word;
 }
 .ant-modal-footer {
-  display: none;
+  display: inline-block;
   padding: 10px 16px;
   text-align: right;
   background: transparent;

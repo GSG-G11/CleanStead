@@ -19,8 +19,14 @@ const signin: RequestHandler = async (req, res, next) => {
     if (!resultComapre) {
       throw new CustomizedError(400, 'يوجد خطأ بالإيميل أو كلمة السر');
     }
-    const token = await jwtSign({ id: data[0].id, email });
-    res.cookie('token', token, { httpOnly: true, secure: true }).json({ message: 'تم تسجيل دخولك بنجاح', status: 200 });
+    const token = await jwtSign({
+      id: data[0].id,
+      email,
+      name: data[0].name,
+      phone: data[0].phone,
+      location: data[0].location,
+    });
+    res.cookie('token', token).json({ message: 'تم تسجيل دخولك بنجاح', status: 200, data: data[0] });
   } catch (error: any) {
     if (error.name === 'ValidationError') {
       return next(new CustomizedError(400, error.errors[0]));
