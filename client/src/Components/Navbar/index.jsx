@@ -18,12 +18,15 @@ import logo from '../../Assets/images/logo.svg';
 import LeftMenu from './LeftMenu';
 import RightMenu from './RightMenu';
 import './navbar.css';
+
+import { CategoriesContext } from '../../Contexts/CategoriesContext';
 import { userContext } from '../../context/userContext';
 
 const { Header } = Layout;
 
-function Navbar({ categories, setIsOpen }) {
+function Navbar({ setIsOpen }) {
   const [visible, setVisible] = useState(false);
+  const { categories } = useContext(CategoriesContext);
   const { setIsLogged } = useContext(userContext);
 
   const showDrawer = () => {
@@ -134,7 +137,6 @@ function Navbar({ categories, setIsOpen }) {
 }
 
 Navbar.propTypes = {
-  categories: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   setIsOpen: PropTypes.func,
 };
 
