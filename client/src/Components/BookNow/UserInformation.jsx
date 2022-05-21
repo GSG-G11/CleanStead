@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Typography, Form, Space, Input, Button, Row, Col } from 'antd';
+import LeafMap from '../Map';
 
 const { Title } = Typography;
 
@@ -17,6 +18,10 @@ function UserInformation({ onChangeInput, setIsOpen }) {
           تسجيل الدخول
         </Button>
       </Space>
+      <div>
+        <LeafMap />
+      </div>
+
       <Form layout="vertical">
         <Row>
           <Col>

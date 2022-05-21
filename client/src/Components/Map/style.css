@@ -1,0 +1,7 @@
+.map-wrapper {
+  overflow: hidden;
+  width: 100%;
+  height: 250px;
+  padding-top: 10px;
+  margin: 10px 0;
+}
