@@ -25,8 +25,14 @@ const signup: RequestHandler = async (req, res, next) => {
       locationDetails.lat,
       locationDetails.lng,
     );
-    const token = await jwtSign({ id: data[0].id, email: data[0].email });
-    res.cookie('token', token, { httpOnly: true, secure: true }).status(201).json({ message: 'تم تسجيل حسابك بنجاح', status: 201 });
+    const token = await jwtSign({
+      id: data[0].id,
+      email: data[0].email,
+      name: data[0].name,
+      phone: data[0].phone,
+      location: data[0].location,
+    });
+    res.cookie('token', token).status(201).json({ message: 'تم تسجيل حسابك بنجاح', status: 201 });
   } catch (error: any) {
     if (error.name === 'ValidationError') {
       return next(new CustomizedError(400, error.errors[0]));
