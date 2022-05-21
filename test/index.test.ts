@@ -62,7 +62,7 @@ describe('Test Get Contacts', () => {
       .get('/api/v1/contact')
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.data.length).toBe(2);
+    expect(res.body.data.length).toBe(4);
   });
 });
 describe('Test to register', () => {
