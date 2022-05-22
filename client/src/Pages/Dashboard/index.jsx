@@ -86,7 +86,9 @@ function Dashboard() {
       className="page-layout"
     >
       <Sider className="sidebar" width={270}>
-        <Image preview={false} src={logo} className="logo-image" alt="logo" />
+        <Link to="/">
+          <Image preview={false} src={logo} className="logo-image" alt="logo" />
+        </Link>
         <Menu
           theme="light"
           defaultSelectedKeys={['1']}

@@ -7,7 +7,6 @@ const adminContext = createContext();
 function AdminProvider({ children }) {
   const [adminInfo, setAdminInfo] = useState({});
   const token = document.cookie.split('tokenAdmin=')[1];
-  console.log(document.cookie);
 
   const adminData = useMemo(() => ({ adminInfo, setAdminInfo }), [adminInfo]);
   useEffect(() => {
@@ -17,8 +16,6 @@ function AdminProvider({ children }) {
       setAdminInfo({});
     }
   }, [token]);
-  console.log(adminInfo);
-
   return (
     <adminContext.Provider value={adminData}>{children}</adminContext.Provider>
   );
