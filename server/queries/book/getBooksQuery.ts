@@ -11,6 +11,6 @@ const getBooksQuery = () => connection.query(`
     u.name,
     u.location
   FROM
-    appoinments AS a
+    appointments AS a
   JOIN  users AS u ON  a.user_id = u.id`);
 export default getBooksQuery;
