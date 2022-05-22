@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Typography, Collapse, Space, message } from 'antd';
 import ServicesCollapse from './ServicesCollapse';
+import { CategoriesContext } from '../../Contexts/CategoriesContext';
 
 const { Title } = Typography;
 const { Panel } = Collapse;
 
-function ServicesChoice({ categories, categoryServices, setCategoryServices }) {
+function ServicesChoice({ categoryServices, setCategoryServices }) {
+  const { categories } = useContext(CategoriesContext);
   const expand = (key) => {
     if (key !== undefined && !Array.isArray(categoryServices[key])) {
       axios
@@ -63,14 +65,6 @@ function ServicesChoice({ categories, categoryServices, setCategoryServices }) {
 }
 
 ServicesChoice.propTypes = {
-  categories: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-    })
-  ).isRequired,
   categoryServices: PropTypes.shape({
     [PropTypes.number]: PropTypes.arrayOf(
       PropTypes.shape({

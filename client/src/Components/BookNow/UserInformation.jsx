@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Typography, Form, Space, Input, Button, Row, Col } from 'antd';
+import { ModalLoginContext } from '../../Contexts/ModalLogin';
 
 const { Title } = Typography;
 
-function UserInformation({ onChangeInput, setIsOpen }) {
+function UserInformation({ onChangeInput }) {
+  const { setIsOpen } = useContext(ModalLoginContext);
   const openLogin = () => {
     setIsOpen(true);
   };
@@ -67,15 +69,8 @@ function UserInformation({ onChangeInput, setIsOpen }) {
   );
 }
 
-UserInformation.defaultProps = {
-  setIsOpen: () => {
-    setIsOpen(false);
-  },
-};
-
 UserInformation.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
-  setIsOpen: PropTypes.func,
 };
 
 export default UserInformation;

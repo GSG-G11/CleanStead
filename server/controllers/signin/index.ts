@@ -25,8 +25,10 @@ const signin: RequestHandler = async (req, res, next) => {
       name: data[0].name,
       phone: data[0].phone,
       location: data[0].location,
+      lat: data[0].lat,
+      lng: data[0].lng,
     });
-    res.cookie('token', token).json({ message: 'تم تسجيل دخولك بنجاح', status: 200, data: data[0] });
+    res.cookie('token', token).json({ message: 'تم تسجيل دخولك بنجاح', status: 200 });
   } catch (error: any) {
     if (error.name === 'ValidationError') {
       return next(new CustomizedError(400, error.errors[0]));

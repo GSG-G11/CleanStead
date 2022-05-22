@@ -13,18 +13,17 @@ import {
   message,
 } from 'antd';
 import { DownOutlined, MenuOutlined } from '@ant-design/icons';
-import PropTypes from 'prop-types';
 import logo from '../../Assets/images/logo.svg';
 import LeftMenu from './LeftMenu';
 import RightMenu from './RightMenu';
 import './navbar.css';
 
 import { CategoriesContext } from '../../Contexts/CategoriesContext';
-import { userContext } from '../../context/userContext';
+import { userContext } from '../../Contexts/userContext';
 
 const { Header } = Layout;
 
-function Navbar({ setIsOpen }) {
+function Navbar() {
   const [visible, setVisible] = useState(false);
   const { categories } = useContext(CategoriesContext);
   const { setIsLogged } = useContext(userContext);
@@ -105,11 +104,7 @@ function Navbar({ setIsOpen }) {
         <LeftMenu mode="horizontal" navItems={navItems} />
       </div>
       <div className="menu_right">
-        <RightMenu
-          mode="horizontal"
-          avatarMenu={avatarMenu}
-          setIsOpen={setIsOpen}
-        />
+        <RightMenu mode="horizontal" avatarMenu={avatarMenu} />
       </div>
       <Button
         className="menu__mobile-button"
@@ -126,24 +121,10 @@ function Navbar({ setIsOpen }) {
         visible={visible}
       >
         <LeftMenu mode="inline" navItems={navItems} />
-        <RightMenu
-          mode="inline"
-          avatarMenu={avatarMenu}
-          setIsOpen={setIsOpen}
-        />
+        <RightMenu mode="inline" avatarMenu={avatarMenu} />
       </Drawer>
     </Header>
   );
 }
-
-Navbar.propTypes = {
-  setIsOpen: PropTypes.func,
-};
-
-Navbar.defaultProps = {
-  setIsOpen: () => {
-    setIsOpen(false);
-  },
-};
 
 export default Navbar;

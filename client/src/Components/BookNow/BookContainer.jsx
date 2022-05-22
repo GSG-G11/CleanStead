@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import uuid from 'react-uuid';
-import PropTypes from 'prop-types';
 import { Col, Row, Steps, Button, message } from 'antd';
-import { Navigate } from 'react-router-dom';
 import CustomTitle from '../CustomTitle';
 import ServicesChoice from './ServicesChoice';
 import DateTimeChoice from './DateTimeChoice';
@@ -13,7 +11,7 @@ import './style.css';
 
 const { Step } = Steps;
 
-function BookContainer({ categories, setIsOpen }) {
+function BookContainer() {
   const [current, setCurrent] = useState(0);
   const [categoryServices, setCategoryServices] = useState({});
   const [valueRadio, setValueRadio] = useState('مرة واحدة');
@@ -24,7 +22,6 @@ function BookContainer({ categories, setIsOpen }) {
   const [userSpesificAddress, setUserSpecificAddress] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  // console.log(categoryServices);
   const showModal = () => {
     if (
       username === '' ||
@@ -104,7 +101,6 @@ function BookContainer({ categories, setIsOpen }) {
       title: 'اختر الخدمات',
       content: (
         <ServicesChoice
-          categories={categories}
           categoryServices={categoryServices}
           setCategoryServices={setCategoryServices}
         />
@@ -123,9 +119,7 @@ function BookContainer({ categories, setIsOpen }) {
     },
     {
       title: 'معلوماتك',
-      content: (
-        <UserInformation onChangeInput={onChangeInput} setIsOpen={setIsOpen} />
-      ),
+      content: <UserInformation onChangeInput={onChangeInput} />,
     },
   ];
 
@@ -186,20 +180,5 @@ function BookContainer({ categories, setIsOpen }) {
     </div>
   );
 }
-BookContainer.defaultProps = {
-  setIsOpen: () => {
-    setIsOpen(false);
-  },
-};
-BookContainer.propTypes = {
-  categories: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  setIsOpen: PropTypes.func,
-};
+
 export default BookContainer;
