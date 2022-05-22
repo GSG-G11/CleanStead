@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import {
@@ -13,16 +13,20 @@ import {
   message,
 } from 'antd';
 import { DownOutlined, MenuOutlined } from '@ant-design/icons';
-import PropTypes from 'prop-types';
 import logo from '../../Assets/images/logo.svg';
 import LeftMenu from './LeftMenu';
 import RightMenu from './RightMenu';
 import './navbar.css';
 
+import { CategoriesContext } from '../../Contexts/CategoriesContext';
+import { userContext } from '../../Contexts/userContext';
+
 const { Header } = Layout;
 
-function Navbar({ categories, user, setIsLogged, isLogged }) {
+function Navbar() {
   const [visible, setVisible] = useState(false);
+  const { categories } = useContext(CategoriesContext);
+  const { setIsLogged } = useContext(userContext);
 
   const showDrawer = () => {
     setVisible(true);
@@ -78,12 +82,7 @@ function Navbar({ categories, user, setIsLogged, isLogged }) {
     <Menu
       items={[
         {
-          label:
-            user.role === 'admin' ? (
-              <Link to="/dashboard">لوحة التحكم</Link>
-            ) : (
-              <Link to="/my-appointment">مواعيدي</Link>
-            ),
+          label: <Link to="/profile">مواعيدي</Link>,
         },
         {
           label: 'تسجيل خروج',
@@ -105,12 +104,7 @@ function Navbar({ categories, user, setIsLogged, isLogged }) {
         <LeftMenu mode="horizontal" navItems={navItems} />
       </div>
       <div className="menu_right">
-        <RightMenu
-          mode="horizontal"
-          avatarMenu={avatarMenu}
-          user={user}
-          isLogged={isLogged}
-        />
+        <RightMenu mode="horizontal" avatarMenu={avatarMenu} />
       </div>
       <Button
         className="menu__mobile-button"
@@ -127,33 +121,10 @@ function Navbar({ categories, user, setIsLogged, isLogged }) {
         visible={visible}
       >
         <LeftMenu mode="inline" navItems={navItems} />
-        <RightMenu
-          mode="inline"
-          avatarMenu={avatarMenu}
-          user={user}
-          isLogged={isLogged}
-        />
+        <RightMenu mode="inline" avatarMenu={avatarMenu} />
       </Drawer>
     </Header>
   );
 }
-
-Navbar.propTypes = {
-  isLogged: PropTypes.bool,
-  user: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    role: PropTypes.string.isRequired,
-  }),
-  categories: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  setIsLogged: PropTypes.func,
-};
-
-Navbar.defaultProps = {
-  user: { name: '', role: '' },
-  isLogged: false,
-  setIsLogged: () => {
-    setIsLogged(false);
-  },
-};
 
 export default Navbar;

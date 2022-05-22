@@ -1,29 +1,38 @@
 /* eslint-disable no-undef */
 import React, { useState, useContext } from 'react';
-import PropTypes from 'prop-types';
 import axios from 'axios';
-import { Form, Input, Button, message, Spin } from 'antd';
+import { Form, Input, Button, message, Spin, Select } from 'antd';
 import {
   UserOutlined,
   MailOutlined,
   PhoneOutlined,
   LockOutlined,
-  HomeOutlined,
   LoadingOutlined,
 } from '@ant-design/icons';
-import { ModalLoginContext } from '../../Context/ModalLogin';
+import { ModalLoginContext } from '../../Contexts/ModalLogin';
+import { userContext } from '../../Contexts/userContext';
+import cities from '../../cities.json';
 
+const { Option } = Select;
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-function Register({ setIsLogged }) {
+function Register() {
   const { setIsOpen } = useContext(ModalLoginContext);
   const [isloading, setIsLoading] = useState(false);
   const [errorEmail, setErrorEmail] = useState('');
+  const { setIsLogged } = useContext(userContext);
+
   const onFinish = ({ name, email, phone, password, location }) => {
     setIsLoading(true);
     setErrorEmail('');
+    const locationData = cities.filter((city) => city.name === location)[0];
+    const locationDetails = {
+      name: locationData.name,
+      lat: locationData.coordinates.lat,
+      lng: locationData.coordinates.lng,
+    };
     axios
-      .post('/api/v1/signup', { name, email, phone, password, location })
+      .post('/api/v1/signup', { name, email, phone, password, locationDetails })
       .then(({ data }) => {
         message.success(data.message);
         setIsLoading(false);
@@ -127,11 +136,11 @@ function Register({ setIsLogged }) {
           ]}
           hasFeedback
         >
-          <Input
-            placeholder=" ادخل العنوان"
-            className="input"
-            prefix={<HomeOutlined className="icon-style" />}
-          />
+          <Select placeholder="اختر موقعك">
+            {cities.map(({ name, id }) => (
+              <Option key={id} value={name} />
+            ))}
+          </Select>
         </Form.Item>
         {isloading && <Spin indicator={antIcon} />}
         <Form.Item>
@@ -143,15 +152,5 @@ function Register({ setIsLogged }) {
     </div>
   );
 }
-
-Register.defaultProps = {
-  setIsLogged: () => {
-    setIsLogged(false);
-  },
-};
-
-Register.propTypes = {
-  setIsLogged: PropTypes.func,
-};
 
 export default Register;

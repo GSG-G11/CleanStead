@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Row, Col } from 'antd';
-import PropTypes from 'prop-types';
 import SkeletonLoading from '../SkeletonLoading';
 import Empty from '../Empty';
 import CategoriesCard from '../CategoriesCard';
 import CustomTitle from '../CustomTitle';
 import './style.css';
+import { CategoriesContext } from '../../Contexts/CategoriesContext';
 
-function CategoriesCardsContainer({ categories, loading }) {
+function CategoriesCardsContainer() {
+  const { loading, categories } = useContext(CategoriesContext);
   return (
     <div className="categories-card">
       <CustomTitle title="الخدمات التي نقدمها" isLanding />
@@ -34,18 +35,5 @@ function CategoriesCardsContainer({ categories, loading }) {
     </div>
   );
 }
-CategoriesCardsContainer.defaultProps = {
-  loading: false,
-};
-CategoriesCardsContainer.propTypes = {
-  loading: PropTypes.bool,
-  categories: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-      description: PropTypes.string,
-      image: PropTypes.string,
-    })
-  ).isRequired,
-};
+
 export default CategoriesCardsContainer;

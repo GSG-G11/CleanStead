@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Typography, Button, Image, Row, Col } from 'antd';
 import { useParams, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import CustomTitle from '../CustomTitle';
 import Services from '../CategoryServices/Services';
 import Img from '../../Assets/images/img1.png';
-
+import { CategoriesContext } from '../../Contexts/CategoriesContext';
 import './style.css';
 
 const desc = ` هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أوالعديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدهاالتطبيق. إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص
@@ -13,7 +13,8 @@ const desc = ` هذا النص هو مثال لنص يمكن أن يستبدل �
 أخطاء لغوية
 `;
 const { Paragraph } = Typography;
-function DescriptionContent({ page, categories }) {
+function DescriptionContent({ page }) {
+  const { categories } = useContext(CategoriesContext);
   const [data, setData] = useState({
     name: 'من نحن',
     button: 'تواصل معنا',
@@ -99,24 +100,12 @@ function DescriptionContent({ page, categories }) {
         </Col>
       </Row>
 
-      {page === 'category' && <Services categories={categories} />}
+      {page === 'category' && <Services />}
     </div>
   );
 }
 
-DescriptionContent.defaultProps = {
-  categories: [],
-};
-
 DescriptionContent.propTypes = {
   page: PropTypes.string.isRequired,
-  categories: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-      description: PropTypes.string,
-      image: PropTypes.string,
-    })
-  ),
 };
 export default DescriptionContent;
