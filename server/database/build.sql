@@ -63,7 +63,7 @@ CREATE TABLE contacts (
 CREATE TABLE appoinments (
   id SERIAL PRIMARY KEY,
   date_time TIMESTAMP NOT NULL,
-  creation_time TIMESTAMP NOT NULL,
+  creation_time TIMESTAMP DEFAULT NOW(),
   price INT NOT NULL,
   status VARCHAR(50) DEFAULT 'معلق',
   repeat VARCHAR(50) DEFAULT 'مرة واحدة',

@@ -1,8 +1,7 @@
 /* eslint-disable import/no-unresolved */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 import { Empty, message, Row, Col, Typography } from 'antd';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {
@@ -20,10 +19,12 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/lazy';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { CategoriesContext } from '../../Contexts/CategoriesContext';
 
 const { Title } = Typography;
 
-export default function Services({ categories }) {
+export default function Services() {
+  const { categories } = useContext(CategoriesContext);
   const [loading, setLoading] = useState(false);
   const [services, setServices] = useState([]);
   const [category, setCategory] = useState({});
@@ -121,14 +122,3 @@ export default function Services({ categories }) {
     </Row>
   );
 }
-
-Services.propTypes = {
-  categories: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-      description: PropTypes.string,
-      image: PropTypes.string,
-    })
-  ).isRequired,
-};

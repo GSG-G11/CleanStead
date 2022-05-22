@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   Header,
   CategoriesCardsContainer,
@@ -7,28 +6,15 @@ import {
   WhatTheySay,
 } from '../../Components';
 
-function Home({ categories, loading }) {
+function Home() {
   return (
     <div>
       <Header />
-      <CategoriesCardsContainer categories={categories} loading={loading} />
+      <CategoriesCardsContainer />
       <WhyUs />
       <WhatTheySay />
     </div>
   );
 }
-Home.defaultProps = {
-  loading: false,
-};
-Home.propTypes = {
-  loading: PropTypes.bool,
-  categories: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-      description: PropTypes.string,
-      image: PropTypes.string,
-    })
-  ).isRequired,
-};
+
 export default Home;
