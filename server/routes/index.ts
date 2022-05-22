@@ -21,6 +21,7 @@ import {
   signinAdmin,
   // checkAdmin,
   checkAuth,
+  deleteBook,
 } from '../controllers';
 
 const router = Router();
@@ -37,6 +38,7 @@ router.route('/contact').get(getContacts).post(addContact);
 router.post('/signup', signup);
 router.get('/logout', logout);
 router.put('/categories/:id', validateLink, putCategories);
+router.delete('/book/:id', validateLink, deleteBook);
 router.route('/contact').get(getContacts).post(addContact);
 router.post('/signup', signup);
 router.get('/logout', logout);
