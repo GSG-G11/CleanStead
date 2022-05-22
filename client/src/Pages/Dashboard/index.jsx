@@ -42,12 +42,12 @@ const items = [
   ),
   getItem(<Link to="/dashboard/contact">التواصل</Link>, '3', <MailOutlined />),
   getItem(
-    <Link to="/dashboard/services"> التصنيفات</Link>,
+    <Link to="/dashboard/categories"> التصنيفات</Link>,
     '4',
     <AppstoreOutlined />
   ),
   getItem(
-    <Link to="/dashboard/categories"> الخدمات</Link>,
+    <Link to="/dashboard/services"> الخدمات</Link>,
     '5',
     <ShoppingOutlined />
   ),
