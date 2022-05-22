@@ -288,16 +288,15 @@ describe('Test post service', () => {
   });
 });
 
-describe('Test delete service', () => {
-  it('should return status 200', async () => {
+describe('Test archived Service', () => {
+  it('should return status code 200 and message', async () => {
     const res = await supertest(app)
-      .delete('/api/v1/services/4')
-      .set({ Cookie: token })
+      .delete('/api/v1/services/3')
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('تم حذف الخدمة بنجاح!');
+    expect(res.body.message).toBe('Service archived successfully!');
   });
-});
+}); 
 
 describe('Test get books', () => {
   it('should return status code 200 and the length 6', async () => {

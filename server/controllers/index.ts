@@ -9,10 +9,10 @@ import signup from './signup';
 import logout from './logout';
 import { checkAuth, checkAdmin } from './middlewares/auth';
 import signin from './signin';
+import { postService, archivedService, putService } from './services';
 import {
   getBooks, getUserBooks, getBook, postBook, deleteBook, getStatus,
 } from './book';
-import { postService, deleteService, putService } from './services';
 import { validateLink } from './middlewares';
 import signinAdmin from './signinAdmin';
 
@@ -34,7 +34,7 @@ export {
   postService,
   archivedCategory,
   putService,
-  deleteService,
+  archivedService,
   getUserBooks,
   getBook,
   postBook,

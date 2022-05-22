@@ -12,7 +12,7 @@ import {
   postService,
   putCategories,
   putService,
-  deleteService,
+  archivedService,
   archivedCategory,
   getUserBooks,
   getBook,
@@ -28,14 +28,8 @@ import {
 const router = Router();
 router.get('/categories', getCategories);
 router.get('/categories/:id/services', validateLink, getCategoryServices);
-router.post('/services', postService);
+router.delete('/services/:id', validateLink, archivedService);
 router.delete('/categories/:id', validateLink, archivedCategory);
-router.put('/services/:id', validateLink, checkAuth, putService);
-router.delete('/services/:id', validateLink, checkAuth, deleteService);
-router.route('/contact').get(getContacts).post(addContact);
-router.post('/signup', signup);
-router.get('/logout', logout);
-router.put('/categories/:id', validateLink, putCategories);
 router.delete('/book/:id', validateLink, deleteBook);
 router.route('/contact').get(getContacts).post(addContact);
 router.post('/signup', signup);
@@ -51,6 +45,5 @@ router.post('/book', checkAuth, postBook);
 router.post('/services', postService);
 router.post('/categories', postCategories);
 router.put('/services/:id', validateLink, putService);
-router.delete('/services/:id', validateLink, deleteService);
 router.put('/categories/:id', validateLink, putCategories);
 export default router;
