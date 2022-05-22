@@ -1,23 +1,27 @@
 /* eslint-disable no-undef */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Form, Input, Button, message, Spin } from 'antd';
 import { MailOutlined, LockOutlined, LoadingOutlined } from '@ant-design/icons';
+import { userContext } from '../../Contexts/userContext';
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-function Login({ setIsOpen, setIsLogged, admin }) {
+function Login({ setIsOpen, admin }) {
   const navigate = useNavigate();
   const [isloading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const { setUserInfo, setIsLogged } = useContext(userContext);
+
   const onFinish = ({ email, password }) => {
     setIsLoading(true);
     setError('');
     axios
       .post('/api/v1/signin', { email, password })
       .then(({ data }) => {
+        // setUserInfo(data);
         message.success(data.message);
         setIsLoading(false);
         setIsOpen(false);
@@ -111,14 +115,10 @@ Login.defaultProps = {
   setIsOpen: () => {
     setIsOpen(false);
   },
-  setIsLogged: () => {
-    setIsLogged(false);
-  },
   admin: false,
 };
 Login.propTypes = {
   setIsOpen: PropTypes.func,
-  setIsLogged: PropTypes.func,
   admin: PropTypes.bool,
 };
 export default Login;

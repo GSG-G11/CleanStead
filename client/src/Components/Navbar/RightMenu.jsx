@@ -1,14 +1,18 @@
 /* eslint-disable no-undef */
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Menu, Button, Avatar, Dropdown, Space } from 'antd';
 import { UserOutlined, DownOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import { userContext } from '../../Contexts/userContext';
 
-function RightMenu({ isLogged, mode, avatarMenu, user, setIsOpen }) {
+function RightMenu({ mode, avatarMenu, setIsOpen }) {
+  const { userInfo, isLogged } = useContext(userContext);
+
   const openModal = () => {
     setIsOpen(true);
   };
+
   return (
     <Menu mode={mode}>
       <Menu.Item key="avatar">
@@ -18,7 +22,7 @@ function RightMenu({ isLogged, mode, avatarMenu, user, setIsOpen }) {
               <Space>
                 <div className="avatar">
                   <Avatar size={32} icon={<UserOutlined />} />
-                  &nbsp;{user.name}&nbsp;
+                  &nbsp;{userInfo.name}&nbsp;
                   <DownOutlined style={{ fontSize: '12px' }} />
                 </div>
               </Space>
@@ -41,21 +45,14 @@ function RightMenu({ isLogged, mode, avatarMenu, user, setIsOpen }) {
 
 RightMenu.propTypes = {
   mode: PropTypes.string.isRequired,
-  isLogged: PropTypes.bool,
-  user: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    role: PropTypes.string.isRequired,
-  }),
   avatarMenu: PropTypes.element.isRequired,
   setIsOpen: PropTypes.func,
 };
 
 RightMenu.defaultProps = {
-  user: { name: '', role: '' },
   setIsOpen: () => {
     setIsOpen(false);
   },
-  isLogged: false,
 };
 
 export default RightMenu;

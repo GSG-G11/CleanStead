@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import axios from 'axios';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import {
   Layout,
   Menu,
@@ -10,7 +12,6 @@ import {
   Badge,
   message,
 } from 'antd';
-import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import {
   PieChartOutlined,
   MailOutlined,
@@ -20,8 +21,8 @@ import {
   LogoutOutlined,
   BellOutlined,
 } from '@ant-design/icons';
+import { adminContext } from '../../Contexts/adminContext';
 import './style.css';
-import axios from 'axios';
 import logo from '../../Assets/images/logo.svg';
 import user from '../../Assets/images/user.png';
 
@@ -63,6 +64,7 @@ const breadcrumbNameMap = {
 };
 
 function Dashboard() {
+  const { adminInfo } = useContext(adminContext);
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const logout = () => {
@@ -127,7 +129,7 @@ function Dashboard() {
                 />
               }
             />
-            <Title level={5}>محمد الهبيل</Title>
+            <Title level={5}>{adminInfo.name}</Title>
           </Space>
         </Header>
         <Content
