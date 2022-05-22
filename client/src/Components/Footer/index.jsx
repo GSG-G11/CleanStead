@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { Row, Col, Image, Typography, Space, Tooltip } from 'antd';
 import {
   PhoneOutlined,
@@ -15,6 +14,7 @@ import logo from '../../Assets/images/logo.svg';
 import map from '../../Assets/images/map.svg';
 import './style.css';
 import data from '../../data.json';
+import { CategoriesContext } from '../../Contexts/CategoriesContext';
 
 const IconFont = createFromIconfontCN({
   scriptUrl: [
@@ -25,7 +25,9 @@ const IconFont = createFromIconfontCN({
 
 const { Title, Paragraph, Text } = Typography;
 
-function OurFooter({ categories }) {
+function OurFooter() {
+  const { categories } = useContext(CategoriesContext);
+
   return (
     <Row
       justify="space-between"
@@ -136,16 +138,5 @@ function OurFooter({ categories }) {
     </Row>
   );
 }
-
-OurFooter.propTypes = {
-  categories: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-      description: PropTypes.string,
-      image: PropTypes.string,
-    })
-  ).isRequired,
-};
 
 export default OurFooter;

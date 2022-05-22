@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import {
   Form,
@@ -17,10 +16,12 @@ import { LoadingOutlined } from '@ant-design/icons';
 import linesLeft from '../../Assets/images/linesLeft.svg';
 import './style.css';
 import Img from '../../Assets/images/img1.png';
+import { CategoriesContext } from '../../Contexts/CategoriesContext';
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-function ContactUsForm({ categories }) {
+function ContactUsForm() {
+  const { categories } = useContext(CategoriesContext);
   const [form] = Form.useForm();
   const Title = Typography;
   const [error, setError] = useState('');
@@ -191,14 +192,5 @@ function ContactUsForm({ categories }) {
     </Row>
   );
 }
-ContactUsForm.propTypes = {
-  categories: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-      description: PropTypes.string,
-      image: PropTypes.string,
-    })
-  ).isRequired,
-};
+
 export default ContactUsForm;

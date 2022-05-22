@@ -4,35 +4,35 @@ VALUES
     (
         'مصطفى قنوع',
         'mostafaqanoo403@gmail.com',
-        '025@$55235',
+        '$2b$10$klSql.FCEBJSLDScw0BZQuEeROI5oXiNmj5oYc1sr2nPl7GPctrLG',
         0559565562,
         'غزة'
     ),
     (
         'محمد الهبيل',
         'mohamed403@gmail.com',
-        '025@4$55235',
+        '$2b$10$klSql.FCEBJSLDScw0BZQuEeROI5oXiNmj5oYc1sr2nPl7GPctrLG',
         0555555555,
         'الامن العام'
     ),
     (
         ' محمد عبدالهادي',
         'abed403@gmail.com',
-        '025@24$552335',
+        '$2b$10$klSql.FCEBJSLDScw0BZQuEeROI5oXiNmj5oYc1sr2nPl7GPctrLG',
         0555356555,
         'الرياض'
     ),
     (
         'اسراء ابوريا',
         'israa403@gmail.com',
-        '025@1$255235',
+        '$2b$10$klSql.FCEBJSLDScw0BZQuEeROI5oXiNmj5oYc1sr2nPl7GPctrLG',
         0555543555,
         'الشارع التالت'
     ),
     (
         'جهاد ابوشقرة',
         'jehad403@gmail.com',
-        '025@98$55235',
+        '$2b$10$klSql.FCEBJSLDScw0BZQuEeROI5oXiNmj5oYc1sr2nPl7GPctrLG',
         0552455555,
         'خانيونس'
     );
