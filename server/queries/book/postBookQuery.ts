@@ -20,16 +20,16 @@ const postBookQuery = (
 
 const postServiceBookQuery = (
   quantity: number,
-  appoinmentId: number,
+  appointmentId: number,
   serviceId: number,
 ) => {
   const sql = {
     text: `
           INSERT INTO
-            services_appointments(quantity, appoinment_id, service_id)
+            services_appointments(quantity, appointment_id, service_id)
           VALUES ($1,$2,$3);
           `,
-    values: [quantity, appoinmentId, serviceId],
+    values: [quantity, appointmentId, serviceId],
   };
   return connection.query(sql);
 };

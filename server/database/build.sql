@@ -63,7 +63,7 @@ CREATE TABLE appointments (
   date_time TIMESTAMP NOT NULL,
   creation_time TIMESTAMP DEFAULT NOW(),
   price INT NOT NULL,
-  status VARCHAR(50) DEFAULT 'معلق',
+  status VARCHAR(50) DEFAULT 'pending',
   repeat VARCHAR(50) DEFAULT 'مرة واحدة',
   archived BOOLEAN DEFAULT FALSE,
   user_id INT,
@@ -73,8 +73,8 @@ CREATE TABLE appointments (
 CREATE TABLE services_appointments (
   id SERIAL PRIMARY KEY,
   quantity INT NOT NULL,
-  appoinment_id INT,
-  FOREIGN KEY (appoinment_id) REFERENCES appointments(id) ON DELETE CASCADE,
+  appointment_id INT,
+  FOREIGN KEY (appointment_id) REFERENCES appointments(id) ON DELETE CASCADE,
   service_id INT,
   FOREIGN KEY (service_id) REFERENCES services(id) ON DELETE CASCADE
 );

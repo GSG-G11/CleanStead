@@ -21,15 +21,13 @@ import {
   signinAdmin,
   // checkAdmin,
   checkAuth,
+  getStatus,
   deleteBook,
 } from '../controllers';
 
 const router = Router();
 router.get('/categories', getCategories);
 router.get('/categories/:id/services', validateLink, getCategoryServices);
-router.get('/book', getBooks);
-router.get('/book/:id', validateLink, getBook);
-router.get('/user/:id/book', validateLink, getUserBooks);
 router.post('/services', postService);
 router.delete('/categories/:id', validateLink, archivedCategory);
 router.put('/services/:id', validateLink, checkAuth, putService);
@@ -44,6 +42,10 @@ router.post('/signup', signup);
 router.get('/logout', logout);
 router.post('/signin', signin);
 router.post('/admin/signin', signinAdmin);
+router.get('/book/status', getStatus);
+router.get('/book', getBooks);
+router.get('/book/:id', validateLink, getBook);
+router.get('/user/:id/book', validateLink, getUserBooks);
 router.post('/book', checkAuth, postBook);
 // router.use(checkAdmin);
 router.post('/services', postService);
