@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Typography, Form, Space, Input, Button, Row, Col } from 'antd';
+import { Typography, Form, Space, Input, Button, Row, Col, Select } from 'antd';
 import LeafMap from '../Map';
 import { ModalLoginContext } from '../../Contexts/ModalLogin';
+import cities from '../../cities.json';
 
 const { Title } = Typography;
-
+const { Option } = Select;
 function UserInformation({ onChangeInput }) {
   const { setIsOpen } = useContext(ModalLoginContext);
   const openLogin = () => {
@@ -45,16 +46,23 @@ function UserInformation({ onChangeInput }) {
         </Row>
         <Row>
           <Col>
-            <Form.Item label="العنوان">
+            {/* <Form.Item label="العنوان">
               <Input
                 placeholder="العنوان"
                 className="input-user"
                 name="userAddress"
                 onChange={onChangeInput}
               />
+            </Form.Item> */}
+            <Form.Item label="العنوان" name="location" className="input-user">
+              <Select placeholder="اختر موقعك">
+                {cities.map(({ name, id }) => (
+                  <Option key={id} value={name} />
+                ))}
+              </Select>
             </Form.Item>
           </Col>
-          <Col>
+          {/* <Col>
             <Form.Item label="العنوان التفصيلي">
               <Input
                 placeholder="العنوان التفصيلي"
@@ -63,10 +71,10 @@ function UserInformation({ onChangeInput }) {
                 onChange={onChangeInput}
               />
             </Form.Item>
-          </Col>
+          </Col> */}
         </Row>
         <Row>
-          <Col>
+          <Col xs={{ span: 24 }}>
             <LeafMap />
           </Col>
         </Row>

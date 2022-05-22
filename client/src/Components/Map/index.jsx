@@ -9,6 +9,7 @@ import osm from './osm-providers';
 import LocationMarker from './LocationMarker';
 import './style.css';
 // import markerImage from '../../Assets/images/marker.png';
+import { Input, Button, Space, Form } from 'antd';
 
 export default function LeafMap() {
   const mapRef = useRef();
@@ -50,16 +51,35 @@ export default function LeafMap() {
 
   return (
     <div className="map-wrapper">
-      <input
+      {/* <input
         autoComplete="off"
         id="search"
         type="text"
         onChange={HandleChang}
-      />
+      /> */}
+      <Space>
+        <Form>
+          <Form.Item label="العنوان التفصيلي">
+            <Input
+              autoComplete="off"
+              id="search"
+              placeholder="ابحث عن موقعك"
+              className="input-user"
+              name="userSpecificAddress"
+              onChange={HandleChang}
+            />
+          </Form.Item>
+        </Form>
+        {/* <Input
+          autoComplete="off"
+          id="search"
+          placeholder="ابحث عن موقعك"
+          className="input-user"
+          onChange={HandleChang}
+        /> */}
+        <Button onClick={showMyLocation}>احصل على عنواني</Button>
+      </Space>
 
-      <button type="button" onClick={showMyLocation}>
-        Get My Location
-      </button>
       <MapContainer
         center={position}
         zoom={ZOOM_LEVEL}
@@ -68,7 +88,8 @@ export default function LeafMap() {
           width: '100%',
           height: '90%',
           borderRadius: '12px',
-          paddingTop: '10px',
+          // paddingTop: '10px',
+          // marginTop: '10px',
         }}
       >
         <TileLayer
