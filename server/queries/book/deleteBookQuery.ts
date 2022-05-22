@@ -1,10 +1,10 @@
 import connection from '../../database/connection';
 
-const updateBookQuery = (id:number) => connection.query(`
+const deleteBookQuery = (id:number) => connection.query(`
             UPDATE appointments
             SET
               archived=true
             WHERE id=$1
             RETURNING *`, [id]);
 
-export default updateBookQuery;
+export default deleteBookQuery;

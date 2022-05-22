@@ -9,7 +9,7 @@ const postBookQuery = (
   const sql = {
     text: `
           INSERT INTO
-            appoinments(date_time,price,repeat,user_id)
+            appointments(date_time,price,repeat,user_id)
           VALUES ($1, $2, $3, $4)
             RETURNING id;
           `,
@@ -26,7 +26,7 @@ const postServiceBookQuery = (
   const sql = {
     text: `
           INSERT INTO
-            services_appoinments(quantity, appoinment_id, service_id)
+            services_appointments(quantity, appoinment_id, service_id)
           VALUES ($1,$2,$3);
           `,
     values: [quantity, appoinmentId, serviceId],

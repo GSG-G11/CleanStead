@@ -264,7 +264,7 @@ VALUES
     );
 
 INSERT INTO
-    appoinments(date_time, creation_time, price, user_id)
+    appointments(date_time, creation_time, price, user_id)
 VALUES
     (
         '2022-08-01 05:00',
@@ -304,7 +304,7 @@ VALUES
     );
 
 INSERT INTO
-    services_appoinments(quantity, appoinment_id, service_id)
+    services_appointments(quantity, appoinment_id, service_id)
 VALUES
     (1, 1, 1),
     (2, 1, 2),

@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable max-len */
 import supertest from 'supertest';
 import connection from '../server/database/connection';
 import dbBuild from '../server/database/build';
@@ -430,6 +432,24 @@ describe('Test put category', () => {
       .expect(400)
       .expect('Content-Type', /json/);
     expect(res.body.message).toBe('Description is required');
+  });
+});
+
+describe('Test archived book', () => {
+  it('should return status code 200 and message', async () => {
+    const res = await supertest(app)
+      .delete('/api/v1/book/2')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.data.length).toBe(1);
+  });
+
+  it('should return status code 400 and message', async () => {
+    const res = await supertest(app)
+      .delete('/api/v1/book/17')
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('لا يوجد حجز بهذا الرقم');
   });
 });
 

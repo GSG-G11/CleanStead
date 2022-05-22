@@ -8,7 +8,14 @@ import {
   Services,
   AdminLogin,
 } from '../Components';
-import { Home, Category, Description, Dashboard, Book } from '../Pages';
+import {
+  Home,
+  Category,
+  Description,
+  Dashboard,
+  Book,
+  NotFound,
+} from '../Pages';
 import 'swiper/css/bundle';
 import '../style/custom-antd.css';
 import './app.css';
@@ -49,6 +56,7 @@ function App() {
                   <Route path="category/:id" element={<Category />} />
                   <Route path="/book" element={<Book />} />
                 </Route>
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </UserProvider>
           </ModalLoginProvider>

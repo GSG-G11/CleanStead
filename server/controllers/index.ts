@@ -10,7 +10,7 @@ import { logout, logoutAdmin } from './logout';
 import { checkAuth, checkAdmin } from './middlewares/auth';
 import signin from './signin';
 import {
-  getBooks, getUserBooks, getBook, postBook,
+  getBooks, getUserBooks, getBook, postBook, deleteBook,
 } from './book';
 import { postService, deleteService, putService } from './services';
 import { validateLink } from './middlewares';
@@ -40,4 +40,5 @@ export {
   validateLink,
   signinAdmin,
   logoutAdmin,
+  deleteBook,
 };
