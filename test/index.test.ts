@@ -491,21 +491,21 @@ describe('Test post book', () => {
 describe('Test Status Book', () => {
   it('should return status 200', async () => {
     const res = await supertest(app)
-      .get('/api/v1/status')
+      .get('/api/v1/book/status')
       .expect(200)
       .expect('Content-Type', /json/);
     expect(res.body.data.length).toBe(3);
   });
   it('should return status 200 and response for total second item 2', async () => {
     const res = await supertest(app)
-      .get('/api/v1/status')
+      .get('/api/v1/book/status')
       .expect(200)
       .expect('Content-Type', /json/);
     expect(res.body.data[1].total).toBe('2');
   });
   it('should return status 200 and check for data return', async () => {
     const res = await supertest(app)
-      .get('/api/v1/status')
+      .get('/api/v1/book/status')
       .expect(200)
       .expect('Content-Type', /json/);
     expect(res.body.data).toEqual(   [
