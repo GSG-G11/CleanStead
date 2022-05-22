@@ -15,14 +15,15 @@ import {
   archivedService,
   getUserBooks,
   getBook,
+  postBook,
   validateLink,
   signinAdmin,
+  // checkAdmin,
   checkAuth,
 } from '../controllers';
 
 const router = Router();
 router.get('/categories', getCategories);
-router.post('/categories', postCategories);
 router.get('/categories/:id/services', validateLink, getCategoryServices);
 router.get('/book', getBooks);
 router.get('/book/:id', validateLink, getBook);
@@ -33,7 +34,12 @@ router.delete('/services/:id', validateLink, archivedService);
 router.route('/contact').get(getContacts).post(addContact);
 router.post('/signup', signup);
 router.get('/logout', logout);
-router.put('/categories/:id', validateLink, checkAuth, putCategories);
 router.post('/signin', signin);
 router.post('/admin/signin', signinAdmin);
+router.post('/book', checkAuth, postBook);
+// router.use(checkAdmin);
+router.post('/services', postService);
+router.post('/categories', postCategories);
+router.put('/services/:id', validateLink, putService);
+router.put('/categories/:id', validateLink, putCategories);
 export default router;

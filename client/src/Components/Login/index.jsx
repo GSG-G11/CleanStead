@@ -1,15 +1,19 @@
 /* eslint-disable no-undef */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 import { Form, Input, Button, message, Spin } from 'antd';
 import { MailOutlined, LockOutlined, LoadingOutlined } from '@ant-design/icons';
+import { ModalLoginContext } from '../../Contexts/ModalLogin';
+import { userContext } from '../../Contexts/userContext';
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-function Login({ setIsOpen, setIsLogged }) {
+function Login() {
+  const { setIsOpen } = useContext(ModalLoginContext);
   const [isloading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const { setIsLogged } = useContext(userContext);
+
   const onFinish = ({ email, password }) => {
     setIsLoading(true);
     setError('');
@@ -81,16 +85,5 @@ function Login({ setIsOpen, setIsLogged }) {
     </div>
   );
 }
-Login.defaultProps = {
-  setIsOpen: () => {
-    setIsOpen(false);
-  },
-  setIsLogged: () => {
-    setIsLogged(false);
-  },
-};
-Login.propTypes = {
-  setIsOpen: PropTypes.func,
-  setIsLogged: PropTypes.func,
-};
+
 export default Login;

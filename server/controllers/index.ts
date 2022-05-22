@@ -9,7 +9,9 @@ import signup from './signup';
 import logout from './logout';
 import { checkAuth, checkAdmin } from './middlewares/auth';
 import signin from './signin';
-import { getBooks, getUserBooks, getBook } from './book';
+import {
+  getBooks, getUserBooks, getBook, postBook,
+} from './book';
 import { postService, archivedService, putService } from './services';
 import { validateLink } from './middlewares';
 import signinAdmin from './signinAdmin';
@@ -34,6 +36,7 @@ export {
   archivedService,
   getUserBooks,
   getBook,
+  postBook,
   validateLink,
   signinAdmin,
 };

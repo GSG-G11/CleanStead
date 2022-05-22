@@ -1,4 +1,4 @@
-.ant-modal-body {
+.login-register-container .ant-modal-body {
   display: flex !important;
   justify-content: center !important;
 }
@@ -38,4 +38,7 @@ element.style {
 .error {
   margin-right: 20px;
   color: #ff4d4f;
+}
+.login-register-container .ant-modal-footer {
+  display: none;
 }
