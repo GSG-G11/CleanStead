@@ -1,9 +1,11 @@
+/* eslint-disable no-undef */
+/* eslint-disable max-len */
 import supertest from 'supertest';
 import connection from '../server/database/connection';
 import dbBuild from '../server/database/build';
 import app from '../server/app';
 
-const token = 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImVtYWlsIjoiaXNyYWE2NTZAaG90bWFpbC5jb20iLCJpYXQiOjE2NTI2MDI3ODB9.o0VgCAxids643zfDxO30Vhb2jaBYDZnR3v6p-3ev4Hc';
+const token = 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJtb3N0YWZhcWFub280MDNAZ21haWwuY29tIiwiaWF0IjoxNjUyOTU5MTg2fQ.JPl7-xCgUDXJ5b8qvJfew61dttDfK4TCQ3NnGgMye6c';
 
 beforeAll(dbBuild);
 afterAll(() => connection.end());
@@ -74,7 +76,9 @@ describe('Test to register', () => {
         email: 'israa@hotmail.com',
         phone: '5645458712',
         password: '12345678',
-        location: 'Gaza',
+        locationDetails: {
+          name: 'غزة',
+        },
       })
       .expect(201)
       .expect('Content-Type', /json/);
@@ -103,7 +107,11 @@ describe('Test to register', () => {
         email: 'israa403@gmail.com',
         phone: '5645458714',
         password: '1234567548',
-        location: 'Gaza',
+        locationDetails: {
+          name: 'الشمال',
+          lat: '31.529191502894275',
+          lng: '34.47942428475519',
+        },
       })
       .expect(400)
       .expect('Content-Type', /json/);
@@ -119,7 +127,11 @@ describe('Test to register', () => {
         email: 'israa403',
         phone: '564545871',
         password: '123456',
-        location: 'Gaza',
+        locationDetails: {
+          name: 'الشمال',
+          lat: '31.529191502894275',
+          lng: '34.47942428475519',
+        },
       })
       .expect(400)
       .expect('Content-Type', /json/);
@@ -158,7 +170,7 @@ describe('Test to add Contact', () => {
     expect(res.body.status).toBe(201);
   });
 });
-describe('Test to add register', () => {
+describe('Test to add contact', () => {
   it('should return status code 400 and error message for email validation', async () => {
     const res = await supertest(app)
       .post('/api/v1/contact')
@@ -388,7 +400,7 @@ describe('Test put service', () => {
 });
 
 describe('Test put category', () => {
-  it('should return status 400', async () => {
+  it('should return status 200', async () => {
     const res = await supertest(app)
       .put('/api/v1/categories/2')
       .send({
@@ -402,23 +414,6 @@ describe('Test put category', () => {
       .expect(200)
       .expect('Content-Type', /json/);
     expect(res.body.message).toBe('تم تعديل الخدمة بنجاح');
-  });
-});
-
-describe('Test put category', () => {
-  it('should return status 400', async () => {
-    const res = await supertest(app)
-      .put('/api/v1/categories/2')
-      .send({
-        name: 'testtestdaf',
-        description: 'adasdsa',
-        price: 20,
-        image: 'ka;hkjdgh;askdh',
-        categoryId: 2,
-      })
-      .expect(401)
-      .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('UnAuthorized');
   });
 });
 
@@ -451,9 +446,45 @@ describe('Test archived book', () => {
 
   it('should return status code 400 and message', async () => {
     const res = await supertest(app)
-      .delete('/api/v1/book/7')
+      .delete('/api/v1/book/17')
       .expect(400)
       .expect('Content-Type', /json/);
     expect(res.body.message).toBe('لا يوجد حجز بهذا الرقم');
+  });
+});
+
+describe('Test post book', () => {
+  it('should return status 201', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/book')
+      .send({
+        dateTime: '2022-05-17 13:00',
+        price: 17,
+        repeat: 'مرة واحدة',
+        userId: 1,
+        services: [{ serviceId: 1, quantity: 5 }, { serviceId: 2, quantity: 5 }, { serviceId: 3, quantity: 5 }],
+      })
+      .set({ Cookie: token })
+      .expect(201)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('تم إضافة الطلب بنجاح');
+  });
+});
+
+describe('Test post book', () => {
+  it('should return status 400', async () => {
+    const res = await supertest(app)
+      .post('/api/v1/book')
+      .send({
+        dateTime: '2022-05-17 13:00',
+        price: 0,
+        repeat: 'مرة واحدة',
+        userId: 1,
+        services: [{ serviceId: 1, quantity: 5 }, { serviceId: 2, quantity: 5 }, { serviceId: 3, quantity: 5 }],
+      })
+      .set({ Cookie: token })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('Price must be large than 0');
   });
 });
