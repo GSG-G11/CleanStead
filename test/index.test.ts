@@ -406,9 +406,7 @@ describe('Test put category', () => {
       .send({
         name: 'testtestdaf',
         description: 'asdasdasd',
-        price: 20,
         image: 'ka;hkjdgh;askdh',
-        categoryId: 2,
       })
       .set({ Cookie: token })
       .expect(200)
@@ -424,14 +422,21 @@ describe('Test put category', () => {
       .send({
         name: 'testtestdaf',
         description: '',
-        price: 20,
         image: 'ka;hkjdgh;askdh',
-        categoryId: 2,
       })
       .set({ Cookie: token })
       .expect(400)
       .expect('Content-Type', /json/);
     expect(res.body.message).toBe('Description is required');
+  });
+});
+describe('Test archived category', () => {
+  it('should return status code 200 and message', async () => {
+    const res = await supertest(app)
+      .delete('/api/v1/categories/3')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('Category archived successfully!');
   });
 });
 
