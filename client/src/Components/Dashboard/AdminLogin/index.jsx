@@ -12,6 +12,7 @@ function AdminLogin() {
         src={logo}
         width={150}
         style={{ marginBottom: '60px' }}
+        alt="logo"
       />
       <Login style={{ width: '300px' }} admin />
     </div>
