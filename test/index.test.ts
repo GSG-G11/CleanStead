@@ -473,4 +473,15 @@ describe('Test Status Book', () => {
       .expect('Content-Type', /json/);
     expect(res.body.data[1].total).toBe('2');
   });
+  it('should return status 200 and check for data return', async () => {
+    const res = await supertest(app)
+      .get('/api/v1/status')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.data).toStrictEqual([
+      { alltotal: '10', total: '6', status: 'معلق' },
+      { alltotal: '10', total: '2', status: 'مقبول' },
+      { alltotal: '10', total: '2', status: 'مرفوض' }
+    ]);
+  });
 });
