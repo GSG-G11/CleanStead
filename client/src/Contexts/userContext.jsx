@@ -22,7 +22,6 @@ function UserProvider({ children }) {
       setUserInfo({});
     }
   }, [token]);
-  console.log(userInfo);
 
   return (
     <userContext.Provider value={userData}>{children}</userContext.Provider>
