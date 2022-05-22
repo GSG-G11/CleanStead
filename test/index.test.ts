@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable max-len */
 import supertest from 'supertest';
 import connection from '../server/database/connection';
 import dbBuild from '../server/database/build';
@@ -74,7 +76,9 @@ describe('Test to register', () => {
         email: 'israa@hotmail.com',
         phone: '5645458712',
         password: '12345678',
-        location: 'Gaza',
+        locationDetails: {
+          name: 'غزة',
+        },
       })
       .expect(201)
       .expect('Content-Type', /json/);
@@ -103,7 +107,11 @@ describe('Test to register', () => {
         email: 'israa403@gmail.com',
         phone: '5645458714',
         password: '1234567548',
-        location: 'Gaza',
+        locationDetails: {
+          name: 'الشمال',
+          lat: '31.529191502894275',
+          lng: '34.47942428475519',
+        },
       })
       .expect(400)
       .expect('Content-Type', /json/);
@@ -119,7 +127,11 @@ describe('Test to register', () => {
         email: 'israa403',
         phone: '564545871',
         password: '123456',
-        location: 'Gaza',
+        locationDetails: {
+          name: 'الشمال',
+          lat: '31.529191502894275',
+          lng: '34.47942428475519',
+        },
       })
       .expect(400)
       .expect('Content-Type', /json/);
@@ -158,7 +170,7 @@ describe('Test to add Contact', () => {
     expect(res.body.status).toBe(201);
   });
 });
-describe('Test to add register', () => {
+describe('Test to add contact', () => {
   it('should return status code 400 and error message for email validation', async () => {
     const res = await supertest(app)
       .post('/api/v1/contact')
@@ -420,6 +432,24 @@ describe('Test put category', () => {
       .expect(400)
       .expect('Content-Type', /json/);
     expect(res.body.message).toBe('Description is required');
+  });
+});
+
+describe('Test archived book', () => {
+  it('should return status code 200 and message', async () => {
+    const res = await supertest(app)
+      .delete('/api/v1/book/2')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.data.length).toBe(1);
+  });
+
+  it('should return status code 400 and message', async () => {
+    const res = await supertest(app)
+      .delete('/api/v1/book/17')
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('لا يوجد حجز بهذا الرقم');
   });
 });
 

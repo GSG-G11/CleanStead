@@ -1,25 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import BookContainer from '../../Components/BookNow/BookContainer';
+import { ModalLoginProvider } from '../../Contexts/ModalLogin';
 
-function Book({ categories, setIsOpen }) {
-  return <BookContainer categories={categories} setIsOpen={setIsOpen} />;
+function Book() {
+  return (
+    <ModalLoginProvider>
+      <BookContainer />
+    </ModalLoginProvider>
+  );
 }
-Book.defaultProps = {
-  setIsOpen: () => {
-    setIsOpen(false);
-  },
-};
-Book.propTypes = {
-  categories: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-      description: PropTypes.string,
-      image: PropTypes.string,
-    })
-  ).isRequired,
-  setIsOpen: PropTypes.func,
-};
 
 export default Book;

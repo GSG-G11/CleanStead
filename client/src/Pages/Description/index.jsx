@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ContactUsForm, DescriptionContent } from '../../Components';
 
-function Description({ page, categories }) {
+function Description({ page }) {
   return (
     <div
       justify="space-around"
@@ -11,27 +11,15 @@ function Description({ page, categories }) {
       style={{ marginTop: '50px' }}
     >
       {page === 'contact' ? (
-        <ContactUsForm categories={categories} />
+        <ContactUsForm />
       ) : (
-        <DescriptionContent page={page} categories={categories} />
+        <DescriptionContent page={page} />
       )}
     </div>
   );
 }
 
-Description.defaultProps = {
-  categories: [],
-};
-
 Description.propTypes = {
   page: PropTypes.string.isRequired,
-  categories: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-      description: PropTypes.string,
-      image: PropTypes.string,
-    })
-  ),
 };
 export default Description;

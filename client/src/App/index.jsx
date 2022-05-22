@@ -1,8 +1,6 @@
 /* eslint-disable import/no-unresolved */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import axios from 'axios';
-import { message } from 'antd';
 import {
   Categories,
   Contact,
@@ -10,69 +8,47 @@ import {
   Services,
   LoginAdmin,
 } from '../Components';
-import { Home, Category, Description, Dashboard, Book } from '../Pages';
+import {
+  Home,
+  Category,
+  Description,
+  Dashboard,
+  Book,
+  NotFound,
+} from '../Pages';
 import 'swiper/css/bundle';
 import '../style/custom-antd.css';
 import './app.css';
 import LayoutUser from '../Components/Layout';
+import { CategoriesProvider } from '../Contexts/CategoriesContext';
 
 function App() {
-  const [loading, setLoading] = useState(false);
-  const [categories, setCategories] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    const cancelTokenSource = axios.CancelToken.source();
-    setLoading(true);
-    axios
-      .get('/api/v1/categories', {
-        cancelToken: cancelTokenSource.token,
-      })
-      .then(({ data: { data } }) => {
-        setCategories(data);
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-        message.error('حدث خطأ ما');
-      });
-
-    return () => cancelTokenSource.cancel();
-  }, []);
-
   return (
     <div>
-      <Routes>
-        <Route path="/login/admin" element={<LoginAdmin />} />
-        <Route path="dashboard" element={<Dashboard />}>
-          <Route path="/dashboard" element={<General />} />
-          <Route path="categories" element={<Categories />} />
-          <Route path="book" element={<Book />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="services" element={<Services />} />
-        </Route>
-        <Route path="/" element={<LayoutUser categories={categories} />}>
-          <Route
-            path="/"
-            index
-            element={<Home categories={categories} loading={loading} />}
-          />
-          <Route
-            path="contact"
-            element={<Description page="contact" categories={categories} />}
-          />
-          <Route path="about" element={<Description page="about" />} />
-          <Route
-            path="category/:id"
-            element={<Description page="category" categories={categories} />}
-          />
-          <Route path="category/:id" element={<Category />} />
-          <Route
-            path="/book"
-            element={<Book categories={categories} setIsOpen={setIsOpen} />}
-          />
-        </Route>
-      </Routes>
+      <CategoriesProvider>
+        <Routes>
+          <Route path="/login/admin" element={<LoginAdmin />} />
+          <Route path="dashboard" element={<Dashboard />}>
+            <Route path="/dashboard" element={<General />} />
+            <Route path="categories" element={<Categories />} />
+            <Route path="book" element={<Book />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="services" element={<Services />} />
+          </Route>
+          <Route path="/" element={<LayoutUser />}>
+            <Route path="/" index element={<Home />} />
+            <Route path="contact" element={<Description page="contact" />} />
+            <Route path="about" element={<Description page="about" />} />
+            <Route
+              path="category/:id"
+              element={<Description page="category" />}
+            />
+            <Route path="category/:id" element={<Category />} />
+            <Route path="/book" element={<Book />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </CategoriesProvider>
     </div>
   );
 }
