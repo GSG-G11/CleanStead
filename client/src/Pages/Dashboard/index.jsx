@@ -69,7 +69,7 @@ function Dashboard() {
   const navigate = useNavigate();
   const logout = () => {
     axios
-      .get('/api/v1/logout')
+      .get('/api/v1/logoutAdmin')
       .then(({ data }) => {
         message.success(data.message);
         navigate('/login/admin', { replace: true });

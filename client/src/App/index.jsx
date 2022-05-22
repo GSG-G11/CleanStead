@@ -15,34 +15,43 @@ import './app.css';
 import LayoutUser from '../Components/Layout';
 import { CategoriesProvider } from '../Contexts/CategoriesContext';
 import { AdminProvider } from '../Contexts/adminContext';
+import { ModalLoginProvider } from '../Contexts/ModalLogin';
+import { UserProvider } from '../Contexts/userContext';
 
 function App() {
   return (
     <div>
       <CategoriesProvider>
         <AdminProvider>
-          <Routes>
-            <Route path="/login/admin" element={<AdminLogin />} />
-            <Route path="dashboard" element={<Dashboard />}>
-              <Route path="/dashboard" element={<General />} />
-              <Route path="categories" element={<Categories />} />
-              <Route path="book" element={<Book />} />
-              <Route path="contact" element={<Contact />} />
-              <Route path="services" element={<Services />} />
-            </Route>
+          <ModalLoginProvider>
+            <UserProvider>
+              <Routes>
+                <Route path="/login/admin" element={<AdminLogin />} />
+                <Route path="dashboard" element={<Dashboard />}>
+                  <Route path="/dashboard" element={<General />} />
+                  <Route path="categories" element={<Categories />} />
+                  <Route path="book" element={<Book />} />
+                  <Route path="contact" element={<Contact />} />
+                  <Route path="services" element={<Services />} />
+                </Route>
 
-            <Route path="/" element={<LayoutUser />}>
-              <Route path="/" index element={<Home />} />
-              <Route path="contact" element={<Description page="contact" />} />
-              <Route path="about" element={<Description page="about" />} />
-              <Route
-                path="category/:id"
-                element={<Description page="category" />}
-              />
-              <Route path="category/:id" element={<Category />} />
-              <Route path="/book" element={<Book />} />
-            </Route>
-          </Routes>
+                <Route path="/" element={<LayoutUser />}>
+                  <Route path="/" index element={<Home />} />
+                  <Route
+                    path="contact"
+                    element={<Description page="contact" />}
+                  />
+                  <Route path="about" element={<Description page="about" />} />
+                  <Route
+                    path="category/:id"
+                    element={<Description page="category" />}
+                  />
+                  <Route path="category/:id" element={<Category />} />
+                  <Route path="/book" element={<Book />} />
+                </Route>
+              </Routes>
+            </UserProvider>
+          </ModalLoginProvider>
         </AdminProvider>
       </CategoriesProvider>
     </div>

@@ -27,10 +27,10 @@ const signup: RequestHandler = async (req, res, next) => {
     );
     const token = await jwtSign({
       id: data[0].id,
-      email: data[0].email,
-      name: data[0].name,
-      phone: data[0].phone,
-      location: data[0].location,
+      email,
+      name,
+      phone,
+      locationDetails,
     });
     res.cookie('token', token).status(201).json({ message: 'تم تسجيل حسابك بنجاح', status: 201 });
   } catch (error: any) {

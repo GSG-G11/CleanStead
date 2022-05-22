@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
-import React, { useContext, useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 import { Form, Input, Button, message, Spin, Select } from 'antd';
 import {
   UserOutlined,
@@ -10,16 +9,18 @@ import {
   LockOutlined,
   LoadingOutlined,
 } from '@ant-design/icons';
+import { ModalLoginContext } from '../../Contexts/ModalLogin';
 import { userContext } from '../../Contexts/userContext';
 import cities from '../../cities.json';
 
 const { Option } = Select;
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-function Register({ setIsOpen }) {
+function Register() {
+  const { setIsOpen } = useContext(ModalLoginContext);
   const [isloading, setIsLoading] = useState(false);
   const [errorEmail, setErrorEmail] = useState('');
-  const { setUserInfo, setIsLogged } = useContext(userContext);
+  const { setIsLogged } = useContext(userContext);
 
   const onFinish = ({ name, email, phone, password, location }) => {
     setIsLoading(true);
@@ -34,7 +35,6 @@ function Register({ setIsOpen }) {
       .post('/api/v1/signup', { name, email, phone, password, locationDetails })
       .then(({ data }) => {
         message.success(data.message);
-        setUserInfo({ name, phone, location });
         setIsLoading(false);
         setIsOpen(false);
         setIsLogged(true);
@@ -152,12 +152,5 @@ function Register({ setIsOpen }) {
     </div>
   );
 }
-Register.defaultProps = {
-  setIsOpen: () => {
-    setIsOpen(false);
-  },
-};
-Register.propTypes = {
-  setIsOpen: PropTypes.func,
-};
+
 export default Register;

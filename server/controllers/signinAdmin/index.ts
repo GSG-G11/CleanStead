@@ -25,7 +25,7 @@ const signinAdmin: RequestHandler = async (req, res, next) => {
     const token = await jwtSign({
       id: data[0].id, email, role: 'admin', name: data[0].name,
     });
-    res.cookie('tokenAdmin', token, { httpOnly: true, secure: NODE_ENV === 'production' }).json({ message: 'تم تسجيل دخولك بنجاح', status: 200 });
+    res.cookie('tokenAdmin', token).json({ message: 'تم تسجيل دخولك بنجاح', status: 200 });
   } catch (error: any) {
     if (error.name === 'ValidationError') {
       return next(new CustomizedError(400, error.errors[0]));

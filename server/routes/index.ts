@@ -20,6 +20,7 @@ import {
   signinAdmin,
   checkAdmin,
   checkAuth,
+  logoutAdmin,
 } from '../controllers';
 
 const router = Router();
@@ -31,6 +32,7 @@ router.get('/user/:id/book', validateLink, getUserBooks);
 router.route('/contact').get(getContacts).post(addContact);
 router.post('/signup', signup);
 router.get('/logout', logout);
+router.get('/logoutAdmin', logoutAdmin);
 router.post('/signin', signin);
 router.post('/admin/signin', signinAdmin);
 router.post('/book', checkAuth, postBook);

@@ -5,15 +5,17 @@ import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Form, Input, Button, message, Spin } from 'antd';
 import { MailOutlined, LockOutlined, LoadingOutlined } from '@ant-design/icons';
+import { ModalLoginContext } from '../../Contexts/ModalLogin';
 import { userContext } from '../../Contexts/userContext';
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-function Login({ setIsOpen, admin }) {
+function Login({ admin }) {
   const navigate = useNavigate();
+  const { setIsOpen } = useContext(ModalLoginContext);
   const [isloading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const { setUserInfo, setIsLogged } = useContext(userContext);
+  const { setIsLogged } = useContext(userContext);
 
   const onFinish = ({ email, password }) => {
     setIsLoading(true);
@@ -21,7 +23,6 @@ function Login({ setIsOpen, admin }) {
     axios
       .post('/api/v1/signin', { email, password })
       .then(({ data }) => {
-        // setUserInfo(data);
         message.success(data.message);
         setIsLoading(false);
         setIsOpen(false);
@@ -111,14 +112,13 @@ function Login({ setIsOpen, admin }) {
     </div>
   );
 }
+
 Login.defaultProps = {
-  setIsOpen: () => {
-    setIsOpen(false);
-  },
   admin: false,
 };
+
 Login.propTypes = {
-  setIsOpen: PropTypes.func,
   admin: PropTypes.bool,
 };
+
 export default Login;

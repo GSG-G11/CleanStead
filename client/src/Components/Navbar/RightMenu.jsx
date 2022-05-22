@@ -4,10 +4,12 @@ import PropTypes from 'prop-types';
 import { Menu, Button, Avatar, Dropdown, Space } from 'antd';
 import { UserOutlined, DownOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import { ModalLoginContext } from '../../Contexts/ModalLogin';
 import { userContext } from '../../Contexts/userContext';
 
-function RightMenu({ mode, avatarMenu, setIsOpen }) {
+function RightMenu({ mode, avatarMenu }) {
   const { userInfo, isLogged } = useContext(userContext);
+  const { setIsOpen } = useContext(ModalLoginContext);
 
   const openModal = () => {
     setIsOpen(true);
@@ -46,13 +48,6 @@ function RightMenu({ mode, avatarMenu, setIsOpen }) {
 RightMenu.propTypes = {
   mode: PropTypes.string.isRequired,
   avatarMenu: PropTypes.element.isRequired,
-  setIsOpen: PropTypes.func,
-};
-
-RightMenu.defaultProps = {
-  setIsOpen: () => {
-    setIsOpen(false);
-  },
 };
 
 export default RightMenu;
