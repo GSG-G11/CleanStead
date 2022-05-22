@@ -9,7 +9,7 @@ const { Title } = Typography;
 function NotFound() {
   return (
     <div className="not-found">
-      <Image src={notfoundimage} preview={false} />
+      <Image src={notfoundimage} alt="Not Found Image" preview={false} />
       <Title level={3} className="not-found-title">
         We can not seem to find the page you are looking for
       </Title>
