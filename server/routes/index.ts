@@ -21,6 +21,7 @@ import {
   signinAdmin,
   // checkAdmin,
   checkAuth,
+  logoutAdmin,
   getStatus,
   deleteBook,
 } from '../controllers';
@@ -34,6 +35,7 @@ router.delete('/book/:id', validateLink, deleteBook);
 router.route('/contact').get(getContacts).post(addContact);
 router.post('/signup', signup);
 router.get('/logout', logout);
+router.get('/logoutAdmin', logoutAdmin);
 router.post('/signin', signin);
 router.post('/admin/signin', signinAdmin);
 router.get('/book/status', getStatus);

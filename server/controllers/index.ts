@@ -6,7 +6,7 @@ import {
 } from './categories';
 import { getContacts, addContact } from './contact';
 import signup from './signup';
-import logout from './logout';
+import { logout, logoutAdmin } from './logout';
 import { checkAuth, checkAdmin } from './middlewares/auth';
 import signin from './signin';
 import { postService, archivedService, putService } from './services';
@@ -40,6 +40,7 @@ export {
   postBook,
   validateLink,
   signinAdmin,
+  logoutAdmin,
   getStatus,
   deleteBook,
 };

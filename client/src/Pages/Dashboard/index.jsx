@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import axios from 'axios';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import {
   Layout,
   Menu,
@@ -8,8 +10,8 @@ import {
   Avatar,
   Button,
   Badge,
+  message,
 } from 'antd';
-import { Link, Outlet, useLocation } from 'react-router-dom';
 import {
   PieChartOutlined,
   MailOutlined,
@@ -19,6 +21,7 @@ import {
   LogoutOutlined,
   BellOutlined,
 } from '@ant-design/icons';
+import { adminContext } from '../../Contexts/adminContext';
 import './style.css';
 import logo from '../../Assets/images/logo.svg';
 import user from '../../Assets/images/user.png';
@@ -61,7 +64,20 @@ const breadcrumbNameMap = {
 };
 
 function Dashboard() {
+  const { adminInfo } = useContext(adminContext);
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const logout = () => {
+    axios
+      .get('/api/v1/logoutAdmin')
+      .then(({ data }) => {
+        message.success(data.message);
+        navigate('/login/admin', { replace: true });
+      })
+      .catch(() => {
+        message.error('حدث خطأ ما');
+      });
+  };
   return (
     <Layout
       style={{
@@ -70,7 +86,9 @@ function Dashboard() {
       className="page-layout"
     >
       <Sider className="sidebar" width={270}>
-        <Image preview={false} src={logo} className="logo-image" alt="logo" />
+        <Link to="/">
+          <Image preview={false} src={logo} className="logo-image" alt="logo" />
+        </Link>
         <Menu
           theme="light"
           defaultSelectedKeys={['1']}
@@ -78,7 +96,11 @@ function Dashboard() {
           items={items}
           className="sidebar-menu"
         />
-        <Button className="logout-btn" icon={<LogoutOutlined />}>
+        <Button
+          className="logout-btn"
+          onClick={logout}
+          icon={<LogoutOutlined />}
+        >
           تسجيل الخروج
         </Button>
       </Sider>
@@ -109,7 +131,7 @@ function Dashboard() {
                 />
               }
             />
-            <Title level={5}>محمد الهبيل</Title>
+            <Title level={5}>{adminInfo.name}</Title>
           </Space>
         </Header>
         <Content
