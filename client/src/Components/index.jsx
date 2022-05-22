@@ -7,7 +7,7 @@ export { default as CategoriesCardsContainer } from './CategoriesCardsContainer'
 export { default as DescriptionContent } from './DescriptionContent';
 export { default as ContactUsForm } from './ContactUsForm';
 export {
-  Book,
+  DashboardBook,
   Categories,
   Contact,
   General,

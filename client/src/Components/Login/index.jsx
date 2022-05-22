@@ -7,6 +7,7 @@ import { Form, Input, Button, message, Spin } from 'antd';
 import { MailOutlined, LockOutlined, LoadingOutlined } from '@ant-design/icons';
 import { ModalLoginContext } from '../../Contexts/ModalLogin';
 import { userContext } from '../../Contexts/userContext';
+import { adminContext } from '../../Contexts/adminContext';
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
@@ -16,6 +17,7 @@ function Login({ admin }) {
   const [isloading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const { setIsLogged } = useContext(userContext);
+  const { isAdminLogged, setIsAdminLogged } = useContext(adminContext);
 
   const onFinish = ({ email, password }) => {
     setIsLoading(true);
@@ -46,6 +48,7 @@ function Login({ admin }) {
       .then(({ data }) => {
         message.success(data.message);
         navigate('/dashboard', { replace: true });
+        setIsAdminLogged(true);
         setIsLoading(false);
       })
       .catch((err) => {

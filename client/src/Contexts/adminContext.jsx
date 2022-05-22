@@ -6,18 +6,27 @@ const adminContext = createContext();
 
 function AdminProvider({ children }) {
   const [adminInfo, setAdminInfo] = useState({});
+  const [isAdminLogged, setIsAdminLogged] = useState(false);
   const token = document.cookie.split('tokenAdmin=')[1];
 
-  const adminData = useMemo(() => ({ adminInfo, setAdminInfo }), [adminInfo]);
+  // const adminData = useMemo(
+  //   () => ({ adminInfo, setAdminInfo, isAdminLogged, setIsAdminLogged }),
+  //   [isAdminLogged, adminInfo]
+  // );
+  console.log(isAdminLogged, 'isAdminLogged');
+  console.log(adminInfo, 'adminInfo');
   useEffect(() => {
+    console.log('test');
     if (token) {
       setAdminInfo(jwt_decode(token));
-    } else {
-      setAdminInfo({});
     }
   }, [token]);
   return (
-    <adminContext.Provider value={adminData}>{children}</adminContext.Provider>
+    <adminContext.Provider
+      value={{ adminInfo, setAdminInfo, isAdminLogged, setIsAdminLogged }}
+    >
+      {children}
+    </adminContext.Provider>
   );
 }
 AdminProvider.propTypes = {
