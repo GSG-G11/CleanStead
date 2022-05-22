@@ -294,7 +294,7 @@ describe('Test archived Service', () => {
       .delete('/api/v1/services/3')
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('Service archived Successfully!');
+    expect(res.body.message).toBe('Service archived successfully!');
   });
 }); 
 
