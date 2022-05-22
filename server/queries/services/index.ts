@@ -1,5 +1,5 @@
 import postServiceQuery from './postServiceQuery';
 import putServiceQuery from './putServiceQuery';
-import deleteServiceQuery from './deleteServiceQuery';
+import archivedServiceQuery from './archivedServiceQuery';
 
-export { postServiceQuery, deleteServiceQuery, putServiceQuery };
+export { postServiceQuery, archivedServiceQuery, putServiceQuery };
