@@ -13,7 +13,7 @@ const archivedService: RequestHandler = async (req, res, next) => {
       throw new CustomizedError(400, ' There is no Service with this Id');
     }
 
-    return res.json({ message: 'Service archived Successfully!', status: 200 });
+    return res.json({ message: 'Service archived successfully!', status: 200 });
   } catch (error: any) {
     if (error.errors) {
       return next(new CustomizedError(400, error.errors[0]));
