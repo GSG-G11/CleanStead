@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { DeleteOutlined, CheckSquareOutlined } from '@ant-design/icons';
 import { Tag, Space, message, Button } from 'antd';
 import ProTable from '@ant-design/pro-table';
 import './style.css';
+import { CategoriesContext } from '../../../Contexts/CategoriesContext';
 
 function Contact() {
   const [contacts, setContacts] = useState([]);
@@ -31,9 +32,9 @@ function Contact() {
     },
     {
       title: 'الخدمة',
-      key: 'category_id',
-      dataIndex: 'category_id',
-      valueType: 'category_id',
+      key: 'category',
+      dataIndex: 'category',
+      valueType: 'category',
     },
     {
       title: 'الرسالة',
@@ -121,13 +122,17 @@ function Contact() {
     return () => cancelTokenSource.cancel();
   }, [update]);
 
+  const { categories } = useContext(CategoriesContext);
+
   const tableData = [];
   contacts.map((contact) => {
     tableData.push({
       key: contact.id,
       name: contact.name,
       message: contact.message,
-      category_id: contact.category_id,
+      category: categories.filter(
+        (category) => category.id === contact.category_id
+      )[0].name,
       sendtime: contact.sendtime,
       phone: contact.phone,
       email: contact.email,
