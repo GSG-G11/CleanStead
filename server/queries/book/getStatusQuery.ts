@@ -2,7 +2,7 @@ import connection from '../../database/connection';
 
 const getStatusQuery = () => connection.query(`
   SELECT
-  (SELECT count(id) FROM appoinments)as allTotal,count(status) as total, status
+  (SELECT count(id) FROM appointments)As allTotal,count(status) as total, status
   FROM
-    appoinments group by status`);
+  appointments GROUP BY status`);
 export default getStatusQuery;

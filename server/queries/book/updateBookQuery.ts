@@ -1,7 +1,7 @@
 import connection from '../../database/connection';
 
 const updateBookQuery = (id:number) => connection.query(`
-            UPDATE appoinments
+            UPDATE appointments
             SET
               archived=true
             WHERE id=$1

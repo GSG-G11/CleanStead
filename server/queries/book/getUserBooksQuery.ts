@@ -11,7 +11,7 @@ const getUserBooksQuery = (id:number) => connection.query(`
     u.name,
     u.location
   FROM
-    appoinments AS a
+  appointments AS a
   JOIN  users AS u ON  a.user_id = u.id
   WHERE a.user_id = $1`, [id]);
 export default getUserBooksQuery;

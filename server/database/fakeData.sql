@@ -264,73 +264,73 @@ VALUES
     );
 
 INSERT INTO
-    appoinments(date_time, creation_time, price, status, user_id)
+    appointments(date_time, creation_time, price, status, user_id)
 VALUES
    (
         '2022-08-01 05:00',
         NOW(),
         50,
-        'معلق',
+        'pending',
         1
     ),
     (
         '2022-08-10 06:00',
         NOW(),
         99,
-        'معلق',
+        'pending',
         1
     ),
     (
         '2022-02-01 07:00',
         NOW(),
         452,
-        'معلق',
+        'pending',
         2
     ),
     (
         '2022-01-01 04:00',
         NOW(),
         78,
-        'معلق',
+        'pending',
         3
     ),
     (
         '2021-06-01 03:00',
         NOW(),
         561,
-        'معلق',
+        'pending',
         4
     ),
     (
         '2020-06-01 01:00',
         NOW(),
         135,
-        'مقبول',
+        'approve',
         5
     ),
     (
         '2022-01-01 04:00',
         NOW(),
         78,
-        'مقبول',
+        'approve',
         3
     ),
     (
         '2021-06-01 03:00',
         NOW(),
         20,
-        'مرفوض',
+        'decline',
         4
     ),
     (
         '2020-06-01 01:00',
         NOW(),
         135,
-        'مرفوض',
+        'decline',
         5
     );
 INSERT INTO
-    services_appoinments(quantity, appoinment_id, service_id)
+    services_appointments(quantity, appointment_id, service_id)
 VALUES
     (1, 1, 1),
     (2, 1, 2),

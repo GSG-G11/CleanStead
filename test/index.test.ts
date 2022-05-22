@@ -478,10 +478,10 @@ describe('Test Status Book', () => {
       .get('/api/v1/status')
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.data).toStrictEqual([
-      { alltotal: '10', total: '6', status: 'معلق' },
-      { alltotal: '10', total: '2', status: 'مقبول' },
-      { alltotal: '10', total: '2', status: 'مرفوض' }
+    expect(res.body.data).toEqual(   [
+      { alltotal: '10', total: '2', status: 'approve' },
+      { alltotal: '10', total: '2', status: 'decline' },
+      { alltotal: '10', total: '6', status: 'pending' } 
     ]);
   });
 });
