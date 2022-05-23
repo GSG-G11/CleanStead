@@ -7,6 +7,7 @@ import { addUserQuery, checkEmailExistsQuery } from './user';
 import {
   getBooksQuery, getUserBooksQuery, getBookQuery,
   postBookQuery, postServiceBookQuery, deleteBookQuery, getStatusQuery,
+  getBookDayQuery, getBookMonthQuery,
 } from './book';
 import checkEmailAdminExistsQuery from './admin';
 import { postServiceQuery, archivedServiceQuery, putServiceQuery } from './services';
@@ -32,4 +33,6 @@ export {
   checkEmailAdminExistsQuery,
   getStatusQuery,
   deleteBookQuery,
+  getBookDayQuery,
+  getBookMonthQuery,
 };
