@@ -522,7 +522,7 @@ describe('Test Status Book', () => {
 describe('Test archive contact', () => {
   it('should return status 200', async () => {
     const res = await supertest(app)
-      .put('/api/v1/contact/archives/1')
+      .delete('/api/v1/contact/archives/1')
       .expect(200)
       .expect('Content-Type', /json/);
     expect(res.body.data.archived).toBe(true);
