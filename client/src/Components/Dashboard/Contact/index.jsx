@@ -9,6 +9,7 @@ import { CategoriesContext } from '../../../Contexts/CategoriesContext';
 function Contact() {
   const [contacts, setContacts] = useState([]);
   const [update, setUpdate] = useState(false);
+  // const [updateArchive, setUpdateArchive] = useState(false);
 
   const columns = [
     {
@@ -74,7 +75,9 @@ function Contact() {
     },
     {
       title: 'الحالة',
+      key: 'status',
       dataIndex: 'status',
+      valueType: 'status',
       render: (_, record) => (
         <Space>
           {record.status.map(({ name, color }) => (
@@ -87,6 +90,7 @@ function Contact() {
     },
     {
       title: 'اكشن',
+      key: 'option',
       className: 'action',
       width: 30,
       valueType: 'action',
@@ -94,14 +98,15 @@ function Contact() {
         <Button
           type="text"
           className="delete-contact-button"
-          onClick={() => setResponse(record.key)}
+          onClick={() => onResponse(record.key)}
           icon={<CheckSquareOutlined style={{ color: '#63D697' }} />}
         />,
-        // <Button
-        //   type="text"
-        //   className="delete-contact-button"
-        //   icon={<DeleteOutlined style={{ color: '#EA5455' }} />}
-        // />,
+        <Button
+          type="text"
+          className="delete-contact-button"
+          onClick={() => onArchived(record.key)}
+          icon={<DeleteOutlined style={{ color: '#EA5455' }} />}
+        />,
       ],
     },
   ];
@@ -137,7 +142,7 @@ function Contact() {
       phone: contact.phone,
       email: contact.email,
       status:
-        contact.archived === false
+        contact.status === 'pending'
           ? [
               {
                 name: 'معلق',
@@ -153,18 +158,23 @@ function Contact() {
     });
   });
 
-  const setResponse = (id) => {
+  const onResponse = (id) => {
     axios
-      .put(`/api/v1/contact/${id}`)
+      .put(`/api/v1/contact/status/${id}`)
       .then(({ data: { data } }) => {
-        if (data) {
-          setUpdate(true);
-        } else {
-          setUpdate(false);
-        }
+        setUpdate(!update);
       })
       .catch(() => {
-        setUpdate(false);
+        message.error('حدث خطأ ما');
+      });
+  };
+  const onArchived = (id) => {
+    axios
+      .put(`/api/v1/contact/archives/${id}`)
+      .then(({ data: { data } }) => {
+        setUpdate(!update);
+      })
+      .catch(() => {
         message.error('حدث خطأ ما');
       });
   };
