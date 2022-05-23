@@ -5,8 +5,8 @@ admins,
 categories,
 services,
 contacts,
-appoinments,
-services_appoinments CASCADE;
+appointments,
+services_appointments CASCADE;
 
 CREATE TABLE admins (
   id SERIAL PRIMARY KEY,
@@ -60,23 +60,23 @@ CREATE TABLE contacts (
   FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
 );
 
-CREATE TABLE appoinments (
+CREATE TABLE appointments (
   id SERIAL PRIMARY KEY,
   date_time TIMESTAMP NOT NULL,
   creation_time TIMESTAMP DEFAULT NOW(),
   price INT NOT NULL,
-  status VARCHAR(50) DEFAULT 'معلق',
+  status VARCHAR(50) DEFAULT 'pending',
   repeat VARCHAR(50) DEFAULT 'مرة واحدة',
   archived BOOLEAN DEFAULT FALSE,
   user_id INT,
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
-CREATE TABLE services_appoinments (
+CREATE TABLE services_appointments (
   id SERIAL PRIMARY KEY,
   quantity INT NOT NULL,
-  appoinment_id INT,
-  FOREIGN KEY (appoinment_id) REFERENCES appoinments(id) ON DELETE CASCADE,
+  appointment_id INT,
+  FOREIGN KEY (appointment_id) REFERENCES appointments(id) ON DELETE CASCADE,
   service_id INT,
   FOREIGN KEY (service_id) REFERENCES services(id) ON DELETE CASCADE
 );

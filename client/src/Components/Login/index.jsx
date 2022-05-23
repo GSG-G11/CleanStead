@@ -1,18 +1,21 @@
 /* eslint-disable no-undef */
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import { Form, Input, Button, message, Spin } from 'antd';
 import { MailOutlined, LockOutlined, LoadingOutlined } from '@ant-design/icons';
 import { ModalLoginContext } from '../../Contexts/ModalLogin';
 import { userContext } from '../../Contexts/userContext';
+import { adminContext } from '../../Contexts/adminContext';
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-function Login() {
+function Login({ admin }) {
   const { setIsOpen } = useContext(ModalLoginContext);
   const [isloading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const { setIsLogged } = useContext(userContext);
+  const { setIsAdminLogged } = useContext(adminContext);
 
   const onFinish = ({ email, password }) => {
     setIsLoading(true);
@@ -35,9 +38,33 @@ function Login() {
         }
       });
   };
+  const onAdminFinish = ({ email, password }) => {
+    setIsLoading(true);
+    setError('');
+    axios
+      .post('/api/v1/admin/signin', { email, password })
+      .then(({ data }) => {
+        message.success(data.message);
+        setIsAdminLogged(true);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        if (err.response) {
+          setError(err.response.data.message);
+          setIsLoading(false);
+        } else {
+          message.error('حدث خطأ ما');
+          setIsLoading(false);
+        }
+      });
+  };
   return (
     <div>
-      <Form layout="vertical" onFinish={onFinish}>
+      <Form
+        layout="vertical"
+        className={admin ? 'form-width' : ''}
+        onFinish={admin ? onAdminFinish : onFinish}
+      >
         <Form.Item
           label="الإيميل"
           name="email"
@@ -85,5 +112,13 @@ function Login() {
     </div>
   );
 }
+
+Login.defaultProps = {
+  admin: false,
+};
+
+Login.propTypes = {
+  admin: PropTypes.bool,
+};
 
 export default Login;

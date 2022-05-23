@@ -1,0 +1,12 @@
+.admin-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width:600px;
+    margin: 0 auto;
+}
+.form-width {
+    width: 400px;
+}

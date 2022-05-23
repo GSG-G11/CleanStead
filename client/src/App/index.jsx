@@ -6,40 +6,70 @@ import {
   Contact,
   General,
   Services,
-  LoginAdmin,
+  DashboardBook,
+  AdminLogin,
 } from '../Components';
-import { Home, Category, Description, Dashboard, Book } from '../Pages';
+import {
+  Home,
+  Category,
+  Description,
+  Dashboard,
+  Book,
+  Profile,
+  NotFound,
+} from '../Pages';
 import 'swiper/css/bundle';
 import '../style/custom-antd.css';
 import './app.css';
 import LayoutUser from '../Components/Layout';
 import { CategoriesProvider } from '../Contexts/CategoriesContext';
+import { ModalLoginProvider } from '../Contexts/ModalLogin';
+import { UserProvider } from '../Contexts/userContext';
+import { AdminProvider } from '../Contexts/adminContext';
+import { AdminProtected, UserProtected } from '../ProtectedRoute';
 
 function App() {
   return (
     <div>
       <CategoriesProvider>
-        <Routes>
-          <Route path="/login/admin" element={<LoginAdmin />} />
-          <Route path="dashboard" element={<Dashboard />}>
-            <Route path="/dashboard" element={<General />} />
-            <Route path="categories" element={<Categories />} />
-            <Route path="book" element={<Book />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="services" element={<Services />} />
-          </Route>
-          <Route path="/" element={<LayoutUser />}>
-            <Route path="/" index element={<Home />} />
-            <Route path="contact" element={<Description page="contact" />} />
-            <Route path="about" element={<Description page="about" />} />
-            <Route
-              path="category/:id"
-              element={<Description page="category" />}
-            />
-            <Route path="category/:id" element={<Category />} />
-            <Route path="/book" element={<Book />} />
-          </Route>
-        </Routes>
+        <ModalLoginProvider>
+          <UserProvider>
+            <AdminProvider>
+              <Routes>
+                <Route path="/login/admin" element={<AdminLogin />} />
+                <Route element={<AdminProtected />}>
+                  <Route path="dashboard" element={<Dashboard />}>
+                    <Route path="/dashboard" element={<General />} />
+                    <Route path="categories" element={<Categories />} />
+                    <Route path="books" element={<DashboardBook />} />
+                    <Route path="contact" element={<Contact />} />
+                    <Route path="services" element={<Services />} />
+                  </Route>
+                </Route>
+
+                <Route path="/" element={<LayoutUser />}>
+                  <Route path="/" index element={<Home />} />
+                  <Route
+                    path="contact"
+                    element={<Description page="contact" />}
+                  />
+                  <Route path="about" element={<Description page="about" />} />
+                  <Route
+                    path="category/:id"
+                    element={<Description page="category" />}
+                  />
+                  <Route path="category/:id" element={<Category />} />
+                  <Route path="/book" element={<Book />} />
+                  <Route element={<UserProtected />}>
+                    <Route path="/profile" element={<Profile />} />
+                  </Route>
+                </Route>
+
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </AdminProvider>
+          </UserProvider>
+        </ModalLoginProvider>
       </CategoriesProvider>
     </div>
   );

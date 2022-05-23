@@ -2,19 +2,19 @@ import {
   serverError, clientError,
 } from './errorHandle';
 import {
-  getCategories, getCategoryServices, postCategories, putCategories,
+  getCategories, getCategoryServices, postCategories, putCategories, archivedCategory,
 } from './categories';
 import {
   getContacts, addContact, deleteContact, updateContactStatus,
 } from './contact';
 import signup from './signup';
-import logout from './logout';
+import { logout, logoutAdmin } from './logout';
 import { checkAuth, checkAdmin } from './middlewares/auth';
 import signin from './signin';
+import { postService, archivedService, putService } from './services';
 import {
-  getBooks, getUserBooks, getBook, postBook,
+  getBooks, getUserBooks, getBook, postBook, deleteBook, getStatus,
 } from './book';
-import { postService, deleteService, putService } from './services';
 import { validateLink } from './middlewares';
 import signinAdmin from './signinAdmin';
 
@@ -35,12 +35,16 @@ export {
   getBooks,
   putCategories,
   postService,
+  archivedCategory,
   putService,
-  deleteService,
+  archivedService,
   getUserBooks,
   getBook,
   postBook,
   validateLink,
   signinAdmin,
   updateContactStatus,
+  logoutAdmin,
+  getStatus,
+  deleteBook,
 };
