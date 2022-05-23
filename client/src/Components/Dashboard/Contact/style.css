@@ -20,3 +20,6 @@
 .ant-table-thead > tr > th{
   text-align: right !important;
 }
+.contact-desc-table{
+  white-space: break-spaces;
+}

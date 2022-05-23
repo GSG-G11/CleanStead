@@ -19,6 +19,7 @@ import {
   postBook,
   validateLink,
   signinAdmin,
+  updateContactStatus,
   checkAdmin,
   checkAuth,
 } from '../controllers';
@@ -30,7 +31,8 @@ router.get('/book', getBooks);
 router.get('/book/:id', validateLink, getBook);
 router.get('/user/:id/book', validateLink, getUserBooks);
 router.route('/contact').get(getContacts).post(addContact);
-router.put('/contact/:id', validateLink, deleteContact);
+router.put('/contact/archives/:id', validateLink, deleteContact);
+router.put('/contact/status/:id', validateLink, updateContactStatus);
 router.post('/signup', signup);
 router.get('/logout', logout);
 router.post('/signin', signin);
