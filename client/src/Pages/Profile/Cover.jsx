@@ -14,6 +14,7 @@ function Cover({ userInfo }) {
           src={headerBackground}
           preview={false}
           className="profile-cover"
+          alt="cover"
         />
       </div>
       <Card className="user-card">
