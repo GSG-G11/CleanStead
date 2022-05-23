@@ -21,7 +21,12 @@ function Cover({ userInfo }) {
           className="user-meta"
           title={userInfo.name}
           description={userInfo.location}
-          avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
+          avatar={
+            <Avatar
+              className="user-avatar"
+              src="https://joeschmoe.io/api/v1/random"
+            />
+          }
         />
       </Card>
     </div>

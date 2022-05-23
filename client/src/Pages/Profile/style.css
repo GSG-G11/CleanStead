@@ -36,9 +36,9 @@
   font-weight: 800 !important;
   font-size: 20px !important;
 }
-.ant-avatar{
-  width: 100px !important;
-  height: 100px !important;
+.user-avatar{
+  width: 90px !important;
+  height: 90px !important;
   line-height: 100px !important;
 }
 .my-book{
