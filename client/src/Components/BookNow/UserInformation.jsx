@@ -7,7 +7,12 @@ import cities from '../../cities.json';
 
 const { Title } = Typography;
 const { Option } = Select;
-function UserInformation({ onChangeInput }) {
+function UserInformation({
+  onChangeInput,
+  onChangeSelect,
+  position,
+  setPosition,
+}) {
   const { setIsOpen } = useContext(ModalLoginContext);
   const openLogin = () => {
     setIsOpen(true);
@@ -24,7 +29,7 @@ function UserInformation({ onChangeInput }) {
       <Form layout="vertical">
         <Row>
           <Col>
-            <Form.Item label="الاسم">
+            <Form.Item label="الاسم" required>
               <Input
                 placeholder="الاسم"
                 className="input-user"
@@ -34,7 +39,7 @@ function UserInformation({ onChangeInput }) {
             </Form.Item>
           </Col>
           <Col>
-            <Form.Item label="رقم الجوال">
+            <Form.Item label="رقم الجوال" required>
               <Input
                 placeholder="رقم الجوال"
                 className="input-user"
@@ -46,36 +51,24 @@ function UserInformation({ onChangeInput }) {
         </Row>
         <Row>
           <Col>
-            {/* <Form.Item label="العنوان">
-              <Input
-                placeholder="العنوان"
+            <Form.Item label="العنوان" required>
+              <Select
                 className="input-user"
-                name="userAddress"
-                onChange={onChangeInput}
-              />
-            </Form.Item> */}
-            <Form.Item label="العنوان" name="location" className="input-user">
-              <Select placeholder="اختر موقعك">
-                {cities.map(({ name, id }) => (
+                placeholder="اختر موقعك"
+                onChange={(value) => {
+                  onChangeSelect(value);
+                }}
+              >
+                {cities.map(({ id, name }) => (
                   <Option key={id} value={name} />
                 ))}
               </Select>
             </Form.Item>
           </Col>
-          {/* <Col>
-            <Form.Item label="العنوان التفصيلي">
-              <Input
-                placeholder="العنوان التفصيلي"
-                className="input-user"
-                name="userSpecificAddress"
-                onChange={onChangeInput}
-              />
-            </Form.Item>
-          </Col> */}
         </Row>
         <Row>
           <Col xs={{ span: 24 }}>
-            <LeafMap />
+            <LeafMap position={position} setPosition={setPosition} />
           </Col>
         </Row>
       </Form>
@@ -85,6 +78,12 @@ function UserInformation({ onChangeInput }) {
 
 UserInformation.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
+  onChangeSelect: PropTypes.func.isRequired,
+  position: PropTypes.shape({
+    lat: PropTypes.number,
+    lng: PropTypes.number,
+  }).isRequired,
+  setPosition: PropTypes.func.isRequired,
 };
 
 export default UserInformation;

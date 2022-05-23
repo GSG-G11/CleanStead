@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import uuid from 'react-uuid';
 import { Col, Row, Steps, Button, message } from 'antd';
 import CustomTitle from '../CustomTitle';
@@ -7,6 +8,7 @@ import DateTimeChoice from './DateTimeChoice';
 import UserInformation from './UserInformation';
 import Summary from './Summary';
 import CompleteBook from './CompleteBook';
+import cities from '../../cities.json';
 import './style.css';
 
 const { Step } = Steps;
@@ -19,19 +21,36 @@ function BookContainer() {
   const [username, setUserName] = useState('');
   const [userPhone, setUserPhone] = useState('');
   const [userAddress, setUserAddress] = useState('');
-  const [userSpesificAddress, setUserSpecificAddress] = useState('');
+  const [position, setPosition] = useState({
+    lat: 31.512646000696368,
+    lng: 34.457782320381796,
+  });
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isloading, setIsLoading] = useState(false);
 
   const showModal = () => {
-    if (
-      username === '' ||
-      userPhone === '' ||
-      userAddress === '' ||
-      userSpesificAddress === ''
-    ) {
+    if (username === '' || userPhone === '' || userAddress === '') {
       message.error('يجب إدخال جميع البيانات');
     } else {
-      setIsModalVisible(true);
+      const user = {
+        username,
+        userPhone,
+        userAddress,
+        position,
+      };
+      axios
+        .post('/api/v1/book', { valueRadio, valueDate, user })
+        .then(({ data }) => {
+          console.log('data.message', data.message);
+          // message.success(data.message);
+          setIsModalVisible(true);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          console.log('err', err);
+          message.error('حدث خطأ ما');
+          setIsLoading(false);
+        });
     }
   };
 
@@ -43,12 +62,20 @@ function BookContainer() {
     setUserName('');
     setUserPhone('');
     setUserAddress('');
-    setUserSpecificAddress('');
     setIsModalVisible(false);
   };
 
   const handleCancel = () => {
     setIsModalVisible(false);
+  };
+
+  const onChangeSelect = (value) => {
+    cities.forEach((city) => {
+      if (city.name === value) {
+        setPosition(city.coordinates);
+      }
+    });
+    setUserAddress(value);
   };
 
   const onChangeInput = ({ target: { name, value } }) => {
@@ -59,16 +86,11 @@ function BookContainer() {
       case 'userPhone':
         setUserPhone(value);
         break;
-      case 'userAddress':
-        setUserAddress(value);
-        break;
-      case 'userSpecificAddress':
-        setUserSpecificAddress(value);
-        break;
       default:
         break;
     }
   };
+
   const checkServices = () => {
     let checkedTrue = false;
     if (Object.keys(categoryServices).length) {
@@ -119,7 +141,14 @@ function BookContainer() {
     },
     {
       title: 'معلوماتك',
-      content: <UserInformation onChangeInput={onChangeInput} />,
+      content: (
+        <UserInformation
+          onChangeInput={onChangeInput}
+          onChangeSelect={onChangeSelect}
+          position={position}
+          setPosition={setPosition}
+        />
+      ),
     },
   ];
 

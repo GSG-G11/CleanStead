@@ -1,7 +1,23 @@
 .map-wrapper {
-  overflow: hidden;
   width: 100%;
-  height: 300px;
-  /* padding-top: 10px; */
-  /* margin: 10px 0; */
+  height: fit-content;
+}
+
+.map-container {
+  width: 100%;
+  height: 250px;
+  border-radius: 12px;
+}
+
+.map-wrapper .ant-btn{
+  background-color: var(--main) ;
+  border: none;
+  color: white;
+}
+
+.map-wrapper  .ant-btn:hover, .map-wrapper  .ant-btn:active, .map-wrapper .ant-btn:focus{
+  background-color: var(--main) ;
+  border: none;
+  color: white;
+  filter: brightness(95%);
 }

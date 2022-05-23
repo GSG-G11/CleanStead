@@ -1,23 +1,29 @@
-import React, { useRef, useState } from 'react';
-import { MapContainer, TileLayer, Popup, Marker } from 'react-leaflet';
+import React, { useRef } from 'react';
+import { MapContainer, TileLayer } from 'react-leaflet';
 import { Geocoder } from '@maptiler/geocoder';
 import 'leaflet/dist/leaflet.css';
 import '@maptiler/geocoder/css/geocoder.css';
-// import LeafletIcon from 'leaflet';
+import {
+  Input,
+  Button,
+  Form,
+  Image,
+  Row,
+  Col,
+  Typography,
+  message,
+} from 'antd';
+import { PropTypes } from 'prop-types';
 import UseGeoLocation from './UseGeoLocation';
 import osm from './osm-providers';
 import LocationMarker from './LocationMarker';
+import locationIcon from '../../Assets/icons/location.svg';
 import './style.css';
-// import markerImage from '../../Assets/images/marker.png';
-import { Input, Button, Space, Form } from 'antd';
 
-export default function LeafMap() {
+const { Text } = Typography;
+export default function LeafMap({ position, setPosition }) {
   const mapRef = useRef();
   const ZOOM_LEVEL = 13;
-  const [position, setPosition] = useState({
-    lat: 31.3547,
-    lng: 34.3088,
-  });
 
   const location = UseGeoLocation();
   const showMyLocation = () => {
@@ -27,7 +33,7 @@ export default function LeafMap() {
         lng: location.coordinates.lng,
       });
     } else {
-      alert(location.error.message);
+      message.error(location.error.message);
     }
   };
 
@@ -42,23 +48,10 @@ export default function LeafMap() {
     });
   };
 
-  // const markerIcon = new LeafletIcon.Icon({
-  //   iconUrl: markerImage,
-  //   iconSize: [38, 50],
-  //   iconAnchor: [17, 46],
-  //   popupAnchor: [0, -46],
-  // });
-
   return (
     <div className="map-wrapper">
-      {/* <input
-        autoComplete="off"
-        id="search"
-        type="text"
-        onChange={HandleChang}
-      /> */}
-      <Space>
-        <Form>
+      <Row>
+        <Col>
           <Form.Item label="العنوان التفصيلي">
             <Input
               autoComplete="off"
@@ -69,44 +62,40 @@ export default function LeafMap() {
               onChange={HandleChang}
             />
           </Form.Item>
-        </Form>
-        {/* <Input
-          autoComplete="off"
-          id="search"
-          placeholder="ابحث عن موقعك"
-          className="input-user"
-          onChange={HandleChang}
-        /> */}
-        <Button onClick={showMyLocation}>احصل على عنواني</Button>
-      </Space>
-
+        </Col>
+        <Col>
+          <Form.Item label="احصل على عنواني">
+            <Button onClick={showMyLocation}>
+              <Image alt="location" src={locationIcon} preview={false} />
+            </Button>
+          </Form.Item>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={{ span: 23 }}>
+          <Text>يمكنك تحديد الموقع بالتفصيل من خلال الخريطة</Text>
+        </Col>
+      </Row>
       <MapContainer
         center={position}
         zoom={ZOOM_LEVEL}
         ref={mapRef}
-        style={{
-          width: '100%',
-          height: '90%',
-          borderRadius: '12px',
-          // paddingTop: '10px',
-          // marginTop: '10px',
-        }}
+        className="map-container"
       >
         <TileLayer
           url={osm.maptiler.url}
           attribution={osm.maptiler.attribution}
         />
         <LocationMarker position={position} setPosition={setPosition} />
-
-        {/* {location.loaded && !location.error && (
-          <Marker
-            position={[location.coordinates.lat, location.coordinates.lng]}
-            icon={markerIcon}
-          >
-            <Popup></Popup>
-          </Marker>
-        )} */}
       </MapContainer>
     </div>
   );
 }
+
+LeafMap.propTypes = {
+  position: PropTypes.shape({
+    lat: PropTypes.number,
+    lng: PropTypes.number,
+  }).isRequired,
+  setPosition: PropTypes.func.isRequired,
+};

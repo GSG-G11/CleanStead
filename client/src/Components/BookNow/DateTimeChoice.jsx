@@ -28,7 +28,7 @@ function DateTimeChoice({
     <div>
       <Title level={4}>اختر موعد الحجز</Title>
       <Form layout="vertical">
-        <Form.Item label="تكرار الخدمة">
+        <Form.Item label="تكرار الخدمة" required>
           <Radio.Group onChange={onChangeRadio} value={valueRadio}>
             {repeated.map((repeat) => (
               <Radio className="radio-repeat" key={repeat} value={repeat}>
@@ -37,7 +37,7 @@ function DateTimeChoice({
             ))}
           </Radio.Group>
         </Form.Item>
-        <Form.Item label="التاريخ والوقت">
+        <Form.Item label="التاريخ والوقت" required>
           <DatePicker
             value={
               valueDate.length ? moment(valueDate, 'A h:mm | YYYY-MM-DD') : ''
