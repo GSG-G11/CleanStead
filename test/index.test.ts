@@ -296,7 +296,7 @@ describe('Test archived Service', () => {
       .expect('Content-Type', /json/);
     expect(res.body.message).toBe('Service archived successfully!');
   });
-}); 
+});
 
 describe('Test get books', () => {
   it('should return status code 200 and the length 6', async () => {
@@ -512,10 +512,28 @@ describe('Test Status Book', () => {
       .get('/api/v1/book/status')
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.data).toEqual(   [
+    expect(res.body.data).toEqual([
       { alltotal: '10', total: '2', status: 'approve' },
       { alltotal: '10', total: '2', status: 'decline' },
-      { alltotal: '10', total: '6', status: 'pending' } 
+      { alltotal: '10', total: '6', status: 'pending' },
     ]);
+  });
+});
+describe('Test archive contact', () => {
+  it('should return status 200', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/contact/archives/1')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.data.archived).toBe(true);
+  });
+});
+describe('Test update contact status', () => {
+  it('should return status 200', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/contact/status/1')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.data.status).toBe('done');
   });
 });
