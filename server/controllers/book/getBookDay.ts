@@ -26,7 +26,7 @@ const getBookDay: RequestHandler = async (req, res, next) => {
       numberOfRequest.push(value);
     });
     res.json({
-      message: 'Successfully retrieved all books for today', status: 200, hoursForDay, numberOfRequest,
+      message: 'Successfully retrieved all books for this today', status: 200, hoursForDay, numberOfRequest,
     });
   } catch (error) {
     next(error);
