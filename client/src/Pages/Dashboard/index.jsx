@@ -39,7 +39,7 @@ function getItem(label, key, icon) {
 const items = [
   getItem(<Link to="/dashboard">نظرة عامة</Link>, '1', <PieChartOutlined />),
   getItem(
-    <Link to="/dashboard/book">الحجوزات</Link>,
+    <Link to="/dashboard/books">الحجوزات</Link>,
     '2',
     <CalendarOutlined />
   ),
@@ -57,14 +57,14 @@ const items = [
 ];
 const breadcrumbNameMap = {
   '/dashboard': 'نظرة عامة',
-  '/dashboard/book': 'الحجوزات',
+  '/dashboard/books': 'الحجوزات',
   '/dashboard/contact': 'التواصل',
   '/dashboard/services': 'التصنيفات',
   '/dashboard/categories': 'الخدمات',
 };
 
 function Dashboard() {
-  const { adminInfo } = useContext(adminContext);
+  const { adminInfo, setIsAdminLogged } = useContext(adminContext);
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const logout = () => {
@@ -72,6 +72,7 @@ function Dashboard() {
       .get('/api/v1/logoutAdmin')
       .then(({ data }) => {
         message.success(data.message);
+        setIsAdminLogged(false);
         navigate('/login/admin', { replace: true });
       })
       .catch(() => {
