@@ -133,7 +133,8 @@ function Contact() {
   const onResponse = (id) => {
     axios
       .put(`/api/v1/contact/status/${id}`)
-      .then(({ data: { data } }) => {
+      .then(({ data }) => {
+        message.success(data.message);
         setUpdate(!update);
       })
       .catch(() => {
@@ -142,8 +143,9 @@ function Contact() {
   };
   const onArchived = (id) => {
     axios
-      .put(`/api/v1/contact/archives/${id}`)
-      .then(({ data: { data } }) => {
+      .delete(`/api/v1/contact/archives/${id}`)
+      .then(({ data }) => {
+        message.success(data.message);
         setUpdate(!update);
       })
       .catch(() => {

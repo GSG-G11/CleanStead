@@ -37,7 +37,7 @@ router.delete('/services/:id', validateLink, archivedService);
 router.delete('/categories/:id', validateLink, archivedCategory);
 router.delete('/book/:id', validateLink, deleteBook);
 router.route('/contact').get(getContacts).post(addContact);
-router.put('/contact/archives/:id', validateLink, deleteContact);
+router.delete('/contact/archives/:id', validateLink, deleteContact);
 router.put('/contact/status/:id', validateLink, updateContactStatus);
 router.post('/signup', signup);
 router.get('/logout', logout);
