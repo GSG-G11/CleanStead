@@ -64,6 +64,7 @@ function App() {
                     <Route path="/profile" element={<Profile />} />
                   </Route>
                 </Route>
+
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </AdminProvider>
