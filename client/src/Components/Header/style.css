@@ -67,3 +67,6 @@
     padding: 3px 10px !important;
   }
 }
+.ant-image-img{
+  max-width: 100%;
+}
