@@ -37,11 +37,7 @@ function getItem(label, key, icon) {
 }
 
 const items = [
-  getItem(
-    <Link to="/dashboard/general">نظرة عامة</Link>,
-    '1',
-    <PieChartOutlined />
-  ),
+  getItem(<Link to="/dashboard">نظرة عامة</Link>, '1', <PieChartOutlined />),
   getItem(
     <Link to="/dashboard/books">الحجوزات</Link>,
     '2',
@@ -60,7 +56,7 @@ const items = [
   ),
 ];
 const breadcrumbNameMap = {
-  '/dashboard/general': 'نظرة عامة',
+  '/dashboard': 'نظرة عامة',
   '/dashboard/books': 'الحجوزات',
   '/dashboard/contact': 'التواصل',
   '/dashboard/services': 'التصنيفات',

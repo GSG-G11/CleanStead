@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Form, Input, Button, message, Spin } from 'antd';
 import { MailOutlined, LockOutlined, LoadingOutlined } from '@ant-design/icons';
@@ -12,12 +11,11 @@ import { adminContext } from '../../Contexts/adminContext';
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 function Login({ admin }) {
-  const navigate = useNavigate();
   const { setIsOpen } = useContext(ModalLoginContext);
   const [isloading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const { setIsLogged } = useContext(userContext);
-  const { isAdminLogged, setIsAdminLogged } = useContext(adminContext);
+  const { setIsAdminLogged } = useContext(adminContext);
 
   const onFinish = ({ email, password }) => {
     setIsLoading(true);
@@ -47,7 +45,6 @@ function Login({ admin }) {
       .post('/api/v1/admin/signin', { email, password })
       .then(({ data }) => {
         message.success(data.message);
-        navigate('/dashboard', { replace: true });
         setIsAdminLogged(true);
         setIsLoading(false);
       })

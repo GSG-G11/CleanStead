@@ -37,8 +37,8 @@ function App() {
               <Routes>
                 <Route path="/login/admin" element={<AdminLogin />} />
                 <Route element={<ProtectedRoute />}>
-                  <Route path="/dashboard" element={<Dashboard />}>
-                    <Route path="general" element={<General />} />
+                  <Route path="dashboard" element={<Dashboard />}>
+                    <Route path="/dashboard" element={<General />} />
                     <Route path="categories" element={<Categories />} />
                     <Route path="books" element={<DashboardBook />} />
                     <Route path="contact" element={<Contact />} />
