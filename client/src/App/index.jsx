@@ -15,6 +15,7 @@ import {
   Description,
   Dashboard,
   Book,
+  Profile,
   NotFound,
 } from '../Pages';
 import 'swiper/css/bundle';
@@ -25,7 +26,7 @@ import { CategoriesProvider } from '../Contexts/CategoriesContext';
 import { ModalLoginProvider } from '../Contexts/ModalLogin';
 import { UserProvider } from '../Contexts/userContext';
 import { AdminProvider } from '../Contexts/adminContext';
-import ProtectedRoute from '../ProtectedRoute';
+import { AdminProtected, UserProtected } from '../ProtectedRoute';
 
 function App() {
   return (
@@ -36,7 +37,7 @@ function App() {
             <AdminProvider>
               <Routes>
                 <Route path="/login/admin" element={<AdminLogin />} />
-                <Route element={<ProtectedRoute />}>
+                <Route element={<AdminProtected />}>
                   <Route path="dashboard" element={<Dashboard />}>
                     <Route path="/dashboard" element={<General />} />
                     <Route path="categories" element={<Categories />} />
@@ -59,6 +60,9 @@ function App() {
                   />
                   <Route path="category/:id" element={<Category />} />
                   <Route path="/book" element={<Book />} />
+                  <Route element={<UserProtected />}>
+                    <Route path="/profile" element={<Profile />} />
+                  </Route>
                 </Route>
                 <Route path="*" element={<NotFound />} />
               </Routes>
