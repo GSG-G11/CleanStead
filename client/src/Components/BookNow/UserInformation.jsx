@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Typography, Form, Space, Input, Button, Row, Col, Select } from 'antd';
+import { Typography, Form, Input, Row, Col, Select } from 'antd';
 import LeafMap from '../Map';
-import { ModalLoginContext } from '../../Contexts/ModalLogin';
 import cities from '../../cities.json';
+import { userContext } from '../../Contexts/userContext';
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -13,19 +13,11 @@ function UserInformation({
   position,
   setPosition,
 }) {
-  const { setIsOpen } = useContext(ModalLoginContext);
-  const openLogin = () => {
-    setIsOpen(true);
-  };
+  const { userInfo } = useContext(userContext);
 
   return (
     <div>
-      <Space>
-        <Title level={4}>ادخل معلوماتك</Title>
-        <Button type="text" className="btn-login" onClick={openLogin}>
-          تسجيل الدخول
-        </Button>
-      </Space>
+      <Title level={4}>ادخل المعلومات</Title>
       <Form layout="vertical">
         <Row>
           <Col>
@@ -34,6 +26,7 @@ function UserInformation({
                 placeholder="الاسم"
                 className="input-user"
                 name="username"
+                defaultValue={userInfo.name || ''}
                 onChange={onChangeInput}
               />
             </Form.Item>
@@ -44,6 +37,7 @@ function UserInformation({
                 placeholder="رقم الجوال"
                 className="input-user"
                 name="userPhone"
+                defaultValue={userInfo.phone || ''}
                 onChange={onChangeInput}
               />
             </Form.Item>
@@ -51,10 +45,11 @@ function UserInformation({
         </Row>
         <Row>
           <Col>
-            <Form.Item label="العنوان" required>
+            <Form.Item label="عنوان المكان الذي تريد تنظيفه" required>
               <Select
                 className="input-user"
                 placeholder="اختر موقعك"
+                defaultValue={userInfo.locationDetails.name || ''}
                 onChange={(value) => {
                   onChangeSelect(value);
                 }}

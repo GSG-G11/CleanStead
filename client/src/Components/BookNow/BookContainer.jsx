@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import uuid from 'react-uuid';
-import { Col, Row, Steps, Button, message } from 'antd';
+import { Col, Row, Steps, Button, message, Spin } from 'antd';
 import CustomTitle from '../CustomTitle';
 import ServicesChoice from './ServicesChoice';
 import DateTimeChoice from './DateTimeChoice';
@@ -10,6 +10,7 @@ import Summary from './Summary';
 import CompleteBook from './CompleteBook';
 import cities from '../../cities.json';
 import './style.css';
+import { userContext } from '../../Contexts/userContext';
 
 const { Step } = Steps;
 
@@ -26,29 +27,66 @@ function BookContainer() {
     lng: 34.457782320381796,
   });
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [isloading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const { userInfo } = useContext(userContext);
+
+  useEffect(() => {
+    if (userInfo.name) {
+      const { name, phone, locationDetails } = userInfo;
+      setUserName(name);
+      setUserPhone(phone);
+      setUserAddress(locationDetails.name);
+      setPosition({
+        lat: locationDetails.lat,
+        lng: locationDetails.lng,
+      });
+    }
+  }, []);
+
+  const selectedServices = () => {
+    let services = [];
+    let price = 0;
+    if (Object.keys(categoryServices).length) {
+      Object.values(categoryServices).forEach((value) => {
+        services = [
+          ...services,
+          ...value.filter((item) => item.isChecked === true),
+        ];
+      });
+    }
+    if (services.length) {
+      price = services.reduce(
+        (acc, curr) => acc + curr.price * curr.quantity,
+        0
+      );
+    }
+    return { services, price };
+  };
 
   const showModal = () => {
     if (username === '' || userPhone === '' || userAddress === '') {
       message.error('يجب إدخال جميع البيانات');
     } else {
       const user = {
-        username,
-        userPhone,
-        userAddress,
-        position,
+        name: username,
+        phone: userPhone,
+        location: userAddress,
+        lat: position.lat,
+        lng: position.lng,
       };
+      const dateTime = valueDate;
+      const repeat = valueRadio;
+      const { services, price } = selectedServices();
+      setIsLoading(true);
       axios
-        .post('/api/v1/book', { valueRadio, valueDate, user })
-        .then(({ data }) => {
-          console.log('data.message', data.message);
-          // message.success(data.message);
+        .post('/api/v1/book', { dateTime, price, repeat, services, user })
+        .then(() => {
           setIsModalVisible(true);
-          setIsLoading(false);
         })
-        .catch((err) => {
-          console.log('err', err);
+        .catch(() => {
           message.error('حدث خطأ ما');
+        })
+        .finally(() => {
           setIsLoading(false);
         });
     }
@@ -140,7 +178,7 @@ function BookContainer() {
       ),
     },
     {
-      title: 'معلوماتك',
+      title: 'معلومات صاحب الحجز',
       content: (
         <UserInformation
           onChangeInput={onChangeInput}
@@ -183,6 +221,7 @@ function BookContainer() {
             {current === steps.length - 1 && (
               <Button type="primary" onClick={showModal}>
                 ارسال
+                {isLoading ? <Spin /> : ''}
               </Button>
             )}
             {current > 0 && (

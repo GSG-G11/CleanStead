@@ -4,16 +4,17 @@ const postBookQuery = (
   dateTime: String,
   price: number,
   repeat: string,
+  user: any,
   userId: number,
 ) => {
   const sql = {
     text: `
           INSERT INTO
-            appointments(date_time,price,repeat,user_id)
-          VALUES ($1, $2, $3, $4)
+            appointments(date_time, price, repeat, name, phone, location, lat, lng, user_id)
+          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
             RETURNING id;
           `,
-    values: [dateTime, price, repeat, userId],
+    values: [dateTime, price, repeat, user.name, user.phone, user.location, user.lat, user.lng, userId],
   };
   return connection.query(sql);
 };
