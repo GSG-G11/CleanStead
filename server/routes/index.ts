@@ -26,6 +26,8 @@ import {
   logoutAdmin,
   getStatus,
   deleteBook,
+  getBookDay,
+  getBookMonth,
 } from '../controllers';
 
 const router = Router();
@@ -43,6 +45,8 @@ router.get('/logoutAdmin', logoutAdmin);
 router.post('/signin', signin);
 router.post('/admin/signin', signinAdmin);
 router.get('/book/status', getStatus);
+router.get('/book/month', getBookMonth);
+router.get('/book/day', getBookDay);
 router.get('/book', getBooks);
 router.get('/book/:id', validateLink, getBook);
 router.get('/user/:id/book', validateLink, getUserBooks);
