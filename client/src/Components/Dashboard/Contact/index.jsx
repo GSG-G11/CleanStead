@@ -13,7 +13,7 @@ function Contact() {
 
   const columns = [
     {
-      title: 'الرقم',
+      title: '#',
       dataIndex: 'key',
       key: 'key',
     },
