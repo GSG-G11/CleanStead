@@ -52,6 +52,8 @@ CREATE TABLE contacts (
   name VARCHAR(50) NOT NULL,
   email VARCHAR(255) NOT NULL,
   message TEXT NOT NULL,
+  status VARCHAR(255) DEFAULT 'pending',
+  sendTime TIMESTAMP DEFAULT NOW(),
   phone VARCHAR(30) NOT NULL,
   category_id INT,
   archived BOOLEAN DEFAULT FALSE,
