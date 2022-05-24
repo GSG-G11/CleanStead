@@ -26,7 +26,7 @@ const getBookMonth: RequestHandler = async (req, res, next) => {
       numberOfRequest.push(value);
     });
     res.json({
-      message: 'Successfully retrieved all books for today', status: 200, daysForMonth, numberOfRequest,
+      message: 'Successfully retrieved all books for this month', status: 200, daysForMonth, numberOfRequest,
     });
   } catch (error) {
     next(error);
