@@ -4,7 +4,9 @@ import {
 import {
   getCategories, getCategoryServices, postCategories, putCategories, archivedCategory,
 } from './categories';
-import { getContacts, addContact } from './contact';
+import {
+  getContacts, addContact, deleteContact, updateContactStatus,
+} from './contact';
 import signup from './signup';
 import { logout, logoutAdmin } from './logout';
 import { checkAuth, checkAdmin } from './middlewares/auth';
@@ -24,6 +26,7 @@ export {
   getCategoryServices,
   getContacts,
   addContact,
+  deleteContact,
   signup,
   logout,
   checkAuth,
@@ -41,6 +44,7 @@ export {
   postBook,
   validateLink,
   signinAdmin,
+  updateContactStatus,
   logoutAdmin,
   getStatus,
   deleteBook,

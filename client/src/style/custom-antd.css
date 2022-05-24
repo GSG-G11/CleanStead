@@ -15280,7 +15280,7 @@ textarea.ant-input-number {
   background: #fff;
 }
 .ant-layout-footer {
-  padding: 24px 50px;
+  padding: 24px 50px 0;
   color: rgba(0, 0, 0, 0.85);
   font-size: 14px;
   background: #fff;

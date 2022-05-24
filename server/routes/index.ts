@@ -5,6 +5,7 @@ import {
   postCategories,
   getContacts,
   addContact,
+  deleteContact,
   signup,
   logout,
   signin,
@@ -19,7 +20,8 @@ import {
   postBook,
   validateLink,
   signinAdmin,
-  // checkAdmin,
+  updateContactStatus,
+  checkAdmin,
   checkAuth,
   logoutAdmin,
   getStatus,
@@ -35,6 +37,8 @@ router.delete('/services/:id', validateLink, archivedService);
 router.delete('/categories/:id', validateLink, archivedCategory);
 router.delete('/book/:id', validateLink, deleteBook);
 router.route('/contact').get(getContacts).post(addContact);
+router.delete('/contact/archives/:id', validateLink, deleteContact);
+router.put('/contact/status/:id', validateLink, updateContactStatus);
 router.post('/signup', signup);
 router.get('/logout', logout);
 router.get('/logoutAdmin', logoutAdmin);
