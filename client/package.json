@@ -18,7 +18,9 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-uuid": "^1.0.2",
-    "swiper": "^8.1.4"
+    "swiper": "^8.1.4",
+    "chart.js": "^3.7.1",
+    "react-chartjs-2": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
