@@ -5,9 +5,11 @@ import CustomizedError from '../../utils/error';
 
 const postService: RequestHandler = async (req, res, next) => {
   try {
+    console.log(req.body);
     const {
       name, description, price, image, categoryId,
     } = await servicesSchema.validate(req.body, { abortEarly: false });
+    console.log(name, description, price, image, categoryId);
     const { rowCount } = await postServiceQuery(name, description, price, image, categoryId);
     if (!rowCount) {
       throw new CustomizedError(400, 'يوجد خلل حاول مرة أخرى');

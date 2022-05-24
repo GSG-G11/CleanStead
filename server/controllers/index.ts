@@ -11,7 +11,7 @@ import signup from './signup';
 import { logout, logoutAdmin } from './logout';
 import { checkAuth, checkAdmin } from './middlewares/auth';
 import signin from './signin';
-import { postService, archivedService, putService } from './services';
+import { postService, archivedService, putService, getServices } from './services';
 import {
   getBooks, getUserBooks, getBook, postBook, deleteBook, getStatus,
   getBookDay, getBookMonth,
@@ -50,4 +50,5 @@ export {
   deleteBook,
   getBookDay,
   getBookMonth,
+  getServices,
 };

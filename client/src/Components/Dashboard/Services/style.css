@@ -1,0 +1,10 @@
+.add-service-modal .ant-modal-footer {
+    display: none;
+}
+.add-btn {
+    border-radius: 0 !important;
+}
+.service-image {
+    width:70px;
+    height:70px;
+}
