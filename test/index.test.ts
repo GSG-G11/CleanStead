@@ -463,19 +463,26 @@ describe('Test post book', () => {
       .post('/api/v1/book')
       .send({
         dateTime: '2022-05-17 13:00',
-        price: 17,
+        price: 50,
         repeat: 'مرة واحدة',
         userId: 1,
-        services: [{ serviceId: 1, quantity: 5 }, { serviceId: 2, quantity: 5 }, { serviceId: 3, quantity: 5 }],
+        services: [{
+          id: 1, quantity: 5, name: 'test', description: 'test', price: 10, image: 'test', category_id: 1, archived: false, isChecked: false,
+        }],
+        user: {
+          name: 'test',
+          phone: '0123456789',
+          location: 'test',
+          lat: 31.65265,
+          lng: 34.6516125,
+        },
       })
       .set({ Cookie: token })
       .expect(201)
       .expect('Content-Type', /json/);
     expect(res.body.message).toBe('تم إضافة الطلب بنجاح');
   });
-});
 
-describe('Test post book', () => {
   it('should return status 400', async () => {
     const res = await supertest(app)
       .post('/api/v1/book')
@@ -483,8 +490,19 @@ describe('Test post book', () => {
         dateTime: '2022-05-17 13:00',
         price: 0,
         repeat: 'مرة واحدة',
+        user: {
+          name: 'test',
+          phone: '0123456789',
+          location: 'test',
+          lat: 31.65265,
+          lng: 34.6516125,
+        },
         userId: 1,
-        services: [{ serviceId: 1, quantity: 5 }, { serviceId: 2, quantity: 5 }, { serviceId: 3, quantity: 5 }],
+        services: [{
+          id: 1, quantity: 5, name: 'test', description: 'test', price: 10, image: 'test', category_id: 1, archived: false, isChecked: false,
+        }, {
+          id: 1, quantity: 5, name: 'test', description: 'test', price: 10, image: 'test', category_id: 1, archived: false, isChecked: false,
+        }],
       })
       .set({ Cookie: token })
       .expect(400)
@@ -492,6 +510,7 @@ describe('Test post book', () => {
     expect(res.body.message).toBe('Price must be large than 0');
   });
 });
+
 describe('Test Status Book', () => {
   it('should return status 200', async () => {
     const res = await supertest(app)

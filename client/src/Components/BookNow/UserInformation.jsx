@@ -1,42 +1,43 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Typography, Form, Space, Input, Button, Row, Col } from 'antd';
-import { ModalLoginContext } from '../../Contexts/ModalLogin';
+import { Typography, Form, Input, Row, Col, Select } from 'antd';
+import LeafMap from '../Map';
+import cities from '../../cities.json';
+import { userContext } from '../../Contexts/userContext';
 
 const { Title } = Typography;
-
-function UserInformation({ onChangeInput }) {
-  const { setIsOpen } = useContext(ModalLoginContext);
-  const openLogin = () => {
-    setIsOpen(true);
-  };
+const { Option } = Select;
+function UserInformation({
+  onChangeInput,
+  onChangeSelect,
+  position,
+  setPosition,
+}) {
+  const { userInfo } = useContext(userContext);
 
   return (
     <div>
-      <Space>
-        <Title level={4}>ادخل معلوماتك</Title>
-        <Button type="text" className="btn-login" onClick={openLogin}>
-          تسجيل الدخول
-        </Button>
-      </Space>
+      <Title level={4}>ادخل المعلومات</Title>
       <Form layout="vertical">
         <Row>
           <Col>
-            <Form.Item label="الاسم">
+            <Form.Item label="الاسم" required>
               <Input
                 placeholder="الاسم"
                 className="input-user"
                 name="username"
+                defaultValue={userInfo.name || ''}
                 onChange={onChangeInput}
               />
             </Form.Item>
           </Col>
           <Col>
-            <Form.Item label="رقم الجوال">
+            <Form.Item label="رقم الجوال" required>
               <Input
                 placeholder="رقم الجوال"
                 className="input-user"
                 name="userPhone"
+                defaultValue={userInfo.phone || ''}
                 onChange={onChangeInput}
               />
             </Form.Item>
@@ -44,24 +45,25 @@ function UserInformation({ onChangeInput }) {
         </Row>
         <Row>
           <Col>
-            <Form.Item label="العنوان">
-              <Input
-                placeholder="العنوان"
+            <Form.Item label="عنوان المكان الذي تريد تنظيفه" required>
+              <Select
                 className="input-user"
-                name="userAddress"
-                onChange={onChangeInput}
-              />
+                placeholder="اختر موقعك"
+                defaultValue={userInfo.locationDetails.name || ''}
+                onChange={(value) => {
+                  onChangeSelect(value);
+                }}
+              >
+                {cities.map(({ id, name }) => (
+                  <Option key={id} value={name} />
+                ))}
+              </Select>
             </Form.Item>
           </Col>
-          <Col>
-            <Form.Item label="العنوان التفصيلي">
-              <Input
-                placeholder="العنوان التفصيلي"
-                className="input-user"
-                name="userSpecificAddress"
-                onChange={onChangeInput}
-              />
-            </Form.Item>
+        </Row>
+        <Row>
+          <Col xs={{ span: 24 }}>
+            <LeafMap position={position} setPosition={setPosition} />
           </Col>
         </Row>
       </Form>
@@ -71,6 +73,12 @@ function UserInformation({ onChangeInput }) {
 
 UserInformation.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
+  onChangeSelect: PropTypes.func.isRequired,
+  position: PropTypes.shape({
+    lat: PropTypes.number,
+    lng: PropTypes.number,
+  }).isRequired,
+  setPosition: PropTypes.func.isRequired,
 };
 
 export default UserInformation;

@@ -28,8 +28,8 @@ function Register() {
     const locationData = cities.filter((city) => city.name === location)[0];
     const locationDetails = {
       name: locationData.name,
-      lat: locationData.coordinates.lat,
-      lng: locationData.coordinates.lng,
+      lat: +locationData.coordinates.lat,
+      lng: +locationData.coordinates.lng,
     };
     axios
       .post('/api/v1/signup', { name, email, phone, password, locationDetails })
