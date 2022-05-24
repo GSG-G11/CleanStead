@@ -1,0 +1,9 @@
+.desc-image{
+  width: 250px;
+}
+.collection-create-form_last-form-item {
+  margin-bottom: 0;
+}
+textarea.ant-input{
+  resize: none;
+}
