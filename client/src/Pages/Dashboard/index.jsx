@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import axios from 'axios';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import {
   Layout,
   Menu,
@@ -8,8 +10,8 @@ import {
   Avatar,
   Button,
   Badge,
+  message,
 } from 'antd';
-import { Link, Outlet, useLocation } from 'react-router-dom';
 import {
   PieChartOutlined,
   MailOutlined,
@@ -19,6 +21,7 @@ import {
   LogoutOutlined,
   BellOutlined,
 } from '@ant-design/icons';
+import { adminContext } from '../../Contexts/adminContext';
 import './style.css';
 import logo from '../../Assets/images/logo.svg';
 import user from '../../Assets/images/user.png';
@@ -36,32 +39,46 @@ function getItem(label, key, icon) {
 const items = [
   getItem(<Link to="/dashboard">نظرة عامة</Link>, '1', <PieChartOutlined />),
   getItem(
-    <Link to="/dashboard/book">الحجوزات</Link>,
+    <Link to="/dashboard/books">الحجوزات</Link>,
     '2',
     <CalendarOutlined />
   ),
   getItem(<Link to="/dashboard/contact">التواصل</Link>, '3', <MailOutlined />),
   getItem(
-    <Link to="/dashboard/services"> التصنيفات</Link>,
+    <Link to="/dashboard/categories"> التصنيفات</Link>,
     '4',
     <AppstoreOutlined />
   ),
   getItem(
-    <Link to="/dashboard/categories"> الخدمات</Link>,
+    <Link to="/dashboard/services"> الخدمات</Link>,
     '5',
     <ShoppingOutlined />
   ),
 ];
 const breadcrumbNameMap = {
   '/dashboard': 'نظرة عامة',
-  '/dashboard/book': 'الحجوزات',
+  '/dashboard/books': 'الحجوزات',
   '/dashboard/contact': 'التواصل',
   '/dashboard/services': 'التصنيفات',
   '/dashboard/categories': 'الخدمات',
 };
 
 function Dashboard() {
+  const { adminInfo, setIsAdminLogged } = useContext(adminContext);
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const logout = () => {
+    axios
+      .get('/api/v1/logoutAdmin')
+      .then(({ data }) => {
+        message.success(data.message);
+        setIsAdminLogged(false);
+        navigate('/login/admin', { replace: true });
+      })
+      .catch(() => {
+        message.error('حدث خطأ ما');
+      });
+  };
   return (
     <Layout
       style={{
@@ -70,7 +87,9 @@ function Dashboard() {
       className="page-layout"
     >
       <Sider className="sidebar" width={270}>
-        <Image preview={false} src={logo} className="logo-image" alt="logo" />
+        <Link to="/">
+          <Image preview={false} src={logo} className="logo-image" alt="logo" />
+        </Link>
         <Menu
           theme="light"
           defaultSelectedKeys={['1']}
@@ -78,7 +97,11 @@ function Dashboard() {
           items={items}
           className="sidebar-menu"
         />
-        <Button className="logout-btn" icon={<LogoutOutlined />}>
+        <Button
+          className="logout-btn"
+          onClick={logout}
+          icon={<LogoutOutlined />}
+        >
           تسجيل الخروج
         </Button>
       </Sider>
@@ -109,7 +132,7 @@ function Dashboard() {
                 />
               }
             />
-            <Title level={5}>محمد الهبيل</Title>
+            <Title level={5}>{adminInfo.name}</Title>
           </Space>
         </Header>
         <Content

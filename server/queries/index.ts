@@ -2,20 +2,24 @@ import {
   getCategoriesQuery,
   getCategoryServicesQuery, postCategoriesQuery, putCategoriesQuery, archivedCategoriesQuery,
 } from './categories';
-import { getContactsQuery, addContactQuery } from './contact';
+import {
+  getContactsQuery, addContactQuery, deleteContactQuery, updateContactStatusQuery,
+} from './contact';
 import { addUserQuery, checkEmailExistsQuery } from './user';
 import {
   getBooksQuery, getUserBooksQuery, getBookQuery,
   postBookQuery, postServiceBookQuery, deleteBookQuery, getStatusQuery,
+  getBookDayQuery, getBookMonthQuery,
 } from './book';
 import checkEmailAdminExistsQuery from './admin';
-import { postServiceQuery, deleteServiceQuery, putServiceQuery } from './services';
+import { postServiceQuery, archivedServiceQuery, putServiceQuery } from './services';
 
 export {
   getCategoriesQuery,
   getCategoryServicesQuery,
   getContactsQuery,
   addContactQuery,
+  deleteContactQuery,
   addUserQuery,
   checkEmailExistsQuery,
   postCategoriesQuery,
@@ -24,12 +28,15 @@ export {
   archivedCategoriesQuery,
   putCategoriesQuery,
   putServiceQuery,
-  deleteServiceQuery,
+  archivedServiceQuery,
   getUserBooksQuery,
   getBookQuery,
   postBookQuery,
   postServiceBookQuery,
   checkEmailAdminExistsQuery,
+  updateContactStatusQuery,
   getStatusQuery,
   deleteBookQuery,
+  getBookDayQuery,
+  getBookMonthQuery,
 };

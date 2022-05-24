@@ -1,5 +1,5 @@
 import postService from './postService';
 import putService from './putService';
-import deleteService from './deleteService';
+import archivedService from './archivedService';
 
-export { postService, deleteService, putService };
+export { postService, archivedService, putService };

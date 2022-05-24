@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   Layout,
   Menu,
@@ -20,6 +20,7 @@ import './navbar.css';
 
 import { CategoriesContext } from '../../Contexts/CategoriesContext';
 import { userContext } from '../../Contexts/userContext';
+import { ModalLoginContext } from '../../Contexts/ModalLogin';
 
 const { Header } = Layout;
 
@@ -27,6 +28,8 @@ function Navbar() {
   const [visible, setVisible] = useState(false);
   const { categories } = useContext(CategoriesContext);
   const { setIsLogged } = useContext(userContext);
+  const { setIsOpen } = useContext(ModalLoginContext);
+  const navigate = useNavigate();
 
   const showDrawer = () => {
     setVisible(true);
@@ -72,6 +75,8 @@ function Navbar() {
       .then(({ data }) => {
         message.success(data.message);
         setIsLogged(false);
+        navigate('/', { replace: true });
+        setIsOpen(false);
       })
       .catch(() => {
         message.error('حدث خطأ ما');

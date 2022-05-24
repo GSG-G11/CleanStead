@@ -72,21 +72,39 @@ VALUES
     );
 
 INSERT INTO
-    contacts(name, email, message, phone, category_id)
+    contacts(name, email, message, sendTime, phone, category_id)
 VALUES
     (
         'مصطفى قنوع',
         'mostafaqandfoo403@gmail.com',
         'انا بحاجة للمساعدة',
+        NOW(),
         0559565562,
         1
+    ),
+    (
+        'اسراء ابوريا',
+        'israaaburayya@gmail.com',
+        'انا بحاجة للمساعدة',
+        NOW(),
+        0559565562,
+        2
     ),
     (
         'محمد الهبيل',
         'mohameddf403@gmail.com',
         'اريد ان اعرف اكتر تفاصيل عن هذه الخدمة ',
+        NOW(),
         0555555555,
-        2
+        3
+    ),
+    (
+        'جهاد ابوشقرة',
+        'jehadjawad@gmail.com',
+        'انا بحاجة للمساعدة',
+        NOW(),
+        0559565562,
+        4
     );
 
 INSERT INTO
@@ -266,7 +284,7 @@ VALUES
 INSERT INTO
     appointments(date_time, creation_time, price,status, user_id)
 VALUES
-   (
+    (
         '2022-08-01 05:00',
         NOW(),
         50,
@@ -323,7 +341,98 @@ VALUES
         4
     ),
     (
-        '2020-06-01 01:00',
+        '2022-05-01 11:00',
+        NOW(),
+        135,
+        'decline',
+        5
+    ),
+    (
+        '2022-05-01 04:00',
+        NOW(),
+        78,
+        'approve',
+        3
+    ),
+    (
+        '2022-05-02 03:00',
+        NOW(),
+        20,
+        'decline',
+        4
+    ),
+    (
+        '2022-05-06 01:00',
+        NOW(),
+        135,
+        'decline',
+        5
+    ),
+    (
+        '2022-05-20 04:00',
+        NOW(),
+        78,
+        'approve',
+        3
+    ),
+    (
+        '2022-05-21 03:00',
+        NOW(),
+        20,
+        'decline',
+        4
+    ),
+    (
+        '2022-05-23 23:00',
+        NOW(),
+        135,
+        'decline',
+        5
+    ),
+    (
+        '2022-05-23 04:00',
+        NOW(),
+        78,
+        'approve',
+        3
+    ),
+    (
+        '2022-05-23 04:15',
+        NOW(),
+        20,
+        'decline',
+        4
+    ),
+    (
+        '2022-05-23 04:30',
+        NOW(),
+        135,
+        'decline',
+        5
+    ),
+    (
+        '2022-05-23 08:15',
+        NOW(),
+        20,
+        'decline',
+        4
+    ),
+    (
+        '2022-05-23 10:30',
+        NOW(),
+        135,
+        'decline',
+        5
+    ),
+    (
+        '2022-06-23 08:15',
+        NOW(),
+        20,
+        'decline',
+        4
+    ),
+    (
+        '2022-06-23 10:30',
         NOW(),
         135,
         'decline',

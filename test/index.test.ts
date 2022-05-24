@@ -64,7 +64,7 @@ describe('Test Get Contacts', () => {
       .get('/api/v1/contact')
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.data.length).toBe(2);
+    expect(res.body.data.length).toBe(4);
   });
 });
 describe('Test to register', () => {
@@ -288,24 +288,23 @@ describe('Test post service', () => {
   });
 });
 
-describe('Test delete service', () => {
-  it('should return status 200', async () => {
+describe('Test archived Service', () => {
+  it('should return status code 200 and message', async () => {
     const res = await supertest(app)
-      .delete('/api/v1/services/4')
-      .set({ Cookie: token })
+      .delete('/api/v1/services/3')
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('تم حذف الخدمة بنجاح!');
+    expect(res.body.message).toBe('Service archived successfully!');
   });
 });
 
 describe('Test get books', () => {
-  it('should return status code 200 and the length 6', async () => {
+  it('should return status code 200 and the length 22', async () => {
     const res = await supertest(app)
       .get('/api/v1/book')
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.data.length).toBe(9);
+    expect(res.body.data.length).toBe(22);
   });
 
   it('should return status code 200 and the length 2', async () => {
@@ -451,7 +450,7 @@ describe('Test archived book', () => {
 
   it('should return status code 400 and message', async () => {
     const res = await supertest(app)
-      .delete('/api/v1/book/17')
+      .delete('/api/v1/book/25')
       .expect(400)
       .expect('Content-Type', /json/);
     expect(res.body.message).toBe('لا يوجد حجز بهذا الرقم');
@@ -506,17 +505,66 @@ describe('Test Status Book', () => {
       .get('/api/v1/book/status')
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.data[1].total).toBe('2');
+    expect(res.body.data[1].total).toBe('12');
   });
   it('should return status 200 and check for data return', async () => {
     const res = await supertest(app)
       .get('/api/v1/book/status')
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.data).toEqual(   [
-      { alltotal: '10', total: '2', status: 'approve' },
-      { alltotal: '10', total: '2', status: 'decline' },
-      { alltotal: '10', total: '6', status: 'pending' } 
+    expect(res.body.data).toEqual([
+      { alltotal: '23', total: '5', status: 'approve' },
+      { alltotal: '23', total: '12', status: 'decline' },
+      { alltotal: '23', total: '6', status: 'pending' },
     ]);
   });
 });
+describe('Test archive contact', () => {
+  it('should return status 200', async () => {
+    const res = await supertest(app)
+      .delete('/api/v1/contact/archives/1')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.data.archived).toBe(true);
+  });
+});
+describe('Test update contact status', () => {
+  it('should return status 200', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/contact/status/1')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.data.status).toBe('done');
+  });
+});
+
+// describe('Test Book for day and month', () => {
+//   it('should return status 200 and hours for booking today', async () => {
+//     const res = await supertest(app)
+//       .get('/api/v1/book/day')
+//       .expect(200)
+//       .expect('Content-Type', /json/);
+//     expect(res.body.hoursForDay).toEqual(['4', '8', '10', '23']);
+//   });
+// it('should return status 200 and number of request in hour for recent day', async () => {
+//   const res = await supertest(app)
+//     .get('/api/v1/book/day')
+//     .expect(200)
+//     .expect('Content-Type', /json/);
+//   expect(res.body.numberOfRequest).toEqual([3, 1, 1, 1]);
+// });
+it('should return status 200 and day for booking month', async () => {
+  const res = await supertest(app)
+    .get('/api/v1/book/month')
+    .expect(200)
+    .expect('Content-Type', /json/);
+  expect(res.body.daysForMonth).toEqual(['1', '2', '6', '17', '20', '21', '23']);
+});
+it('should return status 200 and number of request in day for recent month', async () => {
+  const res = await supertest(app)
+    .get('/api/v1/book/month')
+    .expect(200)
+    .expect('Content-Type', /json/);
+  expect(res.body.numberOfRequest).toEqual([2, 1, 1, 1, 1, 1, 6]);
+});
+// });
