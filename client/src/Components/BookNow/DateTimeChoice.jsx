@@ -4,7 +4,7 @@ import moment from 'moment';
 import { Typography, Radio, Form, DatePicker } from 'antd';
 
 const { Title } = Typography;
-const repeated = ['مرة واحدة', 'يومياً', 'أسبوعياً', 'شهرياً'];
+const repeated = ['مرة واحدة', 'يوميا', 'أسبوعيا', 'شهريا'];
 function DateTimeChoice({
   valueDate,
   valueRadio,
@@ -28,7 +28,7 @@ function DateTimeChoice({
     <div>
       <Title level={4}>اختر موعد الحجز</Title>
       <Form layout="vertical">
-        <Form.Item label="تكرار الخدمة">
+        <Form.Item label="تكرار الخدمة" required>
           <Radio.Group onChange={onChangeRadio} value={valueRadio}>
             {repeated.map((repeat) => (
               <Radio className="radio-repeat" key={repeat} value={repeat}>
@@ -37,14 +37,14 @@ function DateTimeChoice({
             ))}
           </Radio.Group>
         </Form.Item>
-        <Form.Item label="التاريخ والوقت">
+        <Form.Item label="التاريخ والوقت" required>
           <DatePicker
             value={
-              valueDate.length ? moment(valueDate, 'A h:mm | YYYY-MM-DD') : ''
+              valueDate.length ? moment(valueDate, 'YYYY-MM-DD HH:MM') : ''
             }
             use12Hours
             onChange={onChange}
-            format="A h:mm | YYYY-MM-DD"
+            format="YYYY-MM-DD HH:MM"
             disabledDate={disabledDate}
             showTime
             allowClear={false}

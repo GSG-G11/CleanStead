@@ -6,16 +6,19 @@ import CustomizedError from '../../utils/error';
 const postBook: RequestHandler = async (req:any, res, next) => {
   try {
     const { id: userId } = req.user;
+
     const {
-      dateTime, price, repeat, services,
+      dateTime, price, repeat, services, user,
     } = await bookSchema.validate({ ...req.body, userId }, { abortEarly: false });
 
     const { rows } = await postBookQuery(
       dateTime,
       price,
       repeat,
+      user,
       userId,
     );
+
     if (!rows.length) {
       throw new CustomizedError(400, 'يوجد خلل حاول مرة أخرى');
     }
@@ -23,7 +26,7 @@ const postBook: RequestHandler = async (req:any, res, next) => {
       const { rowCount } = await postServiceBookQuery(
         service.quantity,
         rows[0].id,
-        service.serviceId,
+        service.id,
       );
       if (!rowCount) {
         throw new CustomizedError(400, 'يوجد خلل حاول مرة أخرى');

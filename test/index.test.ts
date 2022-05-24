@@ -64,7 +64,7 @@ describe('Test Get Contacts', () => {
       .get('/api/v1/contact')
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.data.length).toBe(2);
+    expect(res.body.data.length).toBe(4);
   });
 });
 describe('Test to register', () => {
@@ -304,7 +304,7 @@ describe('Test get books', () => {
       .get('/api/v1/book')
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.data.length).toBe(22);
+    expect(res.body.data.length).toBe(25);
   });
 
   it('should return status code 200 and the length 2', async () => {
@@ -450,7 +450,7 @@ describe('Test archived book', () => {
 
   it('should return status code 400 and message', async () => {
     const res = await supertest(app)
-      .delete('/api/v1/book/25')
+      .delete('/api/v1/book/100')
       .expect(400)
       .expect('Content-Type', /json/);
     expect(res.body.message).toBe('لا يوجد حجز بهذا الرقم');
@@ -463,19 +463,26 @@ describe('Test post book', () => {
       .post('/api/v1/book')
       .send({
         dateTime: '2022-05-17 13:00',
-        price: 17,
+        price: 50,
         repeat: 'مرة واحدة',
         userId: 1,
-        services: [{ serviceId: 1, quantity: 5 }, { serviceId: 2, quantity: 5 }, { serviceId: 3, quantity: 5 }],
+        services: [{
+          id: 1, quantity: 5, name: 'test', description: 'test', price: 10, image: 'test', category_id: 1, archived: false, isChecked: false,
+        }],
+        user: {
+          name: 'test',
+          phone: '0123456789',
+          location: 'test',
+          lat: 31.65265,
+          lng: 34.6516125,
+        },
       })
       .set({ Cookie: token })
       .expect(201)
       .expect('Content-Type', /json/);
     expect(res.body.message).toBe('تم إضافة الطلب بنجاح');
   });
-});
 
-describe('Test post book', () => {
   it('should return status 400', async () => {
     const res = await supertest(app)
       .post('/api/v1/book')
@@ -483,8 +490,19 @@ describe('Test post book', () => {
         dateTime: '2022-05-17 13:00',
         price: 0,
         repeat: 'مرة واحدة',
+        user: {
+          name: 'test',
+          phone: '0123456789',
+          location: 'test',
+          lat: 31.65265,
+          lng: 34.6516125,
+        },
         userId: 1,
-        services: [{ serviceId: 1, quantity: 5 }, { serviceId: 2, quantity: 5 }, { serviceId: 3, quantity: 5 }],
+        services: [{
+          id: 1, quantity: 5, name: 'test', description: 'test', price: 10, image: 'test', category_id: 1, archived: false, isChecked: false,
+        }, {
+          id: 1, quantity: 5, name: 'test', description: 'test', price: 10, image: 'test', category_id: 1, archived: false, isChecked: false,
+        }],
       })
       .set({ Cookie: token })
       .expect(400)
@@ -492,6 +510,7 @@ describe('Test post book', () => {
     expect(res.body.message).toBe('Price must be large than 0');
   });
 });
+
 describe('Test Status Book', () => {
   it('should return status 200', async () => {
     const res = await supertest(app)
@@ -505,7 +524,7 @@ describe('Test Status Book', () => {
       .get('/api/v1/book/status')
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.data[1].total).toBe('12');
+    expect(res.body.data[1].total).toBe('15');
   });
   it('should return status 200 and check for data return', async () => {
     const res = await supertest(app)
@@ -513,40 +532,29 @@ describe('Test Status Book', () => {
       .expect(200)
       .expect('Content-Type', /json/);
     expect(res.body.data).toEqual([
-      { alltotal: '23', total: '5', status: 'approve' },
-      { alltotal: '23', total: '12', status: 'decline' },
-      { alltotal: '23', total: '6', status: 'pending' },
+      { alltotal: '26', total: '5', status: 'approve' },
+      { alltotal: '26', total: '15', status: 'decline' },
+      { alltotal: '26', total: '6', status: 'pending' },
     ]);
   });
 });
 
-describe('Test Book for day and month', () => {
-  it('should return status 200 and hours for booking today', async () => {
+describe('Test archive contact', () => {
+  it('should return status 200', async () => {
     const res = await supertest(app)
-      .get('/api/v1/book/day')
+      .delete('/api/v1/contact/archives/1')
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.hoursForDay).toEqual(['4', '8', '10', '23']);
-  });
-  it('should return status 200 and number of request in hour for recent day', async () => {
-    const res = await supertest(app)
-      .get('/api/v1/book/day')
-      .expect(200)
-      .expect('Content-Type', /json/);
-    expect(res.body.numberOfRequest).toEqual([3, 1, 1, 1]);
-  });
-  it('should return status 200 and day for booking month', async () => {
-    const res = await supertest(app)
-      .get('/api/v1/book/month')
-      .expect(200)
-      .expect('Content-Type', /json/);
-    expect(res.body.daysForMonth).toEqual(['1', '2', '6', '17', '20', '21', '23']);
-  });
-  it('should return status 200 and number of request in day for recent month', async () => {
-    const res = await supertest(app)
-      .get('/api/v1/book/month')
-      .expect(200)
-      .expect('Content-Type', /json/);
-    expect(res.body.numberOfRequest).toEqual([2, 1, 1, 1, 1, 1, 6]);
+    expect(res.body.data.archived).toBe(true);
   });
 });
+describe('Test update contact status', () => {
+  it('should return status 200', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/contact/status/1')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.data.status).toBe('done');
+  });
+});
+

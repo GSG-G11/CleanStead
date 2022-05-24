@@ -11,7 +11,10 @@ function Summary({ categoryServices, valueDate, valueRadio }) {
 
   if (Object.keys(categoryServices).length) {
     Object.values(categoryServices).forEach((value) => {
-      services = value.filter((item) => item.isChecked === true);
+      services = [
+        ...services,
+        ...value.filter((item) => item.isChecked === true),
+      ];
     });
   }
 
