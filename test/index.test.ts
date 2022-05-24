@@ -558,3 +558,63 @@ describe('Test update contact status', () => {
   });
 });
 
+describe('Test put book', () => {
+  it('should return status 200', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/book/2')
+      .send({
+        dateTime: '2022-08-30 06:00',
+        repeat: 'أسبوعيا',
+        user: {
+          name: 'محمد',
+          phone: '0591234567',
+          location: 'غزة',
+          lat: 31.5346,
+          lng: 34.5465,
+        },
+      })
+      .set({ Cookie: token })
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('تم تعديل الحجز بنجاح');
+  });
+
+  it('should return status 400', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/book/2')
+      .send({
+        dateTime: '2022-08-30 06:00',
+        repeat: 'أسبوعيا',
+        user: {
+          name: 'محمد',
+          phone: '0591234567',
+          // location: 'غزة',
+          lat: 31.5346,
+          lng: 34.5465,
+        },
+      })
+      .set({ Cookie: token })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('Location Time is required');
+  });
+  it('should return status 404', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/book/30')
+      .send({
+        dateTime: '2022-08-30 06:00',
+        repeat: 'أسبوعيا',
+        user: {
+          name: 'محمد',
+          phone: '0591234567',
+          location: 'غزة',
+          lat: 31.5346,
+          lng: 34.5465,
+        },
+      })
+      .set({ Cookie: token })
+      .expect(404)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('لا يوجد حجز بهذا الرقم');
+  });
+});

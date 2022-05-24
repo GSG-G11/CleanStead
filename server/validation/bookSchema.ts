@@ -22,9 +22,9 @@ const bookSchema = object({
   )
     .required('You need to send the required services'),
   user: object().shape({
-    name: string().required('Name Time is required'),
-    phone: string().required('Phone Time is required'),
-    location: string().required('Location Time is required'),
+    name: string().required('Name is required'),
+    phone: string().required('Phone is required'),
+    location: string().required('Location is required'),
     lat: number(),
     lng: number(),
   }),
