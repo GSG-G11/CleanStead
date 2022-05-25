@@ -1,5 +1,11 @@
 INSERT INTO
-    users(name, email, password, phone, location)
+    users(
+        name, 
+        email, 
+        password, 
+        phone, 
+        location
+    )
 VALUES
     (
         'مصطفى قنوع',
@@ -38,7 +44,11 @@ VALUES
     );
 
 INSERT INTO
-    categories(name, description, image)
+    categories(
+        name, 
+        description, 
+        image
+    )
 VALUES
     (
         'تنظيف منازل',
@@ -72,7 +82,14 @@ VALUES
     );
 
 INSERT INTO
-    contacts(name, email, message, sendTime, phone, category_id)
+    contacts(
+        name,
+        email,
+        message,
+        sendTime,
+        phone,
+        category_id
+    )
 VALUES
     (
         'مصطفى قنوع',
@@ -108,7 +125,13 @@ VALUES
     );
 
 INSERT INTO
-    services(name, description, price, image, category_id)
+    services(
+        name, 
+        description, 
+        price, 
+        image, 
+        category_id
+    )
 VALUES
     (
         'غرفة النوم',
@@ -273,7 +296,11 @@ VALUES
     );
 
 INSERT INTO
-    admins(name, email, password)
+    admins(
+        name, 
+        email, 
+        password
+    )
 VALUES
     (
         'admin',
@@ -282,7 +309,18 @@ VALUES
     );
 
 INSERT INTO
-    appointments(date_time, creation_time, price, name, phone, location, lat, lng, status, user_id)
+    appointments(
+        date_time,
+        creation_time,
+        price,
+        name,
+        phone,
+        location,
+        lat,
+        lng,
+        status,
+        user_id
+    )
 VALUES
     (
         '2022-08-01 05:00',
@@ -584,6 +622,7 @@ VALUES
         'decline',
         5
     );
+
 INSERT INTO
     services_appointments(quantity, appointment_id, service_id)
 VALUES

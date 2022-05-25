@@ -1,15 +1,24 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import io from 'socket.io-client';
 import uuid from 'react-uuid';
 import { DeleteOutlined, CheckSquareOutlined } from '@ant-design/icons';
 import { Tag, Space, message, Button, Table } from 'antd';
 import './style.css';
 import { CategoriesContext } from '../../../Contexts/CategoriesContext';
 
+const socket = io.connect('http://127.0.0.1:5000');
 function Contact() {
   const [contacts, setContacts] = useState([]);
   const [update, setUpdate] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    socket.on('updateContact', () => {
+      message.info('New contact added');
+      setUpdate((prev) => !prev);
+    });
+  }, [socket]);
 
   const columns = [
     {

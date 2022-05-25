@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-import app from './app';
+import { app, server } from './app';
 
-app.listen(app.get('port'), ():void => {
+server.listen(app.get('port'), ():void => {
   console.log(`Server Running here 👉 http://localhost:${app.get('port')}`);
 });
