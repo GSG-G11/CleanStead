@@ -252,7 +252,7 @@ describe('Test post service', () => {
       })
       .expect(201)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('تم إضافة الخدمة بنجاح');
+    expect(res.body.message).toBe('Successfully added service');
   });
 });
 
@@ -362,7 +362,7 @@ describe('Test put service', () => {
       .set({ Cookie: token })
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('تم تعديل الخدمة بنجاح');
+    expect(res.body.message).toBe('Successfully edited service');
   });
 });
 describe('Test put service', () => {
