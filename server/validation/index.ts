@@ -5,3 +5,4 @@ export { default as categoriesSchema } from './categoriesSchema';
 export { default as servicesSchema } from './servicesSchema';
 export { default as paramsIdSchema } from './paramsIdSchema';
 export { default as bookSchema } from './bookSchema';
+export { default as updateBookSchema } from './updateBookSchema';
