@@ -165,7 +165,7 @@ function Services() {
     axios
       .delete(`/api/v1/services/${id}`)
       .then(() => {
-        message.success('تم أرشفة الخدمة بنجاح');
+        message.success('تم حذف الخدمة بنجاح');
         setUpdated(!updated);
       })
       .catch(() => {
