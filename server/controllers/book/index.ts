@@ -6,7 +6,16 @@ import getStatus from './getStatus';
 import deleteBook from './deleteBook';
 import getBookDay from './getBookDay';
 import getBookMonth from './getBookMonth';
+import updateBook from './updateBook';
 
 export {
-  getBooks, getUserBooks, getBook, postBook, getStatus, deleteBook, getBookDay, getBookMonth,
+  getBooks,
+  getUserBooks,
+  getBook,
+  postBook,
+  getStatus,
+  deleteBook,
+  getBookDay,
+  getBookMonth,
+  updateBook,
 };
