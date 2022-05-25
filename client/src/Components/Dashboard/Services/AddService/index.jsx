@@ -1,23 +1,24 @@
 import React, { useContext } from 'react';
 import { Select, Form, Button, Spin, Input } from 'antd';
-// import { LoadingOutlined } from '@ant-design/icons';
+import { LoadingOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
 // import axios from 'axios';
 import { CategoriesContext } from '../../../../Contexts/CategoriesContext';
 
 const { Option } = Select;
-// const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 function AddService({
   onChangeInput,
   onChangeSelect,
   serviceName,
   price,
-  image,
   category,
   description,
   edited,
   submitService,
   onChangeImage,
+  loading,
+  loadingImage,
 }) {
   const { categories } = useContext(CategoriesContext);
 
@@ -70,11 +71,11 @@ function AddService({
             type="file"
             name="image"
             placeholder="ادخل صورة الخدمة"
-            // value={image}
             onChange={onChangeImage}
           />
+          {loadingImage && <Spin indicator={antIcon} />}
         </Form.Item>
-        {/* {isloading && <Spin indicator={antIcon} />} */}
+
         <Form.Item>
           <Button
             block
@@ -82,6 +83,7 @@ function AddService({
             htmlType="submit"
             className="button"
             onClick={submitService}
+            icon={loading && <Spin indicator={antIcon} />}
           >
             {edited ? 'تعديل الخدمة' : 'اضافة الخدمة'}
           </Button>
@@ -93,19 +95,22 @@ function AddService({
 
 AddService.defaultProps = {
   edited: false,
+  loading: false,
+  loadingImage: false,
 };
 
 AddService.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
   onChangeSelect: PropTypes.func.isRequired,
   serviceName: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  image: PropTypes.string.isRequired,
-  category: PropTypes.number.isRequired,
+  price: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   edited: PropTypes.bool,
   submitService: PropTypes.func.isRequired,
   onChangeImage: PropTypes.func.isRequired,
+  loading: PropTypes.bool,
+  loadingImage: PropTypes.bool,
 };
 
 export default AddService;

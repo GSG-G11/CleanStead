@@ -3,7 +3,7 @@ import { putServiceQuery } from '../../queries';
 import { servicesSchema } from '../../validation';
 import CustomizedError from '../../utils/error';
 
-const puttService: RequestHandler = async (req, res, next) => {
+const putService: RequestHandler = async (req, res, next) => {
   const { id: serviceId } = req.params;
   try {
     const {
@@ -29,4 +29,4 @@ const puttService: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default puttService;
+export default putService;

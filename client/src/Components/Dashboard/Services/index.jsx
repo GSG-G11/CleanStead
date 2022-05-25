@@ -11,13 +11,14 @@ function Services() {
   const [services, setServices] = useState([]);
   const [archived, setArchived] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [loadingImage, setLoadingImage] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [serviceName, setServiceName] = useState('');
   const [price, setPrice] = useState('');
   const [image, setImage] = useState('');
   const [category, setCatogery] = useState('');
   const [description, setDescription] = useState('');
-  const [serviceId, setServiceId] = useState('');
+  const [serviceId, setServiceId] = useState();
   const [edited, setEdited] = useState(false);
   const { categories } = useContext(CategoriesContext);
 
@@ -29,18 +30,13 @@ function Services() {
     });
   };
 
-  const onChangeInput = ({ target: { name, value, files } }) => {
-    // console.log(name, value, files);
+  const onChangeInput = ({ target: { name, value } }) => {
     switch (name) {
       case 'serviceName':
         setServiceName(value);
         break;
       case 'price':
         setPrice(value);
-        break;
-      case 'image':
-        console.log(name, files);
-        setImage(files[0]);
         break;
       case 'description':
         setDescription(value);
@@ -49,19 +45,24 @@ function Services() {
         break;
     }
   };
-  const onChangeImage = async ({ target: { name, files } }) => {
+  const onChangeImage = async ({ target: { files } }) => {
     const formData = new FormData();
     formData.append('file', files[0]);
-    formData.append('upload_preset', 'zzplsoz0');
-
+    formData.append(
+      'upload_preset',
+      `${process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET}`
+    );
+    setLoadingImage(true);
     try {
       const { data } = await axios.post(
-        `https://api.cloudinary.com/v1_1/jehad/image/upload`,
+        `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`,
         formData
       );
       setImage(data.secure_url);
+      setLoadingImage(false);
     } catch {
-      console.log('error');
+      message.error('حدث خطأ ما في تحميل الصورة ');
+      setLoadingImage(false);
     }
   };
   useEffect(() => {
@@ -94,11 +95,10 @@ function Services() {
     setServiceId('');
     setCatogery('');
     setIsOpen(false);
-    edited && setEdited(false);
+    if (edited) setEdited(false);
   };
 
   const onEdit = (data) => {
-    console.log(data);
     setServiceName(data.serviceNAme);
     setPrice(data.price);
     setImage(data.image.props.src);
@@ -109,23 +109,57 @@ function Services() {
     setEdited(true);
   };
 
-  const submitService = async () => {
-    console.log(serviceName, price, image, description, category);
+  const editService = async () => {
+    setLoading(true);
+    const id = serviceId;
+    await axios
+      .put(`/api/v1/services/${id}`, {
+        name: serviceName,
+        price,
+        image,
+        categoryId: category,
+        description,
+      })
+      .then(() => {
+        message.success('تمت تعديل الخدمة بنجاح');
+        setArchived(!archived);
+        setLoading(false);
+        setIsOpen(false);
+      })
+      .catch(() => {
+        message.error('حدث خطأ ما');
+        setLoading(false);
+      });
+  };
+
+  const addService = async () => {
+    setLoading(true);
+    await axios
+      .post(`/api/v1/services`, {
+        name: serviceName,
+        price,
+        image,
+        categoryId: category,
+        description,
+      })
+      .then(() => {
+        message.success('تمت اضافة خدمة بنجاح');
+        setArchived(!archived);
+        setLoading(false);
+        setIsOpen(false);
+      })
+      .catch(() => {
+        message.error('حدث خطأ ما');
+        setLoading(false);
+      });
+  };
+  const submitService = () => {
     if (image.length !== 0) {
-      await axios
-        .post('/api/v1/services', {
-          name: serviceName,
-          price,
-          image,
-          categoryId: category,
-          description,
-        })
-        .then(() => {
-          message.success('تمت اضافة خدمة بنجاح');
-        })
-        .catch((err) => {
-          message.error(err);
-        });
+      if (edited) {
+        editService();
+      } else {
+        addService();
+      }
     }
   };
 
@@ -242,7 +276,7 @@ function Services() {
         onClick={openModal}
       />
       <Modal
-        title=" اضافة تصنيف جديد "
+        title={edited ? 'تعديل الخدمة الحالية' : 'إضافة خدمة جديدة'}
         visible={isOpen}
         onCancel={handleCancel}
         width={430}
@@ -259,6 +293,8 @@ function Services() {
           edited={edited}
           submitService={submitService}
           onChangeImage={onChangeImage}
+          loading={loading}
+          loadingImage={loadingImage}
         />
       </Modal>
       <Table
