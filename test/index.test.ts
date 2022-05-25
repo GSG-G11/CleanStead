@@ -3,7 +3,7 @@
 import supertest from 'supertest';
 import connection from '../server/database/connection';
 import dbBuild from '../server/database/build';
-import app from '../server/app';
+import { app } from '../server/app';
 
 const token = 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJtb3N0YWZhcWFub280MDNAZ21haWwuY29tIiwiaWF0IjoxNjUyOTU5MTg2fQ.JPl7-xCgUDXJ5b8qvJfew61dttDfK4TCQ3NnGgMye6c';
 
@@ -154,22 +154,7 @@ describe('Test to register', () => {
     expect(res.body.message).toBe('your phone number must be 10 digits');
   });
 });
-describe('Test to add Contact', () => {
-  it('should return one contact', async () => {
-    const res = await supertest(app)
-      .post('/api/v1/contact')
-      .send({
-        name: 'Israa',
-        email: 'israa@hotmail.com',
-        messageInfo: 'i need more details',
-        phone: '1015465455',
-        categoryId: 1,
-      })
-      .expect(201)
-      .expect('Content-Type', /json/);
-    expect(res.body.status).toBe(201);
-  });
-});
+
 describe('Test to add contact', () => {
   it('should return status code 400 and error message for email validation', async () => {
     const res = await supertest(app)
@@ -555,5 +540,66 @@ describe('Test update contact status', () => {
       .expect(200)
       .expect('Content-Type', /json/);
     expect(res.body.data.status).toBe('done');
+  });
+});
+
+describe('Test put book', () => {
+  it('should return status 200', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/book/2')
+      .send({
+        dateTime: '2022-08-30 06:00',
+        repeat: 'أسبوعيا',
+        user: {
+          name: 'محمد',
+          phone: '0591234567',
+          location: 'غزة',
+          lat: 31.5346,
+          lng: 34.5465,
+        },
+      })
+      .set({ Cookie: token })
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('تم تعديل الحجز بنجاح');
+  });
+
+  it('should return status 400', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/book/2')
+      .send({
+        dateTime: '2022-08-30 06:00',
+        repeat: 'أسبوعيا',
+        user: {
+          name: 'محمد',
+          phone: '0591234567',
+          // location: 'غزة',
+          lat: 31.5346,
+          lng: 34.5465,
+        },
+      })
+      .set({ Cookie: token })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('Location Time is required');
+  });
+  it('should return status 404', async () => {
+    const res = await supertest(app)
+      .put('/api/v1/book/30')
+      .send({
+        dateTime: '2022-08-30 06:00',
+        repeat: 'أسبوعيا',
+        user: {
+          name: 'محمد',
+          phone: '0591234567',
+          location: 'غزة',
+          lat: 31.5346,
+          lng: 34.5465,
+        },
+      })
+      .set({ Cookie: token })
+      .expect(404)
+      .expect('Content-Type', /json/);
+    expect(res.body.message).toBe('لا يوجد حجز بهذا الرقم');
   });
 });
