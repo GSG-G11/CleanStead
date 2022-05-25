@@ -63,21 +63,25 @@ function Categories() {
       title: '#',
       dataIndex: 'key',
       key: 'key',
+      width: 50,
     },
     {
       title: 'التصنيف',
       dataIndex: 'name',
       key: 'name',
+      width: 150,
     },
     {
       title: 'الوصف',
       dataIndex: 'description',
       key: 'description',
+      width: 350,
     },
     {
       title: 'الصورة',
       dataIndex: 'image',
       key: 'image',
+      width: 350,
     },
     {
       title: 'اكشن',
@@ -153,6 +157,9 @@ function Categories() {
           pageSize: 5,
         }}
         loading={loading}
+        scroll={{
+          x: 800,
+        }}
       />
     </>
   );

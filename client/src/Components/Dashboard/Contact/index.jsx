@@ -178,6 +178,9 @@ function Contact() {
         pageSize: 5,
       }}
       loading={loading}
+      scroll={{
+        x: 800,
+      }}
     />
   );
 }
