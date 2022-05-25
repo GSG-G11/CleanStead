@@ -40,11 +40,10 @@ function DateTimeChoice({
         <Form.Item label="التاريخ والوقت" required>
           <DatePicker
             value={
-              valueDate.length ? moment(valueDate, 'YYYY-MM-DD HH:MM') : ''
+              valueDate.length ? moment(valueDate, 'YYYY-MM-DD HH:mm') : ''
             }
-            use12Hours
             onChange={onChange}
-            format="YYYY-MM-DD HH:MM"
+            format="YYYY-MM-DD HH:mm"
             disabledDate={disabledDate}
             showTime
             allowClear={false}

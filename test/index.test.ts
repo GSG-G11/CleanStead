@@ -3,7 +3,7 @@
 import supertest from 'supertest';
 import connection from '../server/database/connection';
 import dbBuild from '../server/database/build';
-import app from '../server/app';
+import { app } from '../server/app';
 
 const token = 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJtb3N0YWZhcWFub280MDNAZ21haWwuY29tIiwiaWF0IjoxNjUyOTU5MTg2fQ.JPl7-xCgUDXJ5b8qvJfew61dttDfK4TCQ3NnGgMye6c';
 
@@ -154,22 +154,7 @@ describe('Test to register', () => {
     expect(res.body.message).toBe('your phone number must be 10 digits');
   });
 });
-describe('Test to add Contact', () => {
-  it('should return one contact', async () => {
-    const res = await supertest(app)
-      .post('/api/v1/contact')
-      .send({
-        name: 'Israa',
-        email: 'israa@hotmail.com',
-        messageInfo: 'i need more details',
-        phone: '1015465455',
-        categoryId: 1,
-      })
-      .expect(201)
-      .expect('Content-Type', /json/);
-    expect(res.body.status).toBe(201);
-  });
-});
+
 describe('Test to add contact', () => {
   it('should return status code 400 and error message for email validation', async () => {
     const res = await supertest(app)
@@ -267,7 +252,7 @@ describe('Test post service', () => {
       })
       .expect(201)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('تم إضافة الخدمة بنجاح');
+    expect(res.body.message).toBe('Successfully added service');
   });
 });
 
@@ -377,7 +362,7 @@ describe('Test put service', () => {
       .set({ Cookie: token })
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('تم تعديل الخدمة بنجاح');
+    expect(res.body.message).toBe('Successfully edited service');
   });
 });
 describe('Test put service', () => {
