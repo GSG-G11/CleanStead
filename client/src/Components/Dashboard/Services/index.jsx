@@ -9,25 +9,30 @@ import './style.css';
 
 function Services() {
   const [services, setServices] = useState([]);
-  const [archived, setArchived] = useState(false);
+  const [updated, setUpdated] = useState(false);
   const [loading, setLoading] = useState(false);
   const [loadingImage, setLoadingImage] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [serviceName, setServiceName] = useState('');
   const [price, setPrice] = useState('');
   const [image, setImage] = useState('');
-  const [category, setCatogery] = useState('');
+  const [category, setCatogery] = useState();
   const [description, setDescription] = useState('');
   const [serviceId, setServiceId] = useState();
   const [edited, setEdited] = useState(false);
+  const [error, setError] = useState('');
   const { categories } = useContext(CategoriesContext);
 
-  const onChangeSelect = (value) => {
+  const handleCategory = (value) => {
     categories.forEach((ele) => {
       if (ele.name === value) {
-        setCatogery(ele.id);
+        setCatogery(ele.name);
       }
     });
+  };
+
+  const onChangeSelect = (value) => {
+    handleCategory(value);
   };
 
   const onChangeInput = ({ target: { name, value } }) => {
@@ -81,19 +86,22 @@ function Services() {
       .finally(() => setLoading(false));
 
     return () => cancelTokenSource.cancel();
-  }, [archived]);
+  }, [updated]);
 
   const openModal = () => {
     setIsOpen(true);
   };
 
-  const handleCancel = () => {
+  const clearState = () => {
     setServiceName('');
     setPrice('');
     setImage('');
     setDescription('');
+    setCatogery();
     setServiceId('');
-    setCatogery('');
+  };
+  const handleCancel = () => {
+    clearState();
     setIsOpen(false);
     if (edited) setEdited(false);
   };
@@ -104,62 +112,57 @@ function Services() {
     setImage(data.image.props.src);
     setDescription(data.description);
     setServiceId(data.key);
-    setCatogery(data.categoryName);
+    handleCategory(data.categoryName);
     setIsOpen(true);
     setEdited(true);
   };
-
-  const editService = async () => {
+  const handle = async (method, url, data, message1) => {
     setLoading(true);
-    const id = serviceId;
-    await axios
-      .put(`/api/v1/services/${id}`, {
-        name: serviceName,
-        price,
-        image,
-        categoryId: category,
-        description,
-      })
+    setError('');
+    await axios[method](url, data)
       .then(() => {
-        message.success('تمت تعديل الخدمة بنجاح');
-        setArchived(!archived);
+        message.success(message1);
+        setUpdated(!updated);
         setLoading(false);
+        clearState();
         setIsOpen(false);
+        setEdited(false);
       })
-      .catch(() => {
-        message.error('حدث خطأ ما');
-        setLoading(false);
+      .catch((err) => {
+        if (err.response.data) {
+          setError('حاول مرة أخرى');
+          setLoading(false);
+        } else {
+          message.error('حدث خطأ ما');
+          setLoading(false);
+        }
       });
   };
 
-  const addService = async () => {
-    setLoading(true);
-    await axios
-      .post(`/api/v1/services`, {
-        name: serviceName,
-        price,
-        image,
-        categoryId: category,
-        description,
-      })
-      .then(() => {
-        message.success('تمت اضافة خدمة بنجاح');
-        setArchived(!archived);
-        setLoading(false);
-        setIsOpen(false);
-      })
-      .catch(() => {
-        message.error('حدث خطأ ما');
-        setLoading(false);
-      });
-  };
   const submitService = () => {
-    if (image.length !== 0) {
+    if (serviceName && price && price > 0 && image && description && category) {
+      setError('');
+      let categoryId;
+      categories.forEach((ele) => {
+        if (ele.name === category) {
+          categoryId = ele.id;
+        }
+      });
+      const data = {
+        name: serviceName,
+        price,
+        image,
+        categoryId,
+        description,
+      };
       if (edited) {
-        editService();
+        const id = serviceId;
+        handle('put', `/api/v1/services/${id}`, data, 'تمت تعديل الخدمة بنجاح');
       } else {
-        addService();
+        handle('post', `/api/v1/services`, data, 'تمت اضافة خدمة بنجاح');
       }
+    } else {
+      setError('جميع البيانات مطلوبة ووسعر الخدمة يجب أن يكون أكبر من صفر ');
     }
   };
 
@@ -168,7 +171,7 @@ function Services() {
       .delete(`/api/v1/services/${id}`)
       .then(() => {
         message.success('تم أرشفة الخدمة بنجاح');
-        setArchived(!archived);
+        setUpdated(!updated);
       })
       .catch(() => {
         message.error('حدث خطأ ما');
@@ -177,7 +180,7 @@ function Services() {
 
   const columns = [
     {
-      title: '#',
+      title: 'رقم التصنيف',
       dataIndex: 'key',
       key: 'key',
     },
@@ -192,7 +195,7 @@ function Services() {
       dataIndex: 'categoryName',
     },
     {
-      title: '($)السعر',
+      title: ' السعر $',
       key: 'price',
       dataIndex: 'price',
     },
@@ -220,13 +223,12 @@ function Services() {
       title: 'اكشن',
       key: 'option',
       className: 'action',
-      width: 30,
       valueType: 'action',
       render: (text, record) => [
         <Button
           type="text"
           onClick={() => onEdit(record)}
-          icon={<EditOutlined />}
+          icon={<EditOutlined style={{ color: '#28c76f' }} />}
         />,
         <Button
           type="text"
@@ -237,7 +239,7 @@ function Services() {
     },
   ];
   const tableData = [];
-  services.map((service) => {
+  services.map((service) =>
     tableData.push({
       key: service.id,
       serviceNAme: service.name,
@@ -265,8 +267,8 @@ function Services() {
                 color: 'error',
               },
             ],
-    });
-  });
+    })
+  );
   return (
     <div>
       <Button
@@ -274,7 +276,10 @@ function Services() {
         className="add-btn"
         icon={<PlusOutlined />}
         onClick={openModal}
-      />
+        shape="round"
+      >
+        اضافة خدمة
+      </Button>
       <Modal
         title={edited ? 'تعديل الخدمة الحالية' : 'إضافة خدمة جديدة'}
         visible={isOpen}
@@ -295,6 +300,7 @@ function Services() {
           onChangeImage={onChangeImage}
           loading={loading}
           loadingImage={loadingImage}
+          error={error}
         />
       </Modal>
       <Table

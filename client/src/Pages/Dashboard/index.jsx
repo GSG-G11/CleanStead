@@ -136,9 +136,10 @@ function Dashboard() {
           </Space>
         </Header>
         <Content
-          style={{
-            margin: '0 16px',
-          }}
+        className='dashboard-content'
+          // style={{
+          //   margin: '0 16px',
+          // }}
         >
           <div
             className="site-layout-background"

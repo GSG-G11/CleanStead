@@ -2,7 +2,7 @@
     display: none;
 }
 .add-btn {
-    border-radius: 0 !important;
+    margin-bottom: 0.5em;
 }
 .service-image {
     width:70px;
