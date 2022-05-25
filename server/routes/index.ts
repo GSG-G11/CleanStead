@@ -21,7 +21,7 @@ import {
   validateLink,
   signinAdmin,
   updateContactStatus,
-  checkAdmin,
+  // checkAdmin,
   checkAuth,
   logoutAdmin,
   getStatus,
