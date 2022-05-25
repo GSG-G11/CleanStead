@@ -1,12 +1,30 @@
 import { join } from 'path';
+import http from 'http';
+import { Server } from 'socket.io';
 import express, { Request, Response, Application } from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
+import cors from 'cors';
 import { clientError, serverError } from './controllers';
 import router from './routes';
 
 const app:Application = express();
+
+app.use(cors());
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: 'http://127.0.0.1:3000',
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  },
+});
+
+let socketConnected : any;
+io.on('connection', (socket) => {
+  socketConnected = socket;
+});
+
 dotenv.config();
 const {
   env: { PORT, NODE_ENV },
@@ -36,4 +54,4 @@ if (NODE_ENV === 'production') {
 app.use(clientError);
 app.use(serverError);
 
-export default app;
+export { app, server, socketConnected };
