@@ -59,8 +59,8 @@ const breadcrumbNameMap = {
   '/dashboard': 'نظرة عامة',
   '/dashboard/books': 'الحجوزات',
   '/dashboard/contact': 'التواصل',
-  '/dashboard/services': 'التصنيفات',
-  '/dashboard/categories': 'الخدمات',
+  '/dashboard/services': 'الخدمات',
+  '/dashboard/categories': 'التصنيفات',
 };
 
 function Dashboard() {
@@ -136,7 +136,7 @@ function Dashboard() {
           </Space>
         </Header>
         <Content
-        className='dashboard-content'
+          className="dashboard-content"
           // style={{
           //   margin: '0 16px',
           // }}

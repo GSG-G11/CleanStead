@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { message, Button, Modal, Table, Image } from 'antd';
 import axios from 'axios';
 import { DeleteOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons';
-import uuid from 'react-uuid';
 import AddService from './AddService';
 import { CategoriesContext } from '../../../Contexts/CategoriesContext';
 import './style.css';

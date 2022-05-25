@@ -22,7 +22,6 @@ function AddService({
   error,
 }) {
   const { categories } = useContext(CategoriesContext);
-console.log(category, 'efdv')
   return (
     <div>
       <Form layout="vertical">
