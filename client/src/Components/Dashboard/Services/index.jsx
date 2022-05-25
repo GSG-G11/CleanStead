@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { message, Button, Modal, Table, Space, Tag, Image } from 'antd';
+import { message, Button, Modal, Table, Image } from 'antd';
 import axios from 'axios';
 import { DeleteOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons';
 import uuid from 'react-uuid';
@@ -16,23 +16,19 @@ function Services() {
   const [serviceName, setServiceName] = useState('');
   const [price, setPrice] = useState('');
   const [image, setImage] = useState('');
-  const [category, setCatogery] = useState();
+  const [category, setCatogery] = useState('');
   const [description, setDescription] = useState('');
   const [serviceId, setServiceId] = useState();
   const [edited, setEdited] = useState(false);
   const [error, setError] = useState('');
   const { categories } = useContext(CategoriesContext);
 
-  const handleCategory = (value) => {
+  const onChangeSelect = (value) => {
     categories.forEach((ele) => {
       if (ele.name === value) {
         setCatogery(ele.name);
       }
     });
-  };
-
-  const onChangeSelect = (value) => {
-    handleCategory(value);
   };
 
   const onChangeInput = ({ target: { name, value } }) => {
@@ -97,7 +93,7 @@ function Services() {
     setPrice('');
     setImage('');
     setDescription('');
-    setCatogery();
+    setCatogery('');
     setServiceId('');
   };
   const handleCancel = () => {
@@ -112,7 +108,7 @@ function Services() {
     setImage(data.image.props.src);
     setDescription(data.description);
     setServiceId(data.key);
-    handleCategory(data.categoryName);
+    setCatogery(data.categoryName);
     setIsOpen(true);
     setEdited(true);
   };
@@ -205,21 +201,6 @@ function Services() {
       dataIndex: 'image',
     },
     {
-      title: 'الحالة',
-      key: 'status',
-      dataIndex: 'status',
-      valueType: 'status',
-      render: (_, record) => (
-        <Space>
-          {record.status.map(({ name, color }) => (
-            <Tag color={color} key={uuid()}>
-              {name}
-            </Tag>
-          ))}
-        </Space>
-      ),
-    },
-    {
       title: 'اكشن',
       key: 'option',
       className: 'action',
@@ -253,20 +234,6 @@ function Services() {
           alt="service-image"
         />
       ),
-      status:
-        service.archived === false
-          ? [
-              {
-                name: 'متوفر',
-                color: 'success',
-              },
-            ]
-          : [
-              {
-                name: 'غير متوفر ',
-                color: 'error',
-              },
-            ],
     })
   );
   return (

@@ -22,7 +22,7 @@ function AddService({
   error,
 }) {
   const { categories } = useContext(CategoriesContext);
-
+console.log(category, 'efdv')
   return (
     <div>
       <Form layout="vertical">
@@ -118,7 +118,7 @@ AddService.propTypes = {
   onChangeSelect: PropTypes.func.isRequired,
   serviceName: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
-  category: PropTypes.number.isRequired,
+  category: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   edited: PropTypes.bool,
   submitService: PropTypes.func.isRequired,
