@@ -1,5 +1,5 @@
 import {
-  object, string,
+  object, string, number,
 } from 'yup';
 
 const signupSchema = object({
@@ -9,8 +9,8 @@ const signupSchema = object({
   password: string().min(8, 'Your password must be 8 digits at least').required('Password is required'),
   locationDetails: object().shape({
     name: string().required(),
-    lat: string(),
-    lng: string(),
+    lat: number(),
+    lng: number(),
   }).required('Your location is required'),
 });
 

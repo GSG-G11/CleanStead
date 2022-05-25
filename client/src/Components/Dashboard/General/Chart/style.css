@@ -1,0 +1,28 @@
+.book-chart {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px 35px;
+}
+.book-chart-title {
+    margin-bottom: 0 !important;
+}
+.chart {
+    margin: 10px auto;
+    width: 600px !important;
+    height: 350px !important;
+}
+.day-month-menu .ant-menu {
+    box-shadow: none !important;
+    margin-top: 20px;
+}
+
+.day-month-menu .ant-menu-item {
+    width: 100px ;
+    display: inline;
+    padding: 10px 20px ;
+    border-radius: 10px;
+    
+}
+.day-month-menu .ant-menu-item-selected .ant-typography {
+    color: #00ADEE ;
+}

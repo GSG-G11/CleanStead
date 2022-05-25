@@ -59,8 +59,8 @@ function App() {
                     element={<Description page="category" />}
                   />
                   <Route path="category/:id" element={<Category />} />
-                  <Route path="/book" element={<Book />} />
                   <Route element={<UserProtected />}>
+                    <Route path="/book" element={<Book />} />
                     <Route path="/profile" element={<Profile />} />
                   </Route>
                 </Route>
