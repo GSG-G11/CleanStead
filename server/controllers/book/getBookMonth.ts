@@ -19,7 +19,7 @@ const getBookMonth: RequestHandler = async (req, res, next) => {
     const daysForMonth:any = [];
     const numberOfRequest:any = [];
     if (!freqMap.size) {
-      throw new CustomizedError(400, 'There is no book for this day');
+      throw new CustomizedError(400, 'There is no booking for this day');
     }
     freqMap.forEach((value, key) => {
       daysForMonth.push(key);

@@ -14,12 +14,12 @@ const addContact: RequestHandler = async (req, res, next) => {
     );
     const { rowCount, rows } = await addContactQuery(name, email, messageInfo, phone, categoryId);
     if (!rowCount) {
-      throw new CustomizedError(400, 'يوجد خلل حاول مرة أخرى');
+      throw new CustomizedError(400, 'there have error try again later');
     }
 
-    socketConnected.broadcast.emit('updateContact', rows);
+    socketConnected.broadcast.emit('update Contact', rows);
 
-    return res.status(201).json({ message: 'تمت إضافة طلبك سوف يتم التواصل معك قريبا', status: 201 });
+    return res.status(201).json({ message: 'Successfully added contact', status: 201 });
   } catch (error:any) {
     if (error.name === 'ValidationError') {
       return next(new CustomizedError(400, error.errors[0]));

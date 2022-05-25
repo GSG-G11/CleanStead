@@ -26,3 +26,7 @@
 .day-month-menu .ant-menu-item-selected .ant-typography {
     color: #00ADEE ;
 }
+.error-booking {
+    display: block;
+    text-align: center;
+}

@@ -72,8 +72,7 @@ function Navbar() {
   const logout = () => {
     axios
       .get('/api/v1/logout')
-      .then(({ data }) => {
-        message.success(data.message);
+      .then(() => {
         setIsLogged(false);
         navigate('/', { replace: true });
         setIsOpen(false);

@@ -31,13 +31,14 @@ function ContactUsForm() {
     setIsLoading(true);
     axios
       .post('/api/v1/contact', { name, email, phone, messageInfo, categoryId })
-      .then(({ data }) => {
-        message.success(data.message);
+      .then(() => {
+        message.success('سوف يتم التواصل معك قريبا');
         setIsLoading(false);
       })
       .catch((err) => {
         if (err.response) {
-          setError(err.response.data.message);
+          console.log(err.response.data);
+          setError('حاول مرة أخرى');
           setIsLoading(false);
         } else {
           message.error('حدث خطأ ما');

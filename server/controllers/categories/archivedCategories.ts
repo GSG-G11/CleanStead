@@ -10,7 +10,7 @@ const archivedCategory: RequestHandler = async (req, res, next) => {
       id as any,
     );
     if (!rowCount) {
-      throw new CustomizedError(400, ' There is no category with this Id');
+      throw new CustomizedError(400, ' There is no category for this Id');
     }
 
     return res.json({ message: 'Category archived successfully!', status: 200 });

@@ -20,7 +20,7 @@ const postBook: RequestHandler = async (req:any, res, next) => {
     );
 
     if (!rows.length) {
-      throw new CustomizedError(400, 'يوجد خلل حاول مرة أخرى');
+      throw new CustomizedError(400, 'There have error try again later');
     }
     services.forEach(async (service) => {
       const { rowCount } = await postServiceBookQuery(
@@ -29,10 +29,10 @@ const postBook: RequestHandler = async (req:any, res, next) => {
         service.id,
       );
       if (!rowCount) {
-        throw new CustomizedError(400, 'يوجد خلل حاول مرة أخرى');
+        throw new CustomizedError(400, 'There have error try again later');
       }
     });
-    return res.status(201).json({ message: 'تم إضافة الطلب بنجاح', status: 201 });
+    return res.status(201).json({ message: 'Successfully added booking', status: 201 });
   } catch (error:any) {
     if (error.name === 'ValidationError') {
       return next(new CustomizedError(400, error.errors[0]));

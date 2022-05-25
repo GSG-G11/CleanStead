@@ -143,7 +143,7 @@ function Contact() {
     axios
       .put(`/api/v1/contact/status/${id}`)
       .then(({ data }) => {
-        message.success(data.message);
+        message.success('تم الرد على المستخدم');
         setUpdate(!update);
       })
       .catch(() => {
@@ -154,7 +154,7 @@ function Contact() {
     axios
       .delete(`/api/v1/contact/archives/${id}`)
       .then(({ data }) => {
-        message.success(data.message);
+        message.success('تم حذف الطلب ');
         setUpdate(!update);
       })
       .catch(() => {
