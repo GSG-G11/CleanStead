@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import uuid from 'react-uuid';
-import {
-  ExclamationCircleOutlined,
-  DeleteOutlined,
-  EditOutlined,
-} from '@ant-design/icons';
-import { message, Table, Tag, Space, Button, Modal } from 'antd';
-
-const { confirm } = Modal;
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import { message, Table, Tag, Space, Button } from 'antd';
 
 function DashboardBook() {
   const [books, setbooks] = useState([]);
