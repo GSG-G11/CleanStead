@@ -13,5 +13,5 @@ const getBooksQuery = () => connection.query(`
   FROM
     appointments AS a
   JOIN  users AS u ON  a.user_id = u.id
-  WHERE a.archived = false order by id `);
+  WHERE a.archived = false order by id desc `);
 export default getBooksQuery;
