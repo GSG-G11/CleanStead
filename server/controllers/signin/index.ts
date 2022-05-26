@@ -13,11 +13,11 @@ const signin: RequestHandler = async (req, res, next) => {
     } = await signinSchema.validate(req.body, { abortEarly: false });
     const { rowCount, rows: data } = await checkEmailExistsQuery(email);
     if (rowCount === 0) {
-      throw new CustomizedError(400, 'يوجد خطأ بالإيميل أو كلمة السر');
+      throw new CustomizedError(400, 'There have error with email or password');
     }
     const resultComapre = await compare(password, data[0].password);
     if (!resultComapre) {
-      throw new CustomizedError(400, 'يوجد خطأ بالإيميل أو كلمة السر');
+      throw new CustomizedError(400, 'There have error with email or password');
     }
     const token = await jwtSign({
       id: data[0].id,
@@ -28,7 +28,7 @@ const signin: RequestHandler = async (req, res, next) => {
       lat: data[0].lat,
       lng: data[0].lng,
     });
-    res.cookie('token', token).json({ message: 'تم تسجيل دخولك بنجاح', status: 200 });
+    res.cookie('token', token).json({ message:'You have been successfully logged in', status: 200 });
   } catch (error: any) {
     if (error.name === 'ValidationError') {
       return next(new CustomizedError(400, error.errors[0]));

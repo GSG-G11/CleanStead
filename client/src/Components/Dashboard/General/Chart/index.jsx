@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Typography, Row, Col, Menu, message } from 'antd';
 import {
   Chart as ChartJS,
@@ -31,10 +31,11 @@ const months = [
 ];
 
 function Chart() {
-  const [labels, setLabels] = React.useState();
-  const [dataChart, setDataChart] = React.useState();
-  const [labelCahrt, setLabelChart] = React.useState('حجوزات اليوم');
-  const [axisLabel, setAxisLabel] = React.useState('ساعات اليوم');
+  const [labels, setLabels] = useState();
+  const [dataChart, setDataChart] = useState();
+  const [labelCahrt, setLabelChart] = useState('حجوزات اليوم');
+  const [axisLabel, setAxisLabel] = useState('ساعات اليوم');
+  const [error, setError] = useState('');
   const date = new Date();
 
   const handleDataForDay = () => {
@@ -51,7 +52,7 @@ function Chart() {
       })
       .catch((err) => {
         if (err.response.data.message) {
-          message.error('لا يوجد حجوازت حتى الأن لليوم');
+          setError('لا يوجد حجوازت حتى الأن لليوم');
           setLabelChart('حجوزات اليوم');
           setAxisLabel('ساعات اليوم');
           setLabels();
@@ -78,7 +79,7 @@ function Chart() {
       })
       .catch((err) => {
         if (err.response.data.message) {
-          message.error('لا يوجد حجوزات في هذا الشهر ');
+          setError('لا يوجد حجوازات حتى الأن للشهر');
           setLabelChart('حجوزات الشهر');
           setAxisLabel('أيام الشهر');
           setLabels();
@@ -109,7 +110,7 @@ function Chart() {
         borderWidth: 2,
         tension: 0.3,
         fill: true,
-        pointRadius: 0,
+        pointStyle: 'star',
       },
     },
     scales: {
@@ -208,6 +209,11 @@ function Chart() {
           />
         </Col>
       </Row>
+      {error && (
+        <Text type="danger" className="error-booking">
+          {error}
+        </Text>
+      )}
       <Line options={options} data={data} className="chart" />
     </div>
   );

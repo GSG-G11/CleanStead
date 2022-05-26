@@ -16,9 +16,9 @@ const putCategories: RequestHandler = async (req, res, next) => {
       image,
     );
     if (!rowCount) {
-      throw new CustomizedError(400, 'يوجد خلل حاول مرة أخرى');
+      throw new CustomizedError(400, 'There have error try again later');
     }
-    return res.json({ message: 'تم تعديل الخدمة بنجاح', status: 200, data: rows[0] });
+    return res.json({ message: 'Successfully update category', status: 200, data: rows[0] });
   } catch (error:any) {
     if (error.errors) {
       return next(new CustomizedError(400, error.errors[0]));

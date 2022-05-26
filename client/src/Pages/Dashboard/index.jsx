@@ -71,7 +71,6 @@ function Dashboard() {
     axios
       .get('/api/v1/logoutAdmin')
       .then(({ data }) => {
-        message.success(data.message);
         setIsAdminLogged(false);
         navigate('/login/admin', { replace: true });
       })

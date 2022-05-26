@@ -33,15 +33,14 @@ function Register() {
     };
     axios
       .post('/api/v1/signup', { name, email, phone, password, locationDetails })
-      .then(({ data }) => {
-        message.success(data.message);
+      .then(() => {
         setIsLoading(false);
         setIsOpen(false);
         setIsLogged(true);
       })
       .catch((err) => {
         if (err.response) {
-          setErrorEmail(err.response.data.message);
+          setErrorEmail('الإيميل موجود مسبقاً');
           setIsLoading(false);
         } else {
           message.error('حدث خطأ ما');
