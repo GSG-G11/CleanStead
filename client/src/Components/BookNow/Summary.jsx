@@ -50,17 +50,13 @@ function Summary({ categoryServices, valueDate, valueRadio }) {
           <Title type="secondary" className="summary-title" level={5}>
             مدة التكرار
           </Title>
-          <Text strong className="title">
-            {valueRadio}
-          </Text>
+          <Text>{valueRadio}</Text>
         </div>
         <div>
           <Title type="secondary" className="summary-title" level={5}>
             التاريخ والوقت
           </Title>
-          <Text strong className="title">
-            {valueDate}
-          </Text>
+          <Text>{valueDate}</Text>
         </div>
         <div>
           <Title type="secondary" className="summary-title" level={5}>
