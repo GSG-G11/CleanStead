@@ -127,6 +127,7 @@ function DashboardBook() {
     axios
       .put(`/api/v1/book/${id}`)
       .then(({ data }) => {
+        // console.log(data);
         message.success(data.message);
         setUpdate(!update);
       })
