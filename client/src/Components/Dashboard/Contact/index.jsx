@@ -75,18 +75,21 @@ function Contact() {
       width: 30,
       valueType: 'action',
       render: (text, record, _, action) => [
-        <Button
-          type="text"
-          className="delete-contact-button"
-          onClick={() => onResponse(record.key)}
-          icon={<CheckSquareOutlined style={{ color: '#63D697' }} />}
-        />,
-        <Button
-          type="text"
-          className="delete-contact-button"
-          onClick={() => onArchived(record.key)}
-          icon={<DeleteOutlined style={{ color: '#EA5455' }} />}
-        />,
+        <Space size={3}>
+          <Button
+            type="text"
+            className="delete-contact-button"
+            onClick={() => onResponse(record.key)}
+            icon={<CheckSquareOutlined style={{ color: '#63D697' }} />}
+          />
+          ,
+          <Button
+            type="text"
+            className="delete-contact-button"
+            onClick={() => onArchived(record.key)}
+            icon={<DeleteOutlined style={{ color: '#EA5455' }} />}
+          />
+        </Space>,
       ],
     },
   ];
@@ -184,6 +187,9 @@ function Contact() {
         pageSize: 5,
       }}
       loading={loading}
+      scroll={{
+        x: 800,
+      }}
     />
   );
 }
