@@ -1,13 +1,51 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import uuid from 'react-uuid';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
-import { message, Table, Tag, Space, Button } from 'antd';
+import { message, Table, Tag, Space, Button, Modal, Radio } from 'antd';
+import { ModalLoginContext } from '../../../Contexts/ModalLogin';
 
 function DashboardBook() {
+  const { isOpen, setIsOpen } = useContext(ModalLoginContext);
+  const handleCancel = () => {
+    setIsOpen(false);
+  };
   const [books, setbooks] = useState([]);
   const [update, setUpdate] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [statusValue, setStatusValue] = useState('pending');
+  const [currentRecord, setCurrentRecord] = useState('pending');
+
+  const onUpdate = (id, value) => {
+    console.log(value);
+    switch (value) {
+      case 'معلق':
+        setStatusValue('pending');
+        break;
+      case 'مقبول':
+        setStatusValue('approve');
+        break;
+      case 'مرفوض':
+        setStatusValue('reject');
+        break;
+      default:
+        setStatusValue('pending');
+        break;
+    }
+    setCurrentRecord(id);
+    setIsOpen(true);
+  };
+  const onArchived = (id) => {
+    axios
+      .delete(`/api/v1/book/${id}`)
+      .then(({ data }) => {
+        message.success(data.message);
+        setUpdate(!update);
+      })
+      .catch(() => {
+        message.error('حدث خطأ ما');
+      });
+  };
 
   const columns = [
     {
@@ -63,11 +101,13 @@ function DashboardBook() {
       className: 'action',
       width: 30,
       valueType: 'action',
-      render: (text, record, _, action) => [
+      render: (record) => [
         <Button
           type="text"
           className="delete-contact-button"
-          onClick={() => onUpdate(record.key)}
+          onClick={() => {
+            onUpdate(record.key, record.status[0].name);
+          }}
           icon={<EditOutlined style={{ color: '#63D697' }} />}
         />,
         <Button
@@ -110,22 +150,34 @@ function DashboardBook() {
         book.status === 'pending'
           ? [
               {
-                name: 'مرفوض',
-                color: 'error',
+                name: 'معلق',
+                color: 'warning',
+              },
+            ]
+          : book.status === 'approve'
+          ? [
+              {
+                name: 'مقبول',
+                color: 'success',
               },
             ]
           : [
               {
-                name: ' مقبول',
-                color: 'success',
+                name: 'مرفوض',
+                color: 'error',
               },
             ],
     });
   });
 
-  const onUpdate = (id) => {
+  const changeStatus = (e) => {
+    setStatusValue(e.target.value);
+  };
+
+  const updateStatus = () => {
+    console.log('statusValue', statusValue);
     axios
-      .put(`/api/v1/book/${id}`)
+      .put(`/api/v1/book/${currentRecord}`, { status: statusValue })
       .then(({ data }) => {
         // console.log(data);
         message.success(data.message);
@@ -134,28 +186,38 @@ function DashboardBook() {
       .catch(() => {
         message.error('حدث خطأ ما');
       });
+    setIsOpen(false);
   };
-  const onArchived = (id) => {
-    axios
-      .delete(`/api/v1/book/${id}`)
-      .then(({ data }) => {
-        message.success(data.message);
-        setUpdate(!update);
-      })
-      .catch(() => {
-        message.error('حدث خطأ ما');
-      });
-  };
-
   return (
-    <Table
-      columns={columns}
-      dataSource={tableData}
-      pagination={{
-        pageSize: 5,
-      }}
-      loading={loading}
-    />
+    <>
+      <Modal
+        title="تعديل الحجز"
+        visible={isOpen}
+        okText="تعديل"
+        cancelText="إلغاء"
+        onCancel={handleCancel}
+        width={430}
+        onOk={updateStatus}
+      >
+        <Radio.Group
+          name="radiogroup"
+          value={statusValue}
+          onChange={changeStatus}
+        >
+          <Radio value="approve">مقبول</Radio>
+          <Radio value="pending">معلق</Radio>
+          <Radio value="reject">مرفوض</Radio>
+        </Radio.Group>
+      </Modal>
+      <Table
+        columns={columns}
+        dataSource={tableData}
+        pagination={{
+          pageSize: 5,
+        }}
+        loading={loading}
+      />
+    </>
   );
 }
 
