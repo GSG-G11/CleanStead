@@ -70,7 +70,7 @@ function Dashboard() {
   const logout = () => {
     axios
       .get('/api/v1/logoutAdmin')
-      .then(({ data }) => {
+      .then(() => {
         setIsAdminLogged(false);
         navigate('/login/admin', { replace: true });
       })
@@ -134,12 +134,7 @@ function Dashboard() {
             <Title level={5}>{adminInfo.name}</Title>
           </Space>
         </Header>
-        <Content
-          className="dashboard-content"
-          // style={{
-          //   margin: '0 16px',
-          // }}
-        >
+        <Content className="dashboard-content">
           <div
             className="site-layout-background"
             style={{
