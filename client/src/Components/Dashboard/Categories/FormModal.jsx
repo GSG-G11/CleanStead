@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Form, Input, Modal, message, Spin } from 'antd';
@@ -15,6 +15,17 @@ function FormModal({
   const [uploadedImage, setUploadedImage] = useState('');
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
+
+  let categroyData = {};
+  categroyData = {
+    name: categoryRecord.name,
+    description: categoryRecord.description,
+    image: isUpload ? uploadedImage : categoryRecord.image,
+  };
+
+  useEffect(() => {
+    form.setFieldsValue(categroyData);
+  }, [visible]);
 
   const uploadImage = (e) => {
     setIsUpload(true);
@@ -69,6 +80,7 @@ function FormModal({
         name="form_in_modal"
       >
         <Form.Item
+          shouldUpdate
           name="name"
           label="الاسم"
           rules={[
@@ -94,6 +106,7 @@ function FormModal({
         </Form.Item>
         <Form.Item
           label="الصورة"
+          required
           rules={[
             {
               required: true,
@@ -122,7 +135,7 @@ FormModal.propTypes = {
   state: PropTypes.string.isRequired,
   categoryRecord: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    discription: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
   }).isRequired,
 };

@@ -3,4 +3,5 @@
 }
 textarea.ant-input{
   resize: none;
+  height: 150px !important
 }

@@ -40,6 +40,8 @@ function Categories() {
         .then(({ data }) => {
           setUpdate(!update);
           message.success(data.message);
+          setIsUpload(false);
+          setCategoryRecord({});
         })
         .catch(() => {
           message.error('حدث خطأ ما');
@@ -50,6 +52,7 @@ function Categories() {
         .then(({ data }) => {
           message.success(data.message);
           setUpdate(!update);
+          setIsUpload(false);
         })
         .catch(() => {
           message.error('حدث خطأ ما');
@@ -158,7 +161,7 @@ function Categories() {
         }}
         loading={loading}
         scroll={{
-          x: 800,
+          x: 700,
         }}
       />
     </>
