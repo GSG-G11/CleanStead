@@ -28,7 +28,6 @@ function DashboardBook() {
   const [currentRecord, setCurrentRecord] = useState('pending');
 
   const onUpdate = (id, value) => {
-    console.log(value);
     switch (value) {
       case 'معلق':
         setStatusValue('pending');

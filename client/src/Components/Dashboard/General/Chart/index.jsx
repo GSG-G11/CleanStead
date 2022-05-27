@@ -10,7 +10,12 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import axios from 'axios';
+import io from 'socket.io-client';
 import './style.css';
+
+const socket = io.connect(
+  `https://${window.location.hostname}:${window.location.port}`
+);
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler);
 
@@ -33,9 +38,10 @@ const months = [
 function Chart() {
   const [labels, setLabels] = useState();
   const [dataChart, setDataChart] = useState();
-  const [labelCahrt, setLabelChart] = useState('حجوزات اليوم');
+  const [labelChart, setLabelChart] = useState('حجوزات اليوم');
   const [axisLabel, setAxisLabel] = useState('ساعات اليوم');
   const [error, setError] = useState('');
+  const [activeSelect, setActiveSelect] = useState('day');
   const date = new Date();
 
   const handleDataForDay = () => {
@@ -47,6 +53,7 @@ function Chart() {
       .then(({ data: { hoursForDay, numberOfRequest } }) => {
         setLabelChart('حجوزات اليوم');
         setAxisLabel('ساعات اليوم');
+        setActiveSelect('day');
         setLabels(hoursForDay);
         setDataChart(numberOfRequest);
       })
@@ -74,6 +81,7 @@ function Chart() {
       .then(({ data: { daysForMonth, numberOfRequest } }) => {
         setLabelChart('حجوزات الشهر');
         setAxisLabel('أيام الشهر');
+        setActiveSelect('month');
         setLabels(daysForMonth);
         setDataChart(numberOfRequest);
       })
@@ -93,15 +101,24 @@ function Chart() {
   };
 
   useEffect(() => {
-    handleDataForDay();
-  }, []);
+    if (activeSelect === 'month') {
+      handleDataForMonth();
+    } else {
+      handleDataForDay();
+    }
+  }, [activeSelect]);
 
-  const getDays = () => {
-    handleDataForDay();
-  };
-  const getMonths = () => {
-    handleDataForMonth();
-  };
+  useEffect(() => {
+    socket.on('postBook', () => {
+      message.info('تم اضافة حجز جديد');
+      if (activeSelect === 'month') {
+        handleDataForMonth();
+      } else {
+        handleDataForDay();
+      }
+    });
+  }, [socket]);
+
   const options = {
     datasets: {
       line: {
@@ -165,7 +182,7 @@ function Chart() {
     labels,
     datasets: [
       {
-        label: labelCahrt,
+        label: labelChart,
         data: dataChart,
       },
     ],
@@ -173,7 +190,7 @@ function Chart() {
   const items = [
     {
       label: (
-        <Text onClick={getDays} type="text">
+        <Text onClick={() => setActiveSelect('day')} type="text">
           اليوم
         </Text>
       ),
@@ -181,7 +198,7 @@ function Chart() {
     },
     {
       label: (
-        <Text onClick={getMonths} type="text">
+        <Text onClick={() => setActiveSelect('month')} type="text">
           الشهر
         </Text>
       ),
@@ -194,7 +211,7 @@ function Chart() {
       <Row>
         <Col span={18}>
           <Title level={4} className="book-chart-title">
-            {labelCahrt}
+            {labelChart}
           </Title>
           <Text>
             {date.getDate()} - {months[date.getMonth()]} - {date.getFullYear()}

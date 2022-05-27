@@ -14,7 +14,7 @@ import { ModalLoginContext } from './ModalLogin';
 const userContext = createContext();
 
 function UserProvider({ children }) {
-  const [userInfo, setUserInfo] = useState({});
+  const [userInfo, setUserInfo] = useState('');
   const [isLogged, setIsLogged] = useState(false);
   const token = document.cookie.split('token=')[1];
   const { setIsOpen } = useContext(ModalLoginContext);
@@ -23,7 +23,7 @@ function UserProvider({ children }) {
 
   const userData = useMemo(
     () => ({ userInfo, setUserInfo, isLogged, setIsLogged }),
-    [userInfo]
+    [userInfo, setUserInfo]
   );
   useEffect(() => {
     if (token) {
@@ -35,7 +35,7 @@ function UserProvider({ children }) {
       }
     } else {
       setIsLogged(false);
-      setUserInfo({});
+      setUserInfo('');
     }
   }, [isLogged]);
 
