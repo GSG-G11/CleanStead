@@ -38,7 +38,7 @@ function BookContainer() {
       setUserName(name);
       setUserPhone(phone);
       setUserAddress(location);
-      setPosition([lat, lng]);
+      setPosition([parseFloat(lat), parseFloat(lng)]);
       //   lat,
       //   lng,
       // });
@@ -115,7 +115,10 @@ function BookContainer() {
     cities.forEach((city) => {
       if (city.name === value) {
         // setPosition(city.coordinates);
-        setPosition([city.coordinates.lat, city.coordinates.lng]);
+        setPosition([
+          parseFloat(city.coordinates.lat),
+          parseFloat(city.coordinates.lng),
+        ]);
       }
     });
     setUserAddress(value);

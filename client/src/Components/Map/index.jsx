@@ -32,7 +32,10 @@ export default function LeafMap({ position, setPosition }) {
       //   lat: +location.coordinates.lat,
       //   lng: +location.coordinates.lng,
       // });
-      setPosition([location.coordinates.lat, location.coordinates.lng]);
+      setPosition([
+        parseFloat(location.coordinates.lat),
+        parseFloat(location.coordinates.lng),
+      ]);
     } else {
       message.error(location.error.message);
     }
@@ -46,7 +49,7 @@ export default function LeafMap({ position, setPosition }) {
 
     geocoder.on('select', ({ center }) => {
       // setPosition({ lat: center[1], lng: center[0] });
-      setPosition([center[1], center[0]]);
+      setPosition([parseFloat(center[0]), parseFloat(center[0])]);
     });
   };
 

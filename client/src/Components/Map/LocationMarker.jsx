@@ -15,7 +15,7 @@ export default function LocationMarker({ position, setPosition }) {
   const map = useMapEvents({
     click(e) {
       // setPosition(e.latlng);
-      setPosition([e.latlng.lat, e.latlng.lng]);
+      setPosition([parseFloat(e.latlng.lat), parseFloat(e.latlng.lng)]);
     },
   });
   map.flyTo(position, map.getZoom());
