@@ -14,7 +14,6 @@ export default function LocationMarker({ position, setPosition }) {
 
   const map = useMapEvents({
     click(e) {
-      // setPosition(e.latlng);
       if (e.latlng) {
         setPosition([parseFloat(e.latlng.lat), parseFloat(e.latlng.lng)]);
       }
@@ -24,17 +23,12 @@ export default function LocationMarker({ position, setPosition }) {
 
   return position === null ? null : (
     <Marker position={position} icon={markerIcon}>
-      {/* <Popup>{`${position.lat} : ${position.lng}`}</Popup> */}
       <Popup>{`${position[0]} : ${position[1]}`}</Popup>
     </Marker>
   );
 }
 
 LocationMarker.propTypes = {
-  // position: PropTypes.shape({
-  //   lat: PropTypes.number,
-  //   lng: PropTypes.number,
-  // }).isRequired,
   position: PropTypes.arrayOf(PropTypes.number).isRequired,
   setPosition: PropTypes.func.isRequired,
 };

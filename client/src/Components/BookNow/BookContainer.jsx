@@ -25,9 +25,6 @@ function BookContainer() {
   const [position, setPosition] = useState([
     31.512646000696368, 34.457782320381796,
   ]);
-  //   lat: 31.512646000696368,
-  //   lng: 34.457782320381796,
-  // });
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { userInfo } = useContext(userContext);
@@ -35,17 +32,15 @@ function BookContainer() {
   useEffect(() => {
     if (typeof userInfo !== 'string') {
       const { name, phone, location, lat, lng } = userInfo;
+      console.log('location', location);
+      console.log('lat', lat);
       setUserName(name);
       setUserPhone(phone);
       setUserAddress(location);
       if (lat && lng) {
-        setPosition([lat, lng]);
+        setPosition([parseFloat(lat), parseFloat(lng)]);
       }
     }
-    // setPosition([parseFloat(lat), parseFloat(lng)]);
-    //   lat,
-    //   lng,
-    // });
   }, [userInfo]);
 
   const selectedServices = () => {
@@ -76,8 +71,6 @@ function BookContainer() {
         name: username,
         phone: userPhone,
         location: userAddress,
-        // lat: position.lat,
-        // lng: position.lng,
         lat: position[0],
         lng: position[1],
       };

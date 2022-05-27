@@ -74,10 +74,6 @@ function UserInformation({
 UserInformation.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
   onChangeSelect: PropTypes.func.isRequired,
-  // position: PropTypes.shape({
-  //   lat: PropTypes.number,
-  //   lng: PropTypes.number,
-  // }).isRequired,
   position: PropTypes.arrayOf(PropTypes.number).isRequired,
   setPosition: PropTypes.func.isRequired,
 };
