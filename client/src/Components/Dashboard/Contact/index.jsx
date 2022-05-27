@@ -12,7 +12,7 @@ import './style.css';
 import { CategoriesContext } from '../../../Contexts/CategoriesContext';
 
 const socket = io.connect(
-  `http://${window.location.hostname}:${window.location.port}`
+  `https://${window.location.hostname}:${window.location.port}`
 );
 
 function Contact() {
