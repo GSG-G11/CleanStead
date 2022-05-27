@@ -50,7 +50,8 @@
     border: none !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-    margin-top: 140px !important;
+    position: absolute !important;
+    bottom: 70px;
 }
 .ant-avatar {
     background-color: #fff !important;
@@ -70,4 +71,7 @@
 }
 .dashboard-content.ant-layout-content {
     margin-top: 20px !important;
+}
+.ant-layout-sider-children{
+    position: relative !important;
 }
