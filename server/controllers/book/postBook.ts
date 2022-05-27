@@ -7,7 +7,6 @@ import { socketConnected } from '../../app';
 const postBook: RequestHandler = async (req:any, res, next) => {
   try {
     const { id: userId } = req.user;
-
     const {
       dateTime, price, repeat, services, user,
     } = await bookSchema.validate({ ...req.body, userId }, { abortEarly: false });
@@ -19,7 +18,6 @@ const postBook: RequestHandler = async (req:any, res, next) => {
       user,
       userId,
     );
-
     if (!rows.length) {
       throw new CustomizedError(400, 'There have error try again later');
     }

@@ -41,7 +41,7 @@ function Chart() {
   const [labelChart, setLabelChart] = useState('حجوزات اليوم');
   const [axisLabel, setAxisLabel] = useState('ساعات اليوم');
   const [error, setError] = useState('');
-  const [activeSelect, setActiveSelect] = useState('');
+  const [activeSelect, setActiveSelect] = useState('day');
   const date = new Date();
 
   const handleDataForDay = () => {
@@ -101,6 +101,14 @@ function Chart() {
   };
 
   useEffect(() => {
+    if (activeSelect === 'month') {
+      handleDataForMonth();
+    } else {
+      handleDataForDay();
+    }
+  }, [activeSelect]);
+
+  useEffect(() => {
     socket.on('postBook', () => {
       message.info('تم اضافة حجز جديد');
       if (activeSelect === 'month') {
@@ -111,20 +119,6 @@ function Chart() {
     });
   }, [socket]);
 
-  useEffect(() => {
-    if (activeSelect === 'month') {
-      handleDataForMonth();
-    } else {
-      handleDataForDay();
-    }
-  }, []);
-
-  const getDays = () => {
-    handleDataForDay();
-  };
-  const getMonths = () => {
-    handleDataForMonth();
-  };
   const options = {
     datasets: {
       line: {
@@ -196,7 +190,7 @@ function Chart() {
   const items = [
     {
       label: (
-        <Text onClick={getDays} type="text">
+        <Text onClick={() => setActiveSelect('day')} type="text">
           اليوم
         </Text>
       ),
@@ -204,7 +198,7 @@ function Chart() {
     },
     {
       label: (
-        <Text onClick={getMonths} type="text">
+        <Text onClick={() => setActiveSelect('month')} type="text">
           الشهر
         </Text>
       ),

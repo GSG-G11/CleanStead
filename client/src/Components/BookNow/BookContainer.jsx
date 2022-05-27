@@ -31,17 +31,17 @@ function BookContainer() {
   const { userInfo } = useContext(userContext);
 
   useEffect(() => {
-    if (userInfo.name) {
-      const { name, phone, locationDetails } = userInfo;
+    if (typeof userInfo !== 'string') {
+      const { name, phone, location, lat, lng } = userInfo;
       setUserName(name);
       setUserPhone(phone);
-      setUserAddress(locationDetails.name);
+      setUserAddress(location);
       setPosition({
-        lat: locationDetails.lat,
-        lng: locationDetails.lng,
+        lat,
+        lng,
       });
     }
-  }, []);
+  }, [userInfo]);
 
   const selectedServices = () => {
     let services = [];

@@ -49,7 +49,7 @@ function UserInformation({
               <Select
                 className="input-user"
                 placeholder="اختر موقعك"
-                defaultValue={userInfo.locationDetails.name || ''}
+                defaultValue={userInfo.location || ''}
                 onChange={(value) => {
                   onChangeSelect(value);
                 }}
