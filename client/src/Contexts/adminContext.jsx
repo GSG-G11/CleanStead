@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { createContext, useState, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import jwt_decode from 'jwt-decode';

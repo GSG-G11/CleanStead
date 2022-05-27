@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { EditOutlined, PlusOutlined } from '@ant-design/icons';
@@ -37,9 +38,9 @@ function Categories() {
     if (categoryId !== null && state === 'edit') {
       axios
         .put(`/api/v1/categories/${categoryId}`, values)
-        .then(({ data }) => {
+        .then(() => {
           setUpdate(!update);
-          message.success(data.message);
+          message.success('تم التعديل بنجاح');
           setIsUpload(false);
           setCategoryRecord({});
         })
@@ -49,8 +50,8 @@ function Categories() {
     } else if (state === 'add') {
       axios
         .post(`/api/v1/categories`, values)
-        .then(({ data }) => {
-          message.success(data.message);
+        .then(() => {
+          message.success('تم الاضافة بنجاح');
           setUpdate(!update);
           setIsUpload(false);
         })
@@ -66,25 +67,21 @@ function Categories() {
       title: '#',
       dataIndex: 'key',
       key: 'key',
-      width: 50,
     },
     {
       title: 'التصنيف',
       dataIndex: 'name',
       key: 'name',
-      width: 150,
-    },
-    {
-      title: 'الوصف',
-      dataIndex: 'description',
-      key: 'description',
-      width: 350,
     },
     {
       title: 'الصورة',
       dataIndex: 'image',
       key: 'image',
-      width: 350,
+    },
+    {
+      title: 'الوصف',
+      dataIndex: 'description',
+      key: 'description',
     },
     {
       title: 'اكشن',

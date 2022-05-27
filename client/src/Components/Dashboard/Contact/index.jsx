@@ -1,3 +1,7 @@
+/* eslint-disable react/no-unstable-nested-components */
+/* eslint-disable array-callback-return */
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import io from 'socket.io-client';

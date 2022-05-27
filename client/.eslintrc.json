@@ -43,7 +43,8 @@
         "error",
         {
             "trailingComma": "es5",
-            "singleQuote": true
+            "singleQuote": true,
+            "endOfLine": "auto"
         }
         ],
         "react/state-in-constructor": [0, "always"]
