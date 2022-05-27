@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { MapContainer, TileLayer } from 'react-leaflet';
+// import { MapContainer, TileLayer } from 'react-leaflet';
 import { Geocoder } from '@maptiler/geocoder';
 import 'leaflet/dist/leaflet.css';
 import '@maptiler/geocoder/css/geocoder.css';
@@ -15,15 +15,15 @@ import {
 } from 'antd';
 import { PropTypes } from 'prop-types';
 import UseGeoLocation from './UseGeoLocation';
-import osm from './osm-providers';
-import LocationMarker from './LocationMarker';
+// import osm from './osm-providers';
+// import LocationMarker from './LocationMarker';
 import locationIcon from '../../Assets/icons/location.svg';
 import './style.css';
 
 const { Text } = Typography;
-export default function LeafMap({ position, setPosition }) {
-  const mapRef = useRef();
-  const ZOOM_LEVEL = 13;
+export default function LeafMap({ setPosition }) {
+  // const mapRef = useRef();
+  // const ZOOM_LEVEL = 13;
 
   const location = UseGeoLocation();
   const showMyLocation = () => {
