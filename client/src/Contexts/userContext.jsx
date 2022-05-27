@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, {
   createContext,
   useState,

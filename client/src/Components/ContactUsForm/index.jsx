@@ -37,7 +37,6 @@ function ContactUsForm() {
       })
       .catch((err) => {
         if (err.response) {
-          console.log(err.response.data);
           setError('حاول مرة أخرى');
           setIsLoading(false);
         } else {

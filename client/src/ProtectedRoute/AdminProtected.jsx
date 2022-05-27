@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useContext } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { adminContext } from '../Contexts/adminContext';

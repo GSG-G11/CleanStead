@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { EditOutlined, PlusOutlined } from '@ant-design/icons';
