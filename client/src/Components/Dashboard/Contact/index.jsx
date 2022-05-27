@@ -11,7 +11,10 @@ import { Tag, Space, message, Button, Table } from 'antd';
 import './style.css';
 import { CategoriesContext } from '../../../Contexts/CategoriesContext';
 
-const socket = io.connect('http://127.0.0.1:5000');
+const socket = io.connect(
+  `https://${window.location.hostname}:${window.location.port}`
+);
+
 function Contact() {
   const [contacts, setContacts] = useState([]);
   const [update, setUpdate] = useState(false);
@@ -19,7 +22,7 @@ function Contact() {
 
   useEffect(() => {
     socket.on('updateContact', () => {
-      message.info('New contact added');
+      message.info('تم اضافة  تواصل جديد');
       setUpdate((prev) => !prev);
     });
   }, [socket]);

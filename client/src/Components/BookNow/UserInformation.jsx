@@ -49,7 +49,7 @@ function UserInformation({
               <Select
                 className="input-user"
                 placeholder="اختر موقعك"
-                defaultValue={userInfo.locationDetails.name || ''}
+                defaultValue={userInfo.location || ''}
                 onChange={(value) => {
                   onChangeSelect(value);
                 }}
@@ -74,10 +74,7 @@ function UserInformation({
 UserInformation.propTypes = {
   onChangeInput: PropTypes.func.isRequired,
   onChangeSelect: PropTypes.func.isRequired,
-  position: PropTypes.shape({
-    lat: PropTypes.number,
-    lng: PropTypes.number,
-  }).isRequired,
+  position: PropTypes.arrayOf(PropTypes.number).isRequired,
   setPosition: PropTypes.func.isRequired,
 };
 

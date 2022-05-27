@@ -17,7 +17,7 @@ const addContact: RequestHandler = async (req, res, next) => {
       throw new CustomizedError(400, 'there have error try again later');
     }
 
-    socketConnected.broadcast.emit('update Contact', rows);
+    socketConnected.broadcast.emit('updateContact', rows);
 
     return res.status(201).json({ message: 'Successfully added contact', status: 201 });
   } catch (error:any) {

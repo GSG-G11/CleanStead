@@ -8,12 +8,13 @@
 }
 .chart {
     margin: 10px auto;
-    width: 600px !important;
-    height: 350px !important;
+    width: 100% !important;
+    height: fit-content !important;
 }
 .day-month-menu .ant-menu {
     box-shadow: none !important;
     margin-top: 20px;
+    float: left;
 }
 
 .day-month-menu .ant-menu-item {

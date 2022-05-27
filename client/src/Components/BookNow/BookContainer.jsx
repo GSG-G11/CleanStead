@@ -22,26 +22,26 @@ function BookContainer() {
   const [username, setUserName] = useState('');
   const [userPhone, setUserPhone] = useState('');
   const [userAddress, setUserAddress] = useState('');
-  const [position, setPosition] = useState({
-    lat: 31.512646000696368,
-    lng: 34.457782320381796,
-  });
+  const [position, setPosition] = useState([
+    31.512646000696368, 34.457782320381796,
+  ]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { userInfo } = useContext(userContext);
 
   useEffect(() => {
-    if (userInfo.name) {
-      const { name, phone, locationDetails } = userInfo;
+    if (typeof userInfo !== 'string') {
+      const { name, phone, location, lat, lng } = userInfo;
+      console.log('location', location);
+      console.log('lat', lat);
       setUserName(name);
       setUserPhone(phone);
-      setUserAddress(locationDetails.name);
-      setPosition({
-        lat: locationDetails.lat,
-        lng: locationDetails.lng,
-      });
+      setUserAddress(location);
+      if (lat && lng) {
+        setPosition([parseFloat(lat), parseFloat(lng)]);
+      }
     }
-  }, []);
+  }, [userInfo]);
 
   const selectedServices = () => {
     let services = [];
@@ -71,8 +71,8 @@ function BookContainer() {
         name: username,
         phone: userPhone,
         location: userAddress,
-        lat: position.lat,
-        lng: position.lng,
+        lat: position[0],
+        lng: position[1],
       };
       const dateTime = valueDate;
       const repeat = valueRadio;
@@ -110,7 +110,11 @@ function BookContainer() {
   const onChangeSelect = (value) => {
     cities.forEach((city) => {
       if (city.name === value) {
-        setPosition(city.coordinates);
+        // setPosition(city.coordinates);
+        setPosition([
+          parseFloat(city.coordinates.lat),
+          parseFloat(city.coordinates.lng),
+        ]);
       }
     });
     setUserAddress(value);
