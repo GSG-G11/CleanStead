@@ -9,7 +9,7 @@ const { Title } = Typography;
 
 function CustomTitle({ isLanding, title }) {
   return (
-    <div className="custom-title">
+    <div className={isLanding ? 'custom-title-center' : 'custom-title-right'}>
       {isLanding && <Image src={linesRight} preview={false} />}
       <Title className="title">{title}</Title>
       <Image src={linesLeft} preview={false} />

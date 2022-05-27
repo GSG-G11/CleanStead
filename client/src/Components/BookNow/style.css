@@ -2,15 +2,16 @@
   padding-top: 40px;
   padding-bottom: 40px;
 }
-.custom-title{
-  justify-content: start;
-  margin-right: 30px;
-  margin-bottom: 30px;
-}
 .ant-steps-item-title::after{
   right: 100%;
   margin-right: 7px;
 }
+@media (max-width: 768px){
+  .ant-steps-item-title{
+    font-size: 14px;
+  }
+}
+
 .ant-steps-horizontal:not(.ant-steps-label-vertical) .ant-steps-item:last-child .ant-steps-item-title{
   padding-right: 16px !important;
 }
@@ -165,6 +166,7 @@
 }
 .ant-radio-wrapper.ant-radio-wrapper-rtl {
   padding: 10px  !important;
+  margin-bottom: 8px !important;
 }
 .ant-picker, .ant-input.input-user {
 border: 1px solid #F2F2F2  !important;
@@ -177,9 +179,21 @@ border: 1px solid #F2F2F2  !important;
   margin-top: 15px !important;
 }
 .input-user {
-  width:250px !important;
+  max-width:250px !important;
 }
 .btn-login{
   padding: 0 !important;
   color: #00ADEE !important;
+}
+
+@media (max-width: 425px){
+  .ant-picker-datetime-panel{
+    flex-direction: column;
+  }
+  .ant-picker-dropdown{
+    left: 20px !important;
+  }
+}
+.book-custome-title{
+  justify-content: start !important;
 }

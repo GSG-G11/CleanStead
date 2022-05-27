@@ -209,7 +209,11 @@ function BookContainer() {
           lg={{ span: 15 }}
           xl={{ span: 15 }}
         >
-          <CustomTitle isLanding={false} title="احجز الآن" />
+          <CustomTitle
+            isLanding={false}
+            className="book-custome-title"
+            title="احجز الآن"
+          />
           <Steps current={current}>
             {steps.map((item) => (
               <Step key={uuid()} title={item.title} />
