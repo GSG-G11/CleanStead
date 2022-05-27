@@ -28,10 +28,11 @@ export default function LeafMap({ position, setPosition }) {
   const location = UseGeoLocation();
   const showMyLocation = () => {
     if (location.loaded && !location.error) {
-      setPosition({
-        lat: +location.coordinates.lat,
-        lng: +location.coordinates.lng,
-      });
+      // setPosition({
+      //   lat: +location.coordinates.lat,
+      //   lng: +location.coordinates.lng,
+      // });
+      setPosition([location.coordinates.lat, location.coordinates.lng]);
     } else {
       message.error(location.error.message);
     }
@@ -44,7 +45,8 @@ export default function LeafMap({ position, setPosition }) {
     });
 
     geocoder.on('select', ({ center }) => {
-      setPosition({ lat: center[1], lng: center[0] });
+      // setPosition({ lat: center[1], lng: center[0] });
+      setPosition([center[1], center[0]]);
     });
   };
 
@@ -93,9 +95,10 @@ export default function LeafMap({ position, setPosition }) {
 }
 
 LeafMap.propTypes = {
-  position: PropTypes.shape({
-    lat: PropTypes.number,
-    lng: PropTypes.number,
-  }).isRequired,
+  // position: PropTypes.shape({
+  //   lat: PropTypes.number,
+  //   lng: PropTypes.number,
+  // }).isRequired,
+  position: PropTypes.arrayOf(PropTypes.number).isRequired,
   setPosition: PropTypes.func.isRequired,
 };

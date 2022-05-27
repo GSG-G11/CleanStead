@@ -22,10 +22,12 @@ function BookContainer() {
   const [username, setUserName] = useState('');
   const [userPhone, setUserPhone] = useState('');
   const [userAddress, setUserAddress] = useState('');
-  const [position, setPosition] = useState({
-    lat: 31.512646000696368,
-    lng: 34.457782320381796,
-  });
+  const [position, setPosition] = useState([
+    31.512646000696368, 34.457782320381796,
+  ]);
+  //   lat: 31.512646000696368,
+  //   lng: 34.457782320381796,
+  // });
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { userInfo } = useContext(userContext);
@@ -36,10 +38,10 @@ function BookContainer() {
       setUserName(name);
       setUserPhone(phone);
       setUserAddress(location);
-      setPosition({
-        lat,
-        lng,
-      });
+      setPosition([lat, lng]);
+      //   lat,
+      //   lng,
+      // });
     }
   }, [userInfo]);
 
@@ -71,8 +73,10 @@ function BookContainer() {
         name: username,
         phone: userPhone,
         location: userAddress,
-        lat: position.lat,
-        lng: position.lng,
+        // lat: position.lat,
+        // lng: position.lng,
+        lat: position[0],
+        lng: position[1],
       };
       const dateTime = valueDate;
       const repeat = valueRadio;
@@ -110,7 +114,8 @@ function BookContainer() {
   const onChangeSelect = (value) => {
     cities.forEach((city) => {
       if (city.name === value) {
-        setPosition(city.coordinates);
+        // setPosition(city.coordinates);
+        setPosition([city.coordinates.lat, city.coordinates.lng]);
       }
     });
     setUserAddress(value);
