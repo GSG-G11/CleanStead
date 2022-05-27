@@ -103,7 +103,7 @@ function Services() {
   };
 
   const onEdit = (data) => {
-    setServiceName(data.serviceNAme);
+    setServiceName(data.serviceName);
     setPrice(data.price);
     setImage(data.image.props.src);
     setDescription(data.description);
@@ -182,13 +182,13 @@ function Services() {
     },
     {
       title: 'اسم التصنيف',
-      dataIndex: 'serviceNAme',
-      key: 'serviceName',
+      key: 'categoryName',
+      dataIndex: 'categoryName',
     },
     {
       title: ' اسم الخدمة',
-      key: 'categoryName',
-      dataIndex: 'categoryName',
+      dataIndex: 'serviceName',
+      key: 'serviceName',
     },
     {
       title: ' السعر $',
@@ -223,8 +223,8 @@ function Services() {
   services.map((service) =>
     tableData.push({
       key: service.id,
-      serviceNAme: service.name,
       categoryName: service.category,
+      serviceName: service.name,
       price: service.price,
       description: service.description,
       image: (

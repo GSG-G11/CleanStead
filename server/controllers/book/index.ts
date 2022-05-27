@@ -7,6 +7,7 @@ import deleteBook from './deleteBook';
 import getBookDay from './getBookDay';
 import getBookMonth from './getBookMonth';
 import updateBook from './updateBook';
+import updateStatusBook from './updateStatusBook';
 
 export {
   getBooks,
@@ -18,4 +19,5 @@ export {
   getBookDay,
   getBookMonth,
   updateBook,
+  updateStatusBook,
 };

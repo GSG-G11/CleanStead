@@ -7,6 +7,7 @@ import deleteBookQuery from './deleteBookQuery';
 import getBookDayQuery from './getBookDayQuery ';
 import getBookMonthQuery from './getBookMonthQuery';
 import updateBookQuery from './updateBookQuery';
+import updateStatusBookQuery from './updateStatusBookQuery';
 
 export {
   getBooksQuery,
@@ -19,4 +20,5 @@ export {
   getBookDayQuery,
   getBookMonthQuery,
   updateBookQuery,
+  updateStatusBookQuery,
 };

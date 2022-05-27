@@ -21,15 +21,17 @@ import {
   validateLink,
   signinAdmin,
   updateContactStatus,
-  checkAdmin,
+  // checkAdmin,
   checkAuth,
   logoutAdmin,
   getStatus,
   deleteBook,
   getBookDay,
   getBookMonth,
+  // updateBook,
+  // checkAdmin,
+  updateStatusBook,
   getServices,
-  updateBook,
 } from '../controllers';
 
 const router = Router();
@@ -54,7 +56,8 @@ router.get('/book', getBooks);
 router.get('/book/:id', validateLink, getBook);
 router.get('/user/:id/book', validateLink, getUserBooks);
 router.post('/book', checkAuth, postBook);
-router.put('/book/:id', validateLink, checkAuth, updateBook);
+router.put('/book/:id', validateLink, updateStatusBook);
+// router.put('/book/:id', validateLink, updateBook);
 // router.use(checkAdmin);
 router.post('/services', postService);
 router.post('/categories', postCategories);

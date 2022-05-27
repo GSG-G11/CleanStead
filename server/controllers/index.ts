@@ -14,7 +14,7 @@ import signin from './signin';
 import { postService, archivedService, putService, getServices } from './services';
 import {
   getBooks, getUserBooks, getBook, postBook, deleteBook, getStatus,
-  getBookDay, getBookMonth, updateBook,
+  getBookDay, getBookMonth, updateBook, updateStatusBook,
 } from './book';
 import { validateLink } from './middlewares';
 import signinAdmin from './signinAdmin';
@@ -52,4 +52,5 @@ export {
   getBookMonth,
   getServices,
   updateBook,
+  updateStatusBook,
 };

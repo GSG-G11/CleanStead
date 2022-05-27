@@ -2,6 +2,7 @@ import { RequestHandler } from 'express';
 import { postBookQuery, postServiceBookQuery } from '../../queries';
 import { bookSchema } from '../../validation';
 import CustomizedError from '../../utils/error';
+import { socketConnected } from '../../app';
 
 const postBook: RequestHandler = async (req:any, res, next) => {
   try {
@@ -32,6 +33,8 @@ const postBook: RequestHandler = async (req:any, res, next) => {
         throw new CustomizedError(400, 'There have error try again later');
       }
     });
+
+    socketConnected.broadcast.emit('postBook', 'added');
     return res.status(201).json({ message: 'Successfully added booking', status: 201 });
   } catch (error:any) {
     if (error.name === 'ValidationError') {

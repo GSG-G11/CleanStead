@@ -22,7 +22,7 @@ function Contact() {
 
   useEffect(() => {
     socket.on('updateContact', () => {
-      message.info('New contact added');
+      message.info('تم اضافة  تواصل جديد');
       setUpdate((prev) => !prev);
     });
   }, [socket]);

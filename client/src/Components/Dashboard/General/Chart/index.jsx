@@ -10,7 +10,12 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import axios from 'axios';
+import io from 'socket.io-client';
 import './style.css';
+
+const socket = io.connect(
+  `https://${window.location.hostname}:${window.location.port}`
+);
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler);
 
@@ -33,9 +38,10 @@ const months = [
 function Chart() {
   const [labels, setLabels] = useState();
   const [dataChart, setDataChart] = useState();
-  const [labelCahrt, setLabelChart] = useState('حجوزات اليوم');
+  const [labelChart, setLabelChart] = useState('حجوزات اليوم');
   const [axisLabel, setAxisLabel] = useState('ساعات اليوم');
   const [error, setError] = useState('');
+  const [activeSelect, setActiveSelect] = useState('');
   const date = new Date();
 
   const handleDataForDay = () => {
@@ -47,6 +53,7 @@ function Chart() {
       .then(({ data: { hoursForDay, numberOfRequest } }) => {
         setLabelChart('حجوزات اليوم');
         setAxisLabel('ساعات اليوم');
+        setActiveSelect('day');
         setLabels(hoursForDay);
         setDataChart(numberOfRequest);
       })
@@ -74,6 +81,7 @@ function Chart() {
       .then(({ data: { daysForMonth, numberOfRequest } }) => {
         setLabelChart('حجوزات الشهر');
         setAxisLabel('أيام الشهر');
+        setActiveSelect('month');
         setLabels(daysForMonth);
         setDataChart(numberOfRequest);
       })
@@ -91,6 +99,17 @@ function Chart() {
 
     return () => cancelTokenSource.cancel();
   };
+
+  useEffect(() => {
+    socket.on('postBook', () => {
+      message.info('تم اضافة حجز جديد');
+      if (activeSelect === 'day') {
+        handleDataForDay();
+      } else if (activeSelect === 'month') {
+        handleDataForMonth();
+      }
+    });
+  }, [socket]);
 
   useEffect(() => {
     handleDataForDay();
@@ -165,7 +184,7 @@ function Chart() {
     labels,
     datasets: [
       {
-        label: labelCahrt,
+        label: labelChart,
         data: dataChart,
       },
     ],
@@ -194,7 +213,7 @@ function Chart() {
       <Row>
         <Col span={18}>
           <Title level={4} className="book-chart-title">
-            {labelCahrt}
+            {labelChart}
           </Title>
           <Text>
             {date.getDate()} - {months[date.getMonth()]} - {date.getFullYear()}
