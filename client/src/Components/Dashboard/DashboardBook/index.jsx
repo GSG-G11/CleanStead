@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import uuid from 'react-uuid';
@@ -191,11 +192,9 @@ function DashboardBook() {
   };
 
   const updateStatus = () => {
-    console.log('statusValue', statusValue);
     axios
       .put(`/api/v1/book/${currentRecord}`, { status: statusValue })
-      .then(({ data }) => {
-        // console.log(data);
+      .then(() => {
         message.success('تم تغيير الحالة بنجاح');
         setUpdate(!update);
       })
