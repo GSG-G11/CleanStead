@@ -59,8 +59,8 @@ const breadcrumbNameMap = {
   '/dashboard': 'نظرة عامة',
   '/dashboard/books': 'الحجوزات',
   '/dashboard/contact': 'التواصل',
-  '/dashboard/services': 'التصنيفات',
-  '/dashboard/categories': 'الخدمات',
+  '/dashboard/services': 'الخدمات',
+  '/dashboard/categories': 'التصنيفات',
 };
 
 function Dashboard() {
@@ -71,7 +71,6 @@ function Dashboard() {
     axios
       .get('/api/v1/logoutAdmin')
       .then(({ data }) => {
-        message.success(data.message);
         setIsAdminLogged(false);
         navigate('/login/admin', { replace: true });
       })
@@ -136,9 +135,10 @@ function Dashboard() {
           </Space>
         </Header>
         <Content
-          style={{
-            margin: '0 16px',
-          }}
+          className="dashboard-content"
+          // style={{
+          //   margin: '0 16px',
+          // }}
         >
           <div
             className="site-layout-background"

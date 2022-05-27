@@ -22,15 +22,14 @@ function Login({ admin }) {
     setError('');
     axios
       .post('/api/v1/signin', { email, password })
-      .then(({ data }) => {
-        message.success(data.message);
+      .then(() => {
         setIsLoading(false);
         setIsOpen(false);
         setIsLogged(true);
       })
       .catch((err) => {
         if (err.response) {
-          setError(err.response.data.message);
+          setError('يوجد خطأ بالإيميل أو كلمة السر');
           setIsLoading(false);
         } else {
           message.error('حدث خطأ ما');
@@ -43,14 +42,13 @@ function Login({ admin }) {
     setError('');
     axios
       .post('/api/v1/admin/signin', { email, password })
-      .then(({ data }) => {
-        message.success(data.message);
+      .then(() => {
         setIsAdminLogged(true);
         setIsLoading(false);
       })
       .catch((err) => {
         if (err.response) {
-          setError(err.response.data.message);
+          setError('يوجد خطأ بالإيميل أو كلمة السر');
           setIsLoading(false);
         } else {
           message.error('حدث خطأ ما');

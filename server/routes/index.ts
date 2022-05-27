@@ -31,10 +31,12 @@ import {
   // updateBook,
   // checkAdmin,
   updateStatusBook,
+  getServices,
 } from '../controllers';
 
 const router = Router();
 router.get('/categories', getCategories);
+router.get('/services', getServices);
 router.get('/categories/:id/services', validateLink, getCategoryServices);
 router.delete('/services/:id', validateLink, archivedService);
 router.delete('/categories/:id', validateLink, archivedCategory);

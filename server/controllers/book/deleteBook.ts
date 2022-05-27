@@ -8,10 +8,10 @@ const deleteBook: RequestHandler = async (req, res, next) => {
     const { rows, rowCount } = await deleteBookQuery(+id);
 
     if (!rowCount) {
-      throw new CustomizedError(400, 'لا يوجد حجز بهذا الرقم');
+      throw new CustomizedError(400, 'There is no booking for this id');
     }
 
-    res.json({ message: 'تم حذف الحجز بنجاح', status: 200, data: rows });
+    res.json({ message: 'Successfully delete booking', status: 200, data: rows });
   } catch (error:any) {
     if (error.errors) {
       return next(new CustomizedError(400, error.errors[0]));

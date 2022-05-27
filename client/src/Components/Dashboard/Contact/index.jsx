@@ -75,18 +75,21 @@ function Contact() {
       width: 30,
       valueType: 'action',
       render: (text, record, _, action) => [
-        <Button
-          type="text"
-          className="delete-contact-button"
-          onClick={() => onResponse(record.key)}
-          icon={<CheckSquareOutlined style={{ color: '#63D697' }} />}
-        />,
-        <Button
-          type="text"
-          className="delete-contact-button"
-          onClick={() => onArchived(record.key)}
-          icon={<DeleteOutlined style={{ color: '#EA5455' }} />}
-        />,
+        <Space size={3}>
+          <Button
+            type="text"
+            className="delete-contact-button"
+            onClick={() => onResponse(record.key)}
+            icon={<CheckSquareOutlined style={{ color: '#63D697' }} />}
+          />
+          ,
+          <Button
+            type="text"
+            className="delete-contact-button"
+            onClick={() => onArchived(record.key)}
+            icon={<DeleteOutlined style={{ color: '#EA5455' }} />}
+          />
+        </Space>,
       ],
     },
   ];
@@ -143,7 +146,7 @@ function Contact() {
     axios
       .put(`/api/v1/contact/status/${id}`)
       .then(({ data }) => {
-        message.success(data.message);
+        message.success('تم الرد على المستخدم');
         setUpdate(!update);
       })
       .catch(() => {
@@ -154,7 +157,7 @@ function Contact() {
     axios
       .delete(`/api/v1/contact/archives/${id}`)
       .then(({ data }) => {
-        message.success(data.message);
+        message.success('تم حذف الطلب ');
         setUpdate(!update);
       })
       .catch(() => {
@@ -184,6 +187,9 @@ function Contact() {
         pageSize: 5,
       }}
       loading={loading}
+      scroll={{
+        x: 800,
+      }}
     />
   );
 }

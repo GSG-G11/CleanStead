@@ -1,0 +1,7 @@
+.collection-create-form_last-form-item {
+  margin-bottom: 0;
+}
+textarea.ant-input{
+  resize: none;
+  height: 150px !important
+}

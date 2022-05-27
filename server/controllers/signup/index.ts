@@ -13,7 +13,7 @@ const signup: RequestHandler = async (req, res, next) => {
     } = await signupSchema.validate(req.body, { abortEarly: false });
     const { rowCount } = await checkEmailExistsQuery(email);
     if (rowCount) {
-      throw new CustomizedError(400, 'الإيميل موجود مسبقاً');
+      throw new CustomizedError(400, 'Email already exists');
     }
     const hashedPassword = await hash(password, 10);
     const { rows: data } = await addUserQuery(
@@ -32,7 +32,7 @@ const signup: RequestHandler = async (req, res, next) => {
       phone,
       locationDetails,
     });
-    res.cookie('token', token).status(201).json({ message: 'تم تسجيل حسابك بنجاح', status: 201 });
+    res.cookie('token', token).status(201).json({ message: 'You have been successfully register', status: 201 });
   } catch (error: any) {
     if (error.name === 'ValidationError') {
       return next(new CustomizedError(400, error.errors[0]));

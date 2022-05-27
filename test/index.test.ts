@@ -82,7 +82,7 @@ describe('Test to register', () => {
       })
       .expect(201)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('تم تسجيل حسابك بنجاح');
+    expect(res.body.message).toBe('You have been successfully register');
   });
 });
 describe('Test to login', () => {
@@ -95,7 +95,7 @@ describe('Test to login', () => {
       })
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('تم تسجيل دخولك بنجاح');
+    expect(res.body.message).toBe('You have been successfully logged in');
   });
 });
 describe('Test to register', () => {
@@ -115,7 +115,7 @@ describe('Test to register', () => {
       })
       .expect(400)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('الإيميل موجود مسبقاً');
+    expect(res.body.message).toBe('Email already exists');
   });
 });
 describe('Test to register', () => {
@@ -194,7 +194,7 @@ describe('Test to login', () => {
       })
       .expect(400)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('يوجد خطأ بالإيميل أو كلمة السر');
+    expect(res.body.message).toBe('There have error with email or password');
   });
 });
 describe('Test post categories', () => {
@@ -208,7 +208,7 @@ describe('Test post categories', () => {
       })
       .expect(201)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('تم إضافة الخدمة بنجاح');
+    expect(res.body.message).toBe('Successfully added category');
   });
 });
 describe('Test post categories', () => {
@@ -252,7 +252,7 @@ describe('Test post service', () => {
       })
       .expect(201)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('تم إضافة الخدمة بنجاح');
+    expect(res.body.message).toBe('Successfully added service');
   });
 });
 
@@ -331,7 +331,7 @@ describe('Test to admin login', () => {
       })
       .expect(400)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('يوجد خطأ بالإيميل أو كلمة السر');
+    expect(res.body.message).toBe('There have error with email or password');
   });
 });
 describe('Test to admin login', () => {
@@ -344,7 +344,7 @@ describe('Test to admin login', () => {
       })
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('تم تسجيل دخولك بنجاح');
+    expect(res.body.message).toBe('You have been successfully logged in');
   });
 });
 
@@ -362,7 +362,7 @@ describe('Test put service', () => {
       .set({ Cookie: token })
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('تم تعديل الخدمة بنجاح');
+    expect(res.body.message).toBe('Successfully edited service');
   });
 });
 describe('Test put service', () => {
@@ -395,7 +395,7 @@ describe('Test put category', () => {
       .set({ Cookie: token })
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('تم تعديل الخدمة بنجاح');
+    expect(res.body.message).toBe('Successfully update category');
   });
 });
 
@@ -438,7 +438,7 @@ describe('Test archived book', () => {
       .delete('/api/v1/book/100')
       .expect(400)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('لا يوجد حجز بهذا الرقم');
+    expect(res.body.message).toBe('There is no booking for this id');
   });
 });
 
@@ -465,7 +465,7 @@ describe('Test post book', () => {
       .set({ Cookie: token })
       .expect(201)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('تم إضافة الطلب بنجاح');
+    expect(res.body.message).toBe('Successfully added booking');
   });
 
   it('should return status 400', async () => {
@@ -561,7 +561,7 @@ describe('Test put book', () => {
       .set({ Cookie: token })
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('تم تعديل الحجز بنجاح');
+    expect(res.body.message).toBe('Successfully update booking');
   });
 
   it('should return status 400', async () => {
@@ -600,6 +600,6 @@ describe('Test put book', () => {
       .set({ Cookie: token })
       .expect(404)
       .expect('Content-Type', /json/);
-    expect(res.body.message).toBe('لا يوجد حجز بهذا الرقم');
+    expect(res.body.message).toBe('There is no booking for this id');
   });
 });

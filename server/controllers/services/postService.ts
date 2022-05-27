@@ -10,9 +10,9 @@ const postService: RequestHandler = async (req, res, next) => {
     } = await servicesSchema.validate(req.body, { abortEarly: false });
     const { rowCount } = await postServiceQuery(name, description, price, image, categoryId);
     if (!rowCount) {
-      throw new CustomizedError(400, 'يوجد خلل حاول مرة أخرى');
+      throw new CustomizedError(400, 'there have error try again later');
     }
-    return res.status(201).json({ message: 'تم إضافة الخدمة بنجاح', status: 201 });
+    return res.status(201).json({ message: 'Successfully added service', status: 201 });
   } catch (error:any) {
     if (error.name === 'ValidationError') {
       return next(new CustomizedError(400, error.errors[0]));
