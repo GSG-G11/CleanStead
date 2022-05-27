@@ -16,10 +16,10 @@ const updateStatusBook: RequestHandler = async (req, res, next) => {
     );
 
     if (!rowCount) {
-      throw new CustomizedError(404, 'لا يوجد حجز بهذا الرقم');
+      throw new CustomizedError(404, 'Book not found');
     }
 
-    res.json({ message: 'تم تعديل الحجز بنجاح', status: 200, data: rows });
+    res.json({ message: 'Book found', status: 200, data: rows });
   } catch (error:any) {
     if (error.errors) {
       return next(new CustomizedError(400, error.errors[0]));
