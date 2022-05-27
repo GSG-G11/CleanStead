@@ -2,7 +2,17 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import uuid from 'react-uuid';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
-import { message, Table, Tag, Space, Button, Modal, Radio } from 'antd';
+import {
+  message,
+  Table,
+  Tag,
+  Space,
+  Button,
+  Modal,
+  Radio,
+  Row,
+  Col,
+} from 'antd';
 import { ModalLoginContext } from '../../../Contexts/ModalLogin';
 
 function DashboardBook() {
@@ -99,23 +109,29 @@ function DashboardBook() {
       title: 'اكشن',
       key: 'option',
       className: 'action',
-      width: 30,
+      width: 100,
       valueType: 'action',
       render: (record) => [
-        <Button
-          type="text"
-          className="delete-contact-button"
-          onClick={() => {
-            onUpdate(record.key, record.status[0].name);
-          }}
-          icon={<EditOutlined style={{ color: '#63D697' }} />}
-        />,
-        <Button
-          type="text"
-          className="delete-contact-button"
-          onClick={() => onArchived(record.key)}
-          icon={<DeleteOutlined style={{ color: '#EA5455' }} />}
-        />,
+        <Row>
+          <Col span={12}>
+            <Button
+              type="text"
+              className="delete-contact-button"
+              onClick={() => {
+                onUpdate(record.key, record.status[0].name);
+              }}
+              icon={<EditOutlined style={{ color: '#63D697' }} />}
+            />
+          </Col>
+          <Col span={12}>
+            <Button
+              type="text"
+              className="delete-contact-button"
+              onClick={() => onArchived(record.key)}
+              icon={<DeleteOutlined style={{ color: '#EA5455' }} />}
+            />
+          </Col>
+        </Row>,
       ],
     },
   ];
@@ -180,7 +196,7 @@ function DashboardBook() {
       .put(`/api/v1/book/${currentRecord}`, { status: statusValue })
       .then(({ data }) => {
         // console.log(data);
-        message.success(data.message);
+        message.success('تم تغيير الحالة بنجاح');
         setUpdate(!update);
       })
       .catch(() => {
@@ -213,7 +229,7 @@ function DashboardBook() {
         columns={columns}
         dataSource={tableData}
         pagination={{
-          pageSize: 5,
+          pageSize: 6,
         }}
         loading={loading}
       />
