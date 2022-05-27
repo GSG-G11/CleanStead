@@ -126,6 +126,7 @@ function Contact() {
       category: categories.filter(
         (category) => category.id === contact.category_id
       )[0].name,
+      // .split('T').join(' ').split('.')[0]
       sendtime: contact.sendtime.split('T').join(' ').split('.')[0],
       phone: contact.phone,
       email: contact.email,

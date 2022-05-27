@@ -53,7 +53,8 @@ function DashboardBook() {
         message.success(data.message);
         setUpdate(!update);
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         message.error('حدث خطأ ما');
       });
   };

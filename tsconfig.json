@@ -10,5 +10,5 @@
     "strict": true,
     "skipLibCheck": true 
   },
-  "include": ["server/**/*.ts"],
+  "include": ["server/**/*.ts", "server/utils/emailTemplates/accepetBook.ts"],
 }
