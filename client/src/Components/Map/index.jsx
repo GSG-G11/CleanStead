@@ -76,7 +76,7 @@ export default function LeafMap({ position, setPosition }) {
           <Text>يمكنك تحديد الموقع بالتفصيل من خلال الخريطة</Text>
         </Col>
       </Row>
-      <MapContainer
+      {/* <MapContainer
         center={position}
         zoom={ZOOM_LEVEL}
         ref={mapRef}
@@ -87,7 +87,7 @@ export default function LeafMap({ position, setPosition }) {
           attribution={osm.maptiler.attribution}
         />
         <LocationMarker position={position} setPosition={setPosition} />
-      </MapContainer>
+      </MapContainer> */}
     </div>
   );
 }
