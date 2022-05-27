@@ -103,16 +103,20 @@ function Chart() {
   useEffect(() => {
     socket.on('postBook', () => {
       message.info('تم اضافة حجز جديد');
-      if (activeSelect === 'day') {
-        handleDataForDay();
-      } else if (activeSelect === 'month') {
+      if (activeSelect === 'month') {
         handleDataForMonth();
+      } else {
+        handleDataForDay();
       }
     });
   }, [socket]);
 
   useEffect(() => {
-    handleDataForDay();
+    if (activeSelect === 'month') {
+      handleDataForMonth();
+    } else {
+      handleDataForDay();
+    }
   }, []);
 
   const getDays = () => {
