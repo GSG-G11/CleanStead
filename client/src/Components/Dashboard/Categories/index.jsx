@@ -37,9 +37,9 @@ function Categories() {
     if (categoryId !== null && state === 'edit') {
       axios
         .put(`/api/v1/categories/${categoryId}`, values)
-        .then(({ data }) => {
+        .then(() => {
           setUpdate(!update);
-          message.success(data.message);
+          message.success('تم التعديل بنجاح');
           setIsUpload(false);
           setCategoryRecord({});
         })
@@ -49,8 +49,8 @@ function Categories() {
     } else if (state === 'add') {
       axios
         .post(`/api/v1/categories`, values)
-        .then(({ data }) => {
-          message.success(data.message);
+        .then(() => {
+          message.success('تم الاضافة بنجاح');
           setUpdate(!update);
           setIsUpload(false);
         })
