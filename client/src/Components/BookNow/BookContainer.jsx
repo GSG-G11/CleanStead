@@ -38,11 +38,14 @@ function BookContainer() {
       setUserName(name);
       setUserPhone(phone);
       setUserAddress(location);
-      setPosition([parseFloat(lat), parseFloat(lng)]);
-      //   lat,
-      //   lng,
-      // });
+      if (lat && lng) {
+        setPosition([lat, lng]);
+      }
     }
+    // setPosition([parseFloat(lat), parseFloat(lng)]);
+    //   lat,
+    //   lng,
+    // });
   }, [userInfo]);
 
   const selectedServices = () => {
