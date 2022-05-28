@@ -21,7 +21,7 @@ import {
   LogoutOutlined,
   BellOutlined,
 } from '@ant-design/icons';
-import { adminContext } from '../../Contexts/adminContext';
+import { userContext } from '../../Contexts/userContext';
 import './style.css';
 import logo from '../../Assets/images/logo.svg';
 import user from '../../Assets/images/user.png';
@@ -64,14 +64,14 @@ const breadcrumbNameMap = {
 };
 
 function Dashboard() {
-  const { adminInfo, setIsAdminLogged } = useContext(adminContext);
+  const { userInfo, setIsLogged } = useContext(userContext);
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const logout = () => {
     axios
-      .get('/api/v1/logoutAdmin')
+      .get('/api/v1/logout')
       .then(() => {
-        setIsAdminLogged(false);
+        setIsLogged(false);
         navigate('/login/admin', { replace: true });
       })
       .catch(() => {
@@ -131,7 +131,7 @@ function Dashboard() {
                 />
               }
             />
-            <Title level={5}>{adminInfo.name}</Title>
+            <Title level={5}>{userInfo.name}</Title>
           </Space>
         </Header>
         <Content className="dashboard-content">

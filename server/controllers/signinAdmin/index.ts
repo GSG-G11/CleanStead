@@ -6,9 +6,7 @@ import { jwtSign, CustomizedError } from '../../utils';
 import { signinSchema } from '../../validation';
 
 dotenv.config();
-const {
-  NODE_ENV,
-} = process.env;
+
 const signinAdmin: RequestHandler = async (req, res, next) => {
   try {
     const {
@@ -18,14 +16,14 @@ const signinAdmin: RequestHandler = async (req, res, next) => {
     if (rowCount === 0) {
       throw new CustomizedError(400, 'There have error with email or password');
     }
-    const resultComapre = await compare(password, data[0].password);
-    if (!resultComapre) {
+    const resultCompare = await compare(password, data[0].password);
+    if (!resultCompare) {
       throw new CustomizedError(400, 'There have error with email or password');
     }
     const token = await jwtSign({
       id: data[0].id, email, role: 'admin', name: data[0].name,
     });
-    res.cookie('tokenAdmin', token).json({ message: 'You have been successfully logged in', status: 200 });
+    res.cookie('token', token).json({ message: 'You have been successfully logged in', status: 200 });
   } catch (error: any) {
     if (error.name === 'ValidationError') {
       return next(new CustomizedError(400, error.errors[0]));

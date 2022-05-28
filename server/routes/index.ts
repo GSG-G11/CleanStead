@@ -22,7 +22,6 @@ import {
   signinAdmin,
   updateContactStatus,
   checkAuth,
-  logoutAdmin,
   getStatus,
   deleteBook,
   getBookDay,
@@ -43,7 +42,6 @@ router.delete('/contact/archives/:id', validateLink, deleteContact);
 router.put('/contact/status/:id', validateLink, updateContactStatus);
 router.post('/signup', signup);
 router.get('/logout', logout);
-router.get('/logoutAdmin', logoutAdmin);
 router.post('/signin', signin);
 router.post('/admin/signin', signinAdmin);
 router.get('/book/status', getStatus);

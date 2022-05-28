@@ -1,11 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
 import { Avatar, Card, Image } from 'antd';
 import headerBackground from '../../Assets/images/headerBackground.svg';
+import { userContext } from '../../Contexts/userContext';
 
 const { Meta } = Card;
 
-function Cover({ userInfo }) {
+function Cover() {
+  const { userInfo } = useContext(userContext);
   return (
     <div className="header-container">
       <div className="cover-image-container">
@@ -33,10 +34,5 @@ function Cover({ userInfo }) {
     </div>
   );
 }
-Cover.propTypes = {
-  userInfo: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    location: PropTypes.string.isRequired,
-  }).isRequired,
-};
+
 export default Cover;

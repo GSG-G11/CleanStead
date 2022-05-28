@@ -7,10 +7,13 @@ function UserProtected() {
   const navigate = useNavigate();
   const { userInfo } = useContext(userContext);
   const { setIsOpen } = useContext(ModalLoginContext);
+
   useEffect(() => {
-    if (!userInfo.name) {
-      navigate('/', { replace: true });
-      setIsOpen(true);
+    if (typeof userInfo === 'string') {
+      if (!userInfo.name) {
+        navigate('/', { replace: true });
+        setIsOpen(true);
+      }
     }
   }, []);
   return <Outlet />;

@@ -8,6 +8,6 @@
 .go-home-button{
   border-radius: 3px !important;
   margin-top: 10px;
-  border-color: #f2473f !important;
-  background: #f2473f !important;
+  border-color: var(--main) !important;
+  background: var(--main) !important;
 }

@@ -15,8 +15,8 @@ const signin: RequestHandler = async (req, res, next) => {
     if (rowCount === 0) {
       throw new CustomizedError(400, 'There have error with email or password');
     }
-    const resultComapre = await compare(password, data[0].password);
-    if (!resultComapre) {
+    const resultCompare = await compare(password, data[0].password);
+    if (!resultCompare) {
       throw new CustomizedError(400, 'There have error with email or password');
     }
     const token = await jwtSign({
@@ -27,8 +27,9 @@ const signin: RequestHandler = async (req, res, next) => {
       location: data[0].location,
       lat: data[0].lat,
       lng: data[0].lng,
+      role: 'user',
     });
-    res.cookie('token', token).json({ message:'You have been successfully logged in', status: 200 });
+    res.cookie('token', token).json({ message: 'You have been successfully logged in', status: 200 });
   } catch (error: any) {
     if (error.name === 'ValidationError') {
       return next(new CustomizedError(400, error.errors[0]));

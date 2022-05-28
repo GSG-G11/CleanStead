@@ -17,15 +17,15 @@ function FormModal({
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
 
-  let categroyData = {};
-  categroyData = {
+  let categoryData = {};
+  categoryData = {
     name: categoryRecord.name,
     description: categoryRecord.description,
     image: isUpload ? uploadedImage : categoryRecord.image,
   };
 
   useEffect(() => {
-    form.setFieldsValue(categroyData);
+    form.setFieldsValue(categoryData);
   }, [visible]);
 
   const uploadImage = (e) => {

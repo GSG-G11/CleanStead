@@ -13,5 +13,6 @@ const getUserBooksQuery = (id:number) => connection.query(`
   FROM
     appointments AS a
   JOIN  users AS u ON  a.user_id = u.id
-  WHERE a.user_id = $1`, [id]);
+  WHERE a.user_id = $1
+  ORDER BY a.id DESC`, [id]);
 export default getUserBooksQuery;

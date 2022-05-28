@@ -16,20 +16,19 @@ function Profile() {
   useEffect(() => {
     setLoading(true);
     const cancelTokenSource = axios.CancelToken.source();
-    axios
-      .get(`/api/v1//user/${userInfo.id}/book`, {
-        cancelToken: cancelTokenSource.token,
-      })
-      .then(({ data: { data } }) => {
-        setMyBooks(data);
-      })
-      .catch(() => {
-        message.error('حدث خطأ ما');
-      })
-      .finally(() => setLoading(false));
-
+    if (userInfo) {
+      axios
+        .get(`/api/v1/user/${userInfo.id}/book`, {
+          cancelToken: cancelTokenSource.token,
+        })
+        .then(({ data: { data } }) => {
+          setMyBooks(data);
+        })
+        .catch(() => {})
+        .finally(() => setLoading(false));
+    }
     return () => cancelTokenSource.cancel();
-  }, [userInfo]);
+  }, []);
 
   return (
     <Row justify="center" align="middle">
@@ -40,7 +39,7 @@ function Profile() {
         lg={{ span: 20 }}
         xl={{ span: 20 }}
       >
-        <Cover userInfo={userInfo} />
+        <Cover />
         {loading ? (
           <Spin />
         ) : myBooks.length ? (

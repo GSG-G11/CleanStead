@@ -70,7 +70,7 @@ function BookStatus() {
         <StatusNumber
           key={title}
           title={title}
-          number={number}
+          number={Number(number)}
           backgroundColor={backgroundColor}
           icon={icon}
         />

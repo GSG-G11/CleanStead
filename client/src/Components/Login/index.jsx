@@ -4,9 +4,9 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Form, Input, Button, message, Spin } from 'antd';
 import { MailOutlined, LockOutlined, LoadingOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 import { ModalLoginContext } from '../../Contexts/ModalLogin';
 import { userContext } from '../../Contexts/userContext';
-import { adminContext } from '../../Contexts/adminContext';
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
@@ -15,7 +15,7 @@ function Login({ admin }) {
   const [isloading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const { setIsLogged } = useContext(userContext);
-  const { setIsAdminLogged } = useContext(adminContext);
+  const navigate = useNavigate();
 
   const onFinish = ({ email, password }) => {
     setIsLoading(true);
@@ -40,11 +40,13 @@ function Login({ admin }) {
   const onAdminFinish = ({ email, password }) => {
     setIsLoading(true);
     setError('');
+
     axios
       .post('/api/v1/admin/signin', { email, password })
       .then(() => {
-        setIsAdminLogged(true);
+        setIsLogged(true);
         setIsLoading(false);
+        navigate('/dashboard', { replace: true });
       })
       .catch((err) => {
         if (err.response) {
