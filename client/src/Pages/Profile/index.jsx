@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import uuid from 'react-uuid';
-import { Row, Col, message, Descriptions, Typography, Spin, Empty } from 'antd';
+import { Row, Col, Descriptions, Typography, Spin, Empty } from 'antd';
 import { userContext } from '../../Contexts/userContext';
 import Cover from './Cover';
 import './style.css';
