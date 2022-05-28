@@ -14,8 +14,8 @@
   <p align="center">
       <br />
   <div align='center'>
-    <h3><a href="https://cleanstead.herokuapp.com/">Visit CleanStead</a></h3>
-    <h4><a href="https://www.figma.com/file/x4SwUXvOFq3012pYy1lhPw/CleanStead?node-id=80%3A335">Figma Design</a></h4>
+    <a href="https://cleanstead.herokuapp.com/">Demo CleanStead</a> |
+<a href="https://www.figma.com/file/x4SwUXvOFq3012pYy1lhPw/CleanStead?node-id=80%3A335">Figma Design</a>
   </p>
   </div>
 
@@ -58,20 +58,20 @@
 
 <br>
 
-## About The Project <span id="about-the-project"></span>
+## 👩‍💻 About The Project <span id="about-the-project"></span>
 <div align='center'>
   <img src="https://i.postimg.cc/6QF8G8r8/header.png"/>
 </div>
 
 <p align="right"><a href="#top">back to top</a></p>
 
-### Problem :tornado: <span id="problem"></span>
+### ⁉ Problem <span id="problem"></span>
 The difficulty of getting a place that provides different cleaning services, also the lack of time available for cleaning, the difficulty of doing all the cleaning work, and the need for another place to clean some things. People coming to do the cleaning service must be confident and find someone responsible for them to review whether the service is fully appreciated or not.
 
-### Solution :snowflake: <span id="solution"></span>
+### 💡 Solution <span id="solution"></span>
 Our website provides people with the ability to request different types of cleaning services from a trusted place and people.
 
-### Built With <span id="built-with"></span> 	:computer:
+### :computer:Built With <span id="built-with"></span>
 
 * [Express.js](https://expressjs.com/)
 * [React.js](https://reactjs.org/)
@@ -82,17 +82,18 @@ Our website provides people with the ability to request different types of clean
 * [React Leaflet Map](https://react-leaflet.js.org/)
 * [Nodemailer](https://nodemailer.com/about/)
 * [Chart.js](https://www.chartjs.org/)
+* [WebSocket](https://socket.io/)
 
 <p align="right"><a href="#top">back to top</a></p>
 
-### Database Schema <span id="database-schema"></span> 	:computer:
+### 🔗 Database Schema <span id="database-schema"></span>
 <div align='center'>
   <img src="https://i.postimg.cc/HsCLtWcX/draw-SQL-export-2022-05-28-05-47.png"/>
 </div>
 <p align="right"><a href="#top">back to top</a></p>
 
 
-## User Stories 📔 <span id="user-stories"></span>
+## 📔 User Stories <span id="user-stories"></span>
 ### `As a user:` <span id="as-a-user-story"></span>
 - I can see many categories that include services.
 - I can see all kinds of services available.
@@ -124,7 +125,7 @@ Our website provides people with the ability to request different types of clean
 
 <p align="right"><a href="#top">back to top</a></p>
 
-## User Journey 🚀 <span id="user-journey"></span>
+## 🚀 User Journey <span id="user-journey"></span>
 ### `As a user:` <span id="as-a-user-journey"></span>
 Once user visit our website he can see home page that contain navbar, header and other section. At navbar user can select any page he wants to see and two buttons for booking and for registering, when user scroll down in homepage he will see the categories that our website provide, and he can click on see more page with category details will open, and he can see all services included in this category, he can go back to home page by click on the logo or main tab, and he can scroll more and see multisection like why choose us, what clients say and the footer.
 Any visitor can send message to administrator if he wants to know more details about any services.
@@ -134,7 +135,7 @@ If user want to book services he has to resist and sign in, so he can open book 
 When admin open dashboard he can see chart that appear how many books on the day or on the month, he can go to contacts section and see messages sent from users, and he can change the status when he replied to message, and also he can delete any message, another section in dashboard is categories, he can see all categories that he have added before, and can add new category or edit old one, also at services section he can see all services, add new service, edit/delete any service.
 And the most important section in dashboard is books, that he can see all books that user make and see the details for each book, he can accept or decline the book so user will receive email for his books' status, and also admin can delete any fake book.
 
-## Getting Started <span id="install-repo"></span>
+## 🚩 Getting Started <span id="install-repo"></span>
 
 To get a local copy up and running follow these simple example steps.
 
@@ -152,32 +153,37 @@ To get a local copy up and running follow these simple example steps.
    ```sh
    git clone https://github.com/GSG-G11/CleanStead.git
    ```
-3. Install NPM packages
+3. Install NPM packages (in project root folder)
    ```sh
    npm install
    ```
-4. In the project root folder, rename `.env.example` file to `.env` and fill in the environment variables
+4. Install NPM packages (in client folder)
+   ```sh
+   cd client && npm install
+   ```
+5. In the project root folder, rename `.env.example` file to `.env` and fill in the environment variables
    ```sh
    SECRET_KEY='<your secret key>'
    DEV_DB_URL=postgres://<username>:<password>@localhost:<port || 5432>/<development database>
    TEST_DB_URL=postgres://<username>:<password>@localhost:<port || 5432>/<test database>
-   APP_MAIL='<your email>'
-   MAIL_PASSWORD='<your password>'
+   EMAIl='<your email>'
+   EMAIL_PASSWORD='<your password>'
    ```
-5. In the `client` folder, renmae `.env.example` file to `.env` and fill in the environment variables
-    ```sh
-    REACT_APP_CLOUDINARY_UPLOAD_PRESET='<Your cloudinary upload preset>'
-    REACT_APP_CLOUDINARY_CLOUD_NAME='<Your cloudinary cloud name>'
-    ```
-<p align="right">(<a href="#top">back to top</a>)</p>
+
+* To get the login admin page you can type `/login/admin` as the endpiont of url then write
+ ```sh
+ Email= admin@gmail.com
+ Password= admin@password.com
+ ```
+<p align="right"><a href="#top">back to top</a></p>
 
 
-## Contributers: 👥 <span id="contributers"></span>
+## 👥 Contributers: <span id="contributers"></span>
 
-### Team Leader
-* [Muhammad Amin Abdulhadi](https://github.com/Mu7ammadAbed) 
+### Team Leader 
+[Muhammad Amin Abdulhadi](https://github.com/Mu7ammadAbed) 
 
-### Team Members :gem:
+### Team Members
 * [Israa Hamdi Abu Rayya](https://github.com/IsraaHamdi)
 * [Mohammad Maher AlHabil](https://github.com/MohammadAlHabil)
 * [Mostafa Naeem Qanoo](https://github.com/MostafaQanoo)
