@@ -32,8 +32,6 @@ function BookContainer() {
   useEffect(() => {
     if (typeof userInfo !== 'string') {
       const { name, phone, location, lat, lng } = userInfo;
-      console.log('location', location);
-      console.log('lat', lat);
       setUserName(name);
       setUserPhone(phone);
       setUserAddress(location);
@@ -110,7 +108,6 @@ function BookContainer() {
   const onChangeSelect = (value) => {
     cities.forEach((city) => {
       if (city.name === value) {
-        // setPosition(city.coordinates);
         setPosition([
           parseFloat(city.coordinates.lat),
           parseFloat(city.coordinates.lng),
@@ -209,7 +206,11 @@ function BookContainer() {
           lg={{ span: 15 }}
           xl={{ span: 15 }}
         >
-          <CustomTitle isLanding={false} title="احجز الآن" />
+          <CustomTitle
+            isLanding={false}
+            className="book-custome-title"
+            title="احجز الآن"
+          />
           <Steps current={current}>
             {steps.map((item) => (
               <Step key={uuid()} title={item.title} />

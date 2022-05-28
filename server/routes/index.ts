@@ -21,15 +21,12 @@ import {
   validateLink,
   signinAdmin,
   updateContactStatus,
-  // checkAdmin,
   checkAuth,
   logoutAdmin,
   getStatus,
   deleteBook,
   getBookDay,
   getBookMonth,
-  // updateBook,
-  // checkAdmin,
   updateStatusBook,
   getServices,
 } from '../controllers';
@@ -57,8 +54,6 @@ router.get('/book/:id', validateLink, getBook);
 router.get('/user/:id/book', validateLink, getUserBooks);
 router.post('/book', checkAuth, postBook);
 router.put('/book/:id', validateLink, updateStatusBook);
-// router.put('/book/:id', validateLink, updateBook);
-// router.use(checkAdmin);
 router.post('/services', postService);
 router.post('/categories', postCategories);
 router.put('/services/:id', validateLink, putService);

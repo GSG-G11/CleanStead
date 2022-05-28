@@ -16,7 +16,7 @@ function RightMenu({ mode, avatarMenu }) {
   };
 
   return (
-    <Menu mode={mode}>
+    <Menu mode={mode} className="right-menu">
       <Menu.Item key="avatar">
         {isLogged ? (
           <Space direction="vertical">

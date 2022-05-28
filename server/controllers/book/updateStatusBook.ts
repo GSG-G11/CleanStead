@@ -1,7 +1,8 @@
 import { RequestHandler } from 'express';
-import { updateStatusBookQuery } from '../../queries';
+import nodeMailer from 'nodemailer';
+import { getEmailQuery, updateStatusBookQuery } from '../../queries';
 import { bookStatusSchema } from '../../validation';
-import { CustomizedError } from '../../utils';
+import { CustomizedError, accepetBook, declineBook } from '../../utils';
 
 const updateStatusBook: RequestHandler = async (req, res, next) => {
   try {
@@ -10,7 +11,7 @@ const updateStatusBook: RequestHandler = async (req, res, next) => {
     const {
       status,
     } = await bookStatusSchema.validate({ ...req.body }, { abortEarly: false });
-    const { rows, rowCount } = await updateStatusBookQuery(
+    const { rows: bookData, rowCount } = await updateStatusBookQuery(
       bookId as any,
       status,
     );
@@ -18,8 +19,37 @@ const updateStatusBook: RequestHandler = async (req, res, next) => {
     if (!rowCount) {
       throw new CustomizedError(404, 'Book not found');
     }
+    const { rows: email } = await getEmailQuery(bookData[0].user_id);
 
-    res.json({ message: 'Reservation has been modified', status: 200, data: rows });
+    const transporter: any = nodeMailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false,
+      auth: {
+        user: process.env.EMAIL,
+        pass: process.env.EMAIL_PASSWORD,
+      },
+      tls: {
+        rejectUnauthorized: false,
+      },
+    });
+    if (status === 'approve') {
+      await transporter.sendMail({
+        from: process.env.EMAIL,
+        to: email[0].email,
+        subject: 'Booking request approved',
+        html: accepetBook(bookData[0].id),
+      });
+    }
+    if (status === 'reject') {
+      await transporter.sendMail({
+        from: process.env.EMAIL,
+        to: email[0].email,
+        subject: 'Booking request rejected',
+        html: declineBook(),
+      });
+    }
+    res.json({ message: 'Reservation has been modified', status: 200, data: bookData });
   } catch (error:any) {
     if (error.errors) {
       return next(new CustomizedError(400, error.errors[0]));
