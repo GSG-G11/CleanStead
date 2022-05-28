@@ -60,7 +60,7 @@
 
 ## About The Project <span id="about-the-project"></span>
 <div align='center'>
-  <img src="https://i.postimg.cc/xd35qZSz/header.png"/>
+  <img src="https://i.postimg.cc/6QF8G8r8/header.png"/>
 </div>
 
 <p align="right"><a href="#top">back to top</a></p>
