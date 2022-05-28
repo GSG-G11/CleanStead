@@ -4,64 +4,31 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Form, Input, Button, message, Spin } from 'antd';
 import { MailOutlined, LockOutlined, LoadingOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 import { ModalLoginContext } from '../../Contexts/ModalLogin';
-import { userContext } from '../../Contexts/userContext';
-import { adminContext } from '../../Contexts/adminContext';
+import { useAuth } from '../../Contexts/userContext';
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 function Login({ admin }) {
-  const { setIsOpen } = useContext(ModalLoginContext);
-  const [isloading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
-  const { setIsLogged } = useContext(userContext);
-  const { setIsAdminLogged } = useContext(adminContext);
+  const { isloading, error, login } = useAuth();
+  // const { setIsOpen } = useContext(ModalLoginContext);
+  // const [isloading, setIsLoading] = useState(false);
+  // const [error, setError] = useState('');
+  // const { setIsLogged } = useContext(userContext);
+  // const navigate = useNavigate();
 
   const onFinish = ({ email, password }) => {
-    setIsLoading(true);
-    setError('');
-    axios
-      .post('/api/v1/signin', { email, password })
-      .then(() => {
-        setIsLoading(false);
-        setIsOpen(false);
-        setIsLogged(true);
-      })
-      .catch((err) => {
-        if (err.response) {
-          setError('يوجد خطأ بالإيميل أو كلمة السر');
-          setIsLoading(false);
-        } else {
-          message.error('حدث خطأ ما');
-          setIsLoading(false);
-        }
-      });
+    login({ email, password });
   };
-  const onAdminFinish = ({ email, password }) => {
-    setIsLoading(true);
-    setError('');
-    axios
-      .post('/api/v1/admin/signin', { email, password })
-      .then(() => {
-        setIsAdminLogged(true);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        if (err.response) {
-          setError('يوجد خطأ بالإيميل أو كلمة السر');
-          setIsLoading(false);
-        } else {
-          message.error('حدث خطأ ما');
-          setIsLoading(false);
-        }
-      });
-  };
+
   return (
     <div>
       <Form
         layout="vertical"
         className={admin ? 'form-width' : ''}
-        onFinish={admin ? onAdminFinish : onFinish}
+        // onFinish={admin ? onAdminFinish : onFinish}
+        onFinish={onFinish}
       >
         <Form.Item
           label="الإيميل"

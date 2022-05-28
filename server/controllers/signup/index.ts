@@ -31,6 +31,7 @@ const signup: RequestHandler = async (req, res, next) => {
       name,
       phone,
       locationDetails,
+      role: 'user',
     });
     res.cookie('token', token).status(201).json({ message: 'You have been successfully register', status: 201 });
   } catch (error: any) {

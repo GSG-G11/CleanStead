@@ -10,17 +10,17 @@ import {
   LoadingOutlined,
 } from '@ant-design/icons';
 import { ModalLoginContext } from '../../Contexts/ModalLogin';
-import { userContext } from '../../Contexts/userContext';
+import { useAuth } from '../../Contexts/userContext';
 import cities from '../../cities.json';
 
 const { Option } = Select;
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 function Register() {
-  const { setIsOpen } = useContext(ModalLoginContext);
-  const [isloading, setIsLoading] = useState(false);
-  const [errorEmail, setErrorEmail] = useState('');
-  const { setIsLogged } = useContext(userContext);
+  const { setIsOpen, errorEmail } = useContext(ModalLoginContext);
+  // const [isloading, setIsLoading] = useState(false);
+  // const [errorEmail, setErrorEmail] = useState('');
+  const { isloading, register } = useAuth();
 
   const onFinish = ({ name, email, phone, password, location }) => {
     setIsLoading(true);
@@ -31,22 +31,7 @@ function Register() {
       lat: +locationData.coordinates.lat,
       lng: +locationData.coordinates.lng,
     };
-    axios
-      .post('/api/v1/signup', { name, email, phone, password, locationDetails })
-      .then(() => {
-        setIsLoading(false);
-        setIsOpen(false);
-        setIsLogged(true);
-      })
-      .catch((err) => {
-        if (err.response) {
-          setErrorEmail('الإيميل موجود مسبقاً');
-          setIsLoading(false);
-        } else {
-          message.error('حدث خطأ ما');
-          setIsLoading(false);
-        }
-      });
+    register({ name, email, phone, password, locationDetails });
   };
   return (
     <div>

@@ -1,35 +1,21 @@
 /* eslint-disable no-undef */
 import React, { useState, useContext } from 'react';
-import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
-import {
-  Layout,
-  Menu,
-  Image,
-  Button,
-  Dropdown,
-  Space,
-  Drawer,
-  message,
-} from 'antd';
+import { Link } from 'react-router-dom';
+import { Layout, Menu, Image, Button, Dropdown, Space, Drawer } from 'antd';
 import { DownOutlined, MenuOutlined } from '@ant-design/icons';
 import logo from '../../Assets/images/logo.svg';
 import LeftMenu from './LeftMenu';
 import RightMenu from './RightMenu';
 import './navbar.css';
-
 import { CategoriesContext } from '../../Contexts/CategoriesContext';
-import { userContext } from '../../Contexts/userContext';
-import { ModalLoginContext } from '../../Contexts/ModalLogin';
+import { useAuth } from '../../Contexts/userContext';
 
 const { Header } = Layout;
 
 function Navbar() {
   const [visible, setVisible] = useState(false);
   const { categories } = useContext(CategoriesContext);
-  const { setIsLogged } = useContext(userContext);
-  const { setIsOpen } = useContext(ModalLoginContext);
-  const navigate = useNavigate();
+  const { logout } = useAuth();
 
   const showDrawer = () => {
     setVisible(true);
@@ -68,19 +54,6 @@ function Navbar() {
     key,
     label: item,
   }));
-
-  const logout = () => {
-    axios
-      .get('/api/v1/logout')
-      .then(() => {
-        setIsLogged(false);
-        navigate('/', { replace: true });
-        setIsOpen(false);
-      })
-      .catch(() => {
-        message.error('حدث خطأ ما');
-      });
-  };
 
   const avatarMenu = (
     <Menu

@@ -8,6 +8,7 @@ import './style.css';
 function AdminLogin() {
   return (
     <div className="admin-login">
+      {console.log('admin login')}
       <Link to="/">
         <Image
           preview={false}

@@ -24,8 +24,7 @@ import './app.css';
 import LayoutUser from '../Components/Layout';
 import { CategoriesProvider } from '../Contexts/CategoriesContext';
 import { ModalLoginProvider } from '../Contexts/ModalLogin';
-import { UserProvider } from '../Contexts/userContext';
-import { AdminProvider } from '../Contexts/adminContext';
+import { ProvideAuth } from '../Contexts/userContext';
 import { AdminProtected, UserProtected } from '../ProtectedRoute';
 
 function App() {
@@ -33,42 +32,40 @@ function App() {
     <div>
       <CategoriesProvider>
         <ModalLoginProvider>
-          <UserProvider>
-            <AdminProvider>
-              <Routes>
-                <Route path="/login/admin" element={<AdminLogin />} />
-                <Route element={<AdminProtected />}>
-                  <Route path="dashboard" element={<Dashboard />}>
-                    <Route path="/dashboard" element={<General />} />
-                    <Route path="categories" element={<Categories />} />
-                    <Route path="books" element={<DashboardBook />} />
-                    <Route path="contact" element={<Contact />} />
-                    <Route path="services" element={<Services />} />
-                  </Route>
+          <ProvideAuth>
+            <Routes>
+              <Route path="/login/admin" element={<AdminLogin />} />
+              <Route element={<AdminProtected />}>
+                <Route path="dashboard" element={<Dashboard />}>
+                  <Route path="/dashboard" element={<General />} />
+                  <Route path="categories" element={<Categories />} />
+                  <Route path="books" element={<DashboardBook />} />
+                  <Route path="contact" element={<Contact />} />
+                  <Route path="services" element={<Services />} />
                 </Route>
+              </Route>
 
-                <Route path="/" element={<LayoutUser />}>
-                  <Route path="/" index element={<Home />} />
-                  <Route
-                    path="contact"
-                    element={<Description page="contact" />}
-                  />
-                  <Route path="about" element={<Description page="about" />} />
-                  <Route
-                    path="category/:id"
-                    element={<Description page="category" />}
-                  />
-                  <Route path="category/:id" element={<Category />} />
-                  <Route element={<UserProtected />}>
-                    <Route path="/book" element={<Book />} />
-                    <Route path="/profile" element={<Profile />} />
-                  </Route>
+              <Route path="/" element={<LayoutUser />}>
+                <Route path="/" index element={<Home />} />
+                <Route
+                  path="contact"
+                  element={<Description page="contact" />}
+                />
+                <Route path="about" element={<Description page="about" />} />
+                <Route
+                  path="category/:id"
+                  element={<Description page="category" />}
+                />
+                <Route path="category/:id" element={<Category />} />
+                <Route element={<UserProtected />}>
+                  <Route path="/book" element={<Book />} />
+                  <Route path="/profile" element={<Profile />} />
                 </Route>
+              </Route>
 
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </AdminProvider>
-          </UserProvider>
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </ProvideAuth>
         </ModalLoginProvider>
       </CategoriesProvider>
     </div>

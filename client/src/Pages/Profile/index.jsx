@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import uuid from 'react-uuid';
-import { Row, Col, message, Descriptions, Typography, Spin, Empty } from 'antd';
-import { userContext } from '../../Contexts/userContext';
+import { Row, Col, Descriptions, Typography, Spin, Empty } from 'antd';
+import { useAuth } from '../../Contexts/userContext';
 import Cover from './Cover';
 import './style.css';
 
@@ -11,25 +11,24 @@ const { Title } = Typography;
 function Profile() {
   const [myBooks, setMyBooks] = useState([]);
   const [loading, setLoading] = useState(false);
-  const { userInfo } = useContext(userContext);
+  const { userInfo } = useAuth();
 
   useEffect(() => {
     setLoading(true);
     const cancelTokenSource = axios.CancelToken.source();
-    axios
-      .get(`/api/v1//user/${userInfo.id}/book`, {
-        cancelToken: cancelTokenSource.token,
-      })
-      .then(({ data: { data } }) => {
-        setMyBooks(data);
-      })
-      .catch(() => {
-        message.error('حدث خطأ ما');
-      })
-      .finally(() => setLoading(false));
-
+    if (userInfo) {
+      axios
+        .get(`/api/v1/user/${userInfo.id}/book`, {
+          cancelToken: cancelTokenSource.token,
+        })
+        .then(({ data: { data } }) => {
+          setMyBooks(data);
+        })
+        .catch(() => {})
+        .finally(() => setLoading(false));
+    }
     return () => cancelTokenSource.cancel();
-  }, [userInfo]);
+  }, []);
 
   return (
     <Row justify="center" align="middle">
@@ -40,7 +39,7 @@ function Profile() {
         lg={{ span: 20 }}
         xl={{ span: 20 }}
       >
-        <Cover userInfo={userInfo} />
+        <Cover />
         {loading ? (
           <Spin />
         ) : myBooks.length ? (

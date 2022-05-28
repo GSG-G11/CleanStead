@@ -22,7 +22,7 @@ function StatusNumber({ title, number, backgroundColor, icon }) {
 
 StatusNumber.propTypes = {
   title: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
+  number: PropTypes.number.isRequired,
   backgroundColor: PropTypes.string.isRequired,
   icon: PropTypes.element.isRequired,
 };

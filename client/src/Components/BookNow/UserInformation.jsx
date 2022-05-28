@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Typography, Form, Input, Row, Col, Select } from 'antd';
 import LeafMap from '../Map';
 import cities from '../../cities.json';
-import { userContext } from '../../Contexts/userContext';
+import { useAuth } from '../../Contexts/userContext';
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -13,7 +13,7 @@ function UserInformation({
   position,
   setPosition,
 }) {
-  const { userInfo } = useContext(userContext);
+  const { userInfo } = useAuth();
 
   return (
     <div>

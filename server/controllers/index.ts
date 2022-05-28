@@ -8,10 +8,12 @@ import {
   getContacts, addContact, deleteContact, updateContactStatus,
 } from './contact';
 import signup from './signup';
-import { logout, logoutAdmin } from './logout';
+import logout from './logout';
 import { checkAuth, checkAdmin } from './middlewares/auth';
 import signin from './signin';
-import { postService, archivedService, putService, getServices } from './services';
+import {
+  postService, archivedService, putService, getServices,
+} from './services';
 import {
   getBooks, getUserBooks, getBook, postBook, deleteBook, getStatus,
   getBookDay, getBookMonth, updateBook, updateStatusBook,
@@ -45,7 +47,6 @@ export {
   validateLink,
   signinAdmin,
   updateContactStatus,
-  logoutAdmin,
   getStatus,
   deleteBook,
   getBookDay,

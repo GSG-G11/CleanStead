@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
-import axios from 'axios';
-import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import {
   Layout,
   Menu,
@@ -10,7 +9,6 @@ import {
   Avatar,
   Button,
   Badge,
-  message,
 } from 'antd';
 import {
   PieChartOutlined,
@@ -21,7 +19,7 @@ import {
   LogoutOutlined,
   BellOutlined,
 } from '@ant-design/icons';
-import { adminContext } from '../../Contexts/adminContext';
+import { useAuth } from '../../Contexts/userContext';
 import './style.css';
 import logo from '../../Assets/images/logo.svg';
 import user from '../../Assets/images/user.png';
@@ -64,20 +62,9 @@ const breadcrumbNameMap = {
 };
 
 function Dashboard() {
-  const { adminInfo, setIsAdminLogged } = useContext(adminContext);
+  const { userInfo, logout } = useAuth();
   const { pathname } = useLocation();
-  const navigate = useNavigate();
-  const logout = () => {
-    axios
-      .get('/api/v1/logoutAdmin')
-      .then(() => {
-        setIsAdminLogged(false);
-        navigate('/login/admin', { replace: true });
-      })
-      .catch(() => {
-        message.error('حدث خطأ ما');
-      });
-  };
+
   return (
     <Layout
       style={{
@@ -131,7 +118,7 @@ function Dashboard() {
                 />
               }
             />
-            <Title level={5}>{adminInfo.name}</Title>
+            <Title level={5}>{userInfo.name}</Title>
           </Space>
         </Header>
         <Content className="dashboard-content">
