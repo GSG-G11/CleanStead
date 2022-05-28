@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { Avatar, Card, Image } from 'antd';
 import headerBackground from '../../Assets/images/headerBackground.svg';
-import { userContext } from '../../Contexts/userContext';
+import { useAuth } from '../../Contexts/userContext';
 
 const { Meta } = Card;
 
 function Cover() {
-  const { userInfo } = useContext(userContext);
+  const { userInfo } = useAuth();
   return (
     <div className="header-container">
       <div className="cover-image-container">

@@ -24,7 +24,7 @@ import './app.css';
 import LayoutUser from '../Components/Layout';
 import { CategoriesProvider } from '../Contexts/CategoriesContext';
 import { ModalLoginProvider } from '../Contexts/ModalLogin';
-import { UserProvider } from '../Contexts/userContext';
+import { ProvideAuth } from '../Contexts/userContext';
 import { AdminProtected, UserProtected } from '../ProtectedRoute';
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
     <div>
       <CategoriesProvider>
         <ModalLoginProvider>
-          <UserProvider>
+          <ProvideAuth>
             <Routes>
               <Route path="/login/admin" element={<AdminLogin />} />
               <Route element={<AdminProtected />}>
@@ -65,7 +65,7 @@ function App() {
 
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </UserProvider>
+          </ProvideAuth>
         </ModalLoginProvider>
       </CategoriesProvider>
     </div>

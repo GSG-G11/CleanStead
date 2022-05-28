@@ -5,10 +5,10 @@ import { Menu, Button, Avatar, Dropdown, Space } from 'antd';
 import { UserOutlined, DownOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { ModalLoginContext } from '../../Contexts/ModalLogin';
-import { userContext } from '../../Contexts/userContext';
+import { useAuth } from '../../Contexts/userContext';
 
 function RightMenu({ mode, avatarMenu }) {
-  const { userInfo, isLogged } = useContext(userContext);
+  const { userInfo, isLogged } = useAuth();
   const { setIsOpen } = useContext(ModalLoginContext);
 
   const openModal = () => {

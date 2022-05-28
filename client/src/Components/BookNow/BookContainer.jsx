@@ -10,7 +10,7 @@ import Summary from './Summary';
 import CompleteBook from './CompleteBook';
 import cities from '../../cities.json';
 import './style.css';
-import { userContext } from '../../Contexts/userContext';
+import { useAuth } from '../../Contexts/userContext';
 
 const { Step } = Steps;
 
@@ -27,7 +27,7 @@ function BookContainer() {
   ]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { userInfo } = useContext(userContext);
+  const { userInfo } = useAuth();
 
   useEffect(() => {
     if (typeof userInfo !== 'string') {

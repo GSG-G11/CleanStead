@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import uuid from 'react-uuid';
 import { Row, Col, Descriptions, Typography, Spin, Empty } from 'antd';
-import { userContext } from '../../Contexts/userContext';
+import { useAuth } from '../../Contexts/userContext';
 import Cover from './Cover';
 import './style.css';
 
@@ -11,7 +11,7 @@ const { Title } = Typography;
 function Profile() {
   const [myBooks, setMyBooks] = useState([]);
   const [loading, setLoading] = useState(false);
-  const { userInfo } = useContext(userContext);
+  const { userInfo } = useAuth();
 
   useEffect(() => {
     setLoading(true);
