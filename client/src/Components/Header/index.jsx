@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Row, Col, Image, Typography, Button } from 'antd';
 import headerBackground from '../../Assets/images/headerBackground.svg';
 import './style.css';
@@ -26,7 +27,9 @@ function Header() {
               ما تشيل هم كلمنا بنساعدك <br />
               احجز خدمة مضمونة بكبسة زر
             </Title>
-            <Button className="header-button">تواصل معنا</Button>
+            <Link to="/contact">
+              <Button className="header-button">تواصل معنا</Button>
+            </Link>
           </div>
         </div>
       </Col>
