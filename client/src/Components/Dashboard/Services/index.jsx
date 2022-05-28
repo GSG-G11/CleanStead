@@ -49,14 +49,11 @@ function Services() {
   const onChangeImage = async ({ target: { files } }) => {
     const formData = new FormData();
     formData.append('file', files[0]);
-    formData.append(
-      'upload_preset',
-      `${process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET}`
-    );
+    formData.append('upload_preset', 'fbwelzmr');
     setLoadingImage(true);
     try {
       const { data } = await axios.post(
-        `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`,
+        `https://api.cloudinary.com/v1_1/cleansteadev/image/upload`,
         formData
       );
       setImage(data.secure_url);

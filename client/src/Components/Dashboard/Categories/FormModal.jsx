@@ -34,13 +34,10 @@ function FormModal({
     const { files } = e.target;
     const formData = new FormData();
     formData.append('file', files[0]);
-    formData.append(
-      'upload_preset',
-      process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
-    );
+    formData.append('upload_preset', 'fbwelzmr');
     axios
       .post(
-        `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`,
+        `https://api.cloudinary.com/v1_1/cleansteadev/image/upload`,
         formData
       )
       .then(({ data }) => {
