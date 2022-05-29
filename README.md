@@ -6,7 +6,7 @@
 <div align="center">
   <a href="https://github.com/GSG-G11/CleanStead/contributors"><img alt="GitHub contributers" src="https://img.shields.io/github/contributors/GSG-G11/CleanStead?color=%2300ADEE&style=for-the-badge"></a>
   <a href="https://github.com/GSG-G11/CleanStead/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/GSG-G11/CleanStead?color=red&style=for-the-badge"></a>
-  <a href="https://github.com/GSG-G11/CleanStead/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/GSG-G11/CleanStead?color=%2344cc11&style=for-the-badge"></a>
+  <a href="https://github.com/GSG-G11/CleanStead/network/members"><img alt="GitHub forks" src="https://img.shields.io/github/forks/GSG-G11/CleanStead?color=%2344cc11&style=for-the-badge"></a>
   <a href="https://github.com/GSG-G11/CleanStead/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/GSG-G11/CleanStead?color=yellow&style=for-the-badge"></a>
 </div>
 
