@@ -1,6 +1,7 @@
 .description-image {
   width: 450px;
   height: 420px;
+  object-fit: cover;
   border-radius: 20px;
 }
 .description-custom-title {

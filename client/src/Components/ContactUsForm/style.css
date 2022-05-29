@@ -1,6 +1,8 @@
 .contact-image{
     width: 450px;
-    height: 450px;
+    height: 580px;
+    border-radius: 20px;
+    object-fit: cover;
 }
 .contact-custom-title {
     display: flex;
@@ -9,11 +11,11 @@
     font-size: 25px;
     margin-left: 390px;
     margin-bottom: 20px;
+}
 
- }
- .contact-title {
+.contact-title {
     margin: 0.2em 0.2em;
- }
+}
 
 .contact-button{
     margin: 10px 20px 20px 370px;

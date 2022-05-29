@@ -15,7 +15,7 @@ import {
 import { LoadingOutlined } from '@ant-design/icons';
 import linesLeft from '../../Assets/images/linesLeft.svg';
 import './style.css';
-import Img from '../../Assets/images/img1.png';
+import contactImage from '../../Assets/images/contact.jpeg';
 import { CategoriesContext } from '../../Contexts/CategoriesContext';
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
@@ -185,7 +185,7 @@ function ContactUsForm() {
           preview={false}
           className="contact-image"
           width={450}
-          src={Img}
+          src={contactImage}
           alt="contact"
         />
       </Col>
