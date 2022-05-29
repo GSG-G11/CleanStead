@@ -9,19 +9,6 @@
     "antd": "^4.20.1",
     "axios": "^0.27.2",
     "chart.js": "^3.7.1",
-    "jwt-decode": "^3.1.2",
-    "leaflet": "^1.8.0",
-    "moment": "^2.29.3",
-    "prop-types": "^15.8.1",
-    "react": "^18.0.0",
-    "react-chartjs-2": "^4.0.0",
-    "react-dom": "^18.0.0",
-    "react-leaflet": "^4.0.0",
-    "react-router-dom": "^6.3.0",
-    "react-scripts": "5.0.1",
-    "react-uuid": "^1.0.2",
-    "socket.io-client": "^4.5.1",
-    "swiper": "^8.1.4",
     "eslint": "^8.16.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
@@ -34,7 +21,21 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.4.0",
-    "prettier": "^2.6.2"
+    "jwt-decode": "^3.1.2",
+    "leaflet": "^1.8.0",
+    "moment": "^2.29.3",
+    "prettier": "^2.6.2",
+    "prop-types": "^15.8.1",
+    "react": "^18.0.0",
+    "react-chartjs-2": "^4.0.0",
+    "react-countup": "^6.2.0",
+    "react-dom": "^18.0.0",
+    "react-leaflet": "^4.0.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "react-uuid": "^1.0.2",
+    "socket.io-client": "^4.5.1",
+    "swiper": "^8.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -60,8 +61,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import CountUp from 'react-countup';
 import { Typography } from 'antd';
 
 const { Title, Text } = Typography;
@@ -11,7 +12,9 @@ function StatusNumber({ title, number, backgroundColor, icon }) {
         {icon}
       </div>
       <div>
-        <Title>{number}</Title>
+        <Title>
+          <CountUp end={number} />
+        </Title>
         <Text type="secondary" className="title-status">
           {title}
         </Text>

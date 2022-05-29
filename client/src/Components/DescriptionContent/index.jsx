@@ -44,13 +44,19 @@ function DescriptionContent({ page }) {
   return (
     <div>
       <Row justify="center" align="center" gutter={[0, 30]}>
-        <Col span={12}>
+        <Col
+          xs={{ span: 22 }}
+          sm={{ span: 22 }}
+          md={{ span: 22 }}
+          lg={{ span: 12 }}
+          xl={{ span: 12 }}
+        >
           <div className="description-section">
-            <CustomTitle
-              className="description-custom-title"
-              title={data.name}
-            />
             <Paragraph className="description-paragraph">
+              <CustomTitle
+                className="description-custom-title"
+                title={data.name}
+              />
               {data.description}
             </Paragraph>
             {page === 'about' ? (
@@ -79,7 +85,13 @@ function DescriptionContent({ page }) {
           </div>
         </Col>
 
-        <Col span={12}>
+        <Col
+          xs={{ span: 22 }}
+          sm={{ span: 22 }}
+          md={{ span: 22 }}
+          lg={{ span: 12 }}
+          xl={{ span: 12 }}
+        >
           {page === 'about' ? (
             <Image
               preview={false}

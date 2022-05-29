@@ -2,15 +2,15 @@
     display:flex;
     justify-content: center;
     align-items: center;
-    margin-right: 30px;
-    margin-bottom: 30px;
+    padding-top: 20px;
+    padding-bottom: 35px;
  }
  .custom-title-right{
    display:flex;
    justify-content: start;
    align-items: center;
-   margin-right: 30px;
-   margin-bottom: 30px;
+   padding-top: 20px;
+   padding-bottom: 35px;
  }
  .title {
     margin: 0.2em 0.2em;

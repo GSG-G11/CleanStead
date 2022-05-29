@@ -79,6 +79,7 @@ export default function Services() {
               effect="coverflow"
               grabCursor
               lazy
+              loop
               centeredSlides
               slidesPerView="auto"
               coverflowEffect={{
