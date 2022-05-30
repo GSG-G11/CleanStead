@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Avatar, Card, Image } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import userProfile from '../../Assets/images/userProfile.png';
 import headerBackground from '../../Assets/images/headerBackground.svg';
 
 const { Meta } = Card;
