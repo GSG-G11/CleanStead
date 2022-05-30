@@ -170,11 +170,11 @@ To get a local copy up and running follow these simple example steps.
    EMAIL_PASSWORD='<your password>'
    ```
 
-<!-- * To get the login admin page you can type `/login/admin` as the endpiont of url then write
+* To get the login admin page you can type `/login/admin` as the endpiont of url then write
  ```sh
  Email= admin@gmail.com
  Password= admin@password.com
- ``` -->
+ ```
 <p align="right"><a href="#top">back to top</a></p>
 
 
