@@ -41,7 +41,7 @@ const updateStatusBook: RequestHandler = async (req, res, next) => {
         html: accepetBook(bookData[0].id),
       });
     }
-    if (status === 'reject') {
+    if (status === 'decline') {
       await transporter.sendMail({
         from: process.env.EMAIL,
         to: email[0].email,

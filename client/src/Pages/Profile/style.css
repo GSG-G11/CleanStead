@@ -6,11 +6,11 @@
 }
 .cover-image-container{
   overflow: hidden;
-    position: relative;
-    border-radius: 10px;
+  position: relative;
+  border-radius: 10px;
 }
 .overlay{
-  background-color: rgb(0 174 238 / 80%);
+  background-color: rgb(229 247 253 / 54%);
   position: absolute;
   top: 0;
   left: 0;
@@ -32,11 +32,13 @@
   gap: 15px;
 }
 .ant-card-meta-title{
-  color: white !important;
+  color: #333 !important;
   font-weight: 800 !important;
   font-size: 20px !important;
 }
 .user-avatar{
+  font-size: 64px;
+  color: gray !important;
   width: 90px !important;
   height: 90px !important;
   line-height: 100px !important;
@@ -58,7 +60,7 @@
   margin-bottom: 20px;
 }
 .ant-card-meta-description{
-  color: white !important;
+  color: #333 !important;
 }
 .ant-descriptions-item-content{
   font-weight: bold;

@@ -1,6 +1,8 @@
 .description-image {
   width: 450px;
-  height: 450px;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 20px;
 }
 .description-custom-title {
   font-size: 25px ;
@@ -22,7 +24,6 @@
   cursor: pointer;
 }
 .ant-typography.ant-typography-rtl.description-paragraph {
-  width: 320px;
   color: rgb(114, 114, 114);
   font-size: 17px;
   line-height: 1.8;
@@ -31,10 +32,15 @@
 }
 .custom-title {
   font-size: 25px ;
-  /* padding-left: 100px; */
   margin-bottom: 20px;
   margin-left: 50px;
 }
 .ant-btn.ant-btn-round.ant-btn-primary.ant-btn-lg.ant-btn-rtl.description-button {
-  margin: 30px 10px 20px 200px;
+  margin: 40px 10px 20px 200px;
+}
+.description-section{
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }

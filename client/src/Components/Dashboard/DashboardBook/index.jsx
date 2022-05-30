@@ -29,14 +29,11 @@ function DashboardBook() {
 
   const onUpdate = (id, value) => {
     switch (value) {
-      case 'معلق':
-        setStatusValue('pending');
-        break;
       case 'مقبول':
         setStatusValue('approve');
         break;
       case 'مرفوض':
-        setStatusValue('reject');
+        setStatusValue('decline');
         break;
       default:
         setStatusValue('pending');
@@ -219,8 +216,7 @@ function DashboardBook() {
           onChange={changeStatus}
         >
           <Radio value="approve">مقبول</Radio>
-          <Radio value="pending">معلق</Radio>
-          <Radio value="reject">مرفوض</Radio>
+          <Radio value="decline">مرفوض</Radio>
         </Radio.Group>
       </Modal>
       <Table

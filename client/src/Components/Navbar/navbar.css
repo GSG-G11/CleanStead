@@ -66,3 +66,7 @@
 .right-menu{
   width: 300px;
 }
+.ant-menu-overflow{
+  align-items: center;
+  justify-content: end;
+}

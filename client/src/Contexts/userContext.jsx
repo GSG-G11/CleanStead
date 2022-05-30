@@ -29,8 +29,8 @@ function UserProvider({ children }) {
     if (token) {
       setUserInfo(jwt_decode(token));
       setIsLogged(true);
-      if (pathname === '/profile') {
-        navigate('/profile', { replace: true });
+      if (pathname === '/profile' || pathname === '/book') {
+        navigate(pathname, { replace: true });
         setIsOpen(false);
       }
     } else {

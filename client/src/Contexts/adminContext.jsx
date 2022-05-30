@@ -19,22 +19,10 @@ function AdminProvider({ children }) {
   useEffect(() => {
     if (token) {
       setAdminInfo(jwt_decode(token));
-      switch (pathname) {
-        case '/dashboard/contact':
-          navigate('/dashboard/contact', { replace: true });
-          break;
-        case '/dashboard/books':
-          navigate('/dashboard/books', { replace: true });
-          break;
-        case '/dashboard/services':
-          navigate('/dashboard/services', { replace: true });
-          break;
-        case '/dashboard/categories':
-          navigate('/dashboard/categories', { replace: true });
-          break;
-        default:
-          navigate('/dashboard', { replace: true });
-          break;
+      if (pathname === '/login/admin') {
+        navigate('/dashboard', { replace: true });
+      } else {
+        navigate(pathname, { replace: true });
       }
     }
   }, [isAdminLogged]);

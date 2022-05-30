@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 import React from 'react';
 import { Grid, Row, Col } from 'antd';
-import { Pagination } from 'swiper';
+import { Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/bundle';
 import 'swiper/css';
@@ -31,10 +31,14 @@ function WhatTheySay() {
           <Swiper
             slidesPerView={count}
             spaceBetween={30}
+            loop
             pagination={{
               clickable: true,
             }}
-            modules={[Pagination]}
+            autoplay={{
+              delay: 2500,
+            }}
+            modules={[Pagination, Autoplay]}
             className="mySwiper"
           >
             {quotes.length &&

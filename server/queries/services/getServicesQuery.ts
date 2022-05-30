@@ -12,5 +12,5 @@ const getServicesQuery = () => connection.query(`
   FROM
   services AS s
   JOIN  categories AS c ON  s.category_id = c.id WHERE s.archived = false
-  ORDER BY s.id ASC`);
+  ORDER BY s.id DESC`);
 export default getServicesQuery;
